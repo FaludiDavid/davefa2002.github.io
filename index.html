@@ -1,28 +1,66 @@
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-  <meta charset="UTF-8">
-  <title>Kriptovaluta Vizualizációk</title>
-</head>
-<body>
-  <h1>Kriptovaluta Vizualizációk</h1>
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
 
-  <h2>Bitcoin árfolyam</h2>
-  <!-- Linkként -->
-  <p><a href="vizualizaciok/bitcoin_arfolyam.html" target="_blank">
-    Megnyitom a Bitcoin grafikonját
-  </a></p>
-  
-  <!-- Vagy beágyazott iframe-ként -->
-  <iframe src="vizualizaciok/bitcoin_arfolyam.html"
-          width="100%" height="600px"
-          style="border:1px solid #ccc;">
-  </iframe>
+# 1) Adatok beolvasása a pontos elérési útvonaladdal
+btc_data = pd.read_csv(
+    'Bitcoin Historical Data.csv',
+    sep=';',                       # pontosvessző a delimiter
+    parse_dates=['Date'],         # parse-oljuk rögtön a Date oszlopot
+    dayfirst=False                # alapértelmezett mdy formátum
+)
 
-  <!-- Ide rakhatod a többi vizualizációdat is -->
-</body>
-</html>
+# 2) Gyors áttekintés (ez a pandas megfelelője a glimpse()-nek)
+print(btc_data.info())
+print(btc_data.head())
 
-git add index.html
-git commit -m "Hozzáadva index.html a vizualizációk listájához"
-git push
+btc_data['Date'] = pd.to_datetime(btc_data['Date'], format='%m/%d/%Y', errors='coerce')
+
+# Ellenőrzés
+print(btc_data['Date'].dtype)
+
+import plotly.graph_objects as go
+import plotly.graph_objects as go
+
+btc_data['Date'] = pd.to_datetime(btc_data['Date'], format='%Y-%m-%d', errors='coerce')
+
+# A Price oszlopból töröljük a vesszőket, és float-té konvertáljuk
+btc_data['Price'] = (
+    btc_data['Price']
+      .astype(str)                     # ha még nem str
+      .str.replace(',', '', regex=True)
+      .astype(float)
+)
+
+# Hover-szöveg összeállítása
+btc_data['hover_text'] = btc_data.apply(
+    lambda row: (
+        f"Dátum: {row['Date'].strftime('%Y-%m-%d')}<br>"
+        f"Záróár: ${row['Price']:,.2f}"
+    ),
+    axis=1
+)
+
+# Interaktív vonaldiagram Plotly-jal
+fig = go.Figure(
+    go.Scatter(
+        x=btc_data['Date'],
+        y=btc_data['Price'],
+        mode='lines',
+        line=dict(color='darkorange', width=0.6),
+        hovertext=btc_data['hover_text'],
+        hoverinfo='text'
+    )
+)
+
+# Címek és hovermode beállítása
+fig.update_layout(
+    title="Bitcoin árfolyam időbeli alakulása",
+    xaxis_title="Dátum",
+    yaxis_title="Záróár (USD)",
+    template="simple_white",
+    hovermode="x unified"
+)
+
+fig.show()
