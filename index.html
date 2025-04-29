@@ -1,39 +1,35 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import plotly.express as px
+import plotly.graph_objects as go
+from pycoingecko import CoinGeckoAPI
+import datetime
 
-# 1) Adatok beolvasása a pontos elérési útvonaladdal
-btc_data = pd.read_csv(
-    'Bitcoin Historical Data.csv',
-    sep=';',                       # pontosvessző a delimiter
-    parse_dates=['Date'],         # parse-oljuk rögtön a Date oszlopot
-    dayfirst=False                # alapértelmezett mdy formátum
+# 1) CoinGecko API-ról lekérjük a bitcoin árfolyamot 5 évre visszamenőleg
+cg = CoinGeckoAPI()
+
+# Dátumok UNIX timestamp formátumban
+end_date = int(datetime.datetime.now().timestamp())
+start_date = int((datetime.datetime.now() - datetime.timedelta(days=5 * 365)).timestamp())
+
+# Lekérés USD-ben
+data = cg.get_coin_market_chart_range_by_id(
+    id='bitcoin',
+    vs_currency='usd',
+    from_timestamp=start_date,
+    to_timestamp=end_date
 )
 
-# 2) Gyors áttekintés (ez a pandas megfelelője a glimpse()-nek)
-print(btc_data.info())
-print(btc_data.head())
+# 2) Átalakítás DataFrame-é
+prices = data['prices']  # timestamp + ár
+btc_data = pd.DataFrame(prices, columns=['timestamp', 'Price'])
 
-btc_data['Date'] = pd.to_datetime(btc_data['Date'], format='%m/%d/%Y', errors='coerce')
+# 3) Dátum konvertálása
+btc_data['Date'] = pd.to_datetime(btc_data['timestamp'], unit='ms')
+btc_data = btc_data[['Date', 'Price']]  # csak a szükséges oszlopok
 
-# Ellenőrzés
-print(btc_data['Date'].dtype)
+# 4) Napi átlagos záróár (mert órás bontásban jön az adat)
+btc_data = btc_data.set_index('Date').resample('D').mean().reset_index()
 
-import plotly.graph_objects as go
-import plotly.graph_objects as go
-
-btc_data['Date'] = pd.to_datetime(btc_data['Date'], format='%Y-%m-%d', errors='coerce')
-
-# A Price oszlopból töröljük a vesszőket, és float-té konvertáljuk
-btc_data['Price'] = (
-    btc_data['Price']
-      .astype(str)                     # ha még nem str
-      .str.replace(',', '', regex=True)
-      .astype(float)
-)
-
-# Hover-szöveg összeállítása
+# 5) Hover szöveg összeállítása
 btc_data['hover_text'] = btc_data.apply(
     lambda row: (
         f"Dátum: {row['Date'].strftime('%Y-%m-%d')}<br>"
@@ -42,7 +38,7 @@ btc_data['hover_text'] = btc_data.apply(
     axis=1
 )
 
-# Interaktív vonaldiagram Plotly-jal
+# 6) Interaktív vonaldiagram Plotly-jal
 fig = go.Figure(
     go.Scatter(
         x=btc_data['Date'],
@@ -54,9 +50,9 @@ fig = go.Figure(
     )
 )
 
-# Címek és hovermode beállítása
+# 7) Címek és hovermode beállítása
 fig.update_layout(
-    title="Bitcoin árfolyam időbeli alakulása",
+    title="Bitcoin árfolyam időbeli alakulása (CoinGecko API alapján)",
     xaxis_title="Dátum",
     yaxis_title="Záróár (USD)",
     template="simple_white",
