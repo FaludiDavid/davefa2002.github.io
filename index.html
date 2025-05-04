@@ -1,3 +1,712 @@
-<a href="https://colab.research.google.com/github/Faludidavid/davefa2002.github.io/Pyton_a_Colab_webhelyen.ipynb" target="_blank">
-  👉 Nézd meg az adatvizualizációt Colab-on
-</a>
+Adatvizualizáció projekt 2025 félkövér szöveg
+
+Legújabb fejlemények:
+
+Minden adat a Yfinance-ről van behívva
+Új grafikonokkal bővült a paletta
+Elkezdődtek a pár soros magyarázatok, amik azt írják le melyik ábra miért lehet fontos
+!pip install yfinance
+Requirement already satisfied: yfinance in /usr/local/lib/python3.11/dist-packages (0.2.56)
+Requirement already satisfied: pandas>=1.3.0 in /usr/local/lib/python3.11/dist-packages (from yfinance) (2.2.2)
+Requirement already satisfied: numpy>=1.16.5 in /usr/local/lib/python3.11/dist-packages (from yfinance) (2.0.2)
+Requirement already satisfied: requests>=2.31 in /usr/local/lib/python3.11/dist-packages (from yfinance) (2.32.3)
+Requirement already satisfied: multitasking>=0.0.7 in /usr/local/lib/python3.11/dist-packages (from yfinance) (0.0.11)
+Requirement already satisfied: platformdirs>=2.0.0 in /usr/local/lib/python3.11/dist-packages (from yfinance) (4.3.7)
+Requirement already satisfied: pytz>=2022.5 in /usr/local/lib/python3.11/dist-packages (from yfinance) (2025.2)
+Requirement already satisfied: frozendict>=2.3.4 in /usr/local/lib/python3.11/dist-packages (from yfinance) (2.4.6)
+Requirement already satisfied: peewee>=3.16.2 in /usr/local/lib/python3.11/dist-packages (from yfinance) (3.17.9)
+Requirement already satisfied: beautifulsoup4>=4.11.1 in /usr/local/lib/python3.11/dist-packages (from yfinance) (4.13.4)
+Requirement already satisfied: soupsieve>1.2 in /usr/local/lib/python3.11/dist-packages (from beautifulsoup4>=4.11.1->yfinance) (2.7)
+Requirement already satisfied: typing-extensions>=4.0.0 in /usr/local/lib/python3.11/dist-packages (from beautifulsoup4>=4.11.1->yfinance) (4.13.2)
+Requirement already satisfied: python-dateutil>=2.8.2 in /usr/local/lib/python3.11/dist-packages (from pandas>=1.3.0->yfinance) (2.9.0.post0)
+Requirement already satisfied: tzdata>=2022.7 in /usr/local/lib/python3.11/dist-packages (from pandas>=1.3.0->yfinance) (2025.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in /usr/local/lib/python3.11/dist-packages (from requests>=2.31->yfinance) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.11/dist-packages (from requests>=2.31->yfinance) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /usr/local/lib/python3.11/dist-packages (from requests>=2.31->yfinance) (2.4.0)
+Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.11/dist-packages (from requests>=2.31->yfinance) (2025.1.31)
+Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.11/dist-packages (from python-dateutil>=2.8.2->pandas>=1.3.0->yfinance) (1.17.0)
+                                      Yahoo finance adatok beolvasása
+import yfinance as yf
+import pandas as pd
+
+# Kriptók ticker szimbólumai
+symbols = {
+    'Bitcoin': 'BTC-USD',
+    'Ethereum': 'ETH-USD',
+    'Dogecoin': 'DOGE-USD'
+}
+
+# Üres lista az adatok tárolására
+crypto_data = []
+
+# 5 évre letöltjük az adatokat mindhárom kriptóra
+for name, ticker in symbols.items():
+    df = yf.download(ticker, period='5y', interval='1d')
+    df.reset_index(inplace=True)
+    df['Crypto'] = name
+    df['Date'] = pd.to_datetime(df['Date'])
+    df['Price'] = df['Close']  # csak a záróár kell
+    crypto_data.append(df[['Date', 'Price', 'Crypto']])
+
+# Az összesített DataFrame
+combined_df = pd.concat(crypto_data, ignore_index=True)
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+                                      BITCOIN ÁRFOLYAM IDŐBELI ALAKULÁSA
+import yfinance as yf
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.io as pio
+
+# → Colab-hoz renderer beállítása
+pio.renderers.default = "colab"
+
+# 1) Adatok lekérése az elmúlt 5 évre
+btc_data = yf.download('BTC-USD', period='5y', interval='1d')
+
+# 2) Indexből oszloppá alakítás (Date)
+btc_data.reset_index(inplace=True)
+btc_data['Date'] = pd.to_datetime(btc_data['Date'])
+
+# 3) Átnevezés: a záróár legyen 'Price' (ha szeretnéd)
+btc_data['Price'] = btc_data['Close']
+
+# 4) Hover-szöveg előállítása két lépésben, hogy ne keletkezzen hiba
+btc_data['Date_str']  = btc_data['Date'].dt.strftime('%Y-%m-%d')
+btc_data['Price_str'] = btc_data['Price'].map(lambda x: f"${x:,.2f}")
+btc_data['hover_text'] = "Dátum: " + btc_data['Date_str'] + "<br>Záróár: " + btc_data['Price_str']
+
+# 5) Interaktív vonaldiagram Plotly-val
+fig = go.Figure(
+    go.Scatter(
+        x=btc_data['Date'],
+        y=btc_data['Price'],
+        mode='lines',
+        line=dict(color='darkorange', width=0.6),
+        hovertext=btc_data['hover_text'],
+        hoverinfo='text'
+    )
+)
+
+# 6) Layout beállítások
+fig.update_layout(
+    title="Bitcoin árfolyam időbeli alakulása (Yahoo Finance)",
+    xaxis_title="Dátum",
+    yaxis_title="Záróár (USD)",
+    template="simple_white",
+    hovermode="x unified"
+)
+
+# 7) Ábra megjelenítése
+fig.show()
+
+[*********************100%***********************]  1 of 1 completed
+                                     ETHEREUM
+import pandas as pd
+import yfinance as yf
+import plotly.graph_objects as go
+import plotly.io as pio
+
+# Colab kompatibilitás
+pio.renderers.default = "colab"
+
+# 1) Ethereum adatok letöltése (5 év)
+eth_data = yf.download('ETH-USD', period='5y', interval='1d')
+
+# 2) Indexből oszlop
+eth_data.reset_index(inplace=True)
+
+# 3) Dátum biztosítása datetime típusban
+eth_data['Date'] = pd.to_datetime(eth_data['Date'])
+
+# 4) Záróár hozzárendelése Price néven
+eth_data['Price'] = eth_data['Close']
+
+# 5) Hover szöveg előállítása
+eth_data['hover_text'] = (
+    "Dátum: " + eth_data['Date'].dt.strftime('%Y-%m-%d') +
+    "<br>Záróár: $" + eth_data['Price'].map('{:,.2f}'.format)
+)
+
+# 6) Interaktív vonaldiagram Plotly-val
+fig = go.Figure(go.Scatter(
+    x=eth_data['Date'],
+    y=eth_data['Price'],
+    mode='lines',
+    line=dict(color='steelblue', width=0.6),
+    hovertext=eth_data['hover_text'],
+    hoverinfo='text'
+))
+
+# 7) Ábra beállítások
+fig.update_layout(
+    title="Ethereum árfolyam időbeli alakulása (Yahoo Finance)",
+    xaxis_title="Dátum",
+    yaxis_title="Záróár (USD)",
+    template="simple_white",
+    hovermode="x unified"
+)
+
+# 8) Megjelenítés
+fig.show()
+
+[*********************100%***********************]  1 of 1 completed
+                                  DOGECOIN
+import pandas as pd
+import yfinance as yf
+import plotly.graph_objects as go
+import plotly.io as pio
+
+# Colab renderelés beállítása (ha szükséges)
+pio.renderers.default = "colab"
+
+# 1) Dogecoin adatok letöltése az elmúlt 5 évre
+doge_data = yf.download('DOGE-USD', period='5y', interval='1d')
+
+# 2) Indexből oszlop
+doge_data.reset_index(inplace=True)
+doge_data['Date'] = pd.to_datetime(doge_data['Date'])
+
+# 3) Záróár hozzárendelése
+doge_data['Price'] = doge_data['Close']
+
+# 4) Hover-szöveg készítése (4 tizedesjegy, ahogy kérted)
+doge_data['hover_text'] = (
+    "Dátum: " + doge_data['Date'].dt.strftime('%Y-%m-%d') +
+    "<br>Záróár: $" + doge_data['Price'].map('{:,.4f}'.format)
+)
+
+# 5) Plotly ábra létrehozása
+fig = go.Figure()
+
+fig.add_trace(go.Scatter(
+    x=doge_data['Date'],
+    y=doge_data['Price'],
+    mode='lines',
+    line=dict(color='darkgreen', width=0.6),
+    text=doge_data['hover_text'],
+    hoverinfo='text'
+))
+
+# 6) Ábra beállítások
+fig.update_layout(
+    title="Dogecoin árfolyam időbeli alakulása (Yahoo Finance)",
+    xaxis_title="Dátum",
+    yaxis_title="Záróár (USD)",
+    template="simple_white",
+    hovermode="x unified"
+)
+
+# 7) Megjelenítés
+fig.show()
+
+[*********************100%***********************]  1 of 1 completed
+              KRIPTÓK ÖSSZEVONÁSA
+import yfinance as yf
+import pandas as pd
+import plotly.express as px
+import plotly.io as pio
+
+# Plotly Colab megjelenítés
+pio.renderers.default = "colab"
+
+# Kriptók és szimbólumaik
+symbols = {
+    "Bitcoin": "BTC-USD",
+    "Ethereum": "ETH-USD",
+    "Dogecoin": "DOGE-USD"
+}
+
+# Letöltés és egységesítés
+combined = []
+
+for name, ticker in symbols.items():
+    df = yf.download(ticker, period="5y", interval="1d")
+    df.reset_index(inplace=True)
+    df["Crypto"] = name
+    df["Date"] = pd.to_datetime(df["Date"])
+    df["Price"] = df["Close"]
+    combined.append(df[["Date", "Price", "Crypto"]])
+
+# Egyesített DataFrame
+combined = pd.concat(combined, ignore_index=True)
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+                    14 napos százalékos változás számítása (rolling average)
+# Dátum szerint rendezés
+combined = combined.sort_values(by=["Crypto", "Date"])
+
+# 14 napos változás függvény
+def compute_pct_rolling_avg(group):
+    group = group.copy()
+    group["RollingAvg"] = group["Price"].pct_change(periods=14) * 100
+    return group
+
+# Számítás külön-külön kriptókra
+combined_data_smooth = combined.groupby("Crypto").apply(compute_pct_rolling_avg).reset_index(drop=True)
+
+fig = px.line(
+    combined_data_smooth,
+    x="Date",
+    y="RollingAvg",
+    color="Crypto",
+    line_group="Crypto",
+    hover_data={"Date": True, "Crypto": True, "RollingAvg": ':.2f'},
+    title="📉 5 éves mozgóátlag – Árfolyamváltozás összehasonlítás"
+)
+
+fig.update_traces(
+    hovertemplate='<b>Dátum:</b> %{x}<br>' +
+                  '<b>Crypto:</b> %{customdata[1]}<br>' +
+                  '<b>14 napos változás:</b> %{y:.2f}%<extra></extra>'
+)
+
+fig.update_layout(
+    xaxis_title="Dátum",
+    yaxis_title="Változás (%)",
+    hovermode="x unified",
+    template="plotly_white"
+)
+
+fig.show()
+<ipython-input-13-2579832a4141>:11: PerformanceWarning:
+
+dropping on a non-lexsorted multi-index without a level parameter may impact performance.
+
+<ipython-input-13-2579832a4141>:11: DeprecationWarning:
+
+DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+
+            LOGARITMÁLT SKÁLA
+import yfinance as yf
+import pandas as pd
+import plotly.express as px
+import plotly.io as pio
+
+# Colabhoz: biztosítjuk a grafikon megjelenését
+pio.renderers.default = "colab"
+
+# 1) Kriptovaluták szimbólumai
+symbols = {
+    "Bitcoin": "BTC-USD",
+    "Ethereum": "ETH-USD",
+    "Dogecoin": "DOGE-USD"
+}
+
+# 2) Adatok letöltése és előkészítése
+data = []
+
+for name, ticker in symbols.items():
+    df = yf.download(ticker, period="5y", interval="1d")
+    df.reset_index(inplace=True)
+    df["Crypto"] = name
+    df["Date"] = pd.to_datetime(df["Date"])
+    df["Price"] = df["Close"]
+    data.append(df[["Date", "Price", "Crypto"]])
+
+# 3) Összefűzött DataFrame
+combined = pd.concat(data, ignore_index=True)
+
+# 4) Normalizálás az első értékhez képest
+combined_sorted = combined.sort_values(['Crypto', 'Date'])
+combined_sorted['NormalizedPrice'] = (
+    combined_sorted
+    .groupby('Crypto')['Price']
+    .transform(lambda x: x / x.iloc[0])
+)
+
+fig = px.line(
+    combined_sorted,
+    x='Date',
+    y='NormalizedPrice',
+    color='Crypto',
+    line_shape='linear',
+    title="Kriptovaluták árfolyamának összehasonlítása (normalizálva)",
+    labels={
+        'Date': 'Dátum',
+        'NormalizedPrice': 'Normalizált árfolyam (log skála)',
+        'Crypto': 'Kriptovaluta'
+    },
+)
+
+fig.update_layout(
+    yaxis_type='log',
+    yaxis_tickformat='.0f',
+    yaxis=dict(
+        tickvals=[1, 15, 30, 60, 120, 240, 480],
+    ),
+    template='plotly_dark',
+    font=dict(size=14),
+    title=dict(
+        text="Kriptovaluták árfolyamának összehasonlítása (normalizálva)<br><sup>Relatív növekedés 1-ről indulva, logaritmikus skálán</sup>",
+        x=0.5
+    ),
+    legend=dict(
+        title='Kriptovaluta',
+        bgcolor='rgba(0,0,0,0)',
+        bordercolor='gray',
+        borderwidth=1
+    ),
+    margin=dict(t=80, b=50, l=60, r=40)
+)
+
+# X tengely év szerint
+fig.update_xaxes(tickformat='%Y')
+
+fig.show()
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+import pandas as pd
+import yfinance as yf
+import plotly.express as px
+import plotly.io as pio
+
+# Plotly Colab renderer
+pio.renderers.default = "colab"
+
+# 1) Adatok letöltése a három kriptóra
+symbols = {
+    "Bitcoin": "BTC-USD",
+    "Ethereum": "ETH-USD",
+    "Dogecoin": "DOGE-USD"
+}
+
+data = []
+
+for name, ticker in symbols.items():
+    df = yf.download(ticker, period="5y", interval="1d")
+    df.reset_index(inplace=True)
+    df["Crypto"] = name
+    df["Date"] = pd.to_datetime(df["Date"])
+    df["Price"] = df["Close"]
+    df["Vol_numeric"] = df["Volume"]  # Már numerikus!
+    data.append(df[["Date", "Price", "Vol_numeric", "Crypto"]])
+
+# Összefűzés
+combined = pd.concat(data, ignore_index=True)
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+# Év és hónap kiszedése
+combined["Year"] = combined["Date"].dt.year
+combined["Month"] = combined["Date"].dt.month_name()
+
+# Csak Bitcoin és Ethereum
+btc_eth = combined[combined["Crypto"].isin(["Bitcoin", "Ethereum"])].copy()
+
+# Volumen ezres nagyságrendbe
+btc_eth["Vol_K"] = btc_eth["Vol_numeric"] / 1e3
+
+# Hónap sorrend biztosítása
+month_order = ['January', 'February', 'March', 'April', 'May', 'June',
+               'July', 'August', 'September', 'October', 'November', 'December']
+btc_eth["Month"] = pd.Categorical(btc_eth["Month"], categories=month_order, ordered=True)
+
+# Átlagos havi volumen számítás
+heatmap_data = (
+    btc_eth.groupby(["Crypto", "Year", "Month"], as_index=False)["Vol_K"]
+    .mean()
+)
+<ipython-input-21-188a9b2ca64f>:18: FutureWarning:
+
+The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+
+import pandas as pd
+import plotly.express as px
+import yfinance as yf
+
+# Kriptók szimbólumai
+symbols = {
+    "Bitcoin": "BTC-USD",
+    "Ethereum": "ETH-USD",
+    "Dogecoin": "DOGE-USD"
+}
+
+# Adatok letöltése és előkészítése
+combined = []
+for name, ticker in symbols.items():
+    df = yf.download(ticker, period="5y", interval="1d")
+    df.reset_index(inplace=True)
+    df["Crypto"] = name
+    df["Date"] = pd.to_datetime(df["Date"])
+    df["Price"] = df["Close"]
+    df["Volume_K"] = df["Volume"] / 1e3  # Volumen K-ban (ezer USD)
+    df["Month"] = df["Date"].dt.month_name()
+    df["Year"] = df["Date"].dt.year
+    combined.append(df[["Date", "Price", "Volume_K", "Crypto", "Month", "Year"]])
+
+combined_df = pd.concat(combined, ignore_index=True)
+
+# Átlagos havi forgalom kiszámítása Bitcoin és Ethereum esetén
+heatmap_data = combined_df[combined_df["Crypto"].isin(["Bitcoin", "Ethereum"])].copy()
+heatmap_data = (
+    heatmap_data.groupby(["Crypto", "Year", "Month"], as_index=False)["Volume_K"]
+    .mean()
+)
+
+# Hőtérkép - Bitcoin és Ethereum
+fig1 = px.density_heatmap(
+    heatmap_data,
+    x="Month",
+    y="Year",
+    z="Volume_K",
+    facet_col="Crypto",
+    color_continuous_scale="YlGnBu",
+    title="📊 Átlagos havi forgalom (K USD) – Bitcoin vs Ethereum",
+    labels={"Volume_K": "Forgalom (K USD)"}
+)
+
+fig1.update_layout(
+    template="simple_white",
+    title_x=0.5,
+    font=dict(size=13),
+    margin=dict(t=80, l=60, r=40, b=50)
+)
+
+fig1.show()
+
+# Hőtérkép - Dogecoin
+heatmap_doge = combined_df[combined_df["Crypto"] == "Dogecoin"].copy()
+heatmap_doge = (
+    heatmap_doge.groupby(["Year", "Month"], as_index=False)["Volume_K"]
+    .mean()
+)
+
+fig2 = px.density_heatmap(
+    heatmap_doge,
+    x="Month",
+    y="Year",
+    z="Volume_K",
+    color_continuous_scale="YlGnBu",
+    title="📊 Átlagos havi forgalom (K USD) – Dogecoin",
+    labels={"Volume_K": "Forgalom (K USD)"}
+)
+
+fig2.update_layout(
+    template="simple_white",
+    title_x=0.5,
+    font=dict(size=13),
+    margin=dict(t=80, l=60, r=40, b=50)
+)
+
+fig2.show()
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+                          FORGALOM IDŐBELI ALAKULÁSA
+import yfinance as yf
+import pandas as pd
+import plotly.express as px
+import plotly.io as pio
+
+pio.renderers.default = "colab"  # Colabhoz (ha ott futtatod)
+
+# 1. Kriptók és szimbólumok
+symbols = {
+    "Bitcoin": "BTC-USD",
+    "Ethereum": "ETH-USD",
+    "Dogecoin": "DOGE-USD"
+}
+
+# 2. Adatok lekérése és előkészítése
+data = []
+for name, ticker in symbols.items():
+    df = yf.download(ticker, period="5y", interval="1d")
+    df.reset_index(inplace=True)
+    df["Crypto"] = name
+    df["Date"] = pd.to_datetime(df["Date"])
+    df["Price"] = df["Close"]
+    df["Vol_numeric"] = df["Volume"]
+    data.append(df[["Date", "Price", "Vol_numeric", "Crypto"]])
+
+# 3. Összefűzés
+combined = pd.concat(data, ignore_index=True)
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+fig = px.area(
+    combined,
+    x='Date',
+    y='Vol_numeric',
+    facet_col='Crypto',
+    facet_col_wrap=3,
+    color_discrete_sequence=['skyblue'],
+    title="Forgalom időbeli alakulása – kriptovaluták szerint bontva",
+    labels={
+        'Date': 'Dátum',
+        'Vol_numeric': 'Forgalom (USD)',
+        'Crypto': 'Kriptovaluta'
+    }
+)
+
+# Átlátszóság + legend eltüntetés
+fig.update_traces(opacity=0.6, showlegend=False)
+
+# Layout és tengelyek finomhangolása
+fig.update_layout(
+    template='simple_white',
+    font=dict(size=14),
+    title=dict(
+        text="Forgalom időbeli alakulása – kriptovaluták szerint bontva",
+        x=0.5,
+        font=dict(size=20)
+    ),
+    margin=dict(t=80, b=60, l=60, r=40),
+    hovermode="x unified"
+)
+
+# X és Y tengely beállítások
+fig.update_xaxes(
+    tickformat="%Y",
+    title="Dátum",
+    tickangle=45,
+    showgrid=True
+)
+
+fig.update_yaxes(
+    title="Forgalom (USD)",
+    tickformat=".2s",  # Pl. 1M, 500K, stb.
+    showgrid=True
+)
+
+fig.show()
+                                    GYERTYA DIAGRAMMOK
+import yfinance as yf
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.io as pio
+
+# Colab esetén (vagy Jupyter Notebookban) ez kell a Plotly-hoz:
+pio.renderers.default = "colab"
+
+# A három kripto szimbólumai és emberi neveik
+cryptos = {
+    "Bitcoin": "BTC-USD",
+    "Ethereum": "ETH-USD",
+    "Dogecoin": "DOGE-USD"
+}
+
+for name, ticker in cryptos.items():
+    # 1) Adatok letöltése 5 évre
+    df = yf.download(ticker, period="5y", interval="1d")
+
+    # 2) Date oszloppá hozás és rendezés
+    df.reset_index(inplace=True)
+    df = df.sort_values("Date")
+
+    # 3) Ha MultiIndex az oszlop, egyszerűsítjük (többes tuple -> csak az első elem)
+    df.columns = [col[0] if isinstance(col, tuple) else col for col in df.columns]
+
+    # 4) Gyertyadiagram felépítése
+    fig = go.Figure(data=[go.Candlestick(
+        x=df['Date'],
+        open=df['Open'],
+        high=df['High'],
+        low=df['Low'],
+        close=df['Close'],
+        increasing_line_color='green',
+        decreasing_line_color='red',
+        name=name
+    )])
+
+    # 5) Layout beállítások
+    fig.update_layout(
+        title=f"{name} árfolyam – gyertyadiagram (Yahoo Finance)",
+        xaxis_title="Dátum",
+        yaxis_title="Ár (USD)",
+        xaxis_rangeslider_visible=False,
+        template='plotly_white'
+    )
+
+    # 6) Megjelenítés
+    fig.show()
+
+[*********************100%***********************]  1 of 1 completed
+
+[*********************100%***********************]  1 of 1 completed
+
+[*********************100%***********************]  1 of 1 completed
+import plotly.express as px
+
+# Piaci kapitalizáció és forgalom (például USD-ben)
+combined_df['MarketCap'] = combined_df['Price'] * combined_df['Volume_K']
+
+# Scatter plot
+fig = px.scatter(
+    combined_df,
+    x="MarketCap",
+    y="Volume_K",
+    color="Crypto",
+    title="Piaci kapitalizáció és forgalom összehasonlítása",
+    labels={"MarketCap": "Piaci kapitalizáció (USD)", "Volume_K": "Forgalom (K USD)"}
+)
+
+fig.update_layout(template="plotly_white")
+fig.show()
+Itt láthatjuk, hogyan változik a piaci kapitalizáció a forgalom függvényében.
+
+Lehetővé teszi az egyes kriptovaluták gazdasági erejének összehasonlítását.
+
+# 30 napos és 90 napos mozgóátlagok számítása
+combined_df['SMA_30'] = combined_df.groupby('Crypto')['Price'].transform(lambda x: x.rolling(window=30).mean())
+combined_df['SMA_90'] = combined_df.groupby('Crypto')['Price'].transform(lambda x: x.rolling(window=90).mean())
+
+# Ábrázolás
+fig = px.line(
+    combined_df,
+    x="Date",
+    y=["Price", "SMA_30", "SMA_90"],
+    color="Crypto",
+    title="30 és 90 napos mozgóátlagok",
+    labels={"Price": "Ár (USD)", "SMA_30": "30 napos mozgóátlag", "SMA_90": "90 napos mozgóátlag"}
+)
+
+fig.update_layout(template="plotly_white")
+fig.show()
+Az SMA-k (pl. 30 napos és 90 napos) segíthetnek az árfolyam zajának kiszűrésében és a hosszú távú trendek azonosításában.
+
+Az árfolyamok mozgóátlagával való összehasonlítás segíthet meghatározni, hogy egy kriptovaluta túlértékelt vagy alulértékelt-e.
+
+# Volatilitás (standard deviation) számítása
+combined_df['Volatility'] = combined_df.groupby('Crypto')['Price'].transform(lambda x: x.pct_change().rolling(window=30).std())
+
+# Ábrázolás
+fig = px.line(
+    combined_df,
+    x="Date",
+    y="Volatility",
+    color="Crypto",
+    title="30 napos volatilitás",
+    labels={"Volatility": "Volatilitás (%)"}
+)
+
+fig.update_layout(template="plotly_white")
+fig.show()
+A kriptovaluták piacán a volatilitás az egyik legfontosabb tényező. A standard deviation (SD) segítségével megmérhetjük a piaci ingadozásokat.
+
+Miért hasznos?
+
+Megmutatja, hogy a piacon mennyire ingadozik az árfolyam.
+
+A magas volatilitás jelezhet nagy kockázatot, míg az alacsony volatilitás stabilitást.
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Pivot tábla létrehozása az árfolyamokkal
+pivot_df = combined_df.pivot_table(index="Date", columns="Crypto", values="Price")
+
+# Korelációs mátrix számítása
+corr = pivot_df.corr()
+
+# Hőtérkép ábrázolása
+plt.figure(figsize=(8, 6))
+sns.heatmap(corr, annot=True, cmap="YlGnBu", fmt=".2f", linewidths=0.5)
+plt.title("Kriptovaluták közötti koreláció")
+plt.show()
+
+
+Ez a vizualizáció segíthet megérteni, hogy a különböző kriptovaluták hogyan viselkednek egymással kapcsolatban az árfolyam szempontjából. A koreláció mutatja meg, hogy egyes kriptók árfolyama hogyan változik egyidejűleg.
