@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kriptovaluta Összehasonlító</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -30,10 +31,9 @@
     .crypto-section {
       margin-bottom: 3rem;
     }
-    iframe {
+    .chart-container {
       width: 100%;
       height: 600px;
-      border: none;
     }
     footer {
       background-color: #1e1e2f;
@@ -53,7 +53,28 @@
 <section>
   <div class="crypto-section">
     <h2>Bitcoin (BTC)</h2>
-    <iframe src="bitcoin.html"></iframe>
+    <div id="plotly-btc" class="chart-container"></div>
+    <script>
+      // Ide jönnek az előre kinyert adatok
+      var btc_dates = [...];      // pl. ['2020-01-01', '2020-01-02', ...]
+      var btc_prices = [...];     // pl. [7200.45, 7301.25, ...]
+      var hover_texts = [...];    // pl. ['Dátum: 2020-01-01<br>Záróár: $7,200.45', ...]
+
+      Plotly.newPlot('plotly-btc', [{
+        x: btc_dates,
+        y: btc_prices,
+        mode: 'lines',
+        line: {color: 'darkorange', width: 0.6},
+        hovertext: hover_texts,
+        hoverinfo: 'text'
+      }], {
+        title: "Bitcoin árfolyam időbeli alakulása (Yahoo Finance)",
+        xaxis: {title: "Dátum"},
+        yaxis: {title: "Záróár (USD)"},
+        template: "simple_white",
+        hovermode: "x unified"
+      });
+    </script>
   </div>
 
   <div class="crypto-section">
@@ -73,3 +94,4 @@
 
 </body>
 </html>
+
