@@ -6,12 +6,13 @@
   <title>Kriptovaluta összehasonlító</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="bg-gray-100 text-gray-800">
+
 <a href="#main-content" class="sr-only focus:not-sr-only absolute top-2 left-2 bg-white text-indigo-600 p-2 rounded shadow z-50">
   Ugrás a tartalomhoz
 </a>
-<body class="bg-gray-100 text-gray-800">
 
-  <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow relative z-40">
+<header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow relative z-40">
   <div class="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
     <div>
       <h1 class="text-3xl md:text-4xl font-bold">Kriptovaluták összehasonlítása</h1>
@@ -26,132 +27,107 @@
   </div>
 </header>
 
-  <main id="main-content" class="max-w-6xl mx-auto px-4 py-10 space-y-16">
+<main id="main-content" class="max-w-6xl mx-auto px-4 py-10 space-y-16">
 
-    <!-- Bitcoin -->
-    <section id="btc">
-    <section>
-      <h2 class="text-2xl font-semibold text-green-600 mb-2">₿ Bitcoin árfolyam</h2>
-      <iframe src="charts/bitcoin_price_chart.html" class="w-full h-[600px] bg-white shadow rounded" frameborder="0"></iframe>
-    </section>
+  <!-- Bitcoin -->
+  <section id="btc">
+    <h2 class="text-2xl font-semibold text-green-600 mb-2">₿ Bitcoin árfolyam</h2>
+    <iframe src="charts/bitcoin_price_chart.html" class="w-full h-[600px] bg-white shadow rounded" frameborder="0"></iframe>
+  </section>
 
-    <!-- Ethereum -->
-    <section id="eth">
-    <section>
-      <h2 class="text-2xl font-semibold text-blue-600 mb-2">Ξ Ethereum árfolyam</h2>
-      <iframe src="charts/ethereum_price_chart.html" class="w-full h-[600px] bg-white shadow rounded" frameborder="0"></iframe>
-    </section>
+  <!-- Ethereum -->
+  <section id="eth">
+    <h2 class="text-2xl font-semibold text-blue-600 mb-2">Ξ Ethereum árfolyam</h2>
+    <iframe src="charts/ethereum_price_chart.html" class="w-full h-[600px] bg-white shadow rounded" frameborder="0"></iframe>
+  </section>
 
-    <!-- Dogecoin -->
-    <section id="doge">
-    <section>
-      <h2 class="text-2xl font-semibold text-orange-500 mb-2">Ð Dogecoin árfolyam</h2>
-      <iframe src="charts/dogecoin_price_chart.html" class="w-full h-[600px] bg-white shadow rounded" frameborder="0"></iframe>
-    </section>
+  <!-- Dogecoin -->
+  <section id="doge">
+    <h2 class="text-2xl font-semibold text-orange-500 mb-2">Ð Dogecoin árfolyam</h2>
+    <iframe src="charts/dogecoin_price_chart.html" class="w-full h-[600px] bg-white shadow rounded" frameborder="0"></iframe>
+  </section>
 
-    <!-- Combined chart -->
-    <section id="összegzés">
-    <section>
-      <h2 class="text-2xl font-semibold text-purple-700 mb-2">>📉 5 éves mozgóátlag – Árfolyamváltozás összehasonlítás</h2>
-      <iframe src="charts/crypto_price_comparison.html" class="w-full h-[600px] bg-white shadow rounded" frameborder="0"></iframe>
-    </section>
+  <!-- Összegzés -->
+  <section id="osszegzes">
+    <h2 class="text-2xl font-semibold text-purple-700 mb-2">📉 5 éves mozgóátlag – Árfolyamváltozás összehasonlítás</h2>
+    <iframe src="charts/crypto_price_comparison.html" class="w-full h-[600px] bg-white shadow rounded" frameborder="0"></iframe>
+  </section>
 
-    <!-- Normalized chart -->
-    <section id="logaritmált skála">
-    <section>
-      <h2 class="text-2xl font-semibold text-green-700 mb-2">🔍 Normalizált árfolyamok (log skála)</h2>
-      <iframe src="charts/crypto_price_comparison_normalized.html" class="w-full h-[600px] bg-white shadow rounded" frameborder="0"></iframe>
-    </section>
+  <!-- Normalizált skála -->
+  <section id="logaritmalt-skala">
+    <h2 class="text-2xl font-semibold text-green-700 mb-2">🔍 Normalizált árfolyamok (log skála)</h2>
+    <iframe src="charts/crypto_price_comparison_normalized.html" class="w-full h-[600px] bg-white shadow rounded" frameborder="0"></iframe>
+  </section>
 
-    <!-- Havi átlagos forgalom – Hőtérképek -->
-      <section id="heatmap">
-<section>
-  <h2 class="text-2xl font-semibold text-purple-700 mb-4">🔥 Havi átlagos forgalom hőtérképen (Bitcoin, Ethereum, Dogecoin)</h2>
-  
-  <!-- Felső sor: Bitcoin és Ethereum -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-    <!-- Bitcoin Heatmap -->
+  <!-- Hőtérképek -->
+  <section id="heatmap">
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">🔥 Havi átlagos forgalom hőtérképen (Bitcoin, Ethereum, Dogecoin)</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div>
+        <h3 class="text-center font-medium text-gray-700 mb-1">Bitcoin</h3>
+        <iframe src="charts/heatmap_bitcoin.html" class="w-full h-[400px] bg-white shadow rounded" frameborder="0"></iframe>
+      </div>
+      <div>
+        <h3 class="text-center font-medium text-gray-700 mb-1">Ethereum</h3>
+        <iframe src="charts/heatmap_ethereum.html" class="w-full h-[400px] bg-white shadow rounded" frameborder="0"></iframe>
+      </div>
+    </div>
     <div>
+      <h3 class="text-center font-medium text-gray-700 mb-1">Dogecoin</h3>
+      <iframe src="charts/heatmap_dogecoin.html" class="w-full h-[400px] bg-white shadow rounded" frameborder="0"></iframe>
+    </div>
+  </section>
+
+  <!-- Gyertyadiagramok -->
+  <section id="gyertyadiagram">
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">🕯️ Gyertyadiagramok – Árfolyamok alakulása</h2>
+    <div class="mb-6">
       <h3 class="text-center font-medium text-gray-700 mb-1">Bitcoin</h3>
-      <iframe src="charts/heatmap_bitcoin.html" class="w-full h-[400px] bg-white shadow rounded" frameborder="0"></iframe>
+      <iframe src="charts/bitcoin_candlestick.html" class="w-full h-[400px] bg-white shadow rounded" frameborder="0"></iframe>
     </div>
-    
-    <!-- Ethereum Heatmap -->
-    <div>
+    <div class="mb-6">
       <h3 class="text-center font-medium text-gray-700 mb-1">Ethereum</h3>
-      <iframe src="charts/heatmap_ethereum.html" class="w-full h-[400px] bg-white shadow rounded" frameborder="0"></iframe>
+      <iframe src="charts/ethereum_candlestick.html" class="w-full h-[400px] bg-white shadow rounded" frameborder="0"></iframe>
     </div>
-  </div>
+    <div>
+      <h3 class="text-center font-medium text-gray-700 mb-1">Dogecoin</h3>
+      <iframe src="charts/dogecoin_candlestick.html" class="w-full h-[400px] bg-white shadow rounded" frameborder="0"></iframe>
+    </div>
+  </section>
 
-  <!-- Alsó sor: Dogecoin külön mezőben -->
-  <div>
-    <h3 class="text-center font-medium text-gray-700 mb-1">Dogecoin</h3>
-    <iframe src="charts/heatmap_dogecoin.html" class="w-full h-[400px] bg-white shadow rounded" frameborder="0"></iframe>
-  </div>
-</section>
+  <!-- Piaci kapitalizáció -->
+  <section id="kapitalizacio">
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">💰 Piaci kapitalizáció és forgalom összehasonlítása</h2>
+    <iframe src="charts/market_cap_and_volume_comparison.html" class="w-full h-[500px] bg-white shadow rounded" frameborder="0"></iframe>
+  </section>
 
-    <!-- Gyertyadiagramok – Árfolyam mozgások -->
-    <section id="gyertyadiagramm">
-<section>
-  <h2 class="text-2xl font-semibold text-purple-700 mb-4">🕯️ Gyertyadiagramok – Árfolyamok alakulása</h2>
+  <!-- 30 napos volatilitás -->
+  <section id="volatilitas">
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">📊 30 napos volatilitás – Kriptovaluták összehasonlítása</h2>
+    <iframe src="charts/30_day_volatility.html" class="w-full h-[500px] bg-white shadow rounded" frameborder="0"></iframe>
+  </section>
 
-  <!-- Bitcoin gyertyadiagram -->
-  <div class="mb-6">
-    <h3 class="text-center font-medium text-gray-700 mb-1">Bitcoin</h3>
-    <iframe src="charts/bitcoin_candlestick.html" class="w-full h-[400px] bg-white shadow rounded" frameborder="0"></iframe>
-  </div>
+  <!-- Forgalom időbeli alakulása -->
+  <section id="forgalom-idoben">
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Forgalom időbeli alakulása</h2>
+    <div class="bg-white shadow rounded p-4">
+      <img src="charts/random kép.png" alt="Forgalom időbeli alakulása" class="w-full h-auto object-contain" />
+    </div>
+  </section>
 
-  <!-- Ethereum gyertyadiagram -->
-  <div class="mb-6">
-    <h3 class="text-center font-medium text-gray-700 mb-1">Ethereum</h3>
-    <iframe src="charts/ethereum_candlestick.html" class="w-full h-[400px] bg-white shadow rounded" frameborder="0"></iframe>
-  </div>
+  <!-- Korreláció -->
+  <section id="korrelacio" class="text-center">
+    <h2 class="text-2xl font-semibold text-green-700 mb-2">Kriptók közötti korreláció</h2>
+    <div class="bg-white shadow rounded p-4 flex justify-center">
+      <img src="charts/kripto.png" alt="Kriptók közötti korreláció" class="max-h-[700px] w-auto object-contain" />
+    </div>
+  </section>
 
-  <!-- Dogecoin gyertyadiagram -->
-  <div>
-    <h3 class="text-center font-medium text-gray-700 mb-1">Dogecoin</h3>
-    <iframe src="charts/dogecoin_candlestick.html" class="w-full h-[400px] bg-white shadow rounded" frameborder="0"></iframe>
-  </div>
-</section>
+</main>
 
-    <!-- Piaci kapitalizáció és forgalom -->
-    <section id="forgalom">
-<section>
-  <h2 class="text-2xl font-semibold text-purple-700 mb-4">💰 Piaci kapitalizáció és forgalom összehasonlítása</h2>
-  <iframe src="charts/market_cap_and_volume_comparison.html" class="w-full h-[500px] bg-white shadow rounded" frameborder="0"></iframe>
-</section>
-
-    <!-- 30 napos volatilitás -->
-    <section id="volatilitás">
-<section>
-  <h2 class="text-2xl font-semibold text-purple-700 mb-4">📊 30 napos volatilitás – Kriptovaluták összehasonlítása</h2>
-  <iframe src="charts/30_day_volatility.html" class="w-full h-[500px] bg-white shadow rounded" frameborder="0"></iframe>
-</section>
-    
-    <!-- Forgalom -->
-<section id="forgalom">
-<section>
-  <h2 class="text-2xl font-semibold text-purple-700 mb-4">Forgalom időbeli alakulása</h2>
-  <div class="bg-white shadow rounded p-4">
-    <img src="charts/random kép.png" alt="Forgalom időbeli alakulása" class="w-full h-auto object-contain" />
-  </div>
-</section>
-
-
-        <!-- Korreláció -->
-  <section id="korreláció">
-<section class="text-center">
-  <h2 class="text-2xl font-semibold text-green-700 mb-2">Kriptók közötti korreláció</h2>
-  <div class="bg-white shadow rounded p-4 flex justify-center">
-    <img src="charts/kripto.png" alt="Kriptók közötti korreláció" class="max-h-[700px] w-auto object-contain" />
-  </div>
-</section>
-
-  </main>
-
-  <footer class="text-center text-gray-500 text-sm py-8">
-    &copy; 2025 Kripto projekt | Készült Google Colab és GitHub Pages segítségével
-  </footer>
+<footer class="text-center text-gray-500 text-sm py-8">
+  &copy; 2025 Kripto projekt | Készült Google Colab és GitHub Pages segítségével
+</footer>
 
 </body>
 </html>
