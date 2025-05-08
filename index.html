@@ -2,30 +2,54 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kriptovaluták összehasonlítása</title>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kriptovaluta összehasonlító</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-800">
-  <header class="text-center py-10 bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
+
+  <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-center py-10 shadow">
     <h1 class="text-4xl font-bold">Kriptovaluták összehasonlítása</h1>
-    <p class="mt-2 text-lg">Bitcoin, Ethereum és Dogecoin árfolyam elemzése</p>
+    <p class="mt-2 text-lg">Bitcoin, Ethereum, Dogecoin és összesített elemzés</p>
   </header>
 
-  <main class="max-w-4xl mx-auto py-8 px-4 space-y-16">
+  <main class="max-w-6xl mx-auto px-4 py-10 space-y-16">
 
     <!-- Bitcoin -->
     <section>
-      <h2 class="text-2xl font-semibold text-yellow-600">₿ Bitcoin</h2>
-      <p class="mb-4">A Bitcoin a legismertebb és legértékesebb kriptovaluta, 2009-ben indult.</p>
-      <div id="plot-bitcoin" class="w-full h-96 bg-white shadow rounded"></div>
-      <script>
-        // ide jön a Bitcoin grafikon Plotly kódja (Colabból)
-      </script>
+      <h2 class="text-2xl font-semibold text-yellow-600 mb-2">₿ Bitcoin árfolyam</h2>
+      <iframe src="charts/bitcoin_chart_div.html" class="w-full h-[600px] bg-white shadow rounded" frameborder="0"></iframe>
     </section>
 
     <!-- Ethereum -->
     <section>
-      <h2 class="text-2xl font-semibold text-blue-600">Ξ Ethereum</h2>
-      <p class="mb-4">Az Ethereum egy decentralizált platform, amely okosszerződéseket futtat, 201
+      <h2 class="text-2xl font-semibold text-blue-600 mb-2">Ξ Ethereum árfolyam</h2>
+      <iframe src="charts/ethereum_chart_div.html" class="w-full h-[600px] bg-white shadow rounded" frameborder="0"></iframe>
+    </section>
+
+    <!-- Dogecoin -->
+    <section>
+      <h2 class="text-2xl font-semibold text-orange-500 mb-2">Ð Dogecoin árfolyam</h2>
+      <iframe src="charts/dogecoin_chart_div.html" class="w-full h-[600px] bg-white shadow rounded" frameborder="0"></iframe>
+    </section>
+
+    <!-- Combined chart -->
+    <section>
+      <h2 class="text-2xl font-semibold text-purple-700 mb-2">📊 Összehasonlító grafikon</h2>
+      <iframe src="charts/combined_chart_div.html" class="w-full h-[600px] bg-white shadow rounded" frameborder="0"></iframe>
+    </section>
+
+    <!-- Normalized chart -->
+    <section>
+      <h2 class="text-2xl font-semibold text-green-700 mb-2">🔍 Normalizált árfolyamok (log skála)</h2>
+      <iframe src="charts/normalized_chart_div.html" class="w-full h-[600px] bg-white shadow rounded" frameborder="0"></iframe>
+    </section>
+
+  </main>
+
+  <footer class="text-center text-gray-500 text-sm py-8">
+    &copy; 2025 Faludi Dávid | Készült Google Colab és GitHub Pages segítségével
+  </footer>
+
+</body>
+</html>
