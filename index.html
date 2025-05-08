@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kriptovaluta Összehasonlító</title>
+  <!-- Plotly.js CDN szükséges, ha a snippet-ek nem tartalmazzák -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -17,18 +19,14 @@
       padding: 2rem;
       text-align: center;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      font-size: 1.2rem;
-    }
     section {
       padding: 2rem;
     }
-    .crypto-section {
+    .chart-section {
       margin-bottom: 3rem;
+    }
+    .chart-section h2 {
+      margin-bottom: 1rem;
     }
     iframe {
       width: 100%;
@@ -45,31 +43,41 @@
 </head>
 <body>
 
-<header>
-  <h1>Kriptovaluta Összehasonlító</h1>
-  <p>Bitcoin, Ethereum és Dogecoin árfolyam- és volatilitásvizsgálat egy helyen</p>
-</header>
+  <header>
+    <h1>Kriptovaluta Összehasonlító</h1>
+    <p>Bitcoin, Ethereum és Dogecoin vizualizációk egy helyen</p>
+  </header>
 
-<section>
-  <div class="crypto-section">
-    <h2>Bitcoin (BTC)</h2>
-    <iframe src="bitcoin_chart_div.html" title="Bitcoin Chart"></iframe>
-  </div>
+  <section>
+    <div class="chart-section">
+      <h2>Bitcoin chart</h2>
+      <iframe src="charts/bitcoin_chart_div.html" title="Bitcoin Chart"></iframe>
+    </div>
 
-  <div class="crypto-section">
-    <h2>Ethereum (ETH)</h2>
-    <iframe src="charts/ethereum.html" title="Ethereum Chart"></iframe>
-  </div>
+    <div class="chart-section">
+      <h2>Ethereum chart</h2>
+      <iframe src="charts/ethereum_chart_div.html" title="Ethereum Chart"></iframe>
+    </div>
 
-  <div class="crypto-section">
-    <h2>Dogecoin (DOGE)</h2>
-    <iframe src="charts/dogecoin.html" title="Dogecoin Chart"></iframe>
-  </div>
-</section>
+    <div class="chart-section">
+      <h2>Dogecoin chart</h2>
+      <iframe src="charts/dogecoin_chart_div.html" title="Dogecoin Chart"></iframe>
+    </div>
 
-<footer>
-  &copy; 2025 Faludi Dávid | Kripto Projekt
-</footer>
+    <div class="chart-section">
+      <h2>Összevont 14 napos változás</h2>
+      <iframe src="charts/combined_chart_div.html" title="Combined Rolling Avg Chart"></iframe>
+    </div>
+
+    <div class="chart-section">
+      <h2>Normalizált árfolyamok (log skála)</h2>
+      <iframe src="charts/normalized_chart_div.html" title="Normalized Price Chart"></iframe>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Faludi Dávid | Kripto Projekt
+  </footer>
 
 </body>
 </html>
