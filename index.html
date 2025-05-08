@@ -1,48 +1,32 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kriptovaluta Összehasonlító</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #f7f9fc; margin:0; padding:0 }
-    header { background:#1e1e2f; color:#fff; padding:2rem; text-align:center }
-    section { padding:2rem }
-    .chart-section { margin-bottom:3rem }
-    h2 { margin-bottom:1rem }
-    iframe { width:100%; height:600px; border:none }
-    footer { background:#1e1e2f; color:#fff; text-align:center; padding:1rem }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bitcoin Árfolyam</title>
+  <!-- Plotly.js CDN -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Kriptovaluta Összehasonlító</h1>
-    <p>Bitcoin, Ethereum és Dogecoin vizualizációk</p>
-  </header>
+  <h1>Bitcoin Árfolyam</h1>
 
-  <section>
-    <div class="chart-section">
-      <h2>Bitcoin</h2>
-      <iframe src="charts/bitcoin.html" title="Bitcoin Chart"></iframe>
-    </div>
-    <div class="chart-section">
-      <h2>Ethereum</h2>
-      <iframe src="charts/ethereum.html" title="Ethereum Chart"></iframe>
-    </div>
-    <div class="chart-section">
-      <h2>Dogecoin</h2>
-      <iframe src="charts/dogecoin.html" title="Dogecoin Chart"></iframe>
-    </div>
-    <div class="chart-section">
-      <h2>14 napos változás (összevont)</h2>
-      <iframe src="charts/combined.html" title="Rolling Avg Chart"></iframe>
-    </div>
-    <div class="chart-section">
-      <h2>Normalizált árfolyamok (log skála)</h2>
-      <iframe src="charts/normalized.html" title="Normalized Price Chart"></iframe>
-    </div>
-  </section>
+  <!-- 1) Ide töltjük be a snippetet -->
+  <div id="bitcoin-chart-container"></div>
 
-  <footer>&copy; 2025 Faludi Dávid | Kripto Projekt</footer>
+  <!-- 2) A JS fetch betölti a snippet fájlt és beteszi ebbe a div-be -->
+  <script>
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const resp = await fetch('charts/bitcoin_chart_div.html');
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const html = await resp.text();
+        document.getElementById('bitcoin-chart-container').innerHTML = html;
+      } catch (err) {
+        console.error('Snippet betöltési hiba:', err);
+        document.getElementById('bitcoin-chart-container').innerHTML =
+          '<p style="color:red">Diagram betöltése sikertelen.</p>';
+      }
+    });
+  </script>
 </body>
 </html>
