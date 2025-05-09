@@ -94,16 +94,6 @@
   </div>
 </section>
 
-  <!-- Normalizált skála -->
-<section id="logaritmalt-skala" class="px-4">
-  <h2 class="text-2xl font-semibold text-green-700 mb-2">
-    🔍 Normalizált árfolyamok (log skála)
-  </h2>
-  <div class="p-4 bg-white shadow rounded">
-    <iframe src="charts/crypto_price_comparison_normalized.html" class="w-full h-[600px] rounded" frameborder="0"></iframe>
-  </div>
-</section>
-
   <!-- Interaktív gyertyadiagram carousel -->
 <section id="candlestick-carousel" x-data="{ active: 0 }" class="relative">
   <h2 class="text-2xl font-semibold text-purple-700 mb-4">🕯️ Gyertyadiagramok </h2>
@@ -237,6 +227,26 @@
   </div>
 </section>
 
+  <!-- Normalizált árfolyamok -->
+<section id="arfolyamok" class="px-4">
+  <h2 class="text-2xl font-semibold text-purple-700 dark:text-purple-400 mb-4">🔍 Normalizált árfolyamok (log skála)</h2>
+  <div class="p-4 bg-white shadow rounded mb-6">
+    <h3 class="text-lg font-semibold text-purple-800 dark:text-purple-300 mb-2">Mit mutat ez a grafikon?</h3>
+    <p class="text-gray-700 dark:text-gray-200">
+      Ez a grafikon három kriptovaluta (Bitcoin, Ethereum, Dogecoin) relatív teljesítményét hasonlítja össze <strong>logaritmikus skálán</strong>, ahol minden árfolyam az 1-es értékről indul.
+      <br><br>
+      <span class="block text-sm mt-2">
+        ➤ <strong>Logaritmikus skála</strong>: a százalékos változást mutatja, nem az abszolút értéket<br>
+        ➤ <strong>Normalizálás</strong>: könnyebb összehasonlítani a különböző árú kriptovalutákat<br>
+        ➤ <strong>Relatív növekedés</strong>: látható, melyik valuta teljesített jobban a kiindulási ponthoz képest
+      </span>
+    </p>
+  </div>
+  <div class="p-4 bg-white shadow rounded mb-6">
+    <iframe src="charts/normalized_prices_log.html" class="w-full h-[500px] bg-white shadow rounded" frameborder="0"></iframe>
+  </div>
+</section>
+  
   <section id="forgalom-idoben">
   <h2 class="text-2xl font-semibold text-purple-700 dark:text-purple-400 mb-4">Forgalom időbeli alakulása</h2>
 
