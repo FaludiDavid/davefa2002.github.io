@@ -97,6 +97,23 @@
   <!-- Interaktív gyertyadiagram carousel -->
 <section id="candlestick-carousel" x-data="{ active: 0 }" class="relative">
   <h2 class="text-2xl font-semibold text-purple-700 mb-4">🕯️ Gyertyadiagramok </h2>
+  <!-- Gyertyadiagram magyarázat -->
+<div class="p-4 bg-white shadow rounded mb-6">
+  <h3 class="text-lg font-semibold text-purple-800 dark:text-purple-300 mb-2">Hogyan értelmezzük a gyertyadiagramot?</h3>
+  <p class="text-gray-700 dark:text-gray-200">
+    A gyertyadiagram az árfolyam négy fontos adatát mutatja egy időszakra vonatkozóan: <strong>nyitó</strong>, <strong>záró</strong>, <strong>legmagasabb</strong> és <strong>legalacsonyabb</strong> árat.
+    <br><br>
+    <span class="block text-sm mt-2">
+      ➤ <strong>Zöld gyertya</strong>: áremelkedés – az ár magasabban zárt, mint ahol nyitott<br>
+      ➤ <strong>Piros gyertya</strong>: árcsökkenés – az ár alacsonyabban zárt, mint ahol nyitott<br>
+      ➤ <strong>Gyertya teste</strong>: a nyitó és záró ár közötti tartomány<br>
+      ➤ <strong>Felső és alsó szál</strong>: a legmagasabb és legalacsonyabb ár az adott időszakban
+    </span>
+  </p>
+  <p class="text-gray-700 dark:text-gray-200 mt-3">
+    A gyertyadiagramok kiválóan alkalmasak rövid távú piaci trendek és fordulatok azonosítására, valamint a volatilitás vizuális megjelenítésére.
+  </p>
+</div>
 
   <div class="overflow-hidden rounded shadow relative h-[500px] bg-white"> <!-- Fehér háttér itt -->
     <div class="flex transition-transform duration-500"
