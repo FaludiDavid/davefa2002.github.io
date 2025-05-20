@@ -1,312 +1,950 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Napi kripto</title>
-<link rel="icon" href="charts/line-graph.png" type="image/png">
-<script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Korozio Stop Kft. - Homokfújás Székelyudvarhely | Rozsdaeltávolítás</title>
+  <meta name="description" content="A Korózio Stop Kft. Székelyudvarhelyen több, mint 20 éve kínál rozsdaeltávolítás, homokfújás és porfestés szolgáltatásokat.">
+  <meta name="keywords" content="koroziostop, sablare, Korozio Stop, homokfújás, homokfúvás, rozsdaeltávolítás, rozsdaeltávolítás Székelyudvarhely, porfestés Székelyudvarhely, Székelyudvarhely, kvarchomok, gumiszerelés, fémfelület tisztítás, fémfelület tisztítás Székelyudvarhely, sablare Odorheiusecuiesc">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap">
+
+  <style>
+    :root {
+      --primary: #0a2540;
+      --secondary: #0073e6;
+      --accent: #e67e22;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --light-gray: #e9ecef;
+      --success: #198754;
+      --danger: #dc3545;
+      --warning: #ffc107;
+      --info: #0dcaf0;
+      --white: #ffffff;
+      --black: #000000;
+      --header-height: 80px;
+      --container-width: 1200px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--header-height);
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      background-color: var(--light);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: var(--white);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: var(--header-height);
+    }
+
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 0.5rem;
+      color: var(--secondary);
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-item {
+      margin-left: 2rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--secondary);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--secondary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .mobile-toggle {
+      display: none;
+      font-size: 1.5rem;
+      color: var(--primary);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background-image: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.85)), url("https://via.placeholder.com/1920x1080");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+    }
+
+    .btn-primary {
+      background-color: var(--secondary);
+      color: var(--white);
+      border: 2px solid var(--secondary);
+    }
+
+    .btn-primary:hover {
+      background-color: transparent;
+      color: var(--white);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--white);
+      color: var(--primary);
+    }
+
+    /* About Section */
+    .section {
+      padding: 6rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--secondary);
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Services */
+    .services {
+      background-color: var(--white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background-color: var(--light);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    /* Process */
+    .process-steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 3rem;
+    }
+
+    .process-step {
+      flex: 1;
+      min-width: 250px;
+      text-align: center;
+      padding: 0 1rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .process-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 50px;
+      right: -15%;
+      width: 30%;
+      height: 2px;
+      background-color: var(--secondary);
+    }
+
+    .step-number {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background-color: var(--secondary);
+      color: var(--white);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 auto 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      height: 250px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(10, 37, 64, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-overlay i {
+      color: var(--white);
+      font-size: 2rem;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background-color: var(--light);
+    }
+
+    .testimonial-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .testimonial {
+      background-color: var(--white);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .testimonial::before {
+      content: '\201C';
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-size: 5rem;
+      color: var(--secondary);
+      opacity: 0.3;
+      font-family: Georgia, serif;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+
+    .testimonial-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 1rem;
+    }
+
+    .testimonial-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimonial-info h4 {
+      margin-bottom: 0.25rem;
+    }
+
+    .testimonial-info p {
+      color: var(--gray);
+      font-size: 0.875rem;
+    }
+
+    /* Contact */
+    .contact {
+      background-color: var(--white);
+    }
+
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .contact-info h3 {
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-icon {
+      margin-right: 1rem;
+      font-size: 1.5rem;
+      color: var(--secondary);
+    }
+
+    .contact-details h4 {
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      border: 1px solid var(--light-gray);
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--secondary);
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .btn-submit {
+      background-color: var(--secondary);
+      color: var(--white);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .btn-submit:hover {
+      background-color: #0062c4;
+    }
+
+    /* Map */
+    .map {
+      height: 400px;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      margin-top: 2rem;
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* CTA */
+    .cta {
+      background-color: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 4rem 0;
+    }
+
+    .cta h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .cta p {
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--dark);
+      color: var(--light);
+      padding: 4rem 0 0;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-col h3 {
+      margin-bottom: 1.5rem;
+      color: var(--white);
+      position: relative;
+    }
+
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--secondary);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--light);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background-color: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding: 1.5rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .process-step:not(:last-child)::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar-container {
+        position: relative;
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .nav-menu {
+        position: absolute;
+        top: var(--header-height);
+        right: -100%;
+        flex-direction: column;
+        background-color: var(--white);
+        width: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        padding: 1rem 0;
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .nav-item {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-link {
+        display: block;
+        padding: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .service-card {
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-col {
+        text-align: center;
+      }
+
+      .footer-col h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero {
+        height: auto;
+        padding: 120px 0 80px;
+      }
+
+      .btn {
+        display: block;
+        width: 100%;
+        margin: 0.5rem 0;
+      }
+
+      .section {
+        padding: 3rem 0;
+      }
+
+      .section-title h2 {
+        font-size: 2rem;
+      }
+    }
+
+    /* Before-After Comparison */
+    .before-after {
+      margin: 2rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+  </style>
 </head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="logo">
+        <i class="fas fa-shield-alt"></i> KORÓZIÓ STOP KFT
+      </a>
+      <button class="mobile-toggle" id="mobile-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li class="nav-item"><a href="#home" class="nav-link">Főoldal</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">Rólunk</a></li>
+        <li class="nav-item"><a href="#services" class="nav-link">Szolgáltatások</a></li>
+        <li class="nav-item"><a href="#process" class="nav-link">Folyamat</a></li>
+        <li class="nav-item"><a href="#gallery" class="nav-link">Galéria</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link">Kapcsolat</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<a href="#main-content" class="sr-only focus:not-sr-only absolute top-2 left-2 bg-white text-indigo-600 p-2 rounded shadow z-50">
-Ugrás a tartalomhoz
-</a>
-<header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow relative z-40">
-<div class="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-<div>
-<h1 class="text-3xl md:text-4xl font-bold">Kriptovaluták összehasonlítása</h1>
-      <p class="text-base md:text-lg mt-1">Átfogó elemzés a három legismertebb kriptopénzről</p>
-</div>
-<nav class="space-x-4 text-sm md:text-base">
-<a href="#crypto-carousel" class="hover:underline">Árfolyamok</a>
-<a href="#heatmap" class="hover:underline">Forgalom</a>
-<a href="#kapitalizacio" class="hover:underline">Kapitalizáció</a>
-<a href="#volatilitas" class="hover:underline">Volatilitás</a>
-<a href="#korrelacio" class="hover:underline">Korreláció</a>
-</nav>
-</div>
-</header>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="fade-in">PROFESSZIONÁLIS ROZSDAELTÁVOLÍTÁS</h1>
+        <p class="fade-in delay-1">Több mint 20 éves tapasztalattal a fémfelület tisztítás területén Székelyudvarhelyen</p>
+        <div class="fade-in delay-2">
+          <a href="#services" class="btn btn-primary">Szolgáltatásaink</a>
+          <a href="#contact" class="btn btn-outline">Kapcsolat</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<main id="main-content" class="max-w-6xl mx-auto px-4 py-10 space-y-16">
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Rólunk</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Több mint 20 éve az iparág élvonalában</h3>
+          <p>A Korózió Stop Kft. már több mint két évtizede áll ügyfelei szolgálatában Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása lakossági és ipari ügyfelek számára egyaránt.</p>
+          <p>Minden munkánkat a legmodernebb technológiával és szakértelemmel végezzük, hogy biztosítsuk a legjobb eredményt minden ügyfelünk számára.</p>
+          <ul style="list-style: none; margin-top: 1.5rem;">
+            <li style="margin-bottom: 0.5rem;">
+              <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+              20 év szakmai tapasztalat
+            </li>
+            <li style="margin-bottom: 0.5rem;">
+              <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+              Környezetbarát munkavégzés
+            </li>
+            <li style="margin-bottom: 0.5rem;">
+              <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+              Modern technológia, piaci árak
+            </li>
+            <li style="margin-bottom: 0.5rem;">
+              <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+              Terepmunka lehetősége
+            </li>
+          </ul>
+        </div>
+        <div class="about-image">
+          <img src="/api/placeholder/600/400" alt="Korózió Stop műhely">
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- Interaktív árfolyam carousel -->
-<section id="crypto-carousel" x-data="{ active: 0 }" class="relative">
-<h2 class="text-2xl font-semibold text-purple-700 mb-4">📈 Kriptovaluta árfolyamok </h2>
+  <!-- Services Section -->
+  <section id="services" class="section services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Szolgáltatásaink</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-spray-can"></i>
+          </div>
+          <h3 class="service-title">Rozsdaeltávolítás</h3>
+          <p>Kvarchomokkal történő hatékony rozsdaeltávolítás fémfelületekről. Professzionális technológiánk megóvja az alapanyagot és tökéletes felületet biztosít a további kezelésekhez.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-paint-roller"></i>
+          </div>
+          <h3 class="service-title">Elektrosztatikus porfestés</h3>
+          <p>Tartós, egyenletes és dekoratív festékréteget biztosítunk, amely ellenáll az időjárási viszontagságoknak és hosszú távú védelmet nyújt.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-magic"></i>
+          </div>
+          <h3 class="service-title">Felület mattosítás</h3>
+          <p>Üveg, fa és más felületek professzionális mattosítása. Ideális dekorációs célokra vagy további felületkezelések előkészítésére.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3 class="service-title">Gumiszerelés</h3>
+          <p>Komplett gumiszerelési szolgáltatásokat kínálunk, hogy időt takarítson meg. A homokfúvás előtt és után is vállaljuk a gumiabroncsok le- és felszerelését.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="overflow-hidden rounded shadow relative h-[600px] bg-white">
-<div class="flex transition-transform duration-500 h-full"
-:style="'transform: translateX(-' + active * 100 + '%)'"
-style="width: 300%">
+  <!-- Process Section -->
+  <section id="process" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Munkafolyamat</h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3>Konzultáció</h3>
+          <p>Felmérjük igényeit és részletes ajánlatot készítünk az elvégzendő munkákról.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3>Előkészítés</h3>
+          <p>A felületet előkészítjük a homokfúvásra, eltávolítva minden nem kezelhető elemet.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3>Homokfúvás</h3>
+          <p>Kvarchomokkal történő professzionális tisztítás a tökéletes eredmény érdekében.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h3>Utókezelés</h3>
+          <p>Igény szerint porfestés vagy egyéb felületkezelési eljárás a tartós védelem érdekében.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- Bitcoin -->
-<div class="w-full flex-shrink-0 flex flex-col items-center justify-center p-6">
-<h3 class="text-green-600 font-semibold text-xl text-center my-2">₿ Bitcoin</h3>
-<iframe src="charts/bitcoin_price_chart.html"
-class="w-[90%] h-[480px] bg-white rounded shadow" frameborder="0"></iframe>
-</div>
+  <!-- Before-After Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Munkáink előtte-utána</h2>
+      </div>
+      <div class="before-after">
+        <div id="juxtapose-container" style="height: 400px;"></div>
+      </div>
+    </div>
+  </section>
 
-<!-- Ethereum -->
-<div class="w-full flex-shrink-0 flex flex-col items-center justify-center p-6">
-<h3 class="text-blue-600 font-semibold text-xl text-center my-2">Ξ Ethereum</h3>
-<iframe src="charts/ethereum_price_chart.html"
-class="w-[90%] h-[480px] bg-white rounded shadow" frameborder="0"></iframe>
-</div>
-
-<!-- Dogecoin -->
-<div class="w-full flex-shrink-0 flex flex-col items-center justify-center p-6">
-<h3 class="text-orange-500 font-semibold text-xl text-center my-2">Ð Dogecoin</h3>
-<iframe src="charts/dogecoin_price_chart.html"
-class="w-[90%] h-[480px] bg-white rounded shadow" frameborder="0"></iframe>
-</div>
-</div>
-
-<!-- Bal gomb -->
-<button @click="active = active === 0 ? 2 : active - 1"
-class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-purple-600 text-white p-2 rounded-full shadow hover:bg-purple-700 z-10">
-◀
-</button>
-
-<!-- Jobb gomb -->
-<button @click="active = (active + 1) % 3"
-class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-purple-600 text-white p-2 rounded-full shadow hover:bg-purple-700 z-10">
-▶
-</button>
-</div>
-
-<!-- Navigációs pöttyök -->
-<div class="flex justify-center mt-4 space-x-2">
-<template x-for="i in 3">
-<button @click="active = i - 1"
-:class="{'bg-purple-700': active === i - 1, 'bg-purple-300': active !== i - 1}"
-class="w-3 h-3 rounded-full transition-all duration-300"></button>
-</template>
-</div>
-</section>
-
-<!-- Összegzés -->
-<section id="osszegzes" class="px-4">
-<h2 class="text-2xl font-semibold text-purple-700 mb-2">
-📉 5 éves mozgóátlag – Árfolyamváltozás összehasonlítás
-</h2>
-<div class="p-4 bg-white shadow rounded">
-<iframe src="charts/crypto_price_comparison.html" class="w-full h-[600px] rounded" frameborder="0"></iframe>
-</div>
-</section>
-
-<!-- Interaktív gyertyadiagram carousel -->
-<section id="candlestick-carousel" x-data="{ active: 0 }" class="relative">
-<h2 class="text-2xl font-semibold text-purple-700 mb-4">🕯️ Gyertyadiagramok </h2>
-<!-- Gyertyadiagram magyarázat -->
-<div class="p-4 bg-white shadow rounded mb-6">
-<h3 class="text-lg font-semibold text-purple-800 dark:text-purple-300 mb-2">Hogyan értelmezzük a gyertyadiagramot?</h3>
-<p class="text-gray-700 dark:text-gray-200">
-A gyertyadiagram az árfolyam négy fontos adatát mutatja egy időszakra vonatkozóan: <strong>nyitó</strong>, <strong>záró</strong>, <strong>legmagasabb</strong> és <strong>legalacsonyabb</strong> árat.
-<br><br>
-<span class="block text-sm mt-2">
-➤ <strong>Zöld gyertya</strong>: áremelkedés – az ár magasabban zárt, mint ahol nyitott<br>
-➤ <strong>Piros gyertya</strong>: árcsökkenés – az ár alacsonyabban zárt, mint ahol nyitott<br>
-➤ <strong>Gyertya teste</strong>: a nyitó és záró ár közötti tartomány<br>
-➤ <strong>Felső és alsó szál</strong>: a legmagasabb és legalacsonyabb ár az adott időszakban
-</span>
-</p>
-</div>
-
-<div class="overflow-hidden rounded shadow relative h-[500px] bg-white"> <!-- Fehér háttér itt -->
-<div class="flex transition-transform duration-500"
-:style="'transform: translateX(-' + active * 100 + '%)'"
-style="width: 300%">
-
-<!-- Bitcoin -->
-<div class="w-full flex-shrink-0 px-6 py-4">
-<h3 class="text-center font-medium text-gray-700 mb-2">₿ Bitcoin</h3>
-<div class="flex justify-center">
-<iframe src="charts/bitcoin_candlestick.html"
-class="w-[90%] h-[380px] bg-white shadow rounded" frameborder="0"></iframe>
-</div>
-</div>
-
-<!-- Ethereum -->
-<div class="w-full flex-shrink-0 px-6 py-4">
-<h3 class="text-center font-medium text-gray-700 mb-2">Ξ Ethereum</h3>
-<div class="flex justify-center">
-<iframe src="charts/ethereum_candlestick.html"
-class="w-[90%] h-[380px] bg-white shadow rounded" frameborder="0"></iframe>
-</div>
-</div>
-
-<!-- Dogecoin -->
-<div class="w-full flex-shrink-0 px-6 py-4">
-<h3 class="text-center font-medium text-gray-700 mb-2">Ð Dogecoin</h3>
-<div class="flex justify-center">
-<iframe src="charts/dogecoin_candlestick.html"
-class="w-[90%] h-[380px] bg-white shadow rounded" frameborder="0"></iframe>
-</div>
-</div>
-</div>
-
-<!-- Bal gomb -->
-<button @click="active = active === 0 ? 2 : active - 1"
-class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-purple-600 text-white p-2 rounded-full shadow hover:bg-purple-700 z-10">
-◀
-</button>
-
-<!-- Jobb gomb -->
-<button @click="active = (active + 1) % 3"
-class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-purple-600 text-white p-2 rounded-full shadow hover:bg-purple-700 z-10">
-▶
-</button>
-</div>
-
-<!-- Navigációs pöttyök -->
-<div class="flex justify-center mt-4 space-x-2">
-<template x-for="i in 3">
-<button @click="active = i - 1"
-:class="{'bg-purple-700': active === i - 1, 'bg-purple-300': active !== i - 1}"
-class="w-3 h-3 rounded-full transition-all duration-300"></button>
-</template>
-</div>
-</section>
-
-<section id="heatmap" class="px-4">
-<h2 class="text-2xl font-semibold text-purple-700 mb-4">🔥 Havi átlagos forgalom hőtérképen (Bitcoin, Ethereum, Dogecoin)</h2>
-
-<div class="bg-white dark:bg-gray-900 border border-purple-200 dark:border-purple-700 rounded-2xl shadow p-6 mb-6">
-<h3 class="text-lg font-semibold text-purple-800 dark:text-purple-300 mb-2">Mit árul el a havi forgalom hőtérképe?</h3>
-<p class="text-gray-700 dark:text-gray-200">
-A hőtérképen a <strong>Bitcoin</strong>, <strong>Ethereum</strong> és <strong>Dogecoin</strong> havi forgalmi adatai láthatók évek és hónapok szerint. A színek intenzitása azt jelzi, hogy az adott időszakban mekkora volt a forgalom (K USD).
-<br><br>
-<span class="block text-sm mt-2">
-➤ <strong>Sötétebb színek</strong>: magasabb forgalom<br>
-➤ <strong>Világosabb színek</strong>: alacsonyabb forgalom
-</span>
-</p>
-</div>
-
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-<div class="p-4 bg-white shadow rounded">
-<h3 class="text-center font-medium text-gray-700 mb-4">Bitcoin</h3>
-<iframe src="charts/heatmap_bitcoin.html" class="w-full h-[400px] bg-white shadow rounded" frameborder="0"></iframe>
-</div>
-<div class="p-4 bg-white shadow rounded">
-<h3 class="text-center font-medium text-gray-700 mb-4">Ethereum</h3>
-<iframe src="charts/heatmap_ethereum.html" class="w-full h-[400px] bg-white shadow rounded" frameborder="0"></iframe>
-</div>
-</div>
-<div class="p-4 bg-white shadow rounded">
-<h3 class="text-center font-medium text-gray-700 mb-4">Dogecoin</h3>
-<iframe src="charts/heatmap_dogecoin.html" class="w-full h-[400px] bg-white shadow rounded" frameborder="0"></iframe>
-</div>
-</section>
-
-<!-- Piaci kapitalizáció -->
-<section id="kapitalizacio" class="px-4">
-<h2 class="text-2xl font-semibold text-purple-700 dark:text-purple-400 mb-4">💰 Piaci kapitalizáció és forgalom összehasonlítása</h2>
-
-<div class="p-4 bg-white shadow rounded mb-6">
-<h3 class="text-lg font-semibold text-purple-800 dark:text-purple-300 mb-2">Mit árul el a piaci kapitalizáció és forgalom?</h3>
-<p class="text-gray-700 dark:text-gray-200">
-A <strong>piaci kapitalizáció</strong> egy kriptovaluta teljes értékét mutatja, és segít megérteni, mekkora szereplő a piacon. A <strong>napi forgalom</strong> pedig azt jelzi, hogy mennyire aktív a kereskedés az adott eszközzel.
-<br><br>
-<span class="block text-sm mt-2">
-➤ <strong>Magas kapitalizáció</strong>: stabilitás, nagyobb piaci súly<br>
-➤ <strong>Magas forgalom</strong>: nagyobb érdeklődés és könnyebb adásvétel
-</span>
-</p>
-</div>
-
-<div class="p-4 bg-white shadow rounded mb-6">
-<iframe src="charts/market_cap_and_volume_comparison.html" class="w-full h-[500px] bg-white shadow rounded" frameborder="0"></iframe>
-</div>
-</section>
-
-<!-- 30 napos volatilitás -->
-<section id="volatilitas" class="px-4">
-<h2 class="text-2xl font-semibold text-purple-700 dark:text-purple-400 mb-4">📊 30 napos volatilitás – összehasonlítása</h2>
-
-<div class="p-4 bg-white shadow rounded mb-6">
-<h3 class="text-lg font-semibold text-purple-800 dark:text-purple-300 mb-2">Miért fontos a volatilitás?</h3>
-<p class="text-gray-700 dark:text-gray-200">
-A kriptovaluták árfolyama gyorsan változhat – ezt nevezzük <strong>volatilitásnak</strong>. A <em>30 napos szórás</em> (standard deviation) mutatja meg az árak ingadozásának mértékét.
-<br><br>
-<span class="block text-sm mt-2">
-➤ <strong>Magas érték</strong>: nagyobb kockázat,<br>
-➤ <strong>Alacsony érték</strong>: stabilabb piac.
-</span>
-</p>
-</div>
-
-<div class="p-4 bg-white shadow rounded mb-6">
-<iframe src="charts/30_day_volatility.html" class="w-full h-[500px] bg-white shadow rounded" frameborder="0"></iframe>
-</div>
-</section>
-
-<!-- Normalizált árfolyamok -->
-<section id="arfolyamok" class="px-4">
-<h2 class="text-2xl font-semibold text-purple-700 dark:text-purple-400 mb-4">🔍 Normalizált árfolyamok (log skála)</h2>
-<div class="p-4 bg-white shadow rounded mb-6">
-<h3 class="text-lg font-semibold text-purple-800 dark:text-purple-300 mb-2">Mit mutat ez a grafikon?</h3>
-<p class="text-gray-700 dark:text-gray-200">
-Ez a grafikon három kriptovaluta (Bitcoin, Ethereum, Dogecoin) relatív teljesítményét hasonlítja össze <strong>logaritmikus skálán</strong>, ahol minden árfolyam az 1-es értékről indul.
-<br><br>
-<span class="block text-sm mt-2">
-➤ <strong>Logaritmikus skála</strong>: a százalékos változást mutatja, nem az abszolút értéket<br>
-➤ <strong>Normalizálás</strong>: könnyebb összehasonlítani a különböző árú kriptovalutákat<br>
-➤ <strong>Relatív növekedés</strong>: látható, melyik valuta teljesített jobban a kiindulási ponthoz képest
-</span>
-</p>
-</div>
-<div class="p-4 bg-white shadow rounded mb-6">
-<iframe src="charts/crypto_price_comparison_normalized.html" class="w-full h-[500px] bg-white shadow rounded" frameborder="0"></iframe>
-</div>
-</section>
-
-<section id="forgalom-idoben">
-<h2 class="text-2xl font-semibold text-purple-700 dark:text-purple-400 mb-4">Forgalom időbeli alakulása</h2>
-
-<div class="bg-white dark:bg-gray-900 border border-purple-200 dark:border-purple-700 rounded-2xl shadow p-6 mb-6">
-<h3 class="text-lg font-semibold text-purple-800 dark:text-purple-300 mb-2">Miért fontos a forgalom időbeli alakulása?</h3>
-<p class="text-gray-700 dark:text-gray-200">
-A forgalom változása az érdeklődés és likviditás egyik legfontosabb mutatója. Figyelemmel kísérve megérthetjük, hogy a piacon milyen szakaszban vagyunk: erős felfutás, stagnálás vagy visszaesés.
-<br><br>
-<span class="block text-sm mt-2">
-➤ <strong>Emelkedő forgalom</strong>: erős kereslet és aktivitás<br>
-➤ <strong>Csökkenő forgalom</strong>: csökkenő érdeklődés vagy piaci szünet
-</span>
-</p>
-</div>
-
-<div class="bg-white shadow rounded p-4">
-<img src="charts/random kép.png" alt="Forgalom időbeli alakulása" class="w-full h-auto object-contain" />
-</div>
-</section>
-
-<section id="korrelacio" class="text-left">
-<h2 class="text-2xl font-semibold text-purple-700 dark:text-purple-400 mb-4">Kriptók közötti korreláció</h2>
-
-<div class="bg-white dark:bg-gray-900 border border-green-200 dark:border-green-700 rounded-2xl shadow p-6 mb-6">
-<h3 class="text-lg font-semibold text-purple-700 dark:text-purple-400 mb-2">Miért fontos a kriptók közötti korreláció?</h3>
-<p class="text-gray-700 dark:text-gray-200">
-A kriptovaluták közötti korreláció segít megérteni, hogyan befolyásolják egymást az ármozgások. A pozitív vagy negatív korreláció ismerete hasznos lehet a diverzifikált portfóliók kialakításában.
-<br><br>
-<span class="block text-sm mt-2">
-➤ <strong>Pozitív korreláció</strong>: Az eszközök hasonló irányban mozognak<br>
-➤ <strong>Negatív korreláció</strong>: Az eszközök ellentétes irányban mozognak<br>
-➤ <strong>Nincs korreláció</strong>: Az eszközök mozgása független egymástól
-</span>
-</p>
-</div>
-
-<div class="bg-white shadow rounded p-4 flex justify-center">
-<img src="charts/kripto.png" alt="Kriptók közötti korreláció" class="max-h-[700px] w-auto object-contain" />
-</div>
-</section>
-
-</main>
-
-<footer class="text-center text-gray-500 text-sm py-8">
-&copy; 2025 Kripto projekt | Készült Google Colab és GitHub Pages segítségével
-</footer>
-
-</body>
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-</html>
+  <!-- Gallery Section -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Galéria</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
