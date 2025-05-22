@@ -152,6 +152,23 @@
       width: 100%;                               /* Hover-re teljes vonal */
     }
 
+    .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nav-right {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .language-switcher {
+    order: -1;
+  }
+
     /* MOBIL MENÜ GOMB (három csíkos ikon) */
     .mobile-toggle {
       display: none;                             /* Csak mobilon látszik majd */
@@ -856,58 +873,54 @@
     .delay-3 {
       animation-delay: 0.6s;
     }
-    /* LANGUAGE SWITCHER STYLES - ADD THIS HERE */
-    .language-switcher {
-      position: fixed;
-      top: 10px;
-      right: 20px;
-      z-index: 1001;
-      background-color: var(--white);
-      border-radius: 20px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      padding: 5px;
-      display: flex;
-      gap: 5px;
-    }
+    /* LANGUAGE SWITCHER STYLES - UPDATED */
+.language-switcher {
+  display: flex;
+  gap: 5px;
+  background-color: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+}
 
-    .lang-btn {
-      padding: 8px 12px;
-      border: none;
-      background-color: transparent;
-      color: var(--dark);
-      border-radius: 15px;
-      cursor: pointer;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
+.lang-btn {
+  padding: 8px 12px;
+  border: none;
+  background-color: transparent;
+  color: var(--dark);
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 
-    .lang-btn:hover {
-      background-color: var(--light);
-    }
+.lang-btn:hover {
+  background-color: var(--light);
+}
 
-    .lang-btn.active {
-      background-color: var(--secondary);
-      color: var(--white);
-    }
+.lang-btn.active {
+  background-color: var(--secondary);
+  color: var(--white);
+}
 
-    .flag-icon {
-      width: 20px;
-      height: 15px;
-      border-radius: 2px;
-      display: inline-block;
-    }
+.flag-icon {
+  width: 20px;
+  height: 15px;
+  border-radius: 2px;
+  display: inline-block;
+}
 
-    .flag-hu {
-      background: linear-gradient(to bottom, #FF0000 33%, #FFFFFF 33%, #FFFFFF 66%, #00AA00 66%);
-    }
+.flag-hu {
+  background: linear-gradient(to bottom, #FF0000 33%, #FFFFFF 33%, #FFFFFF 66%, #00AA00 66%);
+}
 
-    .flag-ro {
-      background: linear-gradient(to right, #002B7F 33%, #FCD116 33%, #FCD116 66%, #CE1126 66%);
-    }
+.flag-ro {
+  background: linear-gradient(to right, #002B7F 33%, #FCD116 33%, #FCD116 66%, #CE1126 66%);
+}
 
     /* Responsive adjustments for language switcher */
     @media (max-width: 768px) {
@@ -921,34 +934,35 @@
 
     
 <body>
-  <div class="language-switcher">
-  <button class="lang-btn active" data-lang="hu">
-    <span class="flag-icon flag-hu"></span>
-    HU
-  </button>
-  <button class="lang-btn" data-lang="ro">
-    <span class="flag-icon flag-ro"></span>
-    RO
-  </button>
-</div>
-  
   <!-- REPLACE YOUR EXISTING NAVIGATION WITH THIS (add data-key attributes) -->
 <nav class="navbar">
   <div class="container navbar-container">
     <a href="#" class="logo">
       <i class="fas fa-shield-alt"></i> KOROZIO STOP KFT
     </a>
+    <div class="nav-right">
+      <ul class="nav-menu" id="nav-menu">
+        <li class="nav-item"><a href="#home" class="nav-link" data-key="nav.home">Főoldal</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link" data-key="nav.about">Rólunk</a></li>
+        <li class="nav-item"><a href="#services" class="nav-link" data-key="nav.services">Szolgáltatások</a></li>
+        <li class="nav-item"><a href="#process" class="nav-link" data-key="nav.process">Folyamat</a></li>
+        <li class="nav-item"><a href="#gallery" class="nav-link" data-key="nav.gallery">Galéria</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link" data-key="nav.contact">Kapcsolat</a></li>
+      </ul>
+      <div class="language-switcher">
+        <button class="lang-btn active" data-lang="hu">
+          <span class="flag-icon flag-hu"></span>
+          HU
+        </button>
+        <button class="lang-btn" data-lang="ro">
+          <span class="flag-icon flag-ro"></span>
+          RO
+        </button>
+      </div>
+    </div>
     <button class="mobile-toggle" id="mobile-toggle">
       <i class="fas fa-bars"></i>
     </button>
-    <ul class="nav-menu" id="nav-menu">
-      <li class="nav-item"><a href="#home" class="nav-link" data-key="nav.home">Főoldal</a></li>
-      <li class="nav-item"><a href="#about" class="nav-link" data-key="nav.about">Rólunk</a></li>
-      <li class="nav-item"><a href="#services" class="nav-link" data-key="nav.services">Szolgáltatások</a></li>
-      <li class="nav-item"><a href="#process" class="nav-link" data-key="nav.process">Folyamat</a></li>
-      <li class="nav-item"><a href="#gallery" class="nav-link" data-key="nav.gallery">Galéria</a></li>
-      <li class="nav-item"><a href="#contact" class="nav-link" data-key="nav.contact">Kapcsolat</a></li>
-    </ul>
   </div>
 </nav>
 
@@ -1208,8 +1222,7 @@
         navbar.style.backgroundColor = 'var(--white)';
       }
     });
-<!-- ADD THIS JAVASCRIPT AT THE END OF YOUR EXISTING SCRIPT TAG -->
-<script>
+    
 // Translations object
 const translations = {
   hu: {
