@@ -2,70 +2,77 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8" />
-  <title>Felni átalakítás - Homokszórás effekt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homokszórás Effekt</title>
   <style>
     body {
       margin: 0;
-      overflow: hidden;
       background: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
     canvas {
-      /* Online kurzor ikon – ide írhatsz másik PNG linket is */
       cursor: url('https://cdn-icons-png.flaticon.com/512/10718/10718759.png') 16 16, auto;
-      display: block;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      border: 2px solid #444;
     }
   </style>
 </head>
 <body>
   <canvas id="canvas"></canvas>
+
   <script>
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+
+    const width = 800; // állítsd a kép méretének megfelelően
+    const height = 500;
     canvas.width = width;
     canvas.height = height;
 
-    const rustImage = new Image();
-    const cleanImage = new Image();
-
-    // A GitHub-repozitóriumból behívott képek útvonala
-    rustImage.src = 'images/rusty.jpg';
-    cleanImage.src = 'images/clean.jpg';
-
-    const brushSize = 60;
-    let isDrawing = false;
+    const rusty = new Image();
+    const clean = new Image();
+    rusty.src = 'images/rusty.jpg';
+    clean.src = 'images/clean.jpg';
 
     const maskCanvas = document.createElement('canvas');
     const maskCtx = maskCanvas.getContext('2d');
     maskCanvas.width = width;
     maskCanvas.height = height;
 
-    function drawMaskedImage() {
+    let isDrawing = false;
+    const brushSize = 50;
+
+    function draw() {
       ctx.clearRect(0, 0, width, height);
-      ctx.drawImage(rustImage, 0, 0, width, height);
+      ctx.drawImage(rusty, 0, 0, width, height);
 
       ctx.save();
       ctx.globalCompositeOperation = 'destination-in';
       ctx.drawImage(maskCanvas, 0, 0);
       ctx.restore();
 
-      ctx.globalCompositeOperation = 'source-over';
-      ctx.drawImage(cleanImage, 0, 0, width, height);
+      ctx.globalCompositeOperation = 'destination-over';
+      ctx.drawImage(clean, 0, 0, width, height);
     }
 
     canvas.addEventListener('mousedown', () => isDrawing = true);
     canvas.addEventListener('mouseup', () => isDrawing = false);
     canvas.addEventListener('mousemove', (e) => {
       if (!isDrawing) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
       maskCtx.beginPath();
-      maskCtx.arc(e.clientX, e.clientY, brushSize, 0, 2 * Math.PI);
+      maskCtx.arc(x, y, brushSize, 0, Math.PI * 2);
       maskCtx.fillStyle = 'black';
       maskCtx.fill();
-      drawMaskedImage();
+      draw();
     });
 
-    rustImage.onload = cleanImage.onload = () => drawMaskedImage();
+    rusty.onload = clean.onload = () => draw();
   </script>
 </body>
 </html>
