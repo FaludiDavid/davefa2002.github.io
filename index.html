@@ -745,6 +745,104 @@
       margin-right: auto;                                        /* Középre igazítás */
     }
 
+    /* Footer teljes háttér és szöveg stílusa */
+.footer {
+  background-color: var(--dark); /* Sötét háttérszín, változóként definiálva máshol */
+  color: var(--light); /* Világos szöveg, hogy jól látszódjon a sötét háttéren */
+  padding: 4rem 0 0; /* Fent 4 rem egységnyi térköz, oldalt és alul nulla */
+}
+
+/* A lábléc tartalmának konténerén belüli elrendezés */
+.footer-container {
+  display: flex; /* Flexboxos elrendezés — egymás mellé rendezi az oszlopokat */
+  flex-wrap: wrap; /* Több sorba is törhet, ha nem fér el egy sorban */
+  gap: 2rem; /* Oszlopok közötti térköz */
+  margin-bottom: 2rem; /* Alul térköz a tartalom és az alsó rész között */
+}
+
+/* Egy-egy oszlop a láblécben */
+.footer-col {
+  flex: 1; /* Egyenlően osztoznak a rendelkezésre álló helyen */
+  min-width: 250px; /* Legalább 250px szélesek legyenek az oszlopok */
+}
+
+/* Az oszlopok címsorainak stílusa */
+.footer-col h3 {
+  margin-bottom: 1.5rem; /* Alatta térköz a linkekhez */
+  color: var(--white); /* Fehér színű címszöveg */
+  position: relative; /* Az ::after elem pozicionálásához szükséges */
+}
+
+/* Dekorációs vonal a címsorok alatt */
+.footer-col h3::after {
+  content: ''; /* Üres tartalom, csak stílus céljára */
+  position: absolute;
+  bottom: -10px; /* A címsor alá kerül */
+  left: 0;
+  width: 50px; /* 50px széles vonal */
+  height: 2px; /* 2px vastag */
+  background-color: var(--secondary); /* Másodlagos szín (pl. akcentusszín) */
+}
+
+/* A linklista kinézete */
+.footer-links {
+  list-style: none; /* Nincs lista-jelölés (pontok, számok) */
+}
+
+/* Listaelemek közötti térköz */
+.footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+/* Linkek stílusa */
+.footer-links a {
+  color: var(--light); /* Világos szín, jól látszik sötét háttéren */
+  text-decoration: none; /* Nincs aláhúzás */
+  transition: color 0.3s ease; /* Animált színváltás hover esetén */
+}
+
+/* Linkek hover (rámutatás) stílusa */
+.footer-links a:hover {
+  color: var(--secondary); /* Másodlagos színre vált, ha fölé megy az egér */
+}
+
+/* Közösségi média ikonok tartója */
+.footer-social {
+  display: flex;
+  gap: 1rem; /* Ikonok közti tér */
+  margin-top: 1.5rem; /* Térköz a linkek felett */
+}
+
+/* Egyes közösségi média ikonok stílusa */
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Ikon középre igazítva */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Kör alakú ikon */
+  background-color: rgba(255, 255, 255, 0.1); /* Áttetsző fehér háttér */
+  color: var(--white); /* Fehér ikon */
+  text-decoration: none; /* Nincs aláhúzás */
+  transition: all 0.3s ease; /* Simább mozgás- és színváltozás */
+}
+
+/* Ikon hover animáció */
+.social-icon:hover {
+  background-color: var(--secondary); /* Háttér szín megváltozik */
+  transform: translateY(-3px); /* Picit megemelkedik az ikon */
+}
+
+/* Szerzői jog szöveg stílusa a lábléc legalján */
+.copyright {
+  text-align: center; /* Középre igazított szöveg */
+  padding: 1.5rem 0; /* Függőleges térköz */
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Finom, áttetsző felső vonal */
+  font-size: 0.875rem; /* Kis betűméret */
+  color: rgba(255, 255, 255, 0.7); /* Halványított fehér szöveg */
+}
+
+
     /* Responsive */
     @media (max-width: 992px) {
       .hero h1 {
