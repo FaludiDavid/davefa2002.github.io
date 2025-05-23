@@ -842,96 +842,100 @@
   color: rgba(255, 255, 255, 0.7); /* Halványított fehér szöveg */
 }
 
+    /* ============== RESPONSIVE DESIGN: max-width 992px ================= */
+/* Ez a szabály akkor érvényesül, ha a képernyő szélessége legfeljebb 992 pixel */
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 2.8rem; /* A főcím kisebb lesz közepes képernyőn */
+  }
 
-    /* Responsive */
-    @media (max-width: 992px) {
-      .hero h1 {
-        font-size: 2.8rem;
-      }
+  .process-step:not(:last-child)::after {
+    display: none; /* A folyamatlépéseket elválasztó vonalak eltűnnek kisebb nézeten */
+  }
+}
 
-      .process-step:not(:last-child)::after {
-        display: none;
-      }
-    }
+/* ============== RESPONSIVE DESIGN: max-width 768px ================= */
+/* Ez a szakasz tabletekre és kisebb képernyőkre vonatkozik */
+@media (max-width: 768px) {
+  .navbar-container {
+    position: relative; /* Az abszolút pozíciójú menü helyes pozicionálásához szükséges */
+  }
 
-    @media (max-width: 768px) {
-      .navbar-container {
-        position: relative;
-      }
+  .mobile-toggle {
+    display: block; /* A mobil menü gomb (hamburger ikon) megjelenik */
+  }
 
-      .mobile-toggle {
-        display: block;
-      }
+  .nav-menu {
+    position: absolute;
+    top: var(--header-height); /* A fejléc alá kerül a mobilmenü */
+    right: -100%; /* Alapból rejtett (kicsúsztatva jobbra) */
+    flex-direction: column; /* Oszlopos elrendezés — a menüpontok egymás alatt */
+    background-color: var(--white); /* Fehér háttér a lenyíló menühöz */
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Finom árnyék alul */
+    transition: right 0.3s ease; /* Animált megjelenés */
+    padding: 1rem 0;
+  }
 
-      .nav-menu {
-        position: absolute;
-        top: var(--header-height);
-        right: -100%;
-        flex-direction: column;
-        background-color: var(--white);
-        width: 100%;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s ease;
-        padding: 1rem 0;
-      }
+  .nav-menu.active {
+    right: 0; /* Ha aktiválva van (pl. gombra kattintva), akkor megjelenik */
+  }
 
-      .nav-menu.active {
-        right: 0;
-      }
+  .nav-item {
+    margin: 0;
+    width: 100%;
+    text-align: center; /* Középre igazított menüpontok */
+  }
 
-      .nav-item {
-        margin: 0;
-        width: 100%;
-        text-align: center;
-      }
+  .nav-link {
+    display: block;
+    padding: 1rem; /* Nagyobb kattintható felület mobilon */
+  }
 
-      .nav-link {
-        display: block;
-        padding: 1rem;
-      }
+  .hero h1 {
+    font-size: 2.2rem; /* Még kisebb főcím mobilon */
+  }
 
-      .hero h1 {
-        font-size: 2.2rem;
-      }
+  .service-card {
+    margin-bottom: 1.5rem; /* Kártyák közötti tér megnövelése egymás alatt */
+  }
 
-      .service-card {
-        margin-bottom: 1.5rem;
-      }
+  .footer-col {
+    text-align: center; /* Oszlopok középre igazítása mobilon */
+  }
 
-      .footer-col {
-        text-align: center;
-      }
+  .footer-col h3::after {
+    left: 50%; /* A díszvonal is középre kerül */
+    transform: translateX(-50%);
+  }
 
-      .footer-col h3::after {
-        left: 50%;
-        transform: translateX(-50%);
-      }
+  .footer-social {
+    justify-content: center; /* Közösségi ikonok is középre igazítva */
+  }
+}
 
-      .footer-social {
-        justify-content: center;
-      }
-    }
+/* ============== RESPONSIVE DESIGN: max-width 576px ================= */
+/* Kis képernyőkhöz, pl. mobiltelefonokhoz */
+@media (max-width: 576px) {
+  .hero {
+    height: auto; /* Automatikus magasság — alkalmazkodik a tartalomhoz */
+    padding: 120px 0 80px; /* Nagyobb térköz a tartalom körül */
+  }
 
-    @media (max-width: 576px) {
-      .hero {
-        height: auto;
-        padding: 120px 0 80px;
-      }
+  .btn {
+    display: block;
+    width: 100%; /* A gomb teljes szélességű lesz */
+    margin: 0.5rem 0; /* Függőleges térközök egymás alatt */
+  }
 
-      .btn {
-        display: block;
-        width: 100%;
-        margin: 0.5rem 0;
-      }
+  .section {
+    padding: 3rem 0; /* Szűkebb térköz a szekciók körül, jobban illeszkedik mobilhoz */
+  }
 
-      .section {
-        padding: 3rem 0;
-      }
-
-      .section-title h2 {
-        font-size: 2rem;
-      }
-    }
+  .section-title h2 {
+    font-size: 2rem; /* Címsor kisebb méretű mobilon */
+  }
+}
 
     /* Before-After Comparison */
     .before-after {
