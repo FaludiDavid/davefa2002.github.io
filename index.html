@@ -1218,7 +1218,7 @@
   <div class="footer-col" style="padding-left: 100px;">
     <h3 data-key="footer.contact">Elérhetőségek</h3>
     <ul class="footer-links">
-      <li><i class="fas fa-map-marker-alt"></i> Székelyudvarhely, Fenyő utca 58.</li>
+      <li><i class="fas fa-map-marker-alt"></i> <span data-key="footer.address">Székelyudvarhely, Fenyő utca 58.</span></li>
       <li><i class="fas fa-phone"></i> +40 745 967 960</li>
       <li><i class="fas fa-envelope"></i> koroziostop@gmail.com</li>
     </ul>
@@ -1386,6 +1386,26 @@ const translations = {
   }
 };
 
+
+<script>
+let currentLanguage = 'hu';
+
+// Add this translations object:
+const translations = {
+  hu: {
+    "footer.contact": "Elérhetőségek",
+    "footer.address": "Székelyudvarhely, Fenyő utca 58.",
+    "gallery.title": "Galéria"
+    // Add other Hungarian translations here as needed
+  },
+  ro: {
+    "footer.contact": "Contact", 
+    "footer.address": "Odorheiu Secuiesc, Strada Brazilor 58.",
+    "gallery.title": "Galerie"
+    // Add other Romanian translations here as needed
+  }
+};
+    
 function switchLanguage(lang) {
   currentLanguage = lang;
   
