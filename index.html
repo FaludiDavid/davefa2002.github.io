@@ -1383,29 +1383,21 @@ const translations = {
     
     // Footer
     'footer.contact': 'Date de contact'
-  }
-};
-
-
-<script>
-let currentLanguage = 'hu';
-
-// Add this translations object:
-const translations = {
+    const translations = {
   hu: {
-    "footer.contact": "Elérhetőségek",
-    "footer.address": "Székelyudvarhely, Fenyő utca 58.",
-    "gallery.title": "Galéria"
-    // Add other Hungarian translations here as needed
+    // ... your existing Hungarian translations
+    'footer.contact': 'Elérhetőségek',
+    'footer.address': 'Székelyudvarhely, Fenyő utca 58.',  // ADD THIS LINE
+    // ... other translations
   },
   ro: {
-    "footer.contact": "Contact", 
-    "footer.address": "Odorheiu Secuiesc, Strada Brazilor 58.",
-    "gallery.title": "Galerie"
-    // Add other Romanian translations here as needed
+    // ... your existing Romanian translations  
+    'footer.contact': 'Contact',
+    'footer.address': 'Odorheiu Secuiesc, Strada Bradului 58.',  // ADD THIS LINE
+    // ... other translations
   }
 };
-    
+
 function switchLanguage(lang) {
   currentLanguage = lang;
   
