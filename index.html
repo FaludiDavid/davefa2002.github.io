@@ -726,6 +726,21 @@
       background-color: #0062c4;                                 /* Sötétebb hover szín */
     }
 
+    /* TÉRKÉP */
+    .map {
+      height: 400px;                                             /* Magasság */
+      overflow: hidden;                                          /* Képkivágás */
+      border-radius: 8px;                                        /* Lekerekítés */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);                  /* Árnyék */
+      margin-top: 2rem;                                          /* Elválasztás az űrlaptól */
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;                                                 /* Keret nélküli iframe */
+    }
+
     /* CTA – Cselekvésre való felhívás szekció */
     .cta {
       background-color: var(--primary);                          /* Sötétkék háttér */
@@ -745,206 +760,188 @@
       margin-right: auto;                                        /* Középre igazítás */
     }
 
-    /* Footer teljes háttér és szöveg stílusa */
-.footer {
-  background-color: var(--dark); /* Sötét háttérszín, változóként definiálva máshol */
-  color: var(--light); /* Világos szöveg, hogy jól látszódjon a sötét háttéren */
-  padding: 4rem 0 0; /* Fent 4 rem egységnyi térköz, oldalt és alul nulla */
-}
+    /* Footer */
+    .footer {
+      background-color: var(--dark);
+      color: var(--light);
+      padding: 4rem 0 0;
+    }
 
-/* A lábléc tartalmának konténerén belüli elrendezés */
-.footer-container {
-  display: flex; /* Flexboxos elrendezés — egymás mellé rendezi az oszlopokat */
-  flex-wrap: wrap; /* Több sorba is törhet, ha nem fér el egy sorban */
-  gap: 2rem; /* Oszlopok közötti térköz */
-  margin-bottom: 2rem; /* Alul térköz a tartalom és az alsó rész között */
-}
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
 
-/* Egy-egy oszlop a láblécben */
-.footer-col {
-  flex: 1; /* Egyenlően osztoznak a rendelkezésre álló helyen */
-  min-width: 250px; /* Legalább 250px szélesek legyenek az oszlopok */
-}
+    .footer-col {
+      flex: 1;
+      min-width: 250px;
+    }
 
-/* Az oszlopok címsorainak stílusa */
-.footer-col h3 {
-  margin-bottom: 1.5rem; /* Alatta térköz a linkekhez */
-  color: var(--white); /* Fehér színű címszöveg */
-  position: relative; /* Az ::after elem pozicionálásához szükséges */
-}
+    .footer-col h3 {
+      margin-bottom: 1.5rem;
+      color: var(--white);
+      position: relative;
+    }
 
-/* Dekorációs vonal a címsorok alatt */
-.footer-col h3::after {
-  content: ''; /* Üres tartalom, csak stílus céljára */
-  position: absolute;
-  bottom: -10px; /* A címsor alá kerül */
-  left: 0;
-  width: 50px; /* 50px széles vonal */
-  height: 2px; /* 2px vastag */
-  background-color: var(--secondary); /* Másodlagos szín (pl. akcentusszín) */
-}
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--secondary);
+    }
 
-/* A linklista kinézete */
-.footer-links {
-  list-style: none; /* Nincs lista-jelölés (pontok, számok) */
-}
+    .footer-links {
+      list-style: none;
+    }
 
-/* Listaelemek közötti térköz */
-.footer-links li {
-  margin-bottom: 0.75rem;
-}
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
 
-/* Linkek stílusa */
-.footer-links a {
-  color: var(--light); /* Világos szín, jól látszik sötét háttéren */
-  text-decoration: none; /* Nincs aláhúzás */
-  transition: color 0.3s ease; /* Animált színváltás hover esetén */
-}
+    .footer-links a {
+      color: var(--light);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
-/* Linkek hover (rámutatás) stílusa */
-.footer-links a:hover {
-  color: var(--secondary); /* Másodlagos színre vált, ha fölé megy az egér */
-}
+    .footer-links a:hover {
+      color: var(--secondary);
+    }
 
-/* Közösségi média ikonok tartója */
-.footer-social {
-  display: flex;
-  gap: 1rem; /* Ikonok közti tér */
-  margin-top: 1.5rem; /* Térköz a linkek felett */
-}
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
 
-/* Egyes közösségi média ikonok stílusa */
-.social-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Ikon középre igazítva */
-  width: 40px;
-  height: 40px;
-  border-radius: 50%; /* Kör alakú ikon */
-  background-color: rgba(255, 255, 255, 0.1); /* Áttetsző fehér háttér */
-  color: var(--white); /* Fehér ikon */
-  text-decoration: none; /* Nincs aláhúzás */
-  transition: all 0.3s ease; /* Simább mozgás- és színváltozás */
-}
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
 
-/* Ikon hover animáció */
-.social-icon:hover {
-  background-color: var(--secondary); /* Háttér szín megváltozik */
-  transform: translateY(-3px); /* Picit megemelkedik az ikon */
-}
+    .social-icon:hover {
+      background-color: var(--secondary);
+      transform: translateY(-3px);
+    }
 
-/* Szerzői jog szöveg stílusa a lábléc legalján */
-.copyright {
-  text-align: center; /* Középre igazított szöveg */
-  padding: 1.5rem 0; /* Függőleges térköz */
-  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Finom, áttetsző felső vonal */
-  font-size: 0.875rem; /* Kis betűméret */
-  color: rgba(255, 255, 255, 0.7); /* Halványított fehér szöveg */
-}
+    .copyright {
+      text-align: center;
+      padding: 1.5rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
 
-    /* ============== RESPONSIVE DESIGN: max-width 992px ================= */
-/* Ez a szabály akkor érvényesül, ha a képernyő szélessége legfeljebb 992 pixel */
-@media (max-width: 992px) {
-  .hero h1 {
-    font-size: 2.8rem; /* A főcím kisebb lesz közepes képernyőn */
-  }
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
 
-  .process-step:not(:last-child)::after {
-    display: none; /* A folyamatlépéseket elválasztó vonalak eltűnnek kisebb nézeten */
-  }
-}
+      .process-step:not(:last-child)::after {
+        display: none;
+      }
+    }
 
-/* ============== RESPONSIVE DESIGN: max-width 768px ================= */
-/* Ez a szakasz tabletekre és kisebb képernyőkre vonatkozik */
-@media (max-width: 768px) {
-  .navbar-container {
-    position: relative; /* Az abszolút pozíciójú menü helyes pozicionálásához szükséges */
-  }
+    @media (max-width: 768px) {
+      .navbar-container {
+        position: relative;
+      }
 
-  .mobile-toggle {
-    display: block; /* A mobil menü gomb (hamburger ikon) megjelenik */
-  }
+      .mobile-toggle {
+        display: block;
+      }
 
-  .nav-menu {
-    position: absolute;
-    top: var(--header-height); /* A fejléc alá kerül a mobilmenü */
-    right: -100%; /* Alapból rejtett (kicsúsztatva jobbra) */
-    flex-direction: column; /* Oszlopos elrendezés — a menüpontok egymás alatt */
-    background-color: var(--white); /* Fehér háttér a lenyíló menühöz */
-    width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Finom árnyék alul */
-    transition: right 0.3s ease; /* Animált megjelenés */
-    padding: 1rem 0;
-  }
+      .nav-menu {
+        position: absolute;
+        top: var(--header-height);
+        right: -100%;
+        flex-direction: column;
+        background-color: var(--white);
+        width: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        padding: 1rem 0;
+      }
 
-  .nav-menu.active {
-    right: 0; /* Ha aktiválva van (pl. gombra kattintva), akkor megjelenik */
-  }
+      .nav-menu.active {
+        right: 0;
+      }
 
-  .nav-item {
-    margin: 0;
-    width: 100%;
-    text-align: center; /* Középre igazított menüpontok */
-  }
+      .nav-item {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+      }
 
-  .nav-link {
-    display: block;
-    padding: 1rem; /* Nagyobb kattintható felület mobilon */
-  }
+      .nav-link {
+        display: block;
+        padding: 1rem;
+      }
 
-  .hero h1 {
-    font-size: 2.2rem; /* Még kisebb főcím mobilon */
-  }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
 
-  .service-card {
-    margin-bottom: 1.5rem; /* Kártyák közötti tér megnövelése egymás alatt */
-  }
+      .service-card {
+        margin-bottom: 1.5rem;
+      }
 
-  .footer-col {
-    text-align: center; /* Oszlopok középre igazítása mobilon */
-  }
+      .footer-col {
+        text-align: center;
+      }
 
-  .footer-col h3::after {
-    left: 50%; /* A díszvonal is középre kerül */
-    transform: translateX(-50%);
-  }
+      .footer-col h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
 
-  .footer-social {
-    justify-content: center; /* Közösségi ikonok is középre igazítva */
-  }
-}
+      .footer-social {
+        justify-content: center;
+      }
+    }
 
-/* ============== RESPONSIVE DESIGN: max-width 576px ================= */
-/* Kis képernyőkhöz, pl. mobiltelefonokhoz */
-@media (max-width: 576px) {
-  .hero {
-    height: auto; /* Automatikus magasság — alkalmazkodik a tartalomhoz */
-    padding: 120px 0 80px; /* Nagyobb térköz a tartalom körül */
-  }
+    @media (max-width: 576px) {
+      .hero {
+        height: auto;
+        padding: 120px 0 80px;
+      }
 
-  .btn {
-    display: block;
-    width: 100%; /* A gomb teljes szélességű lesz */
-    margin: 0.5rem 0; /* Függőleges térközök egymás alatt */
-  }
+      .btn {
+        display: block;
+        width: 100%;
+        margin: 0.5rem 0;
+      }
 
-  .section {
-    padding: 3rem 0; /* Szűkebb térköz a szekciók körül, jobban illeszkedik mobilhoz */
-  }
+      .section {
+        padding: 3rem 0;
+      }
 
-  .section-title h2 {
-    font-size: 2rem; /* Címsor kisebb méretű mobilon */
-  }
-}
+      .section-title h2 {
+        font-size: 2rem;
+      }
+    }
 
-    /* Sandblast Canvas Styling */
-.before-after canvas {
-  cursor: url('https://cdn-icons-png.flaticon.com/512/10718/10718759.png') 16 16, auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
+    /* Before-After Comparison */
+    .before-after {
+      margin: 2rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
 
     /* Animation */
     @keyframes fadeIn {
@@ -1133,14 +1130,14 @@
   </div>
 </section>
   
- <!-- Before-After Section -->
+  <!-- Before-After Section -->
 <section class="section">
   <div class="container">
     <div class="section-title">
       <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
     </div>
     <div class="before-after">
-      <canvas id="canvas"></canvas>
+      <div id="juxtapose-container" style="height: 400px;"></div>
     </div>
   </div>
 </section>
@@ -1430,115 +1427,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const savedLang = localStorage.getItem('preferred-language');
   if (savedLang && (savedLang === 'hu' || savedLang === 'ro')) {
     switchLanguage(savedLang);
-  });
-  
-  <script>
-// Add event listeners to language buttons
-document.querySelectorAll('.lang-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const lang = this.getAttribute('data-lang');
-    switchLanguage(lang);
-  });
-});
-
-// Sandblast effect
-document.addEventListener('DOMContentLoaded', function() {
-  const canvas = document.getElementById('canvas');
-  if (!canvas) return;
-  
-  const ctx = canvas.getContext('2d');
-  const rusty = new Image();
-  const clean = new Image();
-  rusty.src = 'images/rusty.jpg';
-  clean.src = 'images/clean.jpg';
-  let imageWidth = 0;
-  let imageHeight = 0;
-  const maskCanvas = document.createElement('canvas');
-  const maskCtx = maskCanvas.getContext('2d');
-  const brushSize = 50;
-  let isDrawing = false;
-  
-  function updateCanvas() {
-    ctx.drawImage(rusty, 0, 0, imageWidth, imageHeight);
-    ctx.save();
-    ctx.globalCompositeOperation = 'destination-out';
-    ctx.drawImage(maskCanvas, 0, 0);
-    ctx.restore();
-    ctx.save();
-    ctx.globalCompositeOperation = 'destination-over';
-    ctx.drawImage(clean, 0, 0, imageWidth, imageHeight);
-    ctx.restore();
   }
   
-  function startDrawing() {
-    isDrawing = true;
-  }
-  
-  function stopDrawing() {
-    isDrawing = false;
-  }
-  
-  function draw(e) {
-    if (!isDrawing) return;
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    maskCtx.beginPath();
-    maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
-    maskCtx.fillStyle = 'black';
-    maskCtx.fill();
-    updateCanvas();
-  }
-  
-  function init() {
-    imageWidth = rusty.width;
-    imageHeight = rusty.height;
-    canvas.width = imageWidth;
-    canvas.height = imageHeight;
-    maskCanvas.width = imageWidth;
-    maskCanvas.height = imageHeight;
-    updateCanvas();
-  }
-  
-  rusty.onload = () => {
-    if (clean.complete) init();
-  };
-  
-  clean.onload = () => {
-    if (rusty.complete) init();
-  };
-  
-  canvas.addEventListener('mousedown', startDrawing);
-  canvas.addEventListener('mouseup', stopDrawing);
-  canvas.addEventListener('mouseleave', stopDrawing);
-  canvas.addEventListener('mousemove', draw);
-  
-  canvas.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    startDrawing();
-  });
-  
-  canvas.addEventListener('touchend', (e) => {
-    e.preventDefault();
-    stopDrawing();
-  });
-  
-  canvas.addEventListener('touchmove', (e) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    const rect = canvas.getBoundingClientRect();
-    const x = touch.clientX - rect.left;
-    const y = touch.clientY - rect.top;
-    if (isDrawing) {
-      maskCtx.beginPath();
-      maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
-      maskCtx.fillStyle = 'black';
-      maskCtx.fill();
-      updateCanvas();
-    }
+  // Add event listeners to language buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const lang = this.getAttribute('data-lang');
+      switchLanguage(lang);
+    });
   });
 });
-</script>
-
+  </script>
 </body>
-</html>                
+</html>
