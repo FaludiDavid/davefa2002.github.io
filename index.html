@@ -152,34 +152,6 @@
       width: 100%;                               /* Hover-re teljes vonal */
     }
 
-    .sandblast-container {
-  text-align: center;
-  margin: 40px 0;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-}
-
-.sandblast-container h3 {
-  color: #fff;
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-}
-
-#sandblastCanvas {
-  cursor: url('https://cdn-icons-png.flaticon.com/512/10718/10718759.png') 16 16, auto;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
-  max-width: 100%;
-  height: auto;
-}
-
-.sandblast-container p {
-  color: #ccc;
-  margin-top: 15px;
-  font-style: italic;
-}
-
     /* LANGUAGE SWITCHER STYLES */
 .language-switcher {
   display: flex;
@@ -1176,14 +1148,6 @@
     <div class="section-title">
       <h2 data-key="gallery.title">Galéria</h2>
     </div>
-    
-    <!-- Interactive Before/After Sandblast Effect -->
-    <div class="sandblast-container">
-      <h3>Interactive Before/After Comparison</h3>
-      <canvas id="sandblastCanvas"></canvas>
-      <p>Move your mouse over the image to reveal the clean version!</p>
-    </div>
-    
     <div class="gallery-grid">
         <div class="gallery-item">
 
@@ -1470,107 +1434,7 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.addEventListener('click', function() {
       const lang = this.getAttribute('data-lang');
       switchLanguage(lang);
-      }
-    
-// Sandblasting effect for before/after comparison
-document.addEventListener('DOMContentLoaded', function() {
-  const canvas = document.getElementById('sandblastCanvas');
-  if (!canvas) return;
-  
-  const ctx = canvas.getContext('2d');
-  const rusty = new Image();
-  const clean = new Image();
-  
-  // Update these paths to match your actual image locations
-  rusty.src = 'images/before-work.jpg'; // Replace with your before image
-  clean.src = 'images/after-work.jpg';  // Replace with your after image
-  
-  let imageWidth = 0;
-  let imageHeight = 0;
-  const maskCanvas = document.createElement('canvas');
-  const maskCtx = maskCanvas.getContext('2d');
-  const brushSize = 50;
-  let isDrawing = false;
-
-  function updateCanvas() {
-    ctx.drawImage(rusty, 0, 0, imageWidth, imageHeight);
-    ctx.save();
-    ctx.globalCompositeOperation = 'destination-out';
-    ctx.drawImage(maskCanvas, 0, 0);
-    ctx.restore();
-    ctx.save();
-    ctx.globalCompositeOperation = 'destination-over';
-    ctx.drawImage(clean, 0, 0, imageWidth, imageHeight);
-    ctx.restore();
-  }
-
-  function startDrawing() {
-    isDrawing = true;
-  }
-
-  function stopDrawing() {
-    isDrawing = false;
-  }
-
-  function draw(e) {
-    if (!isDrawing) return;
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    maskCtx.beginPath();
-    maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
-    maskCtx.fillStyle = 'black';
-    maskCtx.fill();
-    updateCanvas();
-  }
-
-  function init() {
-    imageWidth = Math.min(rusty.width, 800); // Max width of 800px
-    imageHeight = (rusty.height * imageWidth) / rusty.width;
-    canvas.width = imageWidth;
-    canvas.height = imageHeight;
-    maskCanvas.width = imageWidth;
-    maskCanvas.height = imageHeight;
-    updateCanvas();
-  }
-
-  rusty.onload = () => {
-    if (clean.complete) init();
-  };
-
-  clean.onload = () => {
-    if (rusty.complete) init();
-  };
-
-  canvas.addEventListener('mousedown', startDrawing);
-  canvas.addEventListener('mouseup', stopDrawing);
-  canvas.addEventListener('mouseleave', stopDrawing);
-  canvas.addEventListener('mousemove', draw);
-
-  // Touch support for mobile
-  canvas.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    startDrawing();
-  });
-
-  canvas.addEventListener('touchend', (e) => {
-    e.preventDefault();
-    stopDrawing();
-  });
-
-  canvas.addEventListener('touchmove', (e) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    const rect = canvas.getBoundingClientRect();
-    const x = touch.clientX - rect.left;
-    const y = touch.clientY - rect.top;
-    if (isDrawing) {
-      maskCtx.beginPath();
-      maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
-      maskCtx.fillStyle = 'black';
-      maskCtx.fill();
-      updateCanvas();
-    }
+    });
   });
 });
   </script>
