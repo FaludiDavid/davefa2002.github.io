@@ -1485,181 +1485,81 @@
       });
     });
 
-    // Replace your existing canvas JavaScript code with this
-// Interactive Canvas Before-After Implementation with Mobile Support
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-const loading = document.getElementById('loading');
+// Interactive Canvas Before-After Implementation
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const rusty = new Image();
+    const clean = new Image();
+    rusty.src = 'images/rusty.jpg';
+    clean.src = 'images/clean.jpg';
+    let imageWidth = 0;
+    let imageHeight = 0;
+    const maskCanvas = document.createElement('canvas');
+    const maskCtx = maskCanvas.getContext('2d');
+    const brushSize = 50;
+    let isDrawing = false;
 
-const rusty = new Image();
-const clean = new Image();
-rusty.src = 'images/rusty.jpg';
-clean.src = 'images/clean.jpg';
+    function updateCanvas() {
+      // 1. Rajzoljuk a rozsdás felületet teljesen
+      ctx.drawImage(rusty, 0, 0, imageWidth, imageHeight);
+      // 2. Állítsuk be a maszkolást: csak azokat a részeket mutassuk a "clean" képből,
+      // ahol a maszk feketére van rajzolva
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.drawImage(maskCanvas, 0, 0);
+      ctx.restore();
+      // 3. Tiszta felület rajzolása csak a maszkolt részekre
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-over';
+      ctx.drawImage(clean, 0, 0, imageWidth, imageHeight);
+      ctx.restore();
+    }
 
-let imageWidth = 0;
-let imageHeight = 0;
-let displayWidth = 0;
-let displayHeight = 0;
-let scale = 1;
+    function startDrawing() {
+      isDrawing = true;
+    }
 
-// Create mask canvas
-const maskCanvas = document.createElement('canvas');
-const maskCtx = maskCanvas.getContext('2d');
+    function stopDrawing() {
+      isDrawing = false;
+    }
 
-// Responsive brush size
-let brushSize = 30;
-let isDrawing = false;
+    function draw(e) {
+      if (!isDrawing) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      maskCtx.beginPath();
+      maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
+      maskCtx.fillStyle = 'black';
+      maskCtx.fill();
+      updateCanvas();
+    }
 
-function updateBrushSize() {
-  // Adjust brush size based on screen size
-  const screenWidth = window.innerWidth;
-  if (screenWidth < 480) {
-    brushSize = 40; // Larger brush for small screens
-  } else if (screenWidth < 768) {
-    brushSize = 35;
-  } else {
-    brushSize = 30;
-  }
-}
+    function init() {
+      // Kép betöltése után méret beállítása és canvas rajzolás
+      imageWidth = rusty.width;
+      imageHeight = rusty.height;
+      canvas.width = imageWidth;
+      canvas.height = imageHeight;
+      maskCanvas.width = imageWidth;
+      maskCanvas.height = imageHeight;
+      // Kezdeti renderelés
+      updateCanvas();
+    }
 
-function resizeCanvas() {
-  const containerWidth = canvas.parentElement.clientWidth - 40; // Account for padding
-  const maxWidth = Math.min(containerWidth, 600); // Max width constraint
-  
-  if (imageWidth > 0 && imageHeight > 0) {
-    scale = Math.min(maxWidth / imageWidth, 1);
-    displayWidth = imageWidth * scale;
-    displayHeight = imageHeight * scale;
-    
-    canvas.width = imageWidth;
-    canvas.height = imageHeight;
-    canvas.style.width = displayWidth + 'px';
-    canvas.style.height = displayHeight + 'px';
-    
-    maskCanvas.width = imageWidth;
-    maskCanvas.height = imageHeight;
-    
-    updateBrushSize();
-    updateCanvas();
-  }
-}
+    rusty.onload = () => {
+      // csak akkor induljunk el, ha mindkét kép be van töltve
+      if (clean.complete) init();
+    };
 
-function updateCanvas() {
-  if (!rusty.complete || !clean.complete) return;
-  
-  // Clear canvas
-  ctx.clearRect(0, 0, imageWidth, imageHeight);
-  
-  // Draw rusty image as base
-  ctx.drawImage(rusty, 0, 0, imageWidth, imageHeight);
-  
-  // Apply mask to show clean areas
-  ctx.save();
-  ctx.globalCompositeOperation = 'source-atop';
-  ctx.drawImage(clean, 0, 0, imageWidth, imageHeight);
-  ctx.globalCompositeOperation = 'destination-over';
-  ctx.drawImage(maskCanvas, 0, 0);
-  ctx.restore();
-}
+    clean.onload = () => {
+      if (rusty.complete) init();
+    };
 
-function getEventPos(e) {
-  const rect = canvas.getBoundingClientRect();
-  let clientX, clientY;
-  
-  if (e.type.includes('touch')) {
-    const touch = e.touches[0] || e.changedTouches[0];
-    clientX = touch.clientX;
-    clientY = touch.clientY;
-  } else {
-    clientX = e.clientX;
-    clientY = e.clientY;
-  }
-  
-  const x = (clientX - rect.left) / scale;
-  const y = (clientY - rect.top) / scale;
-  
-  return { x, y };
-}
-
-function startDrawing(e) {
-  e.preventDefault();
-  isDrawing = true;
-  draw(e);
-}
-
-function stopDrawing(e) {
-  e.preventDefault();
-  isDrawing = false;
-}
-
-function draw(e) {
-  if (!isDrawing) return;
-  e.preventDefault();
-  
-  const pos = getEventPos(e);
-  
-  maskCtx.beginPath();
-  maskCtx.arc(pos.x, pos.y, brushSize / scale, 0, 2 * Math.PI);
-  maskCtx.fillStyle = 'white';
-  maskCtx.fill();
-  
-  updateCanvas();
-}
-
-function init() {
-  if (!rusty.complete || !clean.complete) return;
-  
-  imageWidth = rusty.width;
-  imageHeight = rusty.height;
-  
-  // Hide loading, show canvas
-  loading.classList.add('hidden');
-  canvas.style.display = 'block';
-  
-  resizeCanvas();
-  
-  // Clear mask canvas
-  maskCtx.clearRect(0, 0, imageWidth, imageHeight);
-  updateCanvas();
-}
-
-// Image loading
-let imagesLoaded = 0;
-function onImageLoad() {
-  imagesLoaded++;
-  if (imagesLoaded === 2) {
-    init();
-  }
-}
-
-rusty.onload = onImageLoad;
-clean.onload = onImageLoad;
-
-// Mouse events
-canvas.addEventListener('mousedown', startDrawing);
-canvas.addEventListener('mouseup', stopDrawing);
-canvas.addEventListener('mouseleave', stopDrawing);
-canvas.addEventListener('mousemove', draw);
-
-// Touch events for mobile
-canvas.addEventListener('touchstart', startDrawing);
-canvas.addEventListener('touchend', stopDrawing);
-canvas.addEventListener('touchcancel', stopDrawing);
-canvas.addEventListener('touchmove', draw);
-
-// Handle window resize
-window.addEventListener('resize', () => {
-  setTimeout(resizeCanvas, 100);
-});
-
-// Prevent context menu on long press (mobile)
-canvas.addEventListener('contextmenu', (e) => {
-  e.preventDefault();
-});
-
-// Initialize brush size
-updateBrushSize();
-    
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseleave', stopDrawing);
+    canvas.addEventListener('mousemove', draw);
   </script>
 </body>
 </html>
