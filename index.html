@@ -1130,17 +1130,22 @@
   </div>
 </section>
   
-  <!-- Before-After Section -->
-<section class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
+  <!-- Before-After Section with Interactive Canvas -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
+        <p style="text-align: center; margin-top: 1rem; color: var(--text-light);" data-key="beforeafter.instruction">Húzza végig az egeret a képen, hogy lássa a különbséget!</p>
+      </div>
+      <div class="before-after" style="display: flex; justify-content: center; align-items: center; padding: 2rem 0;">
+        <div style="position: relative; display: inline-block; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+          <canvas id="canvas" style="display: block; cursor: crosshair; max-width: 100%; height: auto;"></canvas>
+          <div style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 5px; font-size: 12px;" data-key="beforeafter.before">Előtte</div>
+          <div style="position: absolute; top: 10px; right: 10px; background: rgba(46, 125, 50, 0.8); color: white; padding: 5px 10px; border-radius: 5px; font-size: 12px;" data-key="beforeafter.after">Utána</div>
+        </div>
+      </div>
     </div>
-    <div class="before-after">
-      <div id="juxtapose-container" style="height: 400px;"></div>
-    </div>
-  </div>
-</section>
+  </section>
 
 <!-- Gallery Section -->
 <section id="gallery" class="section">
