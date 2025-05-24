@@ -920,14 +920,14 @@
       }
     }
 
-    /* Before-After Comparison */
+    /* Before-After Rész */
     .before-after {
-      margin: 2rem 0;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      margin: 2rem 0; /* Felső és alsó margó 2 rem, bal és jobb oldalon nincs margó */
+      border-radius: 8px; /* A sarkok lekerekítése 8 pixellel */
+      overflow: hidden; /* A tartalom, ami kilóg a kereten túl, el lesz rejtve */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Finom, lefelé vetett árnyék */
     }
-
+    
     /* Animation */
     @keyframes fadeIn {
       from {
@@ -991,227 +991,223 @@
   </nav>
 
   <!-- Hero Section -->
-
   <section id="home" class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <h1 class="fade-in" data-key="hero.title">PROFESSZIONÁLIS ROZSDAELTÁVOLÍTÁS</h1>
-      <p class="fade-in delay-1" data-key="hero.subtitle">Több mint 20 éves tapasztalattal a fémfelület tisztítás területén Székelyudvarhelyen</p>
-      <div class="fade-in delay-2">
-        <a href="#services" class="btn btn-primary" data-key="hero.services">Szolgáltatásaink</a>
-        <a href="#contact" class="btn btn-outline" data-key="hero.contact">Kapcsolat</a>
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="fade-in" data-key="hero.title">PROFESSZIONÁLIS ROZSDAELTÁVOLÍTÁS</h1>
+        <p class="fade-in delay-1" data-key="hero.subtitle">Több mint 20 éves tapasztalattal a fémfelület tisztítás területén Székelyudvarhelyen</p>
+        <div class="fade-in delay-2">
+          <a href="#services" class="btn btn-primary" data-key="hero.services">Szolgáltatásaink</a>
+          <a href="#contact" class="btn btn-outline" data-key="hero.contact">Kapcsolat</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
   
   <!-- About Section -->
-  
   <section id="about" class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2 data-key="about.title">Rólunk</h2>
-    </div>
-    <div class="about-content">
-      <div class="about-text">
-        <h3 data-key="about.subtitle">Több mint 20 éve az iparág élvonalában</h3>
-        <p data-key="about.description1">A Korózió Stop Kft. már több mint két évtizede áll ügyfelei szolgálatában Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása lakossági és ipari ügyfelek számára egyaránt.</p>
-        <p data-key="about.description2">Minden munkánkat a legmodernebb technológiával és szakértelemmel végezzük, hogy biztosítsuk a legjobb eredményt minden ügyfelünk számára.</p>
-        <ul style="list-style: none; margin-top: 1.5rem;">
-          <li style="margin-bottom: 0.5rem;">
-            <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
-            <span data-key="about.feature1">20 év szakmai tapasztalat</span>
-          </li>
-          <li style="margin-bottom: 0.5rem;">
-            <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
-            <span data-key="about.feature2">Környezetbarát munkavégzés</span>
-          </li>
-          <li style="margin-bottom: 0.5rem;">
-            <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
-            <span data-key="about.feature3">Modern technológia, piaci árak</span>
-          </li>
-          <li style="margin-bottom: 0.5rem;">
-            <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
-            <span data-key="about.feature4">Terepmunka lehetősége</span>
-          </li>
-        </ul>
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="about.title">Rólunk</h2>
       </div>
-      <div class="about-image">
-        <img src="/api/placeholder/600/400" alt="Korózió Stop műhely">
+      <div class="about-content">
+        <div class="about-text">
+          <h3 data-key="about.subtitle">Több mint 20 éve az iparág élvonalában</h3>
+          <p data-key="about.description1">A Korózió Stop Kft. már több mint két évtizede áll ügyfelei szolgálatában Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása lakossági és ipari ügyfelek számára egyaránt.</p>
+          <p data-key="about.description2">Minden munkánkat a legmodernebb technológiával és szakértelemmel végezzük, hogy biztosítsuk a legjobb eredményt minden ügyfelünk számára.</p>
+          <ul style="list-style: none; margin-top: 1.5rem;">
+            <li style="margin-bottom: 0.5rem;">
+              <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+              <span data-key="about.feature1">20 év szakmai tapasztalat</span>
+            </li>
+            <li style="margin-bottom: 0.5rem;">
+              <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+              <span data-key="about.feature2">Környezetbarát munkavégzés</span>
+            </li>
+            <li style="margin-bottom: 0.5rem;">
+              <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+              <span data-key="about.feature3">Modern technológia, piaci árak</span>
+            </li>
+            <li style="margin-bottom: 0.5rem;">
+              <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+              <span data-key="about.feature4">Terepmunka lehetősége</span>
+            </li>
+          </ul>
+        </div>
+        <div class="about-image">
+          <img src="/api/placeholder/600/400" alt="Korózió Stop műhely">
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
- <!-- Services Section -->
-
+  <!-- Services Section -->
   <section id="services" class="section services">
-  <div class="container">
-    <div class="section-title">
-      <h2 data-key="services.title">Szolgáltatásaink</h2>
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="services.title">Szolgáltatásaink</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="images/rozsda.png" alt="Rozsdaeltávolítás ikon">
+          </div>
+          <h3 class="service-title" data-key="services.rust.title">Rozsdaeltávolítás</h3>
+          <p data-key="services.rust.description">Kvarchomokkal történő hatékony rozsdaeltávolítás fémfelületekről. Professzionális technológiánk megóvja az alapanyagot és tökéletes felületet biztosít a további kezelésekhez.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="images/festés.png" alt="Elektrosztatikus porfestés ikon">
+          </div>
+          <h3 class="service-title" data-key="services.painting.title">Elektrosztatikus porfestés</h3>
+          <p data-key="services.painting.description">Tartós, egyenletes és minőségi festékréteget biztosítunk, amely ellenáll az időjárási viszontagságoknak és hosszú távú védelmet nyújt.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="images/matt.png" alt="Felület mattosítás ikon">
+          </div>
+          <h3 class="service-title" data-key="services.matting.title">Felület mattosítás</h3>
+          <p data-key="services.matting.description">Üveg, fa és más felületek professzionális mattosítása. Ideális dekorációs célokra vagy további felületkezelések előkészítésére.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="images/gumi.png" alt="Gumiszerelés ikon">
+          </div>
+          <h3 class="service-title" data-key="services.tire.title">Gumiszerelés</h3>
+          <p data-key="services.tire.description">Komplett gumiszerelési szolgáltatásokat kínálunk, hogy időt takarítson meg. A homokfúvás előtt és után is vállaljuk a gumiabroncsok le- és felszerelését.</p>
+        </div>
+      </div>
     </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">
-          <img src="images/rozsda.png" alt="Rozsdaeltávolítás ikon">
-        </div>
-        <h3 class="service-title" data-key="services.rust.title">Rozsdaeltávolítás</h3>
-        <p data-key="services.rust.description">Kvarchomokkal történő hatékony rozsdaeltávolítás fémfelületekről. Professzionális technológiánk megóvja az alapanyagot és tökéletes felületet biztosít a további kezelésekhez.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">
-          <img src="images/festés.png" alt="Elektrosztatikus porfestés ikon">
-        </div>
-        <h3 class="service-title" data-key="services.painting.title">Elektrosztatikus porfestés</h3>
-        <p data-key="services.painting.description">Tartós, egyenletes és minőségi festékréteget biztosítunk, amely ellenáll az időjárási viszontagságoknak és hosszú távú védelmet nyújt.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">
-          <img src="images/matt.png" alt="Felület mattosítás ikon">
-        </div>
-        <h3 class="service-title" data-key="services.matting.title">Felület mattosítás</h3>
-        <p data-key="services.matting.description">Üveg, fa és más felületek professzionális mattosítása. Ideális dekorációs célokra vagy további felületkezelések előkészítésére.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">
-          <img src="images/gumi.png" alt="Gumiszerelés ikon">
-        </div>
-        <h3 class="service-title" data-key="services.tire.title">Gumiszerelés</h3>
-        <p data-key="services.tire.description">Komplett gumiszerelési szolgáltatásokat kínálunk, hogy időt takarítson meg. A homokfúvás előtt és után is vállaljuk a gumiabroncsok le- és felszerelését.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- Process Section -->
-
   <section id="process" class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2 data-key="process.title">Munkafolyamat</h2>
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="process.title">Munkafolyamat</h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3 data-key="process.step1.title">Konzultáció</h3>
+          <p data-key="process.step1.description">Felmérjük igényeit és részletes ajánlatot készítünk az elvégzendő munkákról.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3 data-key="process.step2.title">Előkészítés</h3>
+          <p data-key="process.step2.description">A felületet előkészítjük a homokfúvásra, eltávolítva minden nem kezelhető elemet.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3 data-key="process.step3.title">Homokfúvás</h3>
+          <p data-key="process.step3.description">Kvarchomokkal történő professzionális tisztítás a tökéletes eredmény érdekében.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h3 data-key="process.step4.title">Utókezelés</h3>
+          <p data-key="process.step4.description">Igény szerint porfestés vagy egyéb felületkezelési eljárás a tartós védelem érdekében.</p>
+        </div>
+      </div>
     </div>
-    <div class="process-steps">
-      <div class="process-step">
-        <div class="step-number">1</div>
-        <h3 data-key="process.step1.title">Konzultáció</h3>
-        <p data-key="process.step1.description">Felmérjük igényeit és részletes ajánlatot készítünk az elvégzendő munkákról.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-number">2</div>
-        <h3 data-key="process.step2.title">Előkészítés</h3>
-        <p data-key="process.step2.description">A felületet előkészítjük a homokfúvásra, eltávolítva minden nem kezelhető elemet.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-number">3</div>
-        <h3 data-key="process.step3.title">Homokfúvás</h3>
-        <p data-key="process.step3.description">Kvarchomokkal történő professzionális tisztítás a tökéletes eredmény érdekében.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-number">4</div>
-        <h3 data-key="process.step4.title">Utókezelés</h3>
-        <p data-key="process.step4.description">Igény szerint porfestés vagy egyéb felületkezelési eljárás a tartós védelem érdekében.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
   
-  <!-- Before-After Section -->
-<section class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
+  <!-- Interactive Before-After Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
+      </div>
+      <div class="before-after">
+        <div class="canvas-instructions">
+          <p><i class="fas fa-mouse-pointer"></i><span data-key="canvas.instruction">Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!</span></p>
+        </div>
+        <canvas id="canvas"></canvas>
+      </div>
     </div>
-    <div class="before-after">
-      <div id="juxtapose-container" style="height: 400px;"></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- Gallery Section -->
-<section id="gallery" class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2 data-key="gallery.title">Galéria</h2>
-    </div>
-    <div class="gallery-grid">
+  <!-- Gallery Section -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="gallery.title">Galéria</h2>
+      </div>
+      <div class="gallery-grid">
         <div class="gallery-item">
-
-    <!-- Fix for missing closing tags and elements -->
-        <img src="/api/placeholder/250/250" alt="Project 1">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
+          <img src="/api/placeholder/250/250" alt="Project 1">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
         </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/250/250" alt="Project 2">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/250/250" alt="Project 3">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/250/250" alt="Project 4">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/250/250" alt="Project 5">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/250/250" alt="Project 6">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/250/250" alt="Project 7">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/250/250" alt="Project 8">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div> 
       </div>
-      <!-- Add more gallery items as needed -->
-      <div class="gallery-item">
-        <img src="/api/placeholder/250/250" alt="Project 2">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="/api/placeholder/250/250" alt="Project 3">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="/api/placeholder/250/250" alt="Project 4">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="/api/placeholder/250/250" alt="Project 5">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="/api/placeholder/250/250" alt="Project 6">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="/api/placeholder/250/250" alt="Project 7">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="/api/placeholder/250/250" alt="Project 8">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div> 
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CTA Section -->
-<section id="contact" class="cta">
-  <div class="container">
-    <h2 data-key="cta.title">Kérjen ingyenes árajánlatot most!</h2>
-    <p data-key="cta.description">Akár kisebb, akár nagyobb projektről legyen szó, vegye fel velünk a kapcsolatot még ma!</p>
-    <a href="#contact" class="btn btn-outline" data-key="cta.button">Kapcsolat</a>
-  </div>
-</section>
+  <!-- CTA Section -->
+  <section id="contact" class="cta">
+    <div class="container">
+      <h2 data-key="cta.title">Kérjen ingyenes árajánlatot most!</h2>
+      <p data-key="cta.description">Akár kisebb, akár nagyobb projektről legyen szó, vegye fel velünk a kapcsolatot még ma!</p>
+      <a href="#contact" class="btn btn-outline" data-key="cta.button">Kapcsolat</a>
+    </div>
+  </section>
 
   <!-- Footer -->
-<footer class="footer">
-  <div class="footer-col" style="padding-left: 100px;">
-    <h3 data-key="footer.contact">Elérhetőségek</h3>
-    <ul class="footer-links">
-      <li><i class="fas fa-map-marker-alt"></i> <span data-key="footer.address">Székelyudvarhely, Fenyő utca 58.</span></li>
-      <li><i class="fas fa-phone"></i> +40 745 967 960</li>
-      <li><i class="fas fa-envelope"></i> koroziostop@gmail.com</li>
-    </ul>
-  </div>
-  <div class="copyright">
-    <p>&copy; 2025 Korozio Stop Kft.</p>
-  </div>
-</footer>
+  <footer class="footer">
+    <div class="footer-col" style="padding-left: 100px;">
+      <h3 data-key="footer.contact">Elérhetőségek</h3>
+      <ul class="footer-links">
+        <li><i class="fas fa-map-marker-alt"></i> <span data-key="footer.address">Székelyudvarhely, Fenyő utca 58.</span></li>
+        <li><i class="fas fa-phone"></i> +40 745 967 960</li>
+        <li><i class="fas fa-envelope"></i> koroziostop@gmail.com</li>
+      </ul>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Korozio Stop Kft.</p>
+    </div>
+  </footer>
 
   <!-- JavaScript -->
   <script>
@@ -1251,177 +1247,246 @@
     });
 
     // Language switcher functionality with translations
-let currentLanguage = 'hu';
+    let currentLanguage = 'hu';
 
-// Translation data
-const translations = {
-  hu: {
-    // Navigation
-    'nav.home': 'Főoldal',
-    'nav.about': 'Rólunk',
-    'nav.services': 'Szolgáltatások',
-    'nav.process': 'Folyamat',
-    'nav.gallery': 'Galéria',
-    'nav.contact': 'Kapcsolat',
-    
-    // Hero section
-    'hero.title': 'PROFESSZIONÁLIS ROZSDAELTÁVOLÍTÁS',
-    'hero.subtitle': 'Több mint 20 éves tapasztalattal a fémfelület tisztítás területén Székelyudvarhelyen',
-    'hero.services': 'Szolgáltatásaink',
-    'hero.contact': 'Kapcsolat',
-    
-    // About section
-    'about.title': 'Rólunk',
-    'about.subtitle': 'Több mint 20 éve az iparág élvonalában',
-    'about.description1': 'A Korózió Stop Kft. már több mint két évtizede áll ügyfelei szolgálatában Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása lakossági és ipari ügyfelek számára egyaránt.',
-    'about.description2': 'Minden munkánkat a legmodernebb technológiával és szakértelemmel végezzük, hogy biztosítsuk a legjobb eredményt minden ügyfelünk számára.',
-    'about.feature1': '20 év szakmai tapasztalat',
-    'about.feature2': 'Környezetbarát munkavégzés',
-    'about.feature3': 'Modern technológia, piaci árak',
-    'about.feature4': 'Terepmunka lehetősége',
-    
-    // Services section
-    'services.title': 'Szolgáltatásaink',
-    'services.rust.title': 'Rozsdaeltávolítás',
-    'services.rust.description': 'Kvarchomokkal történő hatékony rozsdaeltávolítás fémfelületekről. Professzionális technológiánk megóvja az alapanyagot és tökéletes felületet biztosít a további kezelésekhez.',
-    'services.painting.title': 'Elektrosztatikus porfestés',
-    'services.painting.description': 'Tartós, egyenletes és minőségi festékréteget biztosítunk, amely ellenáll az időjárási viszontagságoknak és hosszú távú védelmet nyújt.',
-    'services.matting.title': 'Felület mattosítás',
-    'services.matting.description': 'Üveg, fa és más felületek professzionális mattosítása. Ideális dekorációs célokra vagy további felületkezelések előkészítésére.',
-    'services.tire.title': 'Gumiszerelés',
-    'services.tire.description': 'Komplett gumiszerelési szolgáltatásokat kínálunk, hogy időt takarítson meg. A homokfúvás előtt és után is vállaljuk a gumiabroncsok le- és felszerelését.',
-    
-    // Process section
-    'process.title': 'Munkafolyamat',
-    'process.step1.title': 'Konzultáció',
-    'process.step1.description': 'Felmérjük igényeit és részletes ajánlatot készítünk az elvégzendő munkákról.',
-    'process.step2.title': 'Előkészítés',
-    'process.step2.description': 'A felületet előkészítjük a homokfúvásra, eltávolítva minden nem kezelhető elemet.',
-    'process.step3.title': 'Homokfúvás',
-    'process.step3.description': 'Kvarchomokkal történő professzionális tisztítás a tökéletes eredmény érdekében.',
-    'process.step4.title': 'Utókezelés',
-    'process.step4.description': 'Igény szerint porfestés vagy egyéb felületkezelési eljárás a tartós védelem érdekében.',
-    
-    // Gallery and CTA
-    'gallery.title': 'Galéria',
-    'beforeafter.title': 'Munkáink előtte-utána',
-    'cta.title': 'Kérjen ingyenes árajánlatot most!',
-    'cta.description': 'Akár kisebb, akár nagyobb projektről legyen szó, vegye fel velünk a kapcsolatot még ma!',
-    'cta.button': 'Kapcsolat',
-    
-    // Footer
-    'footer.contact': 'Elérhetőségek'
-  },
-  ro: {
-    // Navigation
-    'nav.home': 'Acasă',
-    'nav.about': 'Despre noi',
-    'nav.services': 'Servicii',
-    'nav.process': 'Proces',
-    'nav.gallery': 'Galerie',
-    'nav.contact': 'Contact',
-    
-    // Hero section
-    'hero.title': 'ÎNDEPĂRTARE PROFESIONALĂ A RUGINII',
-    'hero.subtitle': 'Cu peste 20 de ani de experiență în curățarea suprafețelor metalice în Odorheiu Secuiesc',
-    'hero.services': 'Serviciile noastre',
-    'hero.contact': 'Contact',
-    
-    // About section
-    'about.title': 'Despre noi',
-    'about.subtitle': 'Peste 20 de ani în fruntea industriei',
-    'about.description1': 'Korozio Stop Kft. deservește clienții săi de peste două decenii în Odorheiu Secuiesc și împrejurimi. Obiectivul nostru este să oferim servicii fiabile, ecologice și rentabile atât pentru clienții rezidențiali, cât și pentru cei industriali.',
-    'about.description2': 'Executăm toate lucrările cu cea mai modernă tehnologie și expertiză pentru a asigura cele mai bune rezultate pentru toți clienții noștri.',
-    'about.feature1': '20 de ani de experiență profesională',
-    'about.feature2': 'Muncă ecologică',
-    'about.feature3': 'Tehnologie modernă, prețuri de piață',
-    'about.feature4': 'Posibilitatea de lucru pe teren',
-    
-    // Services section
-    'services.title': 'Serviciile noastre',
-    'services.rust.title': 'Îndepărtarea ruginii',
-    'services.rust.description': 'Îndepărtarea eficientă a ruginii de pe suprafețele metalice cu nisip de cuarț. Tehnologia noastră profesională protejează materialul de bază și asigură o suprafață perfectă pentru tratamentele ulterioare.',
-    'services.painting.title': 'Vopsire electrostatică cu pulbere',
-    'services.painting.description': 'Oferim un strat de vopsea durabil, uniform și de calitate, care rezistă la intemperii și oferă protecție pe termen lung.',
-    'services.matting.title': 'Matifierea suprafețelor',
-    'services.matting.description': 'Matifierea profesională a sticlei, lemnului și altor suprafețe. Ideal pentru scopuri decorative sau pentru pregătirea tratamentelor ulterioare ale suprafeței.',
-    'services.tire.title': 'Montarea anvelopelor',
-    'services.tire.description': 'Oferim servicii complete de montare a anvelopelor pentru a vă economisi timpul. Realizăm demontarea și montarea anvelopelor atât înainte, cât și după sablarea cu nisip.',
-    
-    // Process section
-    'process.title': 'Procesul de lucru',
-    'process.step1.title': 'Consultanță',
-    'process.step1.description': 'Evaluăm nevoile dumneavoastră și pregătim o ofertă detaliată pentru lucrările de efectuat.',
-    'process.step2.title': 'Pregătire',
-    'process.step2.description': 'Pregătim suprafața pentru sablare, îndepărtând toate elementele care nu pot fi tratate.',
-    'process.step3.title': 'Sablare',
-    'process.step3.description': 'Curățare profesională cu nisip de cuarț pentru rezultate perfecte.',
-    'process.step4.title': 'Finisare',
-    'process.step4.description': 'La cerere, vopsire cu pulbere sau alte proceduri de tratare a suprafeței pentru protecție durabilă.',
-    
-    // Gallery and CTA
-    'gallery.title': 'Galerie',
-    'beforeafter.title': 'Lucrările noastre înainte-după',
-    'cta.title': 'Solicitați o ofertă gratuită acum!',
-    'cta.description': 'Indiferent dacă este vorba despre un proiect mic sau mare, contactați-ne astăzi!',
-    'cta.button': 'Contact',
-    
-    // Footer
-    'footer.contact': 'Date de contact'
-  }
-};
+    // Translation data
+    const translations = {
+      hu: {
+        // Navigation
+        'nav.home': 'Főoldal',
+        'nav.about': 'Rólunk',
+        'nav.services': 'Szolgáltatások',
+        'nav.process': 'Folyamat',
+        'nav.gallery': 'Galéria',
+        'nav.contact': 'Kapcsolat',
+        
+        // Hero section
+        'hero.title': 'PROFESSZIONÁLIS ROZSDAELTÁVOLÍTÁS',
+        'hero.subtitle': 'Több mint 20 éves tapasztalattal a fémfelület tisztítás területén Székelyudvarhelyen',
+        'hero.services': 'Szolgáltatásaink',
+        'hero.contact': 'Kapcsolat',
+        
+        // About section
+        'about.title': 'Rólunk',
+        'about.subtitle': 'Több mint 20 éve az iparág élvonalában',
+        'about.description1': 'A Korózió Stop Kft. már több mint két évtizede áll ügyfelei szolgálatában Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása lakossági és ipari ügyfelek számára egyaránt.',
+        'about.description2': 'Minden munkánkat a legmodernebb technológiával és szakértelemmel végezzük, hogy biztosítsuk a legjobb eredményt minden ügyfelünk számára.',
+        'about.feature1': '20 év szakmai tapasztalat',
+        'about.feature2': 'Környezetbarát munkavégzés',
+        'about.feature3': 'Modern technológia, piaci árak',
+        'about.feature4': 'Terepmunka lehetősége',
+        
+        // Services section
+        'services.title': 'Szolgáltatásaink',
+        'services.rust.title': 'Rozsdaeltávolítás',
+        'services.rust.description': 'Kvarchomokkal történő hatékony rozsdaeltávolítás fémfelületekről. Professzionális technológiánk megóvja az alapanyagot és tökéletes felületet biztosít a további kezelésekhez.',
+        'services.painting.title': 'Elektrosztatikus porfestés',
+        'services.painting.description': 'Tartós, egyenletes és minőségi festékréteget biztosítunk, amely ellenáll az időjárási viszontagságoknak és hosszú távú védelmet nyújt.',
+        'services.matting.title': 'Felület mattosítás',
+        'services.matting.description': 'Üveg, fa és más felületek professzionális mattosítása. Ideális dekorációs célokra vagy további felületkezelések előkészítésére.',
+        'services.tire.title': 'Gumiszerelés',
+        'services.tire.description': 'Komplett gumiszerelési szolgáltatásokat kínálunk, hogy időt takarítson meg. A homokfúvás előtt és után is vállaljuk a gumiabroncsok le- és felszerelését.',
+        
+        // Process section
+        'process.title': 'Munkafolyamat',
+        'process.step1.title': 'Konzultáció',
+        'process.step1.description': 'Felmérjük igényeit és részletes ajánlatot készítünk az elvégzendő munkákról.',
+        'process.step2.title': 'Előkészítés',
+        'process.step2.description': 'A felületet előkészítjük a homokfúvásra, eltávolítva minden nem kezelhető elemet.',
+        'process.step3.title': 'Homokfúvás',
+        'process.step3.description': 'Kvarchomokkal történő professzionális tisztítás a tökéletes eredmény érdekében.',
+        'process.step4.title': 'Utókezelés',
+        'process.step4.description': 'Igény szerint porfestés vagy egyéb felületkezelési eljárás a tartós védelem érdekében.',
+        
+        // Gallery and CTA
+        'gallery.title': 'Galéria',
+        'beforeafter.title': 'Munkáink előtte-utána',
+        'canvas.instruction': 'Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!',
+        'cta.title': 'Kérjen ingyenes árajánlatot most!',
+        'cta.description': 'Akár kisebb, akár nagyobb projektről legyen szó, vegye fel velünk a kapcsolatot még ma!',
+        'cta.button': 'Kapcsolat',
+        
+        // Footer
+        'footer.contact': 'Elérhetőségek'
+      },
+      ro: {
+        // Navigation
+        'nav.home': 'Acasă',
+        'nav.about': 'Despre noi',
+        'nav.services': 'Servicii',
+        'nav.process': 'Proces',
+        'nav.gallery': 'Galerie',
+        'nav.contact': 'Contact',
+        
+        // Hero section
+        'hero.title': 'ÎNDEPĂRTARE PROFESIONALĂ A RUGINII',
+        'hero.subtitle': 'Cu peste 20 de ani de experiență în curățarea suprafețelor metalice în Odorheiu Secuiesc',
+        'hero.services': 'Serviciile noastre',
+        'hero.contact': 'Contact',
+        
+        // About section
+        'about.title': 'Despre noi',
+        'about.subtitle': 'Peste 20 de ani în fruntea industriei',
+        'about.description1': 'Korozio Stop Kft. deservește clienții săi de peste două decenii în Odorheiu Secuiesc și împrejurimi. Obiectivul nostru este să oferim servicii fiabile, ecologice și rentabile atât pentru clienții rezidențiali, cât și pentru cei industriali.',
+        'about.description2': 'Executăm toate lucrările cu cea mai modernă tehnologie și expertiză pentru a asigura cele mai bune rezultate pentru toți clienții noștri.',
+        'about.feature1': '20 de ani de experiență profesională',
+        'about.feature2': 'Muncă ecologică',
+        'about.feature3': 'Tehnologie modernă, prețuri de piață',
+        'about.feature4': 'Posibilitatea de lucru pe teren',
+        
+        // Services section
+        'services.title': 'Serviciile noastre',
+        'services.rust.title': 'Îndepărtarea ruginii',
+        'services.rust.description': 'Îndepărtarea eficientă a ruginii de pe suprafețele metalice cu nisip de cuarț. Tehnologia noastră profesională protejează materialul de bază și asigură o suprafață perfectă pentru tratamentele ulterioare.',
+        'services.painting.title': 'Vopsire electrostatică cu pulbere',
+        'services.painting.description': 'Oferim un strat de vopsea durabil, uniform și de calitate, care rezistă la intemperii și oferă protecție pe termen lung.',
+        'services.matting.title': 'Matifierea suprafețelor',
+        'services.matting.description': 'Matifierea profesională a sticlei, lemnului și altor suprafețe. Ideal pentru scopuri decorative sau pentru pregătirea tratamentelor ulterioare ale suprafeței.',
+        'services.tire.title': 'Montarea anvelopelor',
+        'services.tire.description': 'Oferim servicii complete de montare a anvelopelor pentru a vă economisi timpul. Realizăm demontarea și montarea anvelopelor atât înainte, cât și după sablarea cu nisip.',
+        
+        // Process section
+        'process.title': 'Procesul de lucru',
+        'process.step1.title': 'Consultanță',
+        'process.step1.description': 'Evaluăm nevoile dumneavoastră și pregătim o ofertă detaliată pentru lucrările de efectuat.',
+        'process.step2.title': 'Pregătire',
+        'process.step2.description': 'Pregătim suprafața pentru sablare, îndepărtând toate elementele care nu pot fi tratate.',
+        'process.step3.title': 'Sablare',
+        'process.step3.description': 'Curățare profesională cu nisip de cuarț pentru rezultate perfecte.',
+        'process.step4.title': 'Finisare',
+        'process.step4.description': 'La cerere, vopsire cu pulbere sau alte proceduri de tratare a suprafeței pentru protecție durabilă.',
+        
+        // Gallery and CTA
+        'gallery.title': 'Galerie',
+        'beforeafter.title': 'Lucrările noastre înainte-după',
+        'canvas.instruction': 'Trageți mouse-ul peste imagine pentru a vedea rezultatul curățării!',
+        'cta.title': 'Solicitați o ofertă gratuită acum!',
+        'cta.description': 'Indiferent dacă este vorba despre un proiect mic sau mare, contactați-ne astăzi!',
+        'cta.button': 'Contact',
+        
+        // Footer
+        'footer.contact': 'Date de contact'
+      }
+    };
 
-function switchLanguage(lang) {
-  currentLanguage = lang;
-  
-  // Update active button
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.remove('active');
-  });
-  document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
-  
-  // Update all translatable elements
-  document.querySelectorAll('[data-key]').forEach(element => {
-    const key = element.getAttribute('data-key');
-    if (translations[lang] && translations[lang][key]) {
-      element.textContent = translations[lang][key];
+    function switchLanguage(lang) {
+      currentLanguage = lang;
+      
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+      
+      // Update all translatable elements
+      document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
+      
+      // Update page title and meta description
+      if (lang === 'ro') {
+        document.title = 'Korozio Stop Kft. - Sablare Odorheiu Secuiesc | Îndepărtarea ruginii';
+        document.querySelector('meta[name="description"]').content = 'Korozio Stop Kft. din Odorheiu Secuiesc oferă de peste 20 de ani servicii de îndepărtare a ruginii, sablare și vopsire cu pulbere.';
+      } else {
+        document.title = 'Korozio Stop Kft. - Homokfújás Székelyudvarhely | Rozsdaeltávolítás';
+        document.querySelector('meta[name="description"]').content = 'A Korozio Stop Kft. Székelyudvarhelyen több, mint 20 éve kínál rozsdaeltávolítás, homokfújás és porfestés szolgáltatásokat.';
+      }
+      
+      console.log('Language switched to:', lang);
     }
-  });
-  
-  // Update HTML lang attribute
-  document.documentElement.lang = lang;
-  
-  // Update page title and meta description
-  if (lang === 'ro') {
-    document.title = 'Korozio Stop Kft. - Sablare Odorheiu Secuiesc | Îndepărtarea ruginii';
-    document.querySelector('meta[name="description"]').content = 'Korozio Stop Kft. din Odorheiu Secuiesc oferă de peste 20 de ani servicii de îndepărtare a ruginii, sablare și vopsire cu pulbere.';
-  } else {
-    document.title = 'Korozio Stop Kft. - Homokfújás Székelyudvarhely | Rozsdaeltávolítás';
-    document.querySelector('meta[name="description"]').content = 'A Korozio Stop Kft. Székelyudvarhelyen több, mint 20 éve kínál rozsdaeltávolítás, homokfújás és porfestés szolgáltatásokat.';
-  }
-  
-  // Save language preference
-  localStorage.setItem('preferred-language', lang);
-  
-  console.log('Language switched to:', lang);
-}
 
-// Initialize language switcher
-document.addEventListener('DOMContentLoaded', function() {
-  // Check for saved language preference
-  const savedLang = localStorage.getItem('preferred-language');
-  if (savedLang && (savedLang === 'hu' || savedLang === 'ro')) {
-    switchLanguage(savedLang);
-  }
-  
-  // Add event listeners to language buttons
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const lang = this.getAttribute('data-lang');
-      switchLanguage(lang);
+    // Initialize language switcher
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add event listeners to language buttons
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const lang = this.getAttribute('data-lang');
+          switchLanguage(lang);
+        });
+      });
     });
-  });
-});
+
+    // Interactive Canvas Before-After Implementation
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const rusty = new Image();
+    const clean = new Image();
+    rusty.src = 'images/rusty.jpg';
+    clean.src = 'images/clean.jpg';
+    let imageWidth = 0;
+    let imageHeight = 0;
+    const maskCanvas = document.createElement('canvas');
+    const maskCtx = maskCanvas.getContext('2d');
+    const brushSize = 50;
+    let isDrawing = false;
+
+    function updateCanvas() {
+      // 1. Rajzoljuk a rozsdás felületet teljesen
+      ctx.drawImage(rusty, 0, 0, imageWidth, imageHeight);
+      // 2. Állítsuk be a maszkolást: csak azokat a részeket mutassuk a "clean" képből,
+      // ahol a maszk feketére van rajzolva
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.drawImage(maskCanvas, 0, 0);
+      ctx.restore();
+      // 3. Tiszta felület rajzolása csak a maszkolt részekre
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-over';
+      ctx.drawImage(clean, 0, 0, imageWidth, imageHeight);
+      ctx.restore();
+    }
+
+    function startDrawing() {
+      isDrawing = true;
+    }
+
+    function stopDrawing() {
+      isDrawing = false;
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      maskCtx.beginPath();
+      maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
+      maskCtx.fillStyle = 'black';
+      maskCtx.fill();
+      updateCanvas();
+    }
+
+    function init() {
+      // Kép betöltése után méret beállítása és canvas rajzolás
+      imageWidth = rusty.width;
+      imageHeight = rusty.height;
+      canvas.width = imageWidth;
+      canvas.height = imageHeight;
+      maskCanvas.width = imageWidth;
+      maskCanvas.height = imageHeight;
+      // Kezdeti renderelés
+      updateCanvas();
+    }
+
+    rusty.onload = () => {
+      // csak akkor induljunk el, ha mindkét kép be van töltve
+      if (clean.complete) init();
+    };
+
+    clean.onload = () => {
+      if (rusty.complete) init();
+    };
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseleave', stopDrawing);
+    canvas.addEventListener('mousemove', draw);
   </script>
 </body>
 </html>
