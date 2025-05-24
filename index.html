@@ -927,71 +927,6 @@
       overflow: hidden; /* A tartalom, ami kilóg a kereten túl, el lesz rejtve */
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Finom, lefelé vetett árnyék */
     }
-
-    /* Add these CSS rules to your existing stylesheet */
-
-.canvas-container {
-  position: relative;
-  display: inline-block;
-  max-width: 100%;
-  background: var(--white);
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-#canvas {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  cursor: crosshair;
-  display: block;
-  touch-action: none; /* Prevents scrolling when touching canvas */
-}
-
-/* Loading indicator */
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
-  font-size: 1.2rem;
-  color: var(--dark-gray);
-}
-
-.loading.hidden {
-  display: none;
-}
-
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  .canvas-instructions p {
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .canvas-container {
-    padding: 15px;
-  }
-
-  #canvas {
-    cursor: pointer; /* Better for touch devices */
-  }
-}
-
-@media (max-width: 480px) {
-  .canvas-instructions {
-    padding: 12px;
-  }
-
-  .canvas-instructions p {
-    font-size: 0.9rem;
-  }
-
-  .canvas-container {
-    padding: 10px;
-  }
-}
     
     /* Animation */
     @keyframes fadeIn {
@@ -1176,28 +1111,20 @@
     </div>
   </section>
   
-  <!-- Replace your existing before-after section with this -->
-<section class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
-    </div>
-    <div class="before-after">
-      <div class="canvas-instructions">
-        <p>
-          <i class="fas fa-hand-pointer"></i>
-          <span data-key="canvas.instruction">Húzza végig az egeret/ujját a képen, hogy lássa a tisztítás eredményét!</span>
-        </p>
+  <!-- Interactive Before-After Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
       </div>
-      <div class="canvas-container">
-        <div id="loading" class="loading">
-          <i class="fas fa-spinner fa-spin"></i> &nbsp; Képek betöltése...
+      <div class="before-after">
+        <div class="canvas-instructions">
+          <p><i class="fas fa-mouse-pointer"></i><span data-key="canvas.instruction">Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!</span></p>
         </div>
-        <canvas id="canvas" style="display: none;"></canvas>
+        <canvas id="canvas"></canvas>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Gallery Section -->
   <section id="gallery" class="section">
@@ -1485,7 +1412,7 @@
       });
     });
 
-// Interactive Canvas Before-After Implementation
+    // Interactive Canvas Before-After Implementation
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const rusty = new Image();
