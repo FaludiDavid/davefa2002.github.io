@@ -726,6 +726,21 @@
       background-color: #0062c4;                                 /* Sötétebb hover szín */
     }
 
+    /* TÉRKÉP */
+    .map {
+      height: 400px;                                             /* Magasság */
+      overflow: hidden;                                          /* Képkivágás */
+      border-radius: 8px;                                        /* Lekerekítés */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);                  /* Árnyék */
+      margin-top: 2rem;                                          /* Elválasztás az űrlaptól */
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;                                                 /* Keret nélküli iframe */
+    }
+
     /* CTA – Cselekvésre való felhívás szekció */
     .cta {
       background-color: var(--primary);                          /* Sötétkék háttér */
@@ -927,16 +942,6 @@
       overflow: hidden;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
-    
-    /* Interactive Before-After Effect */
-#canvas {
-  cursor: url('https://cdn-icons-png.flaticon.com/512/10718/10718759.png') 16 16, auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto;
-}
 
     /* Animation */
     @keyframes fadeIn {
@@ -1132,7 +1137,7 @@
       <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
     </div>
     <div class="before-after">
-      <canvas id="canvas"></canvas>
+      <div id="juxtapose-container" style="height: 400px;"></div>
     </div>
   </div>
 </section>
@@ -1377,10 +1382,9 @@ const translations = {
     'cta.button': 'Contact',
     
     // Footer
-    'footer.contact': 'Date de contact' const canvas = document.getElementById('canvas');
+    'footer.contact': 'Date de contact'
   }
 };
-    
 
 function switchLanguage(lang) {
   currentLanguage = lang;
@@ -1424,7 +1428,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (savedLang && (savedLang === 'hu' || savedLang === 'ro')) {
     switchLanguage(savedLang);
   }
-
+  
   // Add event listeners to language buttons
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', function() {
