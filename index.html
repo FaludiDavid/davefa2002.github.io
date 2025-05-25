@@ -1439,141 +1439,81 @@
       });
     });
 
-    // Első interaktív kép
-  const canvas = document.getElementById('canvas');
-  const ctx = canvas.getContext('2d');
-  const rusty = new Image();
-  const clean = new Image();
-  rusty.src = 'images/előtte.jpg';
-  clean.src = 'images/utánna.jpg';
-  let imageWidth = 0;
-  let imageHeight = 0;
-  const maskCanvas = document.createElement('canvas');
-  const maskCtx = maskCanvas.getContext('2d');
-  const brushSize = 50;
-  let isDrawing = false;
+    <!-- Script: Interaktív képek -->
+<script>
+  function initBeforeAfter(canvasId, beforeSrc, afterSrc) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext('2d');
+    const beforeImg = new Image();
+    const afterImg = new Image();
+    const maskCanvas = document.createElement('canvas');
+    const maskCtx = maskCanvas.getContext('2d');
+    const brushSize = 50;
+    let isDrawing = false;
+    let imageWidth = 0;
+    let imageHeight = 0;
 
-  function updateCanvas() {
-    ctx.drawImage(rusty, 0, 0, imageWidth, imageHeight);
-    ctx.save();
-    ctx.globalCompositeOperation = 'destination-out';
-    ctx.drawImage(maskCanvas, 0, 0);
-    ctx.restore();
-    ctx.save();
-    ctx.globalCompositeOperation = 'destination-over';
-    ctx.drawImage(clean, 0, 0, imageWidth, imageHeight);
-    ctx.restore();
+    function updateCanvas() {
+      ctx.drawImage(beforeImg, 0, 0, imageWidth, imageHeight);
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.drawImage(maskCanvas, 0, 0);
+      ctx.restore();
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-over';
+      ctx.drawImage(afterImg, 0, 0, imageWidth, imageHeight);
+      ctx.restore();
+    }
+
+    function startDrawing() {
+      isDrawing = true;
+    }
+
+    function stopDrawing() {
+      isDrawing = false;
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      maskCtx.beginPath();
+      maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
+      maskCtx.fillStyle = 'black';
+      maskCtx.fill();
+      updateCanvas();
+    }
+
+    function initCanvas() {
+      imageWidth = beforeImg.width;
+      imageHeight = beforeImg.height;
+      canvas.width = imageWidth;
+      canvas.height = imageHeight;
+      maskCanvas.width = imageWidth;
+      maskCanvas.height = imageHeight;
+      updateCanvas();
+    }
+
+    beforeImg.onload = () => {
+      if (afterImg.complete) initCanvas();
+    };
+    afterImg.onload = () => {
+      if (beforeImg.complete) initCanvas();
+    };
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseleave', stopDrawing);
+    canvas.addEventListener('mousemove', draw);
+
+    beforeImg.src = beforeSrc;
+    afterImg.src = afterSrc;
   }
 
-  function startDrawing() {
-    isDrawing = true;
-  }
-
-  function stopDrawing() {
-    isDrawing = false;
-  }
-
-  function draw(e) {
-    if (!isDrawing) return;
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    maskCtx.beginPath();
-    maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
-    maskCtx.fillStyle = 'black';
-    maskCtx.fill();
-    updateCanvas();
-  }
-
-  function init() {
-    imageWidth = rusty.width;
-    imageHeight = rusty.height;
-    canvas.width = imageWidth;
-    canvas.height = imageHeight;
-    maskCanvas.width = imageWidth;
-    maskCanvas.height = imageHeight;
-    updateCanvas();
-  }
-
-  rusty.onload = () => {
-    if (clean.complete) init();
-  };
-  clean.onload = () => {
-    if (rusty.complete) init();
-  };
-
-  canvas.addEventListener('mousedown', startDrawing);
-  canvas.addEventListener('mouseup', stopDrawing);
-  canvas.addEventListener('mouseleave', stopDrawing);
-  canvas.addEventListener('mousemove', draw);
-
-  // Második interaktív kép
-  const canvas2 = document.getElementById('canvas2');
-  const ctx2 = canvas2.getContext('2d');
-  const rusty2 = new Image();
-  const clean2 = new Image();
-  rusty2.src = 'images/előtte 1.jpg';
-  clean2.src = 'images/utánna 1.jpg';
-  let imageWidth2 = 0;
-  let imageHeight2 = 0;
-  const maskCanvas2 = document.createElement('canvas');
-  const maskCtx2 = maskCanvas2.getContext('2d');
-  const brushSize2 = 50;
-  let isDrawing2 = false;
-
-  function updateCanvas2() {
-    ctx2.drawImage(rusty2, 0, 0, imageWidth2, imageHeight2);
-    ctx2.save();
-    ctx2.globalCompositeOperation = 'destination-out';
-    ctx2.drawImage(maskCanvas2, 0, 0);
-    ctx2.restore();
-    ctx2.save();
-    ctx2.globalCompositeOperation = 'destination-over';
-    ctx2.drawImage(clean2, 0, 0, imageWidth2, imageHeight2);
-    ctx2.restore();
-  }
-
-  function startDrawing2() {
-    isDrawing2 = true;
-  }
-
-  function stopDrawing2() {
-    isDrawing2 = false;
-  }
-
-  function draw2(e) {
-    if (!isDrawing2) return;
-    const rect = canvas2.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    maskCtx2.beginPath();
-    maskCtx2.arc(x, y, brushSize2, 0, 2 * Math.PI);
-    maskCtx2.fillStyle = 'black';
-    maskCtx2.fill();
-    updateCanvas2();
-  }
-
-  function init2() {
-    imageWidth2 = rusty2.width;
-    imageHeight2 = rusty2.height;
-    canvas2.width = imageWidth2;
-    canvas2.height = imageHeight2;
-    maskCanvas2.width = imageWidth2;
-    maskCanvas2.height = imageHeight2;
-    updateCanvas2();
-  }
-
-  rusty2.onload = () => {
-    if (clean2.complete) init2();
-  };
-  clean2.onload = () => {
-    if (rusty2.complete) init2();
-  };
-
-  canvas2.addEventListener('mousedown', startDrawing2);
-  canvas2.addEventListener('mouseup', stopDrawing2);
-  canvas2.addEventListener('mouseleave', stopDrawing2);
-  canvas2.addEventListener('mousemove', draw2);
+  // Inicializálás két képre
+  initBeforeAfter('canvas', 'images/előtte.jpg', 'images/utánna.jpg');
+  initBeforeAfter('canvas2', 'images/előtte 1.jpg', 'images/utánna 1.jpg');
 </script>
 </body>
 </html>
