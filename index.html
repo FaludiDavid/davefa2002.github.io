@@ -1112,19 +1112,29 @@
   </section>
   
   <!-- Interactive Before-After Section -->
-  <section class="section">
-    <div class="container">
-      <div class="section-title">
-        <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
-      </div>
-      <div class="before-after">
-        <div class="canvas-instructions">
-          <p><i class="fas fa-mouse-pointer"></i><span data-key="canvas.instruction">Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!</span></p>
-        </div>
-        <canvas id="canvas"></canvas>
-      </div>
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
     </div>
-  </section>
+
+    <!-- Első interaktív kép -->
+    <div class="before-after">
+      <div class="canvas-instructions">
+        <p><i class="fas fa-mouse-pointer"></i><span data-key="canvas.instruction">Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!</span></p>
+      </div>
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <!-- Második interaktív kép -->
+    <div class="before-after">
+      <div class="canvas-instructions">
+        <p><i class="fas fa-mouse-pointer"></i><span data-key="canvas.instruction">Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!</span></p>
+      </div>
+      <canvas id="canvas2"></canvas>
+    </div>
+  </div>
+</section>
 
   <!-- Gallery Section -->
   <section id="gallery" class="section">
@@ -1412,81 +1422,141 @@
       });
     });
 
-    // Interactive Canvas Before-After Implementation
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-    const rusty = new Image();
-    const clean = new Image();
-    rusty.src = 'images/rusty.jpg';
-    clean.src = 'images/clean.jpg';
-    let imageWidth = 0;
-    let imageHeight = 0;
-    const maskCanvas = document.createElement('canvas');
-    const maskCtx = maskCanvas.getContext('2d');
-    const brushSize = 50;
-    let isDrawing = false;
+    // Első interaktív kép
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  const rusty = new Image();
+  const clean = new Image();
+  rusty.src = 'images/előtte.jpg';
+  clean.src = 'images/utánna.jpg';
+  let imageWidth = 0;
+  let imageHeight = 0;
+  const maskCanvas = document.createElement('canvas');
+  const maskCtx = maskCanvas.getContext('2d');
+  const brushSize = 50;
+  let isDrawing = false;
 
-    function updateCanvas() {
-      // 1. Rajzoljuk a rozsdás felületet teljesen
-      ctx.drawImage(rusty, 0, 0, imageWidth, imageHeight);
-      // 2. Állítsuk be a maszkolást: csak azokat a részeket mutassuk a "clean" képből,
-      // ahol a maszk feketére van rajzolva
-      ctx.save();
-      ctx.globalCompositeOperation = 'destination-out';
-      ctx.drawImage(maskCanvas, 0, 0);
-      ctx.restore();
-      // 3. Tiszta felület rajzolása csak a maszkolt részekre
-      ctx.save();
-      ctx.globalCompositeOperation = 'destination-over';
-      ctx.drawImage(clean, 0, 0, imageWidth, imageHeight);
-      ctx.restore();
-    }
+  function updateCanvas() {
+    ctx.drawImage(rusty, 0, 0, imageWidth, imageHeight);
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.drawImage(maskCanvas, 0, 0);
+    ctx.restore();
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.drawImage(clean, 0, 0, imageWidth, imageHeight);
+    ctx.restore();
+  }
 
-    function startDrawing() {
-      isDrawing = true;
-    }
+  function startDrawing() {
+    isDrawing = true;
+  }
 
-    function stopDrawing() {
-      isDrawing = false;
-    }
+  function stopDrawing() {
+    isDrawing = false;
+  }
 
-    function draw(e) {
-      if (!isDrawing) return;
-      const rect = canvas.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      maskCtx.beginPath();
-      maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
-      maskCtx.fillStyle = 'black';
-      maskCtx.fill();
-      updateCanvas();
-    }
+  function draw(e) {
+    if (!isDrawing) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    maskCtx.beginPath();
+    maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
+    maskCtx.fillStyle = 'black';
+    maskCtx.fill();
+    updateCanvas();
+  }
 
-    function init() {
-      // Kép betöltése után méret beállítása és canvas rajzolás
-      imageWidth = rusty.width;
-      imageHeight = rusty.height;
-      canvas.width = imageWidth;
-      canvas.height = imageHeight;
-      maskCanvas.width = imageWidth;
-      maskCanvas.height = imageHeight;
-      // Kezdeti renderelés
-      updateCanvas();
-    }
+  function init() {
+    imageWidth = rusty.width;
+    imageHeight = rusty.height;
+    canvas.width = imageWidth;
+    canvas.height = imageHeight;
+    maskCanvas.width = imageWidth;
+    maskCanvas.height = imageHeight;
+    updateCanvas();
+  }
 
-    rusty.onload = () => {
-      // csak akkor induljunk el, ha mindkét kép be van töltve
-      if (clean.complete) init();
-    };
+  rusty.onload = () => {
+    if (clean.complete) init();
+  };
+  clean.onload = () => {
+    if (rusty.complete) init();
+  };
 
-    clean.onload = () => {
-      if (rusty.complete) init();
-    };
+  canvas.addEventListener('mousedown', startDrawing);
+  canvas.addEventListener('mouseup', stopDrawing);
+  canvas.addEventListener('mouseleave', stopDrawing);
+  canvas.addEventListener('mousemove', draw);
 
-    canvas.addEventListener('mousedown', startDrawing);
-    canvas.addEventListener('mouseup', stopDrawing);
-    canvas.addEventListener('mouseleave', stopDrawing);
-    canvas.addEventListener('mousemove', draw);
-  </script>
+  // Második interaktív kép
+  const canvas2 = document.getElementById('canvas2');
+  const ctx2 = canvas2.getContext('2d');
+  const rusty2 = new Image();
+  const clean2 = new Image();
+  rusty2.src = 'images/előtte 1.jpg';
+  clean2.src = 'images/utánna 1.jpg';
+  let imageWidth2 = 0;
+  let imageHeight2 = 0;
+  const maskCanvas2 = document.createElement('canvas');
+  const maskCtx2 = maskCanvas2.getContext('2d');
+  const brushSize2 = 50;
+  let isDrawing2 = false;
+
+  function updateCanvas2() {
+    ctx2.drawImage(rusty2, 0, 0, imageWidth2, imageHeight2);
+    ctx2.save();
+    ctx2.globalCompositeOperation = 'destination-out';
+    ctx2.drawImage(maskCanvas2, 0, 0);
+    ctx2.restore();
+    ctx2.save();
+    ctx2.globalCompositeOperation = 'destination-over';
+    ctx2.drawImage(clean2, 0, 0, imageWidth2, imageHeight2);
+    ctx2.restore();
+  }
+
+  function startDrawing2() {
+    isDrawing2 = true;
+  }
+
+  function stopDrawing2() {
+    isDrawing2 = false;
+  }
+
+  function draw2(e) {
+    if (!isDrawing2) return;
+    const rect = canvas2.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    maskCtx2.beginPath();
+    maskCtx2.arc(x, y, brushSize2, 0, 2 * Math.PI);
+    maskCtx2.fillStyle = 'black';
+    maskCtx2.fill();
+    updateCanvas2();
+  }
+
+  function init2() {
+    imageWidth2 = rusty2.width;
+    imageHeight2 = rusty2.height;
+    canvas2.width = imageWidth2;
+    canvas2.height = imageHeight2;
+    maskCanvas2.width = imageWidth2;
+    maskCanvas2.height = imageHeight2;
+    updateCanvas2();
+  }
+
+  rusty2.onload = () => {
+    if (clean2.complete) init2();
+  };
+  clean2.onload = () => {
+    if (rusty2.complete) init2();
+  };
+
+  canvas2.addEventListener('mousedown', startDrawing2);
+  canvas2.addEventListener('mouseup', stopDrawing2);
+  canvas2.addEventListener('mouseleave', stopDrawing2);
+  canvas2.addEventListener('mousemove', draw2);
+</script>
 </body>
 </html>
