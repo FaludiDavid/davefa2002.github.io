@@ -945,9 +945,10 @@
 
 .canvas-wrapper canvas {
   width: 100%;
-  height: auto;
+  height: 400px;
   display: block;
   cursor: crosshair;
+  object-fit: cover;
 }
 
 /* Removed canvas labels */
@@ -1463,7 +1464,7 @@ function createCanvasHandler(canvasId, rustyImageSrc, cleanImageSrc) {
   let imageHeight = 0;
   const maskCanvas = document.createElement('canvas');
   const maskCtx = maskCanvas.getContext('2d');
-  const brushSize = 50;
+  const brushSize = 80; // Increased brush size to match left image
   let isDrawing = false;
 
   function updateCanvas() {
@@ -1506,13 +1507,18 @@ function createCanvasHandler(canvasId, rustyImageSrc, cleanImageSrc) {
   }
 
   function init() {
-    // Kép betöltése után méret beállítása és canvas rajzolás
-    imageWidth = rusty.width;
-    imageHeight = rusty.height;
-    canvas.width = imageWidth;
-    canvas.height = imageHeight;
-    maskCanvas.width = imageWidth;
-    maskCanvas.height = imageHeight;
+    // Set fixed canvas dimensions for consistent sizing
+    const fixedWidth = 600;
+    const fixedHeight = 400;
+    
+    canvas.width = fixedWidth;
+    canvas.height = fixedHeight;
+    maskCanvas.width = fixedWidth;
+    maskCanvas.height = fixedHeight;
+    
+    imageWidth = fixedWidth;
+    imageHeight = fixedHeight;
+    
     // Kezdeti renderelés
     updateCanvas();
   }
