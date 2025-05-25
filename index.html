@@ -945,10 +945,9 @@
 
 .canvas-wrapper canvas {
   width: 100%;
-  height: 400px;
+  height: auto;
   display: block;
   cursor: crosshair;
-  object-fit: cover;
 }
 
 /* Removed canvas labels */
@@ -1507,18 +1506,13 @@ function createCanvasHandler(canvasId, rustyImageSrc, cleanImageSrc) {
   }
 
   function init() {
-    // Set fixed canvas dimensions for consistent sizing
-    const fixedWidth = 600;
-    const fixedHeight = 400;
-    
-    canvas.width = fixedWidth;
-    canvas.height = fixedHeight;
-    maskCanvas.width = fixedWidth;
-    maskCanvas.height = fixedHeight;
-    
-    imageWidth = fixedWidth;
-    imageHeight = fixedHeight;
-    
+    // Use original image dimensions to prevent compression
+    imageWidth = rusty.width;
+    imageHeight = rusty.height;
+    canvas.width = imageWidth;
+    canvas.height = imageHeight;
+    maskCanvas.width = imageWidth;
+    maskCanvas.height = imageHeight;
     // Kezdeti renderelés
     updateCanvas();
   }
