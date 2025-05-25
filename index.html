@@ -865,46 +865,51 @@
     margin-bottom: 1.5rem;
   }
   
-  /* Footer mobile centering - enhanced version */
-  .footer-col {
-    text-align: center !important;
-    width: 100%;
-    margin: 0 auto;
+  /* Center footer container and content in the middle of screen */
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
+  
+  .footer-col {
+    width: 100%;
+    max-width: 300px;
+    text-align: center !important;
+    margin: 0 auto 2rem auto;
+  }
+  
+  .footer-col h3 {
+    text-align: center;
+  }
+  
   .footer-col h3::after {
     left: 50%;
     transform: translateX(-50%);
   }
+  
   .footer-links {
     text-align: center !important;
+    padding: 0;
   }
+  
   .footer-links li {
     text-align: center !important;
   }
+  
   .footer-social {
     justify-content: center;
   }
   
-  /* Target all possible contact information elements */
+  /* Force all footer content to center horizontally */
   .footer-col p,
   .footer-col address,
   .footer-col div,
-  .footer-col span,
-  .footer-col a:not(.social-icon) {
+  .footer-col span {
     text-align: center !important;
-    margin: 0 auto !important;
-    display: block !important;
-  }
-  
-  /* Force center alignment for any text content in footer columns */
-  .footer-col * {
-    text-align: center !important;
-  }
-  
-  /* Exception for social icons */
-  .social-icon {
-    display: inline-flex !important;
-    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block;
   }
 }
 
@@ -924,13 +929,11 @@
   .section-title h2 {
     font-size: 2rem;
   }
+  
   .footer-col {
     text-align: center !important;
     padding: 0 1rem;
-  }
-  /* Force all footer content to center on very small screens */
-  .footer-col * {
-    text-align: center !important;
+    max-width: 280px;
   }
 }
     
