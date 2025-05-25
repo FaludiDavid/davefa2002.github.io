@@ -920,29 +920,13 @@
       }
     }
 
-    /* Before-After konténer több képhez */
-.before-after-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem; /* Térköz a képek között */
-  justify-content: center;
-}
-
-/* Egyéni before-after doboz stílusa */
-.before-after {
-  flex: 1 1 450px; /* Rugalmas szélesség: minimum 450px, maximum kitölti a helyet */
-  max-width: 500px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* A canvas ne lógjon ki és jól skálázódjon */
-.before-after canvas {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+    /* Before-After Rész */
+    .before-after {
+      margin: 2rem 0; /* Felső és alsó margó 2 rem, bal és jobb oldalon nincs margó */
+      border-radius: 8px; /* A sarkok lekerekítése 8 pixellel */
+      overflow: hidden; /* A tartalom, ami kilóg a kereten túl, el lesz rejtve */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Finom, lefelé vetett árnyék */
+    }
     
     /* Animation */
     @keyframes fadeIn {
@@ -1128,30 +1112,19 @@
   </section>
   
   <!-- Interactive Before-After Section -->
-<section class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
-    </div>
-    <div class="before-after-wrapper">
-      <!-- Első kép -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
+      </div>
       <div class="before-after">
         <div class="canvas-instructions">
           <p><i class="fas fa-mouse-pointer"></i><span data-key="canvas.instruction">Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!</span></p>
         </div>
-        <canvas id="canvas1"></canvas>
-      </div>
-
-      <!-- Második kép -->
-      <div class="before-after">
-        <div class="canvas-instructions">
-          <p><i class="fas fa-mouse-pointer"></i><span data-key="canvas.instruction">Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!</span></p>
-        </div>
-        <canvas id="canvas2"></canvas>
+        <canvas id="canvas"></canvas>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Gallery Section -->
   <section id="gallery" class="section">
@@ -1439,29 +1412,33 @@
       });
     });
 
-    <!-- Script: Interaktív képek -->
-<script>
-  function initBeforeAfter(canvasId, beforeSrc, afterSrc) {
-    const canvas = document.getElementById(canvasId);
+    // Interactive Canvas Before-After Implementation
+    const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    const beforeImg = new Image();
-    const afterImg = new Image();
+    const rusty = new Image();
+    const clean = new Image();
+    rusty.src = 'images/rusty.jpg';
+    clean.src = 'images/clean.jpg';
+    let imageWidth = 0;
+    let imageHeight = 0;
     const maskCanvas = document.createElement('canvas');
     const maskCtx = maskCanvas.getContext('2d');
     const brushSize = 50;
     let isDrawing = false;
-    let imageWidth = 0;
-    let imageHeight = 0;
 
     function updateCanvas() {
-      ctx.drawImage(beforeImg, 0, 0, imageWidth, imageHeight);
+      // 1. Rajzoljuk a rozsdás felületet teljesen
+      ctx.drawImage(rusty, 0, 0, imageWidth, imageHeight);
+      // 2. Állítsuk be a maszkolást: csak azokat a részeket mutassuk a "clean" képből,
+      // ahol a maszk feketére van rajzolva
       ctx.save();
       ctx.globalCompositeOperation = 'destination-out';
       ctx.drawImage(maskCanvas, 0, 0);
       ctx.restore();
+      // 3. Tiszta felület rajzolása csak a maszkolt részekre
       ctx.save();
       ctx.globalCompositeOperation = 'destination-over';
-      ctx.drawImage(afterImg, 0, 0, imageWidth, imageHeight);
+      ctx.drawImage(clean, 0, 0, imageWidth, imageHeight);
       ctx.restore();
     }
 
@@ -1485,35 +1462,31 @@
       updateCanvas();
     }
 
-    function initCanvas() {
-      imageWidth = beforeImg.width;
-      imageHeight = beforeImg.height;
+    function init() {
+      // Kép betöltése után méret beállítása és canvas rajzolás
+      imageWidth = rusty.width;
+      imageHeight = rusty.height;
       canvas.width = imageWidth;
       canvas.height = imageHeight;
       maskCanvas.width = imageWidth;
       maskCanvas.height = imageHeight;
+      // Kezdeti renderelés
       updateCanvas();
     }
 
-    beforeImg.onload = () => {
-      if (afterImg.complete) initCanvas();
+    rusty.onload = () => {
+      // csak akkor induljunk el, ha mindkét kép be van töltve
+      if (clean.complete) init();
     };
-    afterImg.onload = () => {
-      if (beforeImg.complete) initCanvas();
+
+    clean.onload = () => {
+      if (rusty.complete) init();
     };
 
     canvas.addEventListener('mousedown', startDrawing);
     canvas.addEventListener('mouseup', stopDrawing);
     canvas.addEventListener('mouseleave', stopDrawing);
     canvas.addEventListener('mousemove', draw);
-
-    beforeImg.src = beforeSrc;
-    afterImg.src = afterSrc;
-  }
-
-  // Inicializálás két képre
-  initBeforeAfter('canvas', 'images/előtte.jpg', 'images/utánna.jpg');
-  initBeforeAfter('canvas2', 'images/előtte 1.jpg', 'images/utánna 1.jpg');
-</script>
+  </script>
 </body>
 </html>
