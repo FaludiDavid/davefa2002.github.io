@@ -920,13 +920,45 @@
       }
     }
 
-    /* Before-After Rész */
-    .before-after {
-      margin: 2rem 0; /* Felső és alsó margó 2 rem, bal és jobb oldalon nincs margó */
-      border-radius: 8px; /* A sarkok lekerekítése 8 pixellel */
-      overflow: hidden; /* A tartalom, ami kilóg a kereten túl, el lesz rejtve */
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Finom, lefelé vetett árnyék */
-    }
+    /* Before-After Rész - Updated */
+.before-after {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* New styles for dual canvas layout */
+.dual-canvas-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.canvas-wrapper {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.canvas-wrapper canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: crosshair;
+}
+
+/* Removed canvas labels */
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .dual-canvas-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
     
     /* Animation */
     @keyframes fadeIn {
@@ -1111,20 +1143,27 @@
     </div>
   </section>
   
-  <!-- Interactive Before-After Section -->
-  <section class="section">
-    <div class="container">
-      <div class="section-title">
-        <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
+<!-- Interactive Before-After Section -->
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
+    </div>
+    <div class="before-after">
+      <div class="canvas-instructions">
+        <p><i class="fas fa-mouse-pointer"></i><span data-key="canvas.instruction">Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!</span></p>
       </div>
-      <div class="before-after">
-        <div class="canvas-instructions">
-          <p><i class="fas fa-mouse-pointer"></i><span data-key="canvas.instruction">Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!</span></p>
+      <div class="dual-canvas-container">
+        <div class="canvas-wrapper">
+          <canvas id="canvas1"></canvas>
         </div>
-        <canvas id="canvas"></canvas>
+        <div class="canvas-wrapper">
+          <canvas id="canvas2"></canvas>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Gallery Section -->
   <section id="gallery" class="section">
@@ -1412,81 +1451,111 @@
       });
     });
 
-    // Interactive Canvas Before-After Implementation
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-    const rusty = new Image();
-    const clean = new Image();
-    rusty.src = 'images/rusty.jpg';
-    clean.src = 'images/clean.jpg';
-    let imageWidth = 0;
-    let imageHeight = 0;
-    const maskCanvas = document.createElement('canvas');
-    const maskCtx = maskCanvas.getContext('2d');
-    const brushSize = 50;
-    let isDrawing = false;
+    // Interactive Canvas Before-After Implementation - Updated for dual canvas
+function createCanvasHandler(canvasId, rustyImageSrc, cleanImageSrc) {
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext('2d');
+  const rusty = new Image();
+  const clean = new Image();
+  rusty.src = rustyImageSrc;
+  clean.src = cleanImageSrc;
+  let imageWidth = 0;
+  let imageHeight = 0;
+  const maskCanvas = document.createElement('canvas');
+  const maskCtx = maskCanvas.getContext('2d');
+  const brushSize = 80; // Increased brush size to match left image
+  let isDrawing = false;
 
-    function updateCanvas() {
-      // 1. Rajzoljuk a rozsdás felületet teljesen
-      ctx.drawImage(rusty, 0, 0, imageWidth, imageHeight);
-      // 2. Állítsuk be a maszkolást: csak azokat a részeket mutassuk a "clean" képből,
-      // ahol a maszk feketére van rajzolva
-      ctx.save();
-      ctx.globalCompositeOperation = 'destination-out';
-      ctx.drawImage(maskCanvas, 0, 0);
-      ctx.restore();
-      // 3. Tiszta felület rajzolása csak a maszkolt részekre
-      ctx.save();
-      ctx.globalCompositeOperation = 'destination-over';
-      ctx.drawImage(clean, 0, 0, imageWidth, imageHeight);
-      ctx.restore();
-    }
+  function updateCanvas() {
+    // 1. Rajzoljuk a rozsdás felületet teljesen
+    ctx.drawImage(rusty, 0, 0, imageWidth, imageHeight);
+    // 2. Állítsuk be a maszkolást: csak azokat a részeket mutassuk a "clean" képből,
+    // ahol a maszk feketére van rajzolva
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.drawImage(maskCanvas, 0, 0);
+    ctx.restore();
+    // 3. Tiszta felület rajzolása csak a maszkolt részekre
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.drawImage(clean, 0, 0, imageWidth, imageHeight);
+    ctx.restore();
+  }
 
-    function startDrawing() {
-      isDrawing = true;
-    }
+  function startDrawing() {
+    isDrawing = true;
+  }
 
-    function stopDrawing() {
-      isDrawing = false;
-    }
+  function stopDrawing() {
+    isDrawing = false;
+  }
 
-    function draw(e) {
-      if (!isDrawing) return;
-      const rect = canvas.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      maskCtx.beginPath();
-      maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
-      maskCtx.fillStyle = 'black';
-      maskCtx.fill();
-      updateCanvas();
-    }
+  function draw(e) {
+    if (!isDrawing) return;
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
+    
+    maskCtx.beginPath();
+    maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
+    maskCtx.fillStyle = 'black';
+    maskCtx.fill();
+    updateCanvas();
+  }
 
-    function init() {
-      // Kép betöltése után méret beállítása és canvas rajzolás
-      imageWidth = rusty.width;
-      imageHeight = rusty.height;
-      canvas.width = imageWidth;
-      canvas.height = imageHeight;
-      maskCanvas.width = imageWidth;
-      maskCanvas.height = imageHeight;
-      // Kezdeti renderelés
-      updateCanvas();
-    }
+  function init() {
+    // Use original image dimensions to prevent compression
+    imageWidth = rusty.width;
+    imageHeight = rusty.height;
+    canvas.width = imageWidth;
+    canvas.height = imageHeight;
+    maskCanvas.width = imageWidth;
+    maskCanvas.height = imageHeight;
+    // Kezdeti renderelés
+    updateCanvas();
+  }
 
-    rusty.onload = () => {
-      // csak akkor induljunk el, ha mindkét kép be van töltve
-      if (clean.complete) init();
-    };
+  rusty.onload = () => {
+    // csak akkor induljunk el, ha mindkét kép be van töltve
+    if (clean.complete) init();
+  };
 
-    clean.onload = () => {
-      if (rusty.complete) init();
-    };
+  clean.onload = () => {
+    if (rusty.complete) init();
+  };
 
-    canvas.addEventListener('mousedown', startDrawing);
-    canvas.addEventListener('mouseup', stopDrawing);
-    canvas.addEventListener('mouseleave', stopDrawing);
-    canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mousedown', startDrawing);
+  canvas.addEventListener('mouseup', stopDrawing);
+  canvas.addEventListener('mouseleave', stopDrawing);
+  canvas.addEventListener('mousemove', draw);
+
+  // Touch events for mobile support
+  canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    startDrawing();
+  });
+
+  canvas.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    stopDrawing();
+  });
+
+  canvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const mouseEvent = new MouseEvent('mousemove', {
+      clientX: touch.clientX,
+      clientY: touch.clientY
+    });
+    draw(mouseEvent);
+  });
+}
+
+// Initialize both canvases
+createCanvasHandler('canvas1', 'images/rusty.jpg', 'images/clean.jpg');
+createCanvasHandler('canvas2', 'images/előtte 1.jpg', 'images/utánna 1.jpg');
   </script>
 </body>
 </html>
