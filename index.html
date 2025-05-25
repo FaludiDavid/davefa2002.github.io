@@ -864,8 +864,10 @@
   .service-card {
     margin-bottom: 1.5rem;
   }
+  
+  /* Footer mobile centering - enhanced version */
   .footer-col {
-    text-align: center;
+    text-align: center !important;
     width: 100%;
     margin: 0 auto;
   }
@@ -874,16 +876,35 @@
     transform: translateX(-50%);
   }
   .footer-links {
-    text-align: center;
+    text-align: center !important;
+  }
+  .footer-links li {
+    text-align: center !important;
   }
   .footer-social {
     justify-content: center;
   }
-  /* Ensure contact information is centered */
+  
+  /* Target all possible contact information elements */
   .footer-col p,
-  .footer-col address {
-    text-align: center;
-    margin: 0 auto;
+  .footer-col address,
+  .footer-col div,
+  .footer-col span,
+  .footer-col a:not(.social-icon) {
+    text-align: center !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+  
+  /* Force center alignment for any text content in footer columns */
+  .footer-col * {
+    text-align: center !important;
+  }
+  
+  /* Exception for social icons */
+  .social-icon {
+    display: inline-flex !important;
+    text-align: center !important;
   }
 }
 
@@ -904,15 +925,15 @@
     font-size: 2rem;
   }
   .footer-col {
-    text-align: center;
+    text-align: center !important;
     padding: 0 1rem;
   }
-  /* Additional centering for very small screens */
-  .footer-links li {
-    text-align: center;
+  /* Force all footer content to center on very small screens */
+  .footer-col * {
+    text-align: center !important;
   }
 }
-
+    
     /* Before-After Rész - Updated */
 .before-after {
   margin: 2rem 0;
