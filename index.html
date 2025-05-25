@@ -920,13 +920,29 @@
       }
     }
 
-    /* Before-After Rész */
-    .before-after {
-      margin: 2rem 0; /* Felső és alsó margó 2 rem, bal és jobb oldalon nincs margó */
-      border-radius: 8px; /* A sarkok lekerekítése 8 pixellel */
-      overflow: hidden; /* A tartalom, ami kilóg a kereten túl, el lesz rejtve */
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Finom, lefelé vetett árnyék */
-    }
+    /* Before-After konténer több képhez */
+.before-after-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; /* Térköz a képek között */
+  justify-content: center;
+}
+
+/* Egyéni before-after doboz stílusa */
+.before-after {
+  flex: 1 1 450px; /* Rugalmas szélesség: minimum 450px, maximum kitölti a helyet */
+  max-width: 500px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* A canvas ne lógjon ki és jól skálázódjon */
+.before-after canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
     
     /* Animation */
     @keyframes fadeIn {
