@@ -63,6 +63,8 @@
       line-height: 1.6;
       background-color: var(--light);
       overflow-x: hidden;
+      margin: 0;
+      padding: 0;
     }
 
     /* Typography */
@@ -82,7 +84,7 @@
     }
 
     /* ============================================
-       NAVBAR / HEADER
+       NAVBAR / HEADER - FIXED LAYOUT
        ============================================ */
     .navbar {
       position: fixed;
@@ -104,6 +106,8 @@
       width: 100%;
       max-width: var(--container-width);
       margin: 0 auto;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     /* Logo */
@@ -118,6 +122,7 @@
       white-space: nowrap;
       flex-shrink: 0;
       gap: 0.5rem;
+      order: 1;
     }
 
     .logo i {
@@ -133,7 +138,8 @@
       align-items: center;
       flex: 1;
       justify-content: center;
-      margin: 0 1rem;
+      margin: 0;
+      order: 3;
     }
 
     .nav-item {
@@ -174,34 +180,34 @@
     }
 
     /* ============================================
-       LANGUAGE SWITCHER - IMPROVED DESIGN
+       LANGUAGE SWITCHER - NEW DESIGN
        ============================================ */
     .language-switcher-nav {
       display: flex;
       align-items: center;
       flex-shrink: 0;
-      margin-left: auto;
+      order: 4;
     }
 
     .language-switcher {
       display: flex;
-      gap: 0;
+      gap: 8px;
       background-color: transparent;
-      border-radius: 0;
+      border-radius: 8px;
       box-shadow: none;
       padding: 0;
       border: none;
     }
 
     .lang-btn {
-      padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px);
-      border: 2px solid var(--light-gray);
+      padding: 8px 16px;
+      border: 2px solid var(--secondary);
       background-color: var(--white);
-      color: var(--dark);
-      border-radius: 0;
+      color: var(--secondary);
+      border-radius: 8px;
       cursor: pointer;
-      font-weight: 600;
-      font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+      font-weight: 700;
+      font-size: 0.85rem;
       font-family: 'Montserrat', sans-serif;
       transition: all 0.3s ease;
       display: flex;
@@ -215,29 +221,12 @@
       position: relative;
     }
 
-    /* First button - rounded left */
-    .lang-btn-hu {
-      border-radius: 6px 0 0 6px;
-      border-right: 1px solid var(--light-gray);
-    }
-
-    /* Middle button */
-    .lang-btn-ro {
-      border-radius: 0;
-      border-right: 1px solid var(--light-gray);
-    }
-
-    /* Last button - rounded right */
-    .lang-btn-en {
-      border-radius: 0 6px 6px 0;
-      border-right: 2px solid var(--light-gray);
-    }
-
     /* Hover state */
     .lang-btn:hover {
-      background-color: var(--light);
-      color: var(--primary);
-      border-color: var(--secondary);
+      background-color: var(--secondary);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 115, 230, 0.3);
     }
 
     /* Active state */
@@ -246,40 +235,55 @@
       color: var(--white);
       border-color: var(--secondary);
       font-weight: 700;
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 115, 230, 0.4);
     }
 
     .lang-btn.active:hover {
       background-color: #0062c4;
       border-color: #0062c4;
+      box-shadow: 0 6px 16px rgba(0, 98, 196, 0.4);
     }
 
     .lang-btn:active {
-      transform: scale(0.95);
+      transform: translateY(0);
     }
 
-    /* Flag icon styles */
+    /* Flag icon styles - CORRECT FLAGS */
     .lang-flag {
-      width: clamp(16px, 3vw, 20px);
-      height: clamp(12px, 2.5vw, 14px);
+      width: 20px;
+      height: 14px;
       border-radius: 2px;
       display: inline-block;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
       flex-shrink: 0;
       border: 1px solid rgba(0, 0, 0, 0.1);
     }
 
+    /* Hungarian flag: red-white-green horizontal */
     .flag-hu {
-      background: linear-gradient(to bottom, #FF0000 33%, #FFFFFF 33%, #FFFFFF 66%, #00AA00 66%);
+      background: linear-gradient(to bottom, 
+        #CE2B37 0%, #CE2B37 33.33%, 
+        #FFFFFF 33.33%, #FFFFFF 66.66%, 
+        #117A44 66.66%, #117A44 100%);
     }
 
+    /* Romanian flag: blue-yellow-red vertical */
     .flag-ro {
-      background: linear-gradient(to right, #002B7F 33%, #FCD116 33%, #FCD116 66%, #CE1126 66%);
+      background: linear-gradient(to right, 
+        #002B7F 0%, #002B7F 33.33%, 
+        #FFD700 33.33%, #FFD700 66.66%, 
+        #CE1126 66.66%, #CE1126 100%);
     }
 
+    /* English flag: Union Jack */
     .flag-en {
-      background: linear-gradient(to right, #012169 25%, #FFFFFF 25%, #FFFFFF 50%, #012169 50%),
-                  repeating-linear-gradient(45deg, #FFF 0px, #FFF 10px, #C8102E 10px, #C8102E 20px);
+      background-color: #012169;
+      background-image: 
+        linear-gradient(45deg, transparent 48%, #FFF 48%, #FFF 52%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, #FFF 48%, #FFF 52%, transparent 52%),
+        linear-gradient(to bottom, transparent 40%, #C8102E 40%, #C8102E 60%, transparent 60%),
+        linear-gradient(to right, transparent 40%, #C8102E 40%, #C8102E 60%, transparent 60%);
+      background-size: 100% 100%;
     }
 
     /* Language label */
@@ -306,6 +310,7 @@
       touch-action: manipulation;
       -webkit-user-select: none;
       user-select: none;
+      order: 2;
     }
 
     .mobile-toggle:active {
@@ -846,7 +851,7 @@
     }
 
     /* ============================================
-       CONTACT SECTION
+       CONTACT SECTION - SIMPLIFIED
        ============================================ */
     .contact {
       background-color: var(--white);
@@ -855,16 +860,16 @@
     .contact-container {
       display: flex;
       flex-wrap: wrap;
-      gap: clamp(1.5rem, 4vw, 2rem);
+      gap: clamp(2rem, 5vw, 4rem);
+      justify-content: center;
     }
 
     .contact-info {
-      flex: 1;
-      min-width: 260px;
+      flex: 0 1 350px;
     }
 
     .contact-info h3 {
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       color: var(--primary);
       font-size: clamp(1.3rem, 4vw, 1.5rem);
     }
@@ -872,32 +877,34 @@
     .contact-item {
       display: flex;
       align-items: flex-start;
-      margin-bottom: 1.5rem;
-      gap: 1rem;
+      margin-bottom: 2rem;
+      gap: 1.5rem;
     }
 
     .contact-icon {
-      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-size: 1.5rem;
       color: var(--secondary);
       flex-shrink: 0;
       min-width: 24px;
       text-align: center;
+      margin-top: 0.25rem;
     }
 
-    .contact-details h4 {
-      margin-bottom: 0.25rem;
-      font-size: clamp(0.95rem, 2vw, 1rem);
+    .contact-details {
+      flex: 1;
     }
 
     .contact-details p {
-      font-size: clamp(0.9rem, 2vw, 1rem);
-      color: var(--gray);
+      font-size: clamp(0.95rem, 2vw, 1.05rem);
+      color: var(--dark);
+      line-height: 1.6;
     }
 
     .contact-details a {
       color: var(--secondary);
       text-decoration: none;
       transition: color 0.3s ease;
+      font-weight: 500;
     }
 
     .contact-details a:hover {
@@ -906,12 +913,11 @@
     }
 
     .contact-form {
-      flex: 1;
-      min-width: 260px;
+      flex: 0 1 350px;
     }
 
     .contact-form h3 {
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       color: var(--primary);
       font-size: clamp(1.3rem, 4vw, 1.5rem);
     }
@@ -1111,7 +1117,7 @@
     }
 
     /* ============================================
-       RESPONSIVE DESIGN - TABLET
+       RESPONSIVE DESIGN - TABLET (992px)
        ============================================ */
     @media (max-width: 992px) {
       .hero h1 {
@@ -1128,9 +1134,14 @@
     }
 
     /* ============================================
-       RESPONSIVE DESIGN - MOBILE
+       RESPONSIVE DESIGN - MOBILE (768px)
        ============================================ */
     @media (max-width: 768px) {
+      .navbar-container {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
       .mobile-toggle {
         display: flex !important;
       }
@@ -1138,22 +1149,27 @@
       .nav-menu {
         position: absolute;
         top: var(--header-height);
-        right: -100%;
+        left: 0;
+        right: 0;
         flex-direction: column;
         background-color: var(--white);
         width: 100%;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s ease;
-        padding: 1rem 0;
+        transition: max-height 0.3s ease;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
         gap: 0;
         z-index: 999;
         flex: none;
         margin: 0;
         justify-content: flex-start;
+        order: 5;
       }
 
       .nav-menu.active {
-        right: 0;
+        max-height: 500px;
+        padding: 1rem 0;
       }
 
       .nav-item {
@@ -1169,11 +1185,22 @@
       }
 
       .language-switcher-nav {
-        margin-left: 0.5rem;
+        order: 4;
+        margin-left: auto;
       }
 
       .lang-btn {
-        padding: clamp(6px, 2vw, 10px) clamp(8px, 2vw, 12px);
+        padding: 6px 12px;
+        font-size: 0.75rem;
+      }
+
+      .lang-flag {
+        width: 16px;
+        height: 12px;
+      }
+
+      .lang-label {
+        display: none;
       }
 
       .hero {
@@ -1192,15 +1219,18 @@
 
       .contact-container {
         flex-direction: column;
+        gap: 2rem;
       }
 
       .contact-info,
       .contact-form {
-        min-width: 100%;
+        flex: 1;
+        width: 100%;
       }
 
       .dual-canvas-container {
         grid-template-columns: 1fr;
+        gap: 1rem;
       }
 
       .footer-container {
@@ -1237,26 +1267,91 @@
     }
 
     /* ============================================
-       RESPONSIVE DESIGN - SMALL MOBILE
+       RESPONSIVE DESIGN - SMALL MOBILE (576px)
        ============================================ */
     @media (max-width: 576px) {
       :root {
         --header-height: 70px;
       }
 
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        margin: 0 auto;
+        padding: 0 0.75rem;
+        width: 100%;
+      }
+
+      .navbar-container {
+        padding: 0 0.5rem;
+        height: var(--header-height);
+      }
+
+      .logo {
+        font-size: 1rem;
+        order: 1;
+      }
+
+      .logo i {
+        display: none;
+      }
+
+      .mobile-toggle {
+        order: 2;
+        font-size: 1.25rem;
+      }
+
+      .language-switcher-nav {
+        order: 3;
+        margin-left: 0;
+      }
+
+      .language-switcher {
+        gap: 4px;
+      }
+
+      .lang-btn {
+        padding: 6px 10px;
+        font-size: 0.7rem;
+        gap: 4px;
+      }
+
+      .lang-flag {
+        width: 14px;
+        height: 10px;
+      }
+
+      .nav-menu {
+        flex-basis: 100%;
+        order: 5;
+      }
+
       .hero {
         min-height: auto;
-        padding: calc(var(--header-height) + 1rem) 1rem;
+        padding: calc(var(--header-height) + 1rem) 0.75rem;
+        margin-top: var(--header-height);
+      }
+
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
       }
 
       .btn {
         display: block;
         width: 100%;
         margin: 0.5rem 0;
+        padding: 0.7rem 1rem;
       }
 
       .section {
-        padding: 2rem 1rem;
+        padding: 2rem 0.75rem;
       }
 
       .services-grid {
@@ -1265,45 +1360,25 @@
 
       .process-steps {
         flex-direction: column;
+        gap: 1rem;
       }
 
       .process-step {
         padding: 0;
-      }
-
-      .logo {
-        font-size: 1rem;
-      }
-
-      .logo i {
-        display: none;
-      }
-
-      .lang-btn .lang-label {
-        display: none;
-      }
-
-      .lang-btn {
-        min-width: 40px;
-        padding: 8px 6px;
-      }
-
-      .lang-flag {
-        width: 18px;
-        height: 13px;
+        min-width: 100%;
       }
 
       .contact-item {
-        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+        gap: 1rem;
       }
 
       .contact-icon {
-        width: 100%;
-        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
       }
 
       .footer-social {
-        gap: 0.75rem;
+        gap: 0.5rem;
       }
 
       .social-icon {
@@ -1314,13 +1389,21 @@
       }
 
       .cta {
-        padding: 2rem 1rem;
+        padding: 2rem 0.75rem;
+      }
+
+      .cta h2 {
+        font-size: 1.5rem;
+      }
+
+      .section-title h2 {
+        font-size: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
-    <!-- ============================================
+  <!-- ============================================
        NAVIGATION / NAVBAR
        ============================================ -->
   <nav class="navbar">
@@ -1346,23 +1429,23 @@
         <li class="nav-item"><a href="#contact" class="nav-link" data-key="nav.contact">Kapcsolat</a></li>
       </ul>
 
-      <!-- Language Switcher - IMPROVED DESIGN -->
+      <!-- Language Switcher - TOP RIGHT -->
       <div class="language-switcher-nav">
         <div class="language-switcher" role="group" aria-label="Select language">
           <!-- Hungarian -->
-          <button class="lang-btn lang-btn-hu active" data-lang="hu" title="Magyar (Hungarian)" aria-pressed="true" aria-label="Switch to Hungarian">
+          <button class="lang-btn active" data-lang="hu" title="Magyar (Hungarian)" aria-pressed="true" aria-label="Switch to Hungarian">
             <span class="lang-flag flag-hu" aria-hidden="true"></span>
             <span class="lang-label">HU</span>
           </button>
           
           <!-- Romanian -->
-          <button class="lang-btn lang-btn-ro" data-lang="ro" title="Română (Romanian)" aria-pressed="false" aria-label="Switch to Romanian">
+          <button class="lang-btn" data-lang="ro" title="Română (Romanian)" aria-pressed="false" aria-label="Switch to Romanian">
             <span class="lang-flag flag-ro" aria-hidden="true"></span>
             <span class="lang-label">RO</span>
           </button>
           
           <!-- English -->
-          <button class="lang-btn lang-btn-en" data-lang="en" title="English" aria-pressed="false" aria-label="Switch to English">
+          <button class="lang-btn" data-lang="en" title="English" aria-pressed="false" aria-label="Switch to English">
             <span class="lang-flag flag-en" aria-hidden="true"></span>
             <span class="lang-label">EN</span>
           </button>
@@ -1649,9 +1732,9 @@
       <a href="#contact" class="btn btn-outline" data-key="cta.button">Kapcsolat</a>
     </div>
   </section>
-
-  <!-- ============================================
-       CONTACT & FOOTER SECTION
+  
+   <!-- ============================================
+       CONTACT SECTION - SIMPLIFIED
        ============================================ -->
   <section id="contact" class="section contact">
     <div class="container">
@@ -1659,7 +1742,7 @@
         <h2 data-key="contact.title">Kapcsolat</h2>
       </div>
       <div class="contact-container">
-        <!-- Contact Information -->
+        <!-- Contact Information - SIMPLIFIED (Only Address, Phone, Email) -->
         <div class="contact-info">
           <h3 data-key="footer.contact">Elérhetőségek</h3>
           
@@ -1669,7 +1752,6 @@
               <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
             </div>
             <div class="contact-details">
-              <h4 data-key="contact.location">Cím</h4>
               <p data-key="footer.address">Székelyudvarhely, Fenyő utca 58.</p>
             </div>
           </div>
@@ -1680,7 +1762,6 @@
               <i class="fas fa-phone" aria-hidden="true"></i>
             </div>
             <div class="contact-details">
-              <h4 data-key="contact.phone">Telefon</h4>
               <p><a href="tel:+40745967960">+40 745 967 960</a></p>
             </div>
           </div>
@@ -1691,23 +1772,7 @@
               <i class="fas fa-envelope" aria-hidden="true"></i>
             </div>
             <div class="contact-details">
-              <h4 data-key="contact.email">Email</h4>
               <p><a href="mailto:koroziostop@gmail.com">koroziostop@gmail.com</a></p>
-            </div>
-          </div>
-
-          <!-- Hours -->
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-clock" aria-hidden="true"></i>
-            </div>
-            <div class="contact-details">
-              <h4 data-key="contact.hours">Nyitvatartás</h4>
-              <p>
-                <span data-key="footer.weekday">Hétfő - Péntek: </span>8:00 - 17:00<br>
-                <span data-key="footer.saturday">Szombat: </span>9:00 - 13:00<br>
-                <span data-key="footer.sunday">Vasárnap: </span><span data-key="footer.closed">Zárva</span>
-              </p>
             </div>
           </div>
         </div>
@@ -1892,17 +1957,9 @@
         'cta.button': 'Kapcsolat',
         'contact.title': 'Kapcsolat',
         'contact.form-title': 'Írjon nekünk',
-        'contact.location': 'Cím',
-        'contact.phone': 'Telefon',
-        'contact.email': 'Email',
-        'contact.hours': 'Nyitvatartás',
         'contact.send': 'Küldés',
         'footer.contact': 'Elérhetőségek',
         'footer.address': 'Székelyudvarhely, Fenyő utca 58.',
-        'footer.weekday': 'Hétfő - Péntek: ',
-        'footer.saturday': 'Szombat: ',
-        'footer.sunday': 'Vasárnap: ',
-        'footer.closed': 'Zárva',
         'footer.quick-links': 'Gyors linkek',
         'footer.services': 'Szolgáltatások',
         'footer.about': 'Professzionális rozsdaeltávolítás és fémfelület kezelés szolgáltatások.',
@@ -1953,17 +2010,9 @@
         'cta.button': 'Contact',
         'contact.title': 'Contact',
         'contact.form-title': 'Scrieți-ne',
-        'contact.location': 'Adresă',
-        'contact.phone': 'Telefon',
-        'contact.email': 'Email',
-        'contact.hours': 'Program',
         'contact.send': 'Trimiteți',
         'footer.contact': 'Date de contact',
         'footer.address': 'Odorheiu Secuiesc, Str. Fenyő 58.',
-        'footer.weekday': 'Luni - Vineri: ',
-        'footer.saturday': 'Sâmbătă: ',
-        'footer.sunday': 'Duminică: ',
-        'footer.closed': 'Închis',
         'footer.quick-links': 'Legături rapide',
         'footer.services': 'Servicii',
         'footer.about': 'Servicii profesionale de îndepărtare a ruginii și tratare a suprafețelor metalice.',
@@ -2014,17 +2063,9 @@
         'cta.button': 'Contact',
         'contact.title': 'Contact',
         'contact.form-title': 'Write to us',
-        'contact.location': 'Address',
-        'contact.phone': 'Phone',
-        'contact.email': 'Email',
-        'contact.hours': 'Hours',
         'contact.send': 'Send',
         'footer.contact': 'Contact Information',
         'footer.address': 'Odorheiu Secuiesc, Fenyő Street 58.',
-        'footer.weekday': 'Monday - Friday: ',
-        'footer.saturday': 'Saturday: ',
-        'footer.sunday': 'Sunday: ',
-        'footer.closed': 'Closed',
         'footer.quick-links': 'Quick Links',
         'footer.services': 'Services',
         'footer.about': 'Professional rust removal and metal surface treatment services.',
