@@ -1,1047 +1,1049 @@
-<!-- HTML DOKUMENTUM KEZDETE -->
 <!DOCTYPE html>
 <html lang="hu">
 
-<!-- FEJLÉC: Technikai beállítások, cím, metaadatok, betűtípusok, stílusok -->
 <head>
-  <!-- Karakterkódolás és mobilbarát nézet beállítása -->
+  <!-- Character encoding and mobile optimization -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Böngésző fülön megjelenő cím -->
+  
+  <!-- Dynamic page title (will be updated by language switcher) -->
   <title>Korozio Stop Kft. - Homokfújás Székelyudvarhely | Rozsdaeltávolítás</title>
 
-  <!-- SEO szempontból fontos leírás és kulcsszavak -->
+  <!-- SEO Meta Tags -->
   <meta name="description" content="A Korozio Stop Kft. Székelyudvarhelyen több, mint 20 éve kínál rozsdaeltávolítás, homokfújás és porfestés szolgáltatásokat.">
-  <meta name="keywords" content="koroziostop, sablare, Korozio Stop, homokfújás, homokfúvás, rozsdaeltávolítás, rozsdaeltávolítás Székelyudvarhely, porfestés Székelyudvarhely, Székelyudvarhely, kvarchomok, gumiszerelés, fémfelület tisztítás, fémfelület tisztítás Székelyudvarhely, sablare Odorheiusecuiesc">
+  <meta name="keywords" content="koroziostop, sablare, homokfújás, rozsdaeltávolítás, porfestés, Székelyudvarhely, Odorheiu Secuiesc">
+  <meta name="author" content="Korozio Stop Kft.">
+  <meta name="theme-color" content="#0a2540">
 
-  <!-- Ikon készlet (Font Awesome) – ikonok használatához -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-  <!-- Google betűtípusok – Montserrat és Roboto -->
+  <!-- External Resources -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa3IW2lEnf3lGY6i3EOVBB30C9fcpZaN8QXcFZ537d6TsT4S6V1eLwCvL6ZWFi+bUg0dcjj2385aq7L3d2w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap">
 
-  <!-- BELSŐ STÍLUSOK: színek, alapbeállítások, komponensstílusok -->
   <style>
-    /* CSS VÁLTOZÓK: színpaletta, méretek */
+    /* ============================================
+       CSS VARIABLES - Color Palette & Sizing
+       ============================================ */
     :root {
-      --primary: #0a2540;       /* Alapszín: sötétkék */
-      --secondary: #0073e6;     /* Kiemelő szín: világoskék */
-      --accent: #e67e22;        /* Kiegészítő szín: narancs */
-      --light: #f8f9fa;         /* Világos háttérszín */
-      --dark: #212529;          /* Szöveg és sötét elemek színe */
-      --gray: #6c757d;          /* Középszürke árnyalat */
-      --light-gray: #e9ecef;    /* Halványabb szürke szín */
-      --success: #198754;       /* Sikeres művelet színe (zöld) */
-      --danger: #dc3545;        /* Hiba vagy figyelmeztetés színe (piros) */
-      --warning: #ffc107;       /* Figyelmeztető sárga szín */
-      --info: #0dcaf0;          /* Információs szín: világoskék */
-      --white: #ffffff;         /* Fehér szín */
-      --black: #000000;         /* Fekete szín */
-      --header-height: 80px;    /* Fejléc magassága */
-      --container-width: 1200px;/* Oldal tartalmi szélessége */
+      --primary: #0a2540;
+      --secondary: #0073e6;
+      --accent: #e67e22;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --light-gray: #e9ecef;
+      --success: #198754;
+      --danger: #dc3545;
+      --warning: #ffc107;
+      --info: #0dcaf0;
+      --white: #ffffff;
+      --black: #000000;
+      --header-height: 80px;
+      --container-width: 1200px;
     }
 
-       /* ALAP STÍLUSOK MINDEN ELEMRE */
+    /* ============================================
+       RESET & BASE STYLES
+       ============================================ */
     * {
-      margin: 0;                     /* Külső margók eltávolítása */
-      padding: 0;                    /* Belső margók eltávolítása */
-      box-sizing: border-box;       /* Szélesség/számítás belülről történjen */
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    /* HTML ELEM STÍLUSA */
     html {
-      scroll-behavior: smooth;      /* Simított görgetés hatás */
-      scroll-padding-top: var(--header-height); /* Görgetésnél ne takarja el a fejléc a tartalmat */
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--header-height);
     }
 
-    /* BODY – Az oldal alap kinézete */
     body {
-      font-family: 'Roboto', sans-serif;  /* Alap betűtípus */
-      color: var(--dark);                 /* Szövegszín */
-      line-height: 1.6;                   /* Sorok közötti távolság */
-      background-color: var(--light);     /* Háttérszín */
-      overflow-x: hidden;                 /* Ne legyen vízszintes görgetés */
+      font-family: 'Roboto', sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      background-color: var(--light);
+      overflow-x: hidden;
     }
 
-    /* CÍMSOROK (h1-h6) STÍLUSA */
+    /* Typography */
     h1, h2, h3, h4, h5, h6 {
-      font-family: 'Montserrat', sans-serif; /* Címsorok más betűtípussal */
-      font-weight: 600;                      /* Félkövér */
-      margin-bottom: 1rem;                   /* Alsó margó */
-      line-height: 1.2;                      /* Címsor sorköze */
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      line-height: 1.2;
     }
 
-    /* TARTALMI KONTAINER – központosítás és margók */
+    /* Container */
     .container {
-      width: 100%;                              /* Teljes szélesség mobilon */
-      max-width: var(--container-width);        /* Maximális szélesség */
-      margin: 0 auto;                           /* Középre igazítás */
-      padding: 0 1rem;                          /* Oldalsó belső margó */
+      width: 100%;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 1rem;
     }
 
-    /* NAVIGÁCIÓS SÁV – FEJLÉC */
+    /* ============================================
+       NAVBAR / HEADER
+       ============================================ */
     .navbar {
-      position: fixed;                           /* Rögzített a képernyő tetején */
+      position: fixed;
       top: 0;
-      width: 100%;                               /* Teljes szélesség */
-      background-color: var(--white);            /* Fehér háttér */
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);   /* Árnyék a fejléc alatt */
-      z-index: 1000;                             /* Magas rétegszint, hogy más elemek alá kerüljön */
-      transition: all 0.3s ease;                 /* Animáció pl. scrollnál */
+      width: 100%;
+      height: var(--header-height);
+      background-color: var(--white);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
     }
 
-    /* NAVIGÁCIÓ KONTAINER – logó + menüpontok elrendezése */
     .navbar-container {
-      display: flex;                             /* Rugalmas elrendezés */
-      justify-content: space-between;           /* Elemszétosztás: balra logó, jobbra menü */
-      align-items: center;                       /* Függőleges középre igazítás */
-      height: var(--header-height);             /* Magasság */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      padding: 0 1rem;
+      width: 100%;
+      max-width: var(--container-width);
+      margin: 0 auto;
     }
 
-    /* LOGÓ STÍLUS */
+    /* Logo */
     .logo {
-      font-family: 'Montserrat', sans-serif;    /* Betűtípus */
-      font-size: 1.5rem;                         /* Betűméret */
-      font-weight: 700;                          /* Vastag */
-      color: var(--primary);                     /* Alapszín */
-      text-decoration: none;                     /* Link aláhúzás eltüntetése */
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1rem, 4vw, 1.5rem);
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
       display: flex;
-      align-items: center;                       /* Ikon és szöveg középre igazítása */
+      align-items: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+      gap: 0.5rem;
     }
 
     .logo i {
-      margin-right: 0.5rem;                      /* Ikon és szöveg közötti térköz */
-      color: var(--secondary);                   /* Ikon színe */
+      color: var(--secondary);
+      font-size: clamp(1rem, 4vw, 1.5rem);
     }
 
-    /* NAVIGÁCIÓS MENÜ (jobbra igazított lista) */
+    /* Navigation Menu */
     .nav-menu {
-      display: flex;                             /* Vízszintes menüpontok */
-      list-style: none;                          /* Nincsenek lista pontok */
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
     }
 
     .nav-item {
-      margin-left: 2rem;                         /* Menüpontok közötti térköz */
+      position: relative;
     }
 
     .nav-link {
-      text-decoration: none;                     /* Aláhúzás eltávolítása */
-      color: var(--dark);                        /* Szöveg színe */
-      font-weight: 500;                          /* Félkövér */
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      font-size: clamp(0.9rem, 2vw, 1rem);
       position: relative;
-      transition: all 0.3s ease;                 /* Áttűnés hover-nél */
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 0;
+      min-height: 44px;
     }
 
     .nav-link:hover {
-      color: var(--secondary);                   /* Hover szín */
+      color: var(--secondary);
     }
 
+    /* Underline animation on hover */
     .nav-link::after {
-      content: '';                               /* Aláhúzás animációhoz */
+      content: '';
       position: absolute;
       bottom: -5px;
       left: 0;
-      width: 0;                                  /* Kezdetben láthatatlan */
+      width: 0;
       height: 2px;
       background-color: var(--secondary);
-      transition: width 0.3s ease;               /* Áttűnés */
+      transition: width 0.3s ease;
     }
 
     .nav-link:hover::after {
-      width: 100%;                               /* Hover-re teljes vonal */
+      width: 100%;
     }
 
-    /* LANGUAGE SWITCHER STYLES */
-.language-switcher {
-  display: flex;
-  gap: 3px;
-  background-color: var(--white);
-  border-radius: 25px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 3px;
-  border: 1px solid var(--light-gray);
-}
+    /* ============================================
+       LANGUAGE SWITCHER
+       ============================================ */
+    .language-switcher-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
 
-.lang-btn {
-  padding: 8px 14px;
-  border: none;
-  background-color: transparent;
-  color: var(--dark);
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 0.85rem;
-  font-family: 'Montserrat', sans-serif;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  min-width: 60px;
-  justify-content: center;
-}
+    .language-switcher {
+      display: flex;
+      gap: 3px;
+      background-color: var(--white);
+      border-radius: 25px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 3px;
+      border: 1px solid var(--light-gray);
+    }
 
-.lang-btn:hover {
-  background-color: var(--light);
-  transform: translateY(-1px);
-}
+    .lang-btn {
+      padding: clamp(6px, 2vw, 8px) clamp(10px, 3vw, 14px);
+      border: none;
+      background-color: transparent;
+      color: var(--dark);
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      justify-content: center;
+      min-height: 36px;
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
+    }
 
-.lang-btn.active {
-  background-color: var(--secondary);
-  color: var(--white);
-  box-shadow: 0 2px 4px rgba(0, 115, 230, 0.3);
-}
+    .lang-btn:hover {
+      background-color: var(--light);
+      transform: translateY(-1px);
+    }
 
-.flag-icon {
-  width: 18px;
-  height: 13px;
-  border-radius: 2px;
-  display: inline-block;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
+    .lang-btn.active {
+      background-color: var(--secondary);
+      color: var(--white);
+      box-shadow: 0 2px 4px rgba(0, 115, 230, 0.3);
+    }
 
-.flag-hu {
-  background: linear-gradient(to bottom, #FF0000 33%, #FFFFFF 33%, #FFFFFF 66%, #00AA00 66%);
-}
+    .lang-btn:active {
+      transform: translateY(0);
+    }
 
-.flag-ro {
-  background: linear-gradient(to right, #002B7F 33%, #FCD116 33%, #FCD116 66%, #CE1126 66%);
-}
+    /* Flags */
+    .flag-icon {
+      width: clamp(14px, 3vw, 18px);
+      height: clamp(10px, 2.5vw, 13px);
+      border-radius: 2px;
+      display: inline-block;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      flex-shrink: 0;
+    }
 
-/* Position the language switcher in the navbar */
-.navbar-container {
-  position: relative;
-}
+    .flag-hu {
+      background: linear-gradient(to bottom, #FF0000 33%, #FFFFFF 33%, #FFFFFF 66%, #00AA00 66%);
+    }
 
-.language-switcher-nav {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-}
+    .flag-ro {
+      background: linear-gradient(to right, #002B7F 33%, #FCD116 33%, #FCD116 66%, #CE1126 66%);
+    }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .language-switcher-nav {
-    right: 60px; /* Make room for mobile menu button */
-    top: 50%;
-  }
-  
-  .lang-btn {
-    padding: 6px 10px;
-    font-size: 0.8rem;
-    min-width: 50px;
-  }
-  
-  .flag-icon {
-    width: 16px;
-    height: 12px;
-  }
-}
+    .flag-en {
+      background: linear-gradient(to right, #012169 25%, #FFFFFF 25%, #FFFFFF 50%, #012169 50%),
+                  repeating-linear-gradient(45deg, #FFF 0px, #FFF 10px, #C8102E 10px, #C8102E 20px);
+    }
 
-@media (max-width: 480px) {
-  .lang-btn span:not(.flag-icon) {
-    display: none; /* Hide text on very small screens, show only flags */
-  }
-  
-  .lang-btn {
-    min-width: 35px;
-    padding: 6px 8px;
-  }
-}
-
-    /* MOBIL MENÜ GOMB (három csíkos ikon) */
+    /* ============================================
+       MOBILE MENU TOGGLE
+       ============================================ */
     .mobile-toggle {
-      display: none;                             /* Csak mobilon látszik majd */
+      display: none;
       font-size: 1.5rem;
       color: var(--primary);
       background: none;
       border: none;
-      cursor: pointer;                           /* Kéz kurzor */
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
-    /* SERVICE ICON STYLING FOR PNG IMAGES */
-    .service-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      max-width: 64px; /* Adjust based on your design needs */
-      max-height: 64px; /* Adjust based on your design needs */
+    .mobile-toggle:active {
+      opacity: 0.8;
     }
 
-    /* If you need to maintain the original icon container styling */
-    .service-icon {
+    /* ============================================
+       HERO SECTION
+       ============================================ */
+    .hero {
+      min-height: 100vh;
+      background-image: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.85)), url("https://via.placeholder.com/1920x1080");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       display: flex;
       align-items: center;
       justify-content: center;
-      /* Add any existing styling for .service-icon here */
-    }
-
-   /* HERO SZEKCIÓ – Nagyképes nyitó rész, főcím + gombok */
-    .hero {
-      height: 100vh;                                              /* Teljes képernyő magasság */
-      background-image: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.85)), url("https://via.placeholder.com/1920x1080"); /* Háttérkép sötétített átfedéssel */
-      background-size: cover;                                     /* Kép kitölti a hátteret arányosan */
-      background-position: center;                                /* Kép középre igazítva */
-      display: flex;                                              /* Flexbox az elrendezéshez */
-      align-items: center;                                        /* Tartalom függőleges középre igazítása */
-      color: var(--white);                                        /* Szöveg színe fehér */
-      text-align: center;                                         /* Középre igazított szöveg */
+      color: var(--white);
+      text-align: center;
+      padding: calc(var(--header-height) + 2rem) 1rem 2rem;
+      margin-top: var(--header-height);
     }
 
     .hero-content {
-      max-width: 800px;                                           /* Maximális szélesség */
-      margin: 0 auto;                                             /* Középre igazítás */
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .hero h1 {
-      font-size: 3.5rem;                                          /* Nagyméretű főcím */
-      margin-bottom: 1.5rem;                                      /* Alsó margó */
-      font-weight: 700;                                           /* Vastag betű */
+      font-size: clamp(1.8rem, 8vw, 3.5rem);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      line-height: 1.1;
     }
 
     .hero p {
-      font-size: 1.25rem;                                        /* Bevezető szöveg mérete */
-      margin-bottom: 2rem;                                       /* Távolság a gomboktól */
-      opacity: 0.9;                                               /* Enyhén átlátszó szöveg */
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      line-height: 1.6;
     }
 
-    /* GOMBOK ÁLTALÁNOS STÍLUSA */
+    /* ============================================
+       BUTTONS
+       ============================================ */
     .btn {
-      display: inline-block;                                     /* Egymás mellett jelennek meg */
-      padding: 0.75rem 1.5rem;                                    /* Belső margó */
-      border-radius: 4px;                                         /* Lekerekített sarkok */
-      text-decoration: none;                                      /* Nincs aláhúzás */
-      font-weight: 600;                                           /* Félkövér */
-      text-transform: uppercase;                                  /* Nagybetűs szöveg */
-      letter-spacing: 1px;                                        /* Betűk közötti térköz */
-      transition: all 0.3s ease;                                  /* Animáció hover-re */
-      margin: 0.5rem;                                             /* Gombok közötti térköz */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+      min-height: 44px;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      touch-action: manipulation;
+      border: none;
+      cursor: pointer;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
-    /* PRIMER GOMB (pl. fő CTA) */
     .btn-primary {
-      background-color: var(--secondary);                         /* Háttérszín */
-      color: var(--white);                                        /* Betűszín */
-      border: 2px solid var(--secondary);                         /* Szegély */
+      background-color: var(--secondary);
+      color: var(--white);
+      border: 2px solid var(--secondary);
     }
 
     .btn-primary:hover {
-      background-color: transparent;                              /* Hover-re áttetsző háttér */
-      color: var(--white);                                        /* Betűszín marad */
+      background-color: transparent;
+      color: var(--white);
     }
 
-    /* KONTÚR GOMB (fehér szélű) */
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+
     .btn-outline {
-      background-color: transparent;                              /* Áttetsző háttér */
-      color: var(--white);                                        /* Fehér szöveg */
-      border: 2px solid var(--white);                             /* Fehér keret */
+      background-color: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
     }
 
     .btn-outline:hover {
-      background-color: var(--white);                             /* Hover-re fehér háttér */
-      color: var(--primary);                                      /* Szöveg színe sötétkék */
+      background-color: var(--white);
+      color: var(--primary);
     }
 
-        /* RÓLUNK SZEKCIÓ – bemutatkozás és kép */
+    .btn-outline:active {
+      transform: scale(0.98);
+    }
+
+    /* ============================================
+       SECTIONS
+       ============================================ */
     .section {
-      padding: 6rem 0;                                            /* Függőleges térköz a szekciók között */
+      padding: clamp(3rem, 8vw, 6rem) 0;
     }
 
     .section-title {
-      text-align: center;                                         /* Cím középre igazítása */
-      margin-bottom: 3rem;                                       /* Távolság a cím és a tartalom között */
+      text-align: center;
+      margin-bottom: 3rem;
     }
 
     .section-title h2 {
-      font-size: 2.5rem;                                          /* Címsor betűmérete */
-      color: var(--primary);                                     /* Sötétkék szín */
-      position: relative;                                        /* Pozícionálás a díszcsíkhoz */
-      display: inline-block;                                     /* Csak a szöveg szélességét foglalja */
-      margin-bottom: 1rem;                                       /* Alsó margó */
+      font-size: clamp(1.8rem, 6vw, 2.5rem);
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1rem;
     }
 
     .section-title h2::after {
-      content: '';                                                /* Díszcsík megjelenítése */
+      content: '';
       position: absolute;
       bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
       width: 80px;
       height: 3px;
-      background-color: var(--secondary);                         /* Világoskék vonal */
+      background-color: var(--secondary);
     }
 
+    /* ============================================
+       ABOUT SECTION
+       ============================================ */
     .about-content {
-      display: flex;                                              /* Rugalmas elrendezés szöveg és kép között */
-      flex-wrap: wrap;                                           /* Kisebb képernyőn töri a sorokat */
-      justify-content: space-between;                            /* Két oldalra helyezi az elemeket */
-      align-items: center;                                       /* Függőlegesen középre igazítja őket */
-      gap: 2rem;                                                 /* Rés a szöveg és kép között */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
     }
 
     .about-text {
-      flex: 1;                                                    /* A konténer fele */
-      min-width: 300px;                                          /* Minimum szélesség a törés elkerüléséhez */
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .about-text h3 {
+      font-size: clamp(1.5rem, 4vw, 1.8rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+      line-height: 1.8;
+      font-size: clamp(0.95rem, 2vw, 1rem);
     }
 
     .about-image {
-      flex: 1;                                                    /* A konténer másik fele */
-      min-width: 300px;
-      overflow: hidden;                                          /* A túlcsorduló képrészlet elrejtése */
-      border-radius: 8px;                                        /* Lekerekített sarkok */
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);                /* Árnyék a kép körül */
+      flex: 1;
+      min-width: 280px;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     }
 
     .about-image img {
-      width: 100%;                                                /* Kép szélessége igazodik a szülőhöz */
-      height: auto;                                               /* Arányos magasság */
-      display: block;                                             /* Kép blokk szintű elemként jelenik meg */
-      transition: transform 0.3s ease;                            /* Finom animáció hover-re */
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
     }
 
     .about-image:hover img {
-      transform: scale(1.05);                                     /* Hover-re enyhe nagyítás */
+      transform: scale(1.05);
     }
 
-        /* SZOLGÁLTATÁSOK SZEKCIÓ */
+    .features-list {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .features-list li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: clamp(0.95rem, 2vw, 1rem);
+    }
+
+    .features-list i {
+      color: var(--secondary);
+      flex-shrink: 0;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    /* ============================================
+       SERVICES SECTION
+       ============================================ */
     .services {
-      background-color: var(--white);                            /* Fehér háttér */
+      background-color: var(--white);
     }
 
     .services-grid {
-      display: grid;                                              /* Rács alapú elrendezés */
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Rugalmas rács, minimum 300px széles elemekkel */
-      gap: 2rem;                                                 /* Kártyák közötti térköz */
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
     }
 
     .service-card {
-      background-color: var(--light);                            /* Világos színű kártyák */
-      border-radius: 8px;                                        /* Lekerekített sarkok */
-      padding: 2rem;                                             /* Belső margó */
-      transition: all 0.3s ease;                                 /* Hover-re animáció */
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);                  /* Árnyék */
-      text-align: center;                                        /* Szöveg középre igazítva */
+      background-color: var(--light);
+      border-radius: 8px;
+      padding: clamp(1.5rem, 4vw, 2rem);
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .service-card:hover {
-      transform: translateY(-10px);                              /* Hover-re enyhe kiemelkedés */
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);                 /* Erősebb árnyék hover esetén */
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     }
 
     .service-icon {
-      font-size: 3rem;                                            /* Nagy ikonok */
-      color: var(--secondary);                                   /* Kiemelt szín */
-      margin-bottom: 1.5rem;                                     /* Ikon alatti térköz */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      max-width: 64px;
+      max-height: 64px;
     }
 
     .service-title {
-      font-size: 1.5rem;                                          /* Szolgáltatás neve */
-      margin-bottom: 1rem;                                       /* Alsó térköz */
-      color: var(--primary);                                     /* Sötétkék cím */
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      margin-bottom: 1rem;
+      color: var(--primary);
     }
 
-    /* MUNKAFOLYAMAT SZEKCIÓ */
+    .service-card p {
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      flex-grow: 1;
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       PROCESS SECTION
+       ============================================ */
     .process-steps {
-      display: flex;                                              /* Vízszintes elrendezés */
-      flex-wrap: wrap;                                           /* Kis képernyőn törik */
-      justify-content: space-between;                            /* Lépcsők szétosztása */
-      margin-top: 3rem;                                          /* Felső margó */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: clamp(1rem, 3vw, 2rem);
+      margin-top: 3rem;
     }
 
     .process-step {
-      flex: 1;                                                    /* Egyenlő arányú oszlopok */
-      min-width: 250px;                                          /* Minimum szélesség */
-      text-align: center;                                        /* Középre igazítás */
-      padding: 0 1rem;                                           /* Vízszintes margó */
-      margin-bottom: 2rem;                                       /* Alsó térköz */
-      position: relative;                                        /* A nyílhoz */
+      flex: 1;
+      min-width: 220px;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
     }
 
     .process-step:not(:last-child)::after {
-      content: "";                                               /* Következő lépés nyíl */
+      content: "";
       position: absolute;
-      top: 50px;
-      right: -15%;
-      width: 30%;
+      top: 35px;
+      right: -8%;
+      width: 16%;
       height: 2px;
-      background-color: var(--secondary);                         /* Nyíl színe */
+      background-color: var(--secondary);
     }
 
     .step-number {
-      display: flex;                                              /* Körben lévő szám igazítása */
+      display: flex;
       justify-content: center;
       align-items: center;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;                                         /* Kör alak */
-      background-color: var(--secondary);                         /* Háttér szín */
-      color: var(--white);                                        /* Szám színe */
-      font-size: 1.5rem;
-      font-weight: 700;                                           /* Vastag szám */
-      margin: 0 auto 1.5rem;                                      /* Középre igazítás + alsó térköz */
+      width: clamp(60px, 12vw, 70px);
+      height: clamp(60px, 12vw, 70px);
+      border-radius: 50%;
+      background-color: var(--secondary);
+      color: var(--white);
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-weight: 700;
+      margin: 0 auto 1.5rem;
       position: relative;
       z-index: 1;
     }
 
-        /* GALÉRIA SZEKCIÓ */
-.gallery-grid {
-  display: grid;                                              /* Rács alapú elrendezés */
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Rugalmas rács kis képekkel */
-  gap: 1rem;                                                 /* Képek közötti térköz */
-}
-
-.gallery-item {
-  border-radius: 8px;                                        /* Lekerekített sarkok */
-  overflow: hidden;                                          /* A kilógó kép részek ne látszódjanak */
-  position: relative;                                        /* A fedőréteg pozicionálásához */
-  height: 250px;                                             /* Fix magasság a galéria elemekhez */
-  cursor: pointer;                                           /* Kattintható kurzor */
-}
-
-.gallery-item img {
-  width: 100%;                                                /* Kép teljes szélességű */
-  height: 100%;                                               /* Kép teljes magasságú */
-  object-fit: cover;                                          /* Kép kitöltése a dobozon belül */
-  transition: transform 0.3s ease;                            /* Hover-nagyítás animáció */
-}
-
-.gallery-item:hover img {
-  transform: scale(1.1);                                      /* Hover-re enyhe nagyítás */
-}
-
-.gallery-overlay {
-  position: absolute;                                        /* Teljes fedés a kép fölött */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(10, 37, 64, 0.7);                    /* Sötét áttetsző réteg */
-  display: flex;                                              /* Középre igazítás */
-  align-items: center;
-  justify-content: center;
-  opacity: 0;                                                 /* Alapból láthatatlan */
-  transition: opacity 0.3s ease;                              /* Finom áttűnés */
-}
-
-.gallery-item:hover .gallery-overlay {
-  opacity: 1;                                                 /* Hover-re megjelenik az átfedés */
-}
-
-.gallery-overlay i {
-  color: var(--white);                                        /* Ikon színe */
-  font-size: 2rem;                                            /* Ikon méret */
-}
-
-/* LIGHTBOX MODAL STÍLUSOK */
-.lightbox {
-  display: none;                                              /* Alapból rejtett */
-  position: fixed;                                            /* Teljes képernyős pozíció */
-  z-index: 1000;                                              /* Legfelső réteg */
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);                      /* Sötét háttér */
-  animation: fadeIn 0.3s ease;                                /* Megjelenési animáció */
-}
-
-.lightbox.active {
-  display: flex;                                              /* Aktív állapotban látható */
-  align-items: center;                                        /* Függőleges középre igazítás */
-  justify-content: center;                                    /* Vízszintes középre igazítás */
-}
-
-.lightbox-content {
-  max-width: 90%;                                             /* Maximális szélesség */
-  max-height: 90%;                                            /* Maximális magasság */
-  object-fit: contain;                                        /* Kép arányok megtartása */
-  border-radius: 8px;                                         /* Lekerekített sarkok */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);               /* Árnyék effekt */
-}
-
-.lightbox-close {
-  position: absolute;                                         /* Abszolút pozíció */
-  top: 20px;                                                  /* Felső távolság */
-  right: 30px;                                                /* Jobb oldali távolság */
-  color: white;                                               /* Fehér szín */
-  font-size: 40px;                                            /* Betűméret */
-  font-weight: bold;                                          /* Félkövér */
-  cursor: pointer;                                            /* Kattintható kurzor */
-  z-index: 1001;                                              /* Felső réteg */
-  transition: color 0.3s ease;                                /* Színváltás animáció */
-}
-
-.lightbox-close:hover {
-  color: #ccc;                                                /* Hover színe */
-}
-
-.lightbox-nav {
-  position: absolute;                                         /* Abszolút pozíció */
-  top: 50%;                                                   /* Függőleges közép */
-  transform: translateY(-50%);                                /* Pontos középre igazítás */
-  color: white;                                               /* Fehér szín */
-  font-size: 30px;                                            /* Betűméret */
-  cursor: pointer;                                            /* Kattintható kurzor */
-  background: rgba(0, 0, 0, 0.5);                            /* Áttetsző háttér */
-  padding: 10px 15px;                                         /* Belső térköz */
-  border-radius: 50%;                                         /* Kör alakú */
-  transition: background 0.3s ease;                           /* Háttér animáció */
-}
-
-.lightbox-nav:hover {
-  background: rgba(0, 0, 0, 0.8);                            /* Hover háttér */
-}
-
-.lightbox-prev {
-  left: 20px;                                                 /* Bal oldali pozíció */
-}
-
-.lightbox-next {
-  right: 20px;                                                /* Jobb oldali pozíció */
-}
-
-.lightbox-caption {
-  position: absolute;                                         /* Abszolút pozíció */
-  bottom: 20px;                                               /* Alsó távolság */
-  left: 50%;                                                  /* Vízszintes közép */
-  transform: translateX(-50%);                                /* Pontos középre igazítás */
-  color: white;                                               /* Fehér szöveg */
-  text-align: center;                                         /* Középre igazított szöveg */
-  background: rgba(0, 0, 0, 0.7);                            /* Áttetsző háttér */
-  padding: 10px 20px;                                         /* Belső térköz */
-  border-radius: 5px;                                         /* Lekerekített sarkok */
-}
-
-/* MEGJELENÉSI ANIMÁCIÓ */
-@keyframes fadeIn {
-  from { opacity: 0; }                                        /* Kezdő átlátszóság */
-  to { opacity: 1; }                                          /* Végső átlátszóság */
-}
-
-/* MOBIL RESZPONZÍV STÍLUSOK */
-@media (max-width: 768px) {
-  .lightbox-nav {
-    font-size: 20px;                                          /* Kisebb betűméret mobilon */
-    padding: 8px 12px;                                        /* Kisebb térköz */
-  }
-  
-  .lightbox-close {
-    font-size: 30px;                                          /* Kisebb bezárás gomb */
-    top: 10px;                                                /* Kisebb felső távolság */
-    right: 15px;                                              /* Kisebb jobb oldali távolság */
-  }
-  
-  .lightbox-content {
-    max-width: 95%;                                           /* Nagyobb kép mobilon */
-    max-height: 85%;                                          /* Kisebb magasság a navigációnak */
-  }
-  
-  .lightbox-caption {
-    bottom: 10px;                                             /* Kisebb alsó távolság */
-    padding: 8px 15px;                                        /* Kisebb térköz */
-    font-size: 0.9rem;                                        /* Kisebb betűméret */
-  }
-}
-
-    /* VISSZAJELZÉSEK / TESTIMONIAL SZEKCIÓ */
-    .testimonials {
-      background-color: var(--light);                            /* Világos háttér a vélemények szekciónak */
+    .process-step h3 {
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
+      margin-bottom: 0.75rem;
     }
 
-    .testimonial-container {
-      max-width: 800px;                                           /* Szűkített max szélesség */
-      margin: 0 auto;                                             /* Középre igazítás */
+    .process-step p {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      line-height: 1.6;
     }
 
-    .testimonial {
-      background-color: var(--white);                            /* Fehér véleménykártya */
-      padding: 2rem;                                             /* Belső térköz */
-      border-radius: 8px;                                        /* Lekerekített sarkok */
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);                  /* Árnyék */
-      margin-bottom: 2rem;                                       /* Kártyák közötti térköz */
-      position: relative;                                        /* Idézőjel pozícionálásához */
+    /* ============================================
+       GALLERY SECTION
+       ============================================ */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
     }
 
-    .testimonial::before {
-      content: '\201C';                                          /* Idézőjel szimbólum */
-      position: absolute;
-      top: -20px;
-      left: 20px;
-      font-size: 5rem;                                            /* Nagy idézőjel */
-      color: var(--secondary);                                   /* Kék árnyalat */
-      opacity: 0.3;                                               /* Halvány megjelenés */
-      font-family: Georgia, serif;                               /* Klasszikus betűtípus */
+    @media (min-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
     }
 
-    .testimonial-text {
-      font-style: italic;                                        /* Dőlt véleményszöveg */
-      margin-bottom: 1.5rem;                                     /* Térköz a szerzőtől */
+    .gallery-item {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 1;
+      cursor: pointer;
+      min-height: 200px;
     }
 
-    .testimonial-author {
-      display: flex;                                              /* Sorba rendezés */
-      align-items: center;                                       /* Kép és név középre igazítva */
-    }
-
-    .testimonial-avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;                                        /* Kör alakú kép */
-      overflow: hidden;                                          /* Kilógó képrészletek elrejtése */
-      margin-right: 1rem;                                        /* Kép és név közti távolság */
-    }
-
-    .testimonial-avatar img {
+    .gallery-item img {
       width: 100%;
       height: 100%;
-      object-fit: cover;                                         /* Kép teljes kitöltése, arányok megtartásával */
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      display: block;
     }
 
-    .testimonial-info h4 {
-      margin-bottom: 0.25rem;                                    /* Név és pozíció közti térköz */
+    .gallery-item:hover img {
+      transform: scale(1.1);
     }
 
-    .testimonial-info p {
-      color: var(--gray);                                        /* Halvány szöveg (pl. pozíció vagy cég) */
-      font-size: 0.875rem;                                       /* Kisebb betűméret */
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(10, 37, 64, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-        /* KAPCSOLAT SZEKCIÓ */
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-overlay i {
+      color: var(--white);
+      font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    /* ============================================
+       LIGHTBOX
+       ============================================ */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .lightbox.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: clamp(28px, 8vw, 40px);
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 2001;
+      transition: color 0.3s ease;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: manipulation;
+      border: none;
+      background: none;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .lightbox-close:hover {
+      color: #ccc;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: clamp(24px, 6vw, 30px);
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.5);
+      padding: clamp(8px, 2vw, 15px);
+      border-radius: 50%;
+      transition: background 0.3s ease;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: manipulation;
+      border: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .lightbox-nav:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .lightbox-prev {
+      left: 20px;
+    }
+
+    .lightbox-next {
+      right: 20px;
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.7);
+      padding: clamp(8px, 2vw, 20px);
+      border-radius: 5px;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      max-width: 80%;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ============================================
+       BEFORE-AFTER SECTION
+       ============================================ */
+    .before-after {
+      margin: 2rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .canvas-instructions {
+      background-color: var(--light);
+      padding: 1rem;
+      text-align: center;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      color: var(--primary);
+    }
+
+    .dual-canvas-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(1rem, 3vw, 2rem);
+      margin-top: 1rem;
+      padding: 0 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .canvas-wrapper canvas {
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
+    /* ============================================
+       CTA SECTION
+       ============================================ */
+    .cta {
+      background-color: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: clamp(3rem, 8vw, 4rem) 1rem;
+    }
+
+    .cta h2 {
+      margin-bottom: 1.5rem;
+      font-size: clamp(1.8rem, 6vw, 2.5rem);
+    }
+
+    .cta p {
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: clamp(1rem, 3vw, 1.25rem);
+    }
+
+    /* ============================================
+       CONTACT SECTION
+       ============================================ */
     .contact {
-      background-color: var(--white);                            /* Fehér háttér a kapcsolati szekciónak */
+      background-color: var(--white);
     }
 
     .contact-container {
-      display: flex;                                              /* Két hasáb elrendezés */
-      flex-wrap: wrap;                                           /* Mobilon törik a sor */
-      gap: 2rem;                                                 /* Hasábok közti távolság */
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(1.5rem, 4vw, 2rem);
     }
 
     .contact-info {
-      flex: 1;                                                    /* Egyenlő arányú hasáb */
-      min-width: 300px;                                          /* Minimum szélesség a törés elkerüléséhez */
+      flex: 1;
+      min-width: 260px;
     }
 
     .contact-info h3 {
-      margin-bottom: 1.5rem;                                     /* Cím és tartalom közti térköz */
-      color: var(--primary);                                     /* Sötétkék cím */
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      font-size: clamp(1.3rem, 4vw, 1.5rem);
     }
 
     .contact-item {
-      display: flex;                                              /* Ikon + szöveg egymás mellett */
+      display: flex;
       align-items: flex-start;
       margin-bottom: 1.5rem;
+      gap: 1rem;
     }
 
     .contact-icon {
-      margin-right: 1rem;                                        /* Ikon és szöveg közötti térköz */
-      font-size: 1.5rem;
-      color: var(--secondary);                                   /* Kék ikon */
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      color: var(--secondary);
+      flex-shrink: 0;
+      min-width: 24px;
+      text-align: center;
     }
 
     .contact-details h4 {
-      margin-bottom: 0.25rem;                                    /* Címke és érték közti térköz */
+      margin-bottom: 0.25rem;
+      font-size: clamp(0.95rem, 2vw, 1rem);
+    }
+
+    .contact-details p {
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      color: var(--gray);
+    }
+
+    .contact-details a {
+      color: var(--secondary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-details a:hover {
+      color: var(--primary);
+      text-decoration: underline;
     }
 
     .contact-form {
-      flex: 1;                                                    /* Másik hasáb */
-      min-width: 300px;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .contact-form h3 {
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      font-size: clamp(1.3rem, 4vw, 1.5rem);
     }
 
     .form-group {
-      margin-bottom: 1.5rem;                                     /* Mezők közti térköz */
+      margin-bottom: 1.5rem;
     }
 
     .form-control {
-      width: 100%;                                                /* Teljes szélességű mező */
-      padding: 0.75rem 1rem;                                     /* Belső margó */
-      border-radius: 4px;                                        /* Lekerekített sarkok */
-      border: 1px solid var(--light-gray);                       /* Világos keret */
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      border: 1px solid var(--light-gray);
       font-family: 'Roboto', sans-serif;
       font-size: 1rem;
-      transition: border-color 0.3s ease;                         /* Interaktív keret szín */
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      -webkit-appearance: none;
+      appearance: none;
     }
 
     .form-control:focus {
-      outline: none;                                              /* Nincs külső kontúr */
-      border-color: var(--secondary);                            /* Kék keret fókusz esetén */
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(0, 115, 230, 0.1);
+    }
+
+    .form-control:invalid:not(:placeholder-shown) {
+      border-color: var(--danger);
     }
 
     textarea.form-control {
-      min-height: 150px;                                         /* Magasabb mező az üzenethez */
-      resize: vertical;                                          /* Függőleges átméretezés engedélyezve */
+      min-height: 150px;
+      resize: vertical;
+      font-family: 'Roboto', sans-serif;
     }
 
     .btn-submit {
-      background-color: var(--secondary);                        /* Kék háttér */
-      color: var(--white);                                       /* Fehér szöveg */
+      background-color: var(--secondary);
+      color: var(--white);
       border: none;
       padding: 0.75rem 1.5rem;
       border-radius: 4px;
       font-weight: 600;
-      cursor: pointer;                                           /* Kéz kurzor gombra */
+      cursor: pointer;
       transition: all 0.3s ease;
-      width: 100%;                                               /* Teljes szélességű gomb */
+      width: 100%;
+      font-size: clamp(0.95rem, 2vw, 1rem);
+      min-height: 44px;
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .btn-submit:hover {
-      background-color: #0062c4;                                 /* Sötétebb hover szín */
+      background-color: #0062c4;
     }
 
-    /* CTA – Cselekvésre való felhívás szekció */
-    .cta {
-      background-color: var(--primary);                          /* Sötétkék háttér */
-      color: var(--white);                                       /* Fehér szöveg */
+    .btn-submit:active {
+      transform: scale(0.98);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      background-color: var(--dark);
+      color: var(--light);
+      padding: clamp(2rem, 6vw, 4rem) 1rem 0;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(1.5rem, 4vw, 2rem);
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 260px;
+      max-width: 300px;
       text-align: center;
-      padding: 4rem 0;                                           /* Függőleges térköz */
     }
 
-    .cta h2 {
-      margin-bottom: 1.5rem;                                     /* Címsor és szöveg közötti térköz */
+    .footer-col h3 {
+      margin-bottom: 1.5rem;
+      color: var(--white);
+      position: relative;
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
     }
 
-    .cta p {
-      margin-bottom: 2rem;                                       /* Szöveg és gomb közötti térköz */
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;                                        /* Középre igazítás */
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 2px;
+      background-color: var(--secondary);
     }
 
-    /* Footer */
-.footer {
-  background-color: var(--dark);
-  color: var(--light);
-  padding: 4rem 0 0;
-}
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-.footer-col {
-  flex: 1;
-  min-width: 250px;
-}
-.footer-col h3 {
-  margin-bottom: 1.5rem;
-  color: var(--white);
-  position: relative;
-}
-.footer-col h3::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 50px;
-  height: 2px;
-  background-color: var(--secondary);
-}
-.footer-links {
-  list-style: none;
-}
-.footer-links li {
-  margin-bottom: 0.75rem;
-}
-.footer-links a {
-  color: var(--light);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-.footer-links a:hover {
-  color: var(--secondary);
-}
-.footer-social {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-.social-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: var(--white);
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.social-icon:hover {
-  background-color: var(--secondary);
-  transform: translateY(-3px);
-}
-.copyright {
-  text-align: center;
-  padding: 1.5rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.7);
-}
+    .footer-links {
+      list-style: none;
+    }
 
-/* Responsive */
-@media (max-width: 992px) {
-  .hero h1 {
-    font-size: 2.8rem;
-  }
-  .process-step:not(:last-child)::after {
-    display: none;
-  }
-}
+    .footer-links li {
+      margin-bottom: 0.75rem;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+    }
 
-@media (max-width: 768px) {
-  .navbar-container {
-    position: relative;
-  }
-  .mobile-toggle {
-    display: block;
-  }
-  .nav-menu {
-    position: absolute;
-    top: var(--header-height);
-    right: -100%;
-    flex-direction: column;
-    background-color: var(--white);
-    width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: right 0.3s ease;
-    padding: 1rem 0;
-  }
-  .nav-menu.active {
-    right: 0;
-  }
-  .nav-item {
-    margin: 0;
-    width: 100%;
-    text-align: center;
-  }
-  .nav-link {
-    display: block;
-    padding: 1rem;
-  }
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-  .service-card {
-    margin-bottom: 1.5rem;
-  }
-  
-  /* Center footer container and content in the middle of screen */
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .footer-col {
-    width: 100%;
-    max-width: 300px;
-    text-align: center !important;
-    margin: 0 auto 2rem auto;
-  }
-  
-  .footer-col h3 {
-    text-align: center;
-  }
-  
-  .footer-col h3::after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .footer-links {
-    text-align: center !important;
-    padding: 0;
-  }
-  
-  .footer-links li {
-    text-align: center !important;
-  }
-  
-  .footer-social {
-    justify-content: center;
-  }
-  
-  /* Force all footer content to center horizontally */
-  .footer-col p,
-  .footer-col address,
-  .footer-col div,
-  .footer-col span {
-    text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    display: block;
-  }
-}
+    .footer-links a {
+      color: var(--light);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
-@media (max-width: 576px) {
-  .hero {
-    height: auto;
-    padding: 120px 0 80px;
-  }
-  .btn {
-    display: block;
-    width: 100%;
-    margin: 0.5rem 0;
-  }
-  .section {
-    padding: 3rem 0;
-  }
-  .section-title h2 {
-    font-size: 2rem;
-  }
-  
-  .footer-col {
-    text-align: center !important;
-    padding: 0 1rem;
-    max-width: 280px;
-  }
-}
-    
-    /* Before-After Rész - Updated */
-.before-after {
-  margin: 2rem 0;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
+    .footer-links a:hover {
+      color: var(--secondary);
+    }
 
-/* New styles for dual canvas layout */
-.dual-canvas-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 1rem;
-}
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
 
-.canvas-wrapper {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      min-height: 44px;
+      min-width: 44px;
+      touch-action: manipulation;
+      border: none;
+    }
 
-.canvas-wrapper canvas {
-  width: 100%;
-  height: auto;
-  display: block;
-  cursor: crosshair;
-}
+    .social-icon:hover {
+      background-color: var(--secondary);
+      transform: translateY(-3px);
+    }
 
-/* Removed canvas labels */
+    .social-icon:active {
+      transform: translateY(0);
+    }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .dual-canvas-container {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-}
-    
-    /* Animation */
+    .copyright {
+      text-align: center;
+      padding: clamp(1rem, 3vw, 1.5rem) 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: clamp(0.8rem, 2vw, 0.875rem);
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ============================================
+       ANIMATIONS
+       ============================================ */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -1068,31 +1070,219 @@
     .delay-3 {
       animation-delay: 0.6s;
     }
+
+    /* ============================================
+       RESPONSIVE DESIGN - TABLET
+       ============================================ */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .process-step:not(:last-child)::after {
+        display: none;
+      }
+      
+      .nav-menu {
+        gap: 1rem;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN - MOBILE
+       ============================================ */
+    @media (max-width: 768px) {
+      .mobile-toggle {
+        display: flex !important;
+      }
+
+      .nav-menu {
+        position: absolute;
+        top: var(--header-height);
+        right: -100%;
+        flex-direction: column;
+        background-color: var(--white);
+        width: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        padding: 1rem 0;
+        gap: 0;
+        z-index: 999;
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .nav-item {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+      }
+
+      .nav-link {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid var(--light-gray);
+      }
+
+      .hero {
+        padding: calc(var(--header-height) + 1rem) 1rem;
+      }
+
+      .about-content {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .about-text,
+      .about-image {
+        min-width: 100%;
+      }
+
+      .contact-container {
+        flex-direction: column;
+      }
+
+      .contact-info,
+      .contact-form {
+        min-width: 100%;
+      }
+
+      .dual-canvas-container {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-col {
+        width: 100%;
+        max-width: none;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+
+      .lightbox-close {
+        top: 10px;
+        right: 15px;
+      }
+
+      .lightbox-nav {
+        padding: clamp(6px, 2vw, 12px);
+        font-size: clamp(20px, 5vw, 24px);
+      }
+
+      .lightbox-prev {
+        left: 10px;
+      }
+
+      .lightbox-next {
+        right: 10px;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN - SMALL MOBILE
+       ============================================ */
+    @media (max-width: 576px) {
+      :root {
+        --header-height: 70px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: calc(var(--header-height) + 1rem) 1rem;
+      }
+
+      .btn {
+        display: block;
+        width: 100%;
+        margin: 0.5rem 0;
+      }
+
+      .section {
+        padding: 2rem 1rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-steps {
+        flex-direction: column;
+      }
+
+      .process-step {
+        padding: 0;
+      }
+
+      .logo {
+        font-size: 1rem;
+      }
+
+      .logo i {
+        display: none;
+      }
+
+      .lang-btn span:not(.flag-icon) {
+        display: none;
+      }
+
+      .lang-btn {
+        min-width: 38px;
+        padding: 6px 8px;
+      }
+
+      .contact-item {
+        flex-wrap: wrap;
+      }
+
+      .contact-icon {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-social {
+        gap: 0.75rem;
+      }
+
+      .social-icon {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
+      }
+
+      .cta {
+        padding: 2rem 1rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- ============================================
+       NAVIGATION / NAVBAR
+       ============================================ -->
   <nav class="navbar">
-    <div class="language-switcher-nav">
-      <div class="language-switcher">
-        <button class="lang-btn active" data-lang="hu">
-          <span class="flag-icon flag-hu"></span>
-          <span>HU</span>
-        </button>
-        <button class="lang-btn" data-lang="ro">
-          <span class="flag-icon flag-ro"></span>
-          <span>RO</span>
-        </button>
-      </div>
-    </div>
     <div class="container navbar-container">
-      <a href="#" class="logo">
-        <i class="fas fa-shield-alt"></i> KOROZIO STOP KFT
+      <!-- Logo -->
+      <a href="#" class="logo" aria-label="Korozio Stop Kft.">
+        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+        <span>KOROZIO STOP</span>
       </a>
-      <button class="mobile-toggle" id="mobile-toggle">
-        <i class="fas fa-bars"></i>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i class="fas fa-bars" aria-hidden="true"></i>
       </button>
-      <ul class="nav-menu" id="nav-menu">
+
+      <!-- Navigation Menu -->
+      <ul class="nav-menu" id="nav-menu" role="navigation">
         <li class="nav-item"><a href="#home" class="nav-link" data-key="nav.home">Főoldal</a></li>
         <li class="nav-item"><a href="#about" class="nav-link" data-key="nav.about">Rólunk</a></li>
         <li class="nav-item"><a href="#services" class="nav-link" data-key="nav.services">Szolgáltatások</a></li>
@@ -1100,10 +1290,30 @@
         <li class="nav-item"><a href="#gallery" class="nav-link" data-key="nav.gallery">Galéria</a></li>
         <li class="nav-item"><a href="#contact" class="nav-link" data-key="nav.contact">Kapcsolat</a></li>
       </ul>
+
+      <!-- Language Switcher -->
+      <div class="language-switcher-nav">
+        <div class="language-switcher" role="group" aria-label="Select language">
+          <button class="lang-btn active" data-lang="hu" title="Magyar" aria-pressed="true">
+            <span class="flag-icon flag-hu" aria-hidden="true"></span>
+            <span>HU</span>
+          </button>
+          <button class="lang-btn" data-lang="ro" title="Română" aria-pressed="false">
+            <span class="flag-icon flag-ro" aria-hidden="true"></span>
+            <span>RO</span>
+          </button>
+          <button class="lang-btn" data-lang="en" title="English" aria-pressed="false">
+            <span class="flag-icon flag-en" aria-hidden="true"></span>
+            <span>EN</span>
+          </button>
+        </div>
+      </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- ============================================
+       HERO SECTION
+       ============================================ -->
   <section id="home" class="hero">
     <div class="container">
       <div class="hero-content">
@@ -1116,75 +1326,91 @@
       </div>
     </div>
   </section>
-  
-  <!-- About Section -->
+
+  <!-- ============================================
+       ABOUT SECTION
+       ============================================ -->
   <section id="about" class="section">
     <div class="container">
       <div class="section-title">
         <h2 data-key="about.title">Rólunk</h2>
       </div>
       <div class="about-content">
+        <!-- About Text -->
         <div class="about-text">
           <h3 data-key="about.subtitle">Több mint 20 éve az iparág élvonalában</h3>
-          <p data-key="about.description1">A Korózió Stop Kft. már több mint két évtizede áll ügyfelei szolgálatában Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása lakossági és ipari ügyfelek számára egyaránt.</p>
-          <p data-key="about.description2">Minden munkánkat a legmodernebb technológiával és szakértelemmel végezzük, hogy biztosítsuk a legjobb eredményt minden ügyfelünk számára.</p>
-          <ul style="list-style: none; margin-top: 1.5rem;">
-            <li style="margin-bottom: 0.5rem;">
-              <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+          <p data-key="about.description1">A Korózió Stop Kft. már több mint két évtizede áll ügyfelei szolgálatában Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása birtokos és ipari ügyfelek számára egyaránt.</p>
+          <p data-key="about.description2">Minden munkánkat a legmodernebb technológiával és szakértelemmel végezzük, hogy biztosítsuk a legjobb eredményt minden ügyfelünk sz��mára.</p>
+
+          <!-- Features List -->
+          <ul class="features-list">
+            <li>
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
               <span data-key="about.feature1">20 év szakmai tapasztalat</span>
             </li>
-            <li style="margin-bottom: 0.5rem;">
-              <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+            <li>
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
               <span data-key="about.feature2">Környezetbarát munkavégzés</span>
             </li>
-            <li style="margin-bottom: 0.5rem;">
-              <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+            <li>
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
               <span data-key="about.feature3">Modern technológia, piaci árak</span>
             </li>
-            <li style="margin-bottom: 0.5rem;">
-              <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+            <li>
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
               <span data-key="about.feature4">Terepmunka lehetősége</span>
             </li>
           </ul>
         </div>
+
+        <!-- About Image -->
         <div class="about-image">
-          <img src="images/kép.jpg" alt="Korózió Stop műhely">
+          <img src="images/kép.jpg" alt="Korózió Stop műhely és berendezések" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services Section -->
+  <!-- ============================================
+       SERVICES SECTION
+       ============================================ -->
   <section id="services" class="section services">
     <div class="container">
       <div class="section-title">
         <h2 data-key="services.title">Szolgáltatásaink</h2>
       </div>
       <div class="services-grid">
+        <!-- Service 1: Rust Removal -->
         <div class="service-card">
           <div class="service-icon">
-            <img src="images/rozsda.png" alt="Rozsdaeltávolítás ikon">
+            <img src="images/rozsda.png" alt="Rozsdaeltávolítás ikon" loading="lazy">
           </div>
           <h3 class="service-title" data-key="services.rust.title">Rozsdaeltávolítás</h3>
           <p data-key="services.rust.description">Kvarchomokkal történő hatékony rozsdaeltávolítás fémfelületekről. Professzionális technológiánk megóvja az alapanyagot és tökéletes felületet biztosít a további kezelésekhez.</p>
         </div>
+
+        <!-- Service 2: Powder Coating -->
         <div class="service-card">
           <div class="service-icon">
-            <img src="images/festés.png" alt="Elektrosztatikus porfestés ikon">
+            <img src="images/festés.png" alt="Elektrosztatikus porfestés ikon" loading="lazy">
           </div>
           <h3 class="service-title" data-key="services.painting.title">Elektrosztatikus porfestés</h3>
           <p data-key="services.painting.description">Tartós, egyenletes és minőségi festékréteget biztosítunk, amely ellenáll az időjárási viszontagságoknak és hosszú távú védelmet nyújt.</p>
         </div>
+
+        <!-- Service 3: Surface Matting -->
         <div class="service-card">
           <div class="service-icon">
-            <img src="images/matt.png" alt="Felület mattosítás ikon">
+            <img src="images/matt.png" alt="Felület mattosítás ikon" loading="lazy">
           </div>
           <h3 class="service-title" data-key="services.matting.title">Felület mattosítás</h3>
           <p data-key="services.matting.description">Üveg, fa és más felületek professzionális mattosítása. Ideális dekorációs célokra vagy további felületkezelések előkészítésére.</p>
         </div>
+
+        <!-- Service 4: Tire Installation -->
         <div class="service-card">
           <div class="service-icon">
-            <img src="images/gumi.png" alt="Gumiszerelés ikon">
+            <img src="images/gumi.png" alt="Gumiszerelés ikon" loading="lazy">
           </div>
           <h3 class="service-title" data-key="services.tire.title">Gumiszerelés</h3>
           <p data-key="services.tire.description">Komplett gumiszerelési szolgáltatásokat kínálunk, hogy időt takarítson meg. A homokfúvás előtt és után is vállaljuk a gumiabroncsok le- és felszerelését.</p>
@@ -1193,129 +1419,170 @@
     </div>
   </section>
 
-  <!-- Process Section -->
+  <!-- ============================================
+       PROCESS SECTION
+       ============================================ -->
   <section id="process" class="section">
     <div class="container">
       <div class="section-title">
         <h2 data-key="process.title">Munkafolyamat</h2>
       </div>
       <div class="process-steps">
+        <!-- Step 1 -->
         <div class="process-step">
-          <div class="step-number">1</div>
+          <div class="step-number" aria-label="Step 1">1</div>
           <h3 data-key="process.step1.title">Konzultáció</h3>
           <p data-key="process.step1.description">Felmérjük igényeit és részletes ajánlatot készítünk az elvégzendő munkákról.</p>
         </div>
+
+        <!-- Step 2 -->
         <div class="process-step">
-          <div class="step-number">2</div>
+          <div class="step-number" aria-label="Step 2">2</div>
           <h3 data-key="process.step2.title">Előkészítés</h3>
           <p data-key="process.step2.description">A felületet előkészítjük a homokfúvásra, eltávolítva minden nem kezelhető elemet.</p>
         </div>
+
+        <!-- Step 3 -->
         <div class="process-step">
-          <div class="step-number">3</div>
+          <div class="step-number" aria-label="Step 3">3</div>
           <h3 data-key="process.step3.title">Homokfúvás</h3>
           <p data-key="process.step3.description">Kvarchomokkal történő professzionális tisztítás a tökéletes eredmény érdekében.</p>
         </div>
+
+        <!-- Step 4 -->
         <div class="process-step">
-          <div class="step-number">4</div>
+          <div class="step-number" aria-label="Step 4">4</div>
           <h3 data-key="process.step4.title">Utókezelés</h3>
           <p data-key="process.step4.description">Igény szerint porfestés vagy egyéb felületkezelési eljárás a tartós védelem érdekében.</p>
         </div>
       </div>
     </div>
   </section>
-  
-<!-- Interactive Before-After Section -->
-<section class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
-    </div>
-    <div class="before-after">
-      <div class="canvas-instructions">
-        <p><i class="fas fa-mouse-pointer"></i><span data-key="canvas.instruction">Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!</span></p>
+
+  <!-- ============================================
+       BEFORE-AFTER SECTION
+       ============================================ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
       </div>
-      <div class="dual-canvas-container">
-        <div class="canvas-wrapper">
-          <canvas id="canvas1"></canvas>
+      <div class="before-after">
+        <div class="canvas-instructions">
+          <p>
+            <i class="fas fa-mouse-pointer" aria-hidden="true"></i>
+            <span data-key="canvas.instruction">Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!</span>
+          </p>
         </div>
-        <div class="canvas-wrapper">
-          <canvas id="canvas2"></canvas>
+        <div class="dual-canvas-container">
+          <div class="canvas-wrapper">
+            <canvas id="canvas1" width="800" height="600" aria-label="Before-after canvas 1"></canvas>
+          </div>
+          <div class="canvas-wrapper">
+            <canvas id="canvas2" width="800" height="600" aria-label="Before-after canvas 2"></canvas>
+          </div>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- ============================================
+       GALLERY SECTION
+       ============================================ -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="gallery.title">Galéria</h2>
+      </div>
+      <div class="gallery-grid">
+        <!-- Gallery Item 1 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="0" onclick="openLightbox(0)" onkeypress="handleGalleryKeypress(event, 0)">
+          <img src="images/1.jpg" alt="Projekt 1 - Rozsdaeltávolítás" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Gallery Item 2 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="1" onclick="openLightbox(1)" onkeypress="handleGalleryKeypress(event, 1)">
+          <img src="images/2.jpg" alt="Projekt 2 - Porfestés" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Gallery Item 3 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="2" onclick="openLightbox(2)" onkeypress="handleGalleryKeypress(event, 2)">
+          <img src="images/3.png" alt="Projekt 3 - Felületkezelés" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Gallery Item 4 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="3" onclick="openLightbox(3)" onkeypress="handleGalleryKeypress(event, 3)">
+          <img src="images/4.png" alt="Projekt 4 - Munka eredménye" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Gallery Item 5 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="4" onclick="openLightbox(4)" onkeypress="handleGalleryKeypress(event, 4)">
+          <img src="images/5.jpg" alt="Projekt 5 - Professzionális munka" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Gallery Item 6 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="5" onclick="openLightbox(5)" onkeypress="handleGalleryKeypress(event, 5)">
+          <img src="images/6.png" alt="Projekt 6 - Homokfúvás" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Gallery Item 7 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="6" onclick="openLightbox(6)" onkeypress="handleGalleryKeypress(event, 6)">
+          <img src="images/7.jpg" alt="Projekt 7 - Fémfelület tisztítás" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Gallery Item 8 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="7" onclick="openLightbox(7)" onkeypress="handleGalleryKeypress(event, 7)">
+          <img src="images/8.jpg" alt="Projekt 8 - Végső eredmény" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       LIGHTBOX MODAL
+       ============================================ -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox" title="Close (Esc)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)" aria-label="Previous image" title="Previous (←)">
+      <span aria-hidden="true">&#10094;</span>
+    </button>
+    <button class="lightbox-nav lightbox-next" onclick="changeImage(1)" aria-label="Next image" title="Next (→)">
+      <span aria-hidden="true">&#10095;</span>
+    </button>
+    <img class="lightbox-content" id="lightbox-img" src="" alt="Fullscreen gallery image">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
-</section>
 
-  <!-- Gallery Section -->
-<section id="gallery" class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2 data-key="gallery.title">Galéria</h2>
-    </div>
-    <div class="gallery-grid">
-      <div class="gallery-item" onclick="openLightbox(0)">
-        <img src="images/1.jpg" alt="Project 1">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(1)">
-        <img src="images/2.jpg" alt="Project 2">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(2)">
-        <img src="images/3.png" alt="Project 3">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(3)">
-        <img src="images/4.png" alt="Project 4">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(4)">
-        <img src="images/5.jpg" alt="Project 5">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(5)">
-        <img src="images/6.png" alt="Project 6">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(6)">
-        <img src="images/7.jpg" alt="Project 7">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(7)">
-        <img src="images/8.jpg" alt="Project 8">
-        <div class="gallery-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div> 
-    </div>
-  </div>
-</section>
-
-<!-- Lightbox Modal -->
-<div id="lightbox" class="lightbox">
-  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-  <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
-  <span class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</span>
-  <img class="lightbox-content" id="lightbox-img" src="" alt="">
-  <div class="lightbox-caption" id="lightbox-caption"></div>
-</div>
-
-  <!-- CTA Section -->
-  <section id="contact" class="cta">
+  <!-- ============================================
+       CTA SECTION
+       ============================================ -->
+  <section id="contact-cta" class="section cta">
     <div class="container">
       <h2 data-key="cta.title">Kérjen ingyenes árajánlatot most!</h2>
       <p data-key="cta.description">Akár kisebb, akár nagyobb projektről legyen szó, vegye fel velünk a kapcsolatot még ma!</p>
@@ -1323,400 +1590,1133 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-col" style="padding-left: 100px;">
-      <h3 data-key="footer.contact">Elérhetőségek</h3>
-      <ul class="footer-links">
-        <li><i class="fas fa-map-marker-alt"></i> <span data-key="footer.address">Székelyudvarhely, Fenyő utca 58.</span></li>
-        <li><i class="fas fa-phone"></i> +40 745 967 960</li>
-        <li><i class="fas fa-envelope"></i> koroziostop@gmail.com</li>
-      </ul>
+  <!-- ============================================
+       CONTACT & FOOTER SECTION
+       ============================================ -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="contact.title">Kapcsolat</h2>
+      </div>
+      <div class="contact-container">
+        <!-- Contact Information -->
+        <div class="contact-info">
+          <h3 data-key="footer.contact">Elérhetőségek</h3>
+          
+          <!-- Address -->
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            </div>
+            <div class="contact-details">
+              <h4 data-key="contact.location">Cím</h4>
+              <p data-key="footer.address">Székelyudvarhely, Fenyő utca 58.</p>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone" aria-hidden="true"></i>
+            </div>
+            <div class="contact-details">
+              <h4 data-key="contact.phone">Telefon</h4>
+              <p><a href="tel:+40745967960">+40 745 967 960</a></p>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+            </div>
+            <div class="contact-details">
+              <h4 data-key="contact.email">Email</h4>
+              <p><a href="mailto:koroziostop@gmail.com">koroziostop@gmail.com</a></p>
+            </div>
+          </div>
+
+          <!-- Hours -->
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-clock" aria-hidden="true"></i>
+            </div>
+            <div class="contact-details">
+              <h4 data-key="contact.hours">Nyitvatartás</h4>
+              <p>
+                <span data-key="footer.weekday">Hétfő - Péntek: </span>8:00 - 17:00<br>
+                <span data-key="footer.saturday">Szombat: </span>9:00 - 13:00<br>
+                <span data-key="footer.sunday">Vasárnap: </span><span data-key="footer.closed">Zárva</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <h3 data-key="contact.form-title">Írjon nekünk</h3>
+          <form id="contact-form" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Név" required aria-label="Név">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Email" required aria-label="Email">
+            </div>
+            <div class="form-group">
+              <input type="tel" class="form-control" placeholder="Telefon" aria-label="Telefon">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" placeholder="Üzenet" required aria-label="Üzenet"></textarea>
+            </div>
+            <button type="submit" class="btn-submit" data-key="contact.send">Küldés</button>
+          </form>
+        </div>
+      </div>
     </div>
+  </section>
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      background-color: var(--dark);
+      color: var(--light);
+      padding: clamp(2rem, 6vw, 4rem) 1rem 0;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(1.5rem, 4vw, 2rem);
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 260px;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .footer-col h3 {
+      margin-bottom: 1.5rem;
+      color: var(--white);
+      position: relative;
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
+    }
+
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 2px;
+      background-color: var(--secondary);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+
+    .footer-links a {
+      color: var(--light);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      min-height: 44px;
+      min-width: 44px;
+      touch-action: manipulation;
+      border: none;
+    }
+
+    .social-icon:hover {
+      background-color: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    .social-icon:active {
+      transform: translateY(0);
+    }
+
+    .copyright {
+      text-align: center;
+      padding: clamp(1rem, 3vw, 1.5rem) 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: clamp(0.8rem, 2vw, 0.875rem);
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ============================================
+       BEFORE-AFTER SECTION
+       ============================================ */
+    .before-after {
+      margin: 2rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .canvas-instructions {
+      background-color: var(--light);
+      padding: 1rem;
+      text-align: center;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      color: var(--primary);
+    }
+
+    .dual-canvas-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(1rem, 3vw, 2rem);
+      margin-top: 1rem;
+      padding: 0 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .canvas-wrapper canvas {
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
+    /* ============================================
+       ANIMATIONS
+       ============================================ */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN ADJUSTMENTS
+       ============================================ */
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+      }
+
+      .contact-info,
+      .contact-form {
+        min-width: 100%;
+      }
+
+      .dual-canvas-container {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-col {
+        width: 100%;
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .contact-item {
+        flex-wrap: wrap;
+      }
+
+      .contact-icon {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-social {
+        gap: 0.75rem;
+      }
+
+      .social-icon {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
+      }
+
+      .cta {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+    <!-- ============================================
+       NAVIGATION / NAVBAR
+       ============================================ -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <!-- Logo -->
+      <a href="#" class="logo" aria-label="Korozio Stop Kft.">
+        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+        <span>KOROZIO STOP</span>
+      </a>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+
+      <!-- Navigation Menu -->
+      <ul class="nav-menu" id="nav-menu" role="navigation">
+        <li class="nav-item"><a href="#home" class="nav-link" data-key="nav.home">Főoldal</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link" data-key="nav.about">Rólunk</a></li>
+        <li class="nav-item"><a href="#services" class="nav-link" data-key="nav.services">Szolgáltatások</a></li>
+        <li class="nav-item"><a href="#process" class="nav-link" data-key="nav.process">Folyamat</a></li>
+        <li class="nav-item"><a href="#gallery" class="nav-link" data-key="nav.gallery">Galéria</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link" data-key="nav.contact">Kapcsolat</a></li>
+      </ul>
+
+      <!-- Language Switcher -->
+      <div class="language-switcher-nav">
+        <div class="language-switcher" role="group" aria-label="Select language">
+          <button class="lang-btn active" data-lang="hu" title="Magyar" aria-pressed="true">
+            <span class="flag-icon flag-hu" aria-hidden="true"></span>
+            <span>HU</span>
+          </button>
+          <button class="lang-btn" data-lang="ro" title="Română" aria-pressed="false">
+            <span class="flag-icon flag-ro" aria-hidden="true"></span>
+            <span>RO</span>
+          </button>
+          <button class="lang-btn" data-lang="en" title="English" aria-pressed="false">
+            <span class="flag-icon flag-en" aria-hidden="true"></span>
+            <span>EN</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       HERO SECTION
+       ============================================ -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="fade-in" data-key="hero.title">PROFESSZIONÁLIS ROZSDAELTÁVOLÍTÁS</h1>
+        <p class="fade-in delay-1" data-key="hero.subtitle">Több mint 20 éves tapasztalattal a fémfelület tisztítás területén Székelyudvarhelyen</p>
+        <div class="fade-in delay-2">
+          <a href="#services" class="btn btn-primary" data-key="hero.services">Szolgáltatásaink</a>
+          <a href="#contact" class="btn btn-outline" data-key="hero.contact">Kapcsolat</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       ABOUT SECTION
+       ============================================ -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="about.title">Rólunk</h2>
+      </div>
+      <div class="about-content">
+        <!-- About Text -->
+        <div class="about-text">
+          <h3 data-key="about.subtitle">Több mint 20 éve az iparág élvonalában</h3>
+          <p data-key="about.description1">A Korózió Stop Kft. már több mint két évtizede áll ügyfelei szolgálatában Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása lakossági és ipari ügyfelek számára egyaránt.</p>
+          <p data-key="about.description2">Minden munkánkat a legmodernebb technológiával és szakértelemmel végezzük, hogy biztosítsuk a legjobb eredményt minden ügyfelünk számára.</p>
+
+          <!-- Features List -->
+          <ul class="features-list">
+            <li>
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span data-key="about.feature1">20 év szakmai tapasztalat</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span data-key="about.feature2">Környezetbarát munkavégzés</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span data-key="about.feature3">Modern technológia, piaci árak</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span data-key="about.feature4">Terepmunka lehetősége</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- About Image -->
+        <div class="about-image">
+          <img src="images/kép.jpg" alt="Korózió Stop műhely és berendezések" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SERVICES SECTION
+       ============================================ -->
+  <section id="services" class="section services">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="services.title">Szolgáltatásaink</h2>
+      </div>
+      <div class="services-grid">
+        <!-- Service 1: Rust Removal -->
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="images/rozsda.png" alt="Rozsdaeltávolítás ikon" loading="lazy">
+          </div>
+          <h3 class="service-title" data-key="services.rust.title">Rozsdaeltávolítás</h3>
+          <p data-key="services.rust.description">Kvarchomokkal történő hatékony rozsdaeltávolítás fémfelületekről. Professzionális technológiánk megóvja az alapanyagot és tökéletes felületet biztosít a további kezelésekhez.</p>
+        </div>
+
+        <!-- Service 2: Powder Coating -->
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="images/festés.png" alt="Elektrosztatikus porfestés ikon" loading="lazy">
+          </div>
+          <h3 class="service-title" data-key="services.painting.title">Elektrosztatikus porfestés</h3>
+          <p data-key="services.painting.description">Tartós, egyenletes és minőségi festékréteget biztosítunk, amely ellenáll az időjárási viszontagságoknak és hosszú távú védelmet nyújt.</p>
+        </div>
+
+        <!-- Service 3: Surface Matting -->
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="images/matt.png" alt="Felület mattosítás ikon" loading="lazy">
+          </div>
+          <h3 class="service-title" data-key="services.matting.title">Felület mattosítás</h3>
+          <p data-key="services.matting.description">Üveg, fa és más felületek professzionális mattosítása. Ideális dekorációs célokra vagy további felületkezelések előkészítésére.</p>
+        </div>
+
+        <!-- Service 4: Tire Installation -->
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="images/gumi.png" alt="Gumiszerelés ikon" loading="lazy">
+          </div>
+          <h3 class="service-title" data-key="services.tire.title">Gumiszerelés</h3>
+          <p data-key="services.tire.description">Komplett gumiszerelési szolgáltatásokat kínálunk, hogy időt takarítson meg. A homokfúvás előtt és után is vállaljuk a gumiabroncsok le- és felszerelését.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PROCESS SECTION
+       ============================================ -->
+  <section id="process" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="process.title">Munkafolyamat</h2>
+      </div>
+      <div class="process-steps">
+        <!-- Step 1 -->
+        <div class="process-step">
+          <div class="step-number" aria-label="Step 1">1</div>
+          <h3 data-key="process.step1.title">Konzultáció</h3>
+          <p data-key="process.step1.description">Felmérjük igényeit és részletes ajánlatot készítünk az elvégzendő munkákról.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="process-step">
+          <div class="step-number" aria-label="Step 2">2</div>
+          <h3 data-key="process.step2.title">Előkészítés</h3>
+          <p data-key="process.step2.description">A felületet előkészítjük a homokfúvásra, eltávolítva minden nem kezelhető elemet.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="process-step">
+          <div class="step-number" aria-label="Step 3">3</div>
+          <h3 data-key="process.step3.title">Homokfúvás</h3>
+          <p data-key="process.step3.description">Kvarchomokkal történő professzionális tisztítás a tökéletes eredmény érdekében.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="process-step">
+          <div class="step-number" aria-label="Step 4">4</div>
+          <h3 data-key="process.step4.title">Utókezelés</h3>
+          <p data-key="process.step4.description">Igény szerint porfestés vagy egyéb felületkezelési eljárás a tartós védelem érdekében.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       BEFORE-AFTER SECTION
+       ============================================ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
+      </div>
+      <div class="before-after">
+        <div class="canvas-instructions">
+          <p>
+            <i class="fas fa-mouse-pointer" aria-hidden="true"></i>
+            <span data-key="canvas.instruction">Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!</span>
+          </p>
+        </div>
+        <div class="dual-canvas-container">
+          <div class="canvas-wrapper">
+            <canvas id="canvas1" width="800" height="600" aria-label="Before-after canvas 1"></canvas>
+          </div>
+          <div class="canvas-wrapper">
+            <canvas id="canvas2" width="800" height="600" aria-label="Before-after canvas 2"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- ============================================
+       GALLERY SECTION
+       ============================================ -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="gallery.title">Galéria</h2>
+      </div>
+      <div class="gallery-grid">
+        <!-- Gallery Item 1 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="0" onclick="openLightbox(0)" onkeypress="handleGalleryKeypress(event, 0)">
+          <img src="images/1.jpg" alt="Projekt 1 - Rozsdaeltávolítás" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Gallery Item 2 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="1" onclick="openLightbox(1)" onkeypress="handleGalleryKeypress(event, 1)">
+          <img src="images/2.jpg" alt="Projekt 2 - Porfestés" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Gallery Item 3 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="2" onclick="openLightbox(2)" onkeypress="handleGalleryKeypress(event, 2)">
+          <img src="images/3.png" alt="Projekt 3 - Felületkezelés" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Gallery Item 4 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="3" onclick="openLightbox(3)" onkeypress="handleGalleryKeypress(event, 3)">
+          <img src="images/4.png" alt="Projekt 4 - Munka eredménye" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Gallery Item 5 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="4" onclick="openLightbox(4)" onkeypress="handleGalleryKeypress(event, 4)">
+          <img src="images/5.jpg" alt="Projekt 5 - Professzionális munka" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Gallery Item 6 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="5" onclick="openLightbox(5)" onkeypress="handleGalleryKeypress(event, 5)">
+          <img src="images/6.png" alt="Projekt 6 - Homokfúvás" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Gallery Item 7 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="6" onclick="openLightbox(6)" onkeypress="handleGalleryKeypress(event, 6)">
+          <img src="images/7.jpg" alt="Projekt 7 - Fémfelület tisztítás" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Gallery Item 8 -->
+        <div class="gallery-item" role="button" tabindex="0" data-index="7" onclick="openLightbox(7)" onkeypress="handleGalleryKeypress(event, 7)">
+          <img src="images/8.jpg" alt="Projekt 8 - Végső eredmény" loading="lazy">
+          <div class="gallery-overlay" aria-hidden="true">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       LIGHTBOX MODAL
+       ============================================ -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox" title="Close (Esc)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)" aria-label="Previous image" title="Previous (←)">
+      <span aria-hidden="true">&#10094;</span>
+    </button>
+    <button class="lightbox-nav lightbox-next" onclick="changeImage(1)" aria-label="Next image" title="Next (→)">
+      <span aria-hidden="true">&#10095;</span>
+    </button>
+    <img class="lightbox-content" id="lightbox-img" src="" alt="Fullscreen gallery image">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <!-- ============================================
+       CTA SECTION
+       ============================================ -->
+  <section id="contact-cta" class="section cta">
+    <div class="container">
+      <h2 data-key="cta.title">Kérjen ingyenes árajánlatot most!</h2>
+      <p data-key="cta.description">Akár kisebb, akár nagyobb projektről legyen szó, vegye fel velünk a kapcsolatot még ma!</p>
+      <a href="#contact" class="btn btn-outline" data-key="cta.button">Kapcsolat</a>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CONTACT & FOOTER SECTION
+       ============================================ -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-key="contact.title">Kapcsolat</h2>
+      </div>
+      <div class="contact-container">
+        <!-- Contact Information -->
+        <div class="contact-info">
+          <h3 data-key="footer.contact">Elérhetőségek</h3>
+          
+          <!-- Address -->
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            </div>
+            <div class="contact-details">
+              <h4 data-key="contact.location">Cím</h4>
+              <p data-key="footer.address">Székelyudvarhely, Fenyő utca 58.</p>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone" aria-hidden="true"></i>
+            </div>
+            <div class="contact-details">
+              <h4 data-key="contact.phone">Telefon</h4>
+              <p><a href="tel:+40745967960">+40 745 967 960</a></p>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+            </div>
+            <div class="contact-details">
+              <h4 data-key="contact.email">Email</h4>
+              <p><a href="mailto:koroziostop@gmail.com">koroziostop@gmail.com</a></p>
+            </div>
+          </div>
+
+          <!-- Hours -->
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-clock" aria-hidden="true"></i>
+            </div>
+            <div class="contact-details">
+              <h4 data-key="contact.hours">Nyitvatartás</h4>
+              <p>
+                <span data-key="footer.weekday">Hétfő - Péntek: </span>8:00 - 17:00<br>
+                <span data-key="footer.saturday">Szombat: </span>9:00 - 13:00<br>
+                <span data-key="footer.sunday">Vasárnap: </span><span data-key="footer.closed">Zárva</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <h3 data-key="contact.form-title">Írjon nekünk</h3>
+          <form id="contact-form" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Név" required aria-label="Név">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Email" required aria-label="Email">
+            </div>
+            <div class="form-group">
+              <input type="tel" class="form-control" placeholder="Telefon" aria-label="Telefon">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" placeholder="Üzenet" required aria-label="Üzenet"></textarea>
+            </div>
+            <button type="submit" class="btn-submit" data-key="contact.send">Küldés</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <!-- Footer Column 1: Company Info -->
+        <div class="footer-col">
+          <h3>Korozio Stop Kft.</h3>
+          <p data-key="footer.about">Professzionális rozsdaeltávolítás és fémfelület kezelés szolgáltatások.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon" title="Facebook" aria-label="Keress minket Facebookon">
+              <i class="fab fa-facebook-f" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" title="Instagram" aria-label="Keress minket Instagramon">
+              <i class="fab fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="tel:+40745967960" class="social-icon" title="Telefon" aria-label="Hívj minket">
+              <i class="fas fa-phone" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Footer Column 2: Quick Links -->
+        <div class="footer-col">
+          <h3 data-key="footer.quick-links">Gyors linkek</h3>
+          <ul class="footer-links">
+            <li><a href="#home" data-key="nav.home">Főoldal</a></li>
+            <li><a href="#about" data-key="nav.about">Rólunk</a></li>
+            <li><a href="#services" data-key="nav.services">Szolgáltatások</a></li>
+            <li><a href="#gallery" data-key="nav.gallery">Galéria</a></li>
+            <li><a href="#contact" data-key="nav.contact">Kapcsolat</a></li>
+          </ul>
+        </div>
+
+        <!-- Footer Column 3: Services -->
+        <div class="footer-col">
+          <h3 data-key="footer.services">Szolgáltatások</h3>
+          <ul class="footer-links">
+            <li><a href="#services" data-key="services.rust.title">Rozsdaeltávolítás</a></li>
+            <li><a href="#services" data-key="services.painting.title">Porfestés</a></li>
+            <li><a href="#services" data-key="services.matting.title">Mattosítás</a></li>
+            <li><a href="#services" data-key="services.tire.title">Gumiszerelés</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
     <div class="copyright">
-      <p>&copy; 2025 Korozio Stop Kft.</p>
+      <p>&copy; 2025 Korozio Stop Kft. | <span data-key="footer.rights">Minden jog fenntartva.</span></p>
     </div>
   </footer>
 
-  <!-- JavaScript -->
-<script>
-  // Mobile menu toggle
-  const mobileToggle = document.getElementById('mobile-toggle');
-  const navMenu = document.getElementById('nav-menu');
+  <!-- ============================================
+       JAVASCRIPT
+       ============================================ -->
+  <script>
+    // ============================================
+    // MOBILE MENU FUNCTIONALITY
+    // ============================================
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-menu');
 
-  mobileToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-  });
+    mobileToggle.addEventListener('click', () => {
+      const isActive = navMenu.classList.toggle('active');
+      mobileToggle.setAttribute('aria-expanded', isActive);
+    });
 
-  // Smooth scrolling for navigation links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-
-      // Close mobile menu if open
-      navMenu.classList.remove('active');
-
-      // Scroll to target
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
+    // Close menu when link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', false);
       });
     });
-  });
 
-  // Navbar scroll effect
-  window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-      navbar.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
-      navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-    } else {
-      navbar.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-      navbar.style.backgroundColor = 'var(--white)';
-    }
-  });
-
-  // Language switcher functionality with translations
-  let currentLanguage = 'hu';
-
-  // Translation data
-  const translations = {
-    hu: {
-      // Navigation
-      'nav.home': 'Főoldal',
-      'nav.about': 'Rólunk',
-      'nav.services': 'Szolgáltatások',
-      'nav.process': 'Folyamat',
-      'nav.gallery': 'Galéria',
-      'nav.contact': 'Kapcsolat',
-      
-      // Hero section
-      'hero.title': 'PROFESSZIONÁLIS ROZSDAELTÁVOLÍTÁS',
-      'hero.subtitle': 'Több mint 20 éves tapasztalattal a fémfelület tisztítás területén Székelyudvarhelyen',
-      'hero.services': 'Szolgáltatásaink',
-      'hero.contact': 'Kapcsolat',
-      
-      // About section
-      'about.title': 'Rólunk',
-      'about.subtitle': 'Több mint 20 éve az iparág élvonalában',
-      'about.description1': 'A Korózió Stop Kft. már több mint két évtizede áll ügyfelei szolgálatában Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása lakossági és ipari ügyfelek számára egyaránt.',
-      'about.description2': 'Minden munkánkat a legmodernebb technológiával és szakértelemmel végezzük, hogy biztosítsuk a legjobb eredményt minden ügyfelünk számára.',
-      'about.feature1': '20 év szakmai tapasztalat',
-      'about.feature2': 'Környezetbarát munkavégzés',
-      'about.feature3': 'Modern technológia, piaci árak',
-      'about.feature4': 'Terepmunka lehetősége',
-      
-      // Services section
-      'services.title': 'Szolgáltatásaink',
-      'services.rust.title': 'Rozsdaeltávolítás',
-      'services.rust.description': 'Kvarchomokkal történő hatékony rozsdaeltávolítás fémfelületekről. Professzionális technológiánk megóvja az alapanyagot és tökéletes felületet biztosít a további kezelésekhez.',
-      'services.painting.title': 'Elektrosztatikus porfestés',
-      'services.painting.description': 'Tartós, egyenletes és minőségi festékréteget biztosítunk, amely ellenáll az időjárási viszontagságoknak és hosszú távú védelmet nyújt.',
-      'services.matting.title': 'Felület mattosítás',
-      'services.matting.description': 'Üveg, fa és más felületek professzionális mattosítása. Ideális dekorációs célokra vagy további felületkezelések előkészítésére.',
-      'services.tire.title': 'Gumiszerelés',
-      'services.tire.description': 'Komplett gumiszerelési szolgáltatásokat kínálunk, hogy időt takarítson meg. A homokfúvás előtt és után is vállaljuk a gumiabroncsok le- és felszerelését.',
-      
-      // Process section
-      'process.title': 'Munkafolyamat',
-      'process.step1.title': 'Konzultáció',
-      'process.step1.description': 'Felmérjük igényeit és részletes ajánlatot készítünk az elvégzendő munkákról.',
-      'process.step2.title': 'Előkészítés',
-      'process.step2.description': 'A felületet előkészítjük a homokfúvásra, eltávolítva minden nem kezelhető elemet.',
-      'process.step3.title': 'Homokfúvás',
-      'process.step3.description': 'Kvarchomokkal történő professzionális tisztítás a tökéletes eredmény érdekében.',
-      'process.step4.title': 'Utókezelés',
-      'process.step4.description': 'Igény szerint porfestés vagy egyéb felületkezelési eljárás a tartós védelem érdekében.',
-      
-      // Gallery and CTA
-      'gallery.title': 'Galéria',
-      'beforeafter.title': 'Munkáink előtte-utána',
-      'canvas.instruction': 'Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!',
-      'cta.title': 'Kérjen ingyenes árajánlatot most!',
-      'cta.description': 'Akár kisebb, akár nagyobb projektről legyen szó, vegye fel velünk a kapcsolatot még ma!',
-      'cta.button': 'Kapcsolat',
-      
-      // Footer
-      'footer.contact': 'Elérhetőségek'
-    },
-    ro: {
-      // Navigation
-      'nav.home': 'Acasă',
-      'nav.about': 'Despre noi',
-      'nav.services': 'Servicii',
-      'nav.process': 'Proces',
-      'nav.gallery': 'Galerie',
-      'nav.contact': 'Contact',
-      
-      // Hero section
-      'hero.title': 'ÎNDEPĂRTARE PROFESIONALĂ A RUGINII',
-      'hero.subtitle': 'Cu peste 20 de ani de experiență în curățarea suprafețelor metalice în Odorheiu Secuiesc',
-      'hero.services': 'Serviciile noastre',
-      'hero.contact': 'Contact',
-      
-      // About section
-      'about.title': 'Despre noi',
-      'about.subtitle': 'Peste 20 de ani în fruntea industriei',
-      'about.description1': 'Korozio Stop Kft. deservește clienții săi de peste două decenii în Odorheiu Secuiesc și împrejurimi. Obiectivul nostru este să oferim servicii fiabile, ecologice și rentabile atât pentru clienții rezidențiali, cât și pentru cei industriali.',
-      'about.description2': 'Executăm toate lucrările cu cea mai modernă tehnologie și expertiză pentru a asigura cele mai bune rezultate pentru toți clienții noștri.',
-      'about.feature1': '20 de ani de experiență profesională',
-      'about.feature2': 'Muncă ecologică',
-      'about.feature3': 'Tehnologie modernă, prețuri de piață',
-      'about.feature4': 'Posibilitatea de lucru pe teren',
-      
-      // Services section
-      'services.title': 'Serviciile noastre',
-      'services.rust.title': 'Îndepărtarea ruginii',
-      'services.rust.description': 'Îndepărtarea eficientă a ruginii de pe suprafețele metalice cu nisip de cuarț. Tehnologia noastră profesională protejează materialul de bază și asigură o suprafață perfectă pentru tratamentele ulterioare.',
-      'services.painting.title': 'Vopsire electrostatică cu pulbere',
-      'services.painting.description': 'Oferim un strat de vopsea durabil, uniform și de calitate, care rezistă la intemperii și oferă protecție pe termen lung.',
-      'services.matting.title': 'Matifierea suprafețelor',
-      'services.matting.description': 'Matifierea profesională a sticlei, lemnului și altor suprafețe. Ideal pentru scopuri decorative sau pentru pregătirea tratamentelor ulterioare ale suprafeței.',
-      'services.tire.title': 'Montarea anvelopelor',
-      'services.tire.description': 'Oferim servicii complete de montare a anvelopelor pentru a vă economisi timpul. Realizăm demontarea și montarea anvelopelor atât înainte, cât și după sablarea cu nisip.',
-      
-      // Process section
-      'process.title': 'Procesul de lucru',
-      'process.step1.title': 'Consultanță',
-      'process.step1.description': 'Evaluăm nevoile dumneavoastră și pregătim o ofertă detaliată pentru lucrările de efectuat.',
-      'process.step2.title': 'Pregătire',
-      'process.step2.description': 'Pregătim suprafața pentru sablare, îndepărtând toate elementele care nu pot fi tratate.',
-      'process.step3.title': 'Sablare',
-      'process.step3.description': 'Curățare profesională cu nisip de cuarț pentru rezultate perfecte.',
-      'process.step4.title': 'Finisare',
-      'process.step4.description': 'La cerere, vopsire cu pulbere sau alte proceduri de tratare a suprafeței pentru protecție durabilă.',
-      
-      // Gallery and CTA
-      'gallery.title': 'Galerie',
-      'beforeafter.title': 'Lucrările noastre înainte-după',
-      'canvas.instruction': 'Trageți mouse-ul peste imagine pentru a vedea rezultatul curățării!',
-      'cta.title': 'Solicitați o ofertă gratuită acum!',
-      'cta.description': 'Indiferent dacă este vorba despre un proiect mic sau mare, contactați-ne astăzi!',
-      'cta.button': 'Contact',
-      
-      // Footer
-      'footer.contact': 'Date de contact'
-    }
-  };
-
-  function switchLanguage(lang) {
-    currentLanguage = lang;
-    
-    // Update active button
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.classList.remove('active');
-    });
-    document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
-    
-    // Update all translatable elements
-    document.querySelectorAll('[data-key]').forEach(element => {
-      const key = element.getAttribute('data-key');
-      if (translations[lang] && translations[lang][key]) {
-        element.textContent = translations[lang][key];
-      }
-    });
-    
-    // Update HTML lang attribute
-    document.documentElement.lang = lang;
-    
-    // Update page title and meta description
-    if (lang === 'ro') {
-      document.title = 'Korozio Stop Kft. - Sablare Odorheiu Secuiesc | Îndepărtarea ruginii';
-      document.querySelector('meta[name="description"]').content = 'Korozio Stop Kft. din Odorheiu Secuiesc oferă de peste 20 de ani servicii de îndepărtare a ruginii, sablare și vopsire cu pulbere.';
-    } else {
-      document.title = 'Korozio Stop Kft. - Homokfújás Székelyudvarhely | Rozsdaeltávolítás';
-      document.querySelector('meta[name="description"]').content = 'A Korozio Stop Kft. Székelyudvarhelyen több, mint 20 éve kínál rozsdaeltávolítás, homokfújás és porfestés szolgáltatásokat.';
-    }
-    
-    console.log('Language switched to:', lang);
-  }
-
-  // Initialize language switcher
-  document.addEventListener('DOMContentLoaded', function() {
-    // Add event listeners to language buttons
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const lang = this.getAttribute('data-lang');
-        switchLanguage(lang);
-      });
-    });
-  });
-
-  // Interactive Canvas Before-After Implementation - Updated for dual canvas
-  function createCanvasHandler(canvasId, rustyImageSrc, cleanImageSrc) {
-    const canvas = document.getElementById(canvasId);
-    const ctx = canvas.getContext('2d');
-    const rusty = new Image();
-    const clean = new Image();
-    rusty.src = rustyImageSrc;
-    clean.src = cleanImageSrc;
-    let imageWidth = 0;
-    let imageHeight = 0;
-    const maskCanvas = document.createElement('canvas');
-    const maskCtx = maskCanvas.getContext('2d');
-    const brushSize = 80; // Increased brush size to match left image
-    let isDrawing = false;
-
-    function updateCanvas() {
-      // 1. Rajzoljuk a rozsdás felületet teljesen
-      ctx.drawImage(rusty, 0, 0, imageWidth, imageHeight);
-      // 2. Állítsuk be a maszkolást: csak azokat a részeket mutassuk a "clean" képből,
-      // ahol a maszk feketére van rajzolva
-      ctx.save();
-      ctx.globalCompositeOperation = 'destination-out';
-      ctx.drawImage(maskCanvas, 0, 0);
-      ctx.restore();
-      // 3. Tiszta felület rajzolása csak a maszkolt részekre
-      ctx.save();
-      ctx.globalCompositeOperation = 'destination-over';
-      ctx.drawImage(clean, 0, 0, imageWidth, imageHeight);
-      ctx.restore();
-    }
-
-    function startDrawing() {
-      isDrawing = true;
-    }
-
-    function stopDrawing() {
-      isDrawing = false;
-    }
-
-    function draw(e) {
-      if (!isDrawing) return;
-      const rect = canvas.getBoundingClientRect();
-      const scaleX = canvas.width / rect.width;
-      const scaleY = canvas.height / rect.height;
-      const x = (e.clientX - rect.left) * scaleX;
-      const y = (e.clientY - rect.top) * scaleY;
-      
-      maskCtx.beginPath();
-      maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
-      maskCtx.fillStyle = 'black';
-      maskCtx.fill();
-      updateCanvas();
-    }
-
-    function init() {
-      // Use original image dimensions to prevent compression
-      imageWidth = rusty.width;
-      imageHeight = rusty.height;
-      canvas.width = imageWidth;
-      canvas.height = imageHeight;
-      maskCanvas.width = imageWidth;
-      maskCanvas.height = imageHeight;
-      // Kezdeti renderelés
-      updateCanvas();
-    }
-
-    rusty.onload = () => {
-      // csak akkor induljunk el, ha mindkét kép be van töltve
-      if (clean.complete) init();
-    };
-
-    clean.onload = () => {
-      if (rusty.complete) init();
-    };
-
-    canvas.addEventListener('mousedown', startDrawing);
-    canvas.addEventListener('mouseup', stopDrawing);
-    canvas.addEventListener('mouseleave', stopDrawing);
-    canvas.addEventListener('mousemove', draw);
-
-    // Touch events for mobile support
-    canvas.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      startDrawing();
-    });
-
-    canvas.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      stopDrawing();
-    });
-
-    canvas.addEventListener('touchmove', (e) => {
-      e.preventDefault();
-      const touch = e.touches[0];
-      const mouseEvent = new MouseEvent('mousemove', {
-        clientX: touch.clientX,
-        clientY: touch.clientY
-      });
-      draw(mouseEvent);
-    });
-  }
-
-  // Initialize both canvases
-  createCanvasHandler('canvas1', 'images/rusty.jpg', 'images/clean.jpg');
-  createCanvasHandler('canvas2', 'images/előtte 1.jpg', 'images/utánna 1.jpg');
-
-  // ============================================================================
-  // LIGHTBOX GALLERY FUNCTIONALITY - CORRECTED
-  // ============================================================================
-  
-  let currentImageIndex = 0;
-  // Updated images array to match your actual HTML gallery images
-  const images = [
-    { src: 'images/1.jpg', alt: 'Project 1' },
-    { src: 'images/2.jpg', alt: 'Project 2' },
-    { src: 'images/3.png', alt: 'Project 3' },
-    { src: 'images/4.png', alt: 'Project 4' },
-    { src: 'images/5.jpg', alt: 'Project 5' },
-    { src: 'images/6.png', alt: 'Project 6' },
-    { src: 'images/7.jpg', alt: 'Project 7' },
-    { src: 'images/8.jpg', alt: 'Project 8' }
-  ];
-
-  function openLightbox(index) {
-    currentImageIndex = index;
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxCaption = document.getElementById('lightbox-caption');
-    
-    if (lightbox && lightboxImg && lightboxCaption) {
-      lightboxImg.src = images[index].src;
-      lightboxCaption.textContent = images[index].alt;
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    }
-  }
-
-  function closeLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    if (lightbox) {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = 'auto'; // Restore scrolling
-    }
-  }
-
-  function changeImage(direction) {
-    currentImageIndex += direction;
-    
-    if (currentImageIndex >= images.length) {
-      currentImageIndex = 0;
-    } else if (currentImageIndex < 0) {
-      currentImageIndex = images.length - 1;
-    }
-    
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxCaption = document.getElementById('lightbox-caption');
-    
-    if (lightboxImg && lightboxCaption) {
-      lightboxImg.src = images[currentImageIndex].src;
-      lightboxCaption.textContent = images[currentImageIndex].alt;
-    }
-  }
-
-  // Initialize event listeners when DOM is loaded
-  document.addEventListener('DOMContentLoaded', function() {
-    // Close lightbox when clicking outside the image
-    const lightbox = document.getElementById('lightbox');
-    if (lightbox) {
-      lightbox.addEventListener('click', function(e) {
-        if (e.target === this) {
-          closeLightbox();
+    // ============================================
+    // SMOOTH SCROLLING
+    // ============================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
         }
       });
+    });
+
+    // ============================================
+    // NAVBAR SCROLL EFFECT
+    // ============================================
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
+        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+      } else {
+        navbar.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+        navbar.style.backgroundColor = 'var(--white)';
+      }
+    });
+
+    // ============================================
+    // LANGUAGE SWITCHER
+    // ============================================
+    let currentLanguage = 'hu';
+
+    const translations = {
+      hu: {
+        'nav.home': 'Főoldal',
+        'nav.about': 'Rólunk',
+        'nav.services': 'Szolgáltatások',
+        'nav.process': 'Folyamat',
+        'nav.gallery': 'Galéria',
+        'nav.contact': 'Kapcsolat',
+        'hero.title': 'PROFESSZIONÁLIS ROZSDAELTÁVOLÍTÁS',
+        'hero.subtitle': 'Több mint 20 éves tapasztalattal a fémfelület tisztítás területén Székelyudvarhelyen',
+        'hero.services': 'Szolgáltatásaink',
+        'hero.contact': 'Kapcsolat',
+        'about.title': 'Rólunk',
+        'about.subtitle': 'Több mint 20 éve az iparág élvonalában',
+        'about.description1': 'A Korózió Stop Kft. már több mint két évtizede áll ügyfelei szolgálatában Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása lakosztási és ipari ügyfelek számára egyaránt.',
+        'about.description2': 'Minden munkánkat a legmodernebb technológiával és szakértelemmel végezzük, hogy biztosítsuk a legjobb eredményt minden ügyfelünk számára.',
+        'about.feature1': '20 év szakmai tapasztalat',
+        'about.feature2': 'Környezetbarát munkavégzés',
+        'about.feature3': 'Modern technológia, piaci árak',
+        'about.feature4': 'Terepmunka lehetősége',
+        'services.title': 'Szolgáltatásaink',
+        'services.rust.title': 'Rozsdaeltávolítás',
+        'services.rust.description': 'Kvarchomokkal történő hatékony rozsdaeltávolítás fémfelületekről. Professzionális technológiánk megóvja az alapanyagot és tökéletes felületet biztosít a további kezelésekhez.',
+        'services.painting.title': 'Elektrosztatikus porfestés',
+        'services.painting.description': 'Tartós, egyenletes és minőségi festékréteget biztosítunk, amely ellenáll az időjárási viszontagságoknak és hosszú távú védelmet nyújt.',
+        'services.matting.title': 'Felület mattosítás',
+        'services.matting.description': 'Üveg, fa és más felületek professzionális mattosítása. Ideális dekorációs célokra vagy további felületkezelések előkészítésére.',
+        'services.tire.title': 'Gumiszerelés',
+        'services.tire.description': 'Komplett gumiszerelési szolgáltatásokat kínálunk, hogy időt takarítson meg. A homokfúvás előtt és után is vállaljuk a gumiabroncsok le- és felszerelését.',
+        'process.title': 'Munkafolyamat',
+        'process.step1.title': 'Konzultáció',
+        'process.step1.description': 'Felmérjük igényeit és részletes ajánlatot készítünk az elvégzendő munkákról.',
+        'process.step2.title': 'Előkészítés',
+        'process.step2.description': 'A felületet előkészítjük a homokfúvásra, eltávolítva minden nem kezelhető elemet.',
+        'process.step3.title': 'Homokfúvás',
+        'process.step3.description': 'Kvarchomokkal történő professzionális tisztítás a tökéletes eredmény érdekében.',
+        'process.step4.title': 'Utókezelés',
+        'process.step4.description': 'Igény szerint porfestés vagy egyéb felületkezelési eljárás a tartós védelem érdekében.',
+        'gallery.title': 'Galéria',
+        'beforeafter.title': 'Munkáink előtte-utána',
+        'canvas.instruction': 'Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!',
+        'cta.title': 'Kérjen ingyenes árajánlatot most!',
+        'cta.description': 'Akár kisebb, akár nagyobb projektről legyen szó, vegye fel velünk a kapcsolatot még ma!',
+        'cta.button': 'Kapcsolat',
+        'contact.title': 'Kapcsolat',
+        'contact.form-title': 'Írjon nekünk',
+        'contact.location': 'Cím',
+        'contact.phone': 'Telefon',
+        'contact.email': 'Email',
+        'contact.hours': 'Nyitvatartás',
+        'contact.send': 'Küldés',
+        'footer.contact': 'Elérhetőségek',
+        'footer.address': 'Székelyudvarhely, Fenyő utca 58.',
+        'footer.weekday': 'Hétfő - Péntek: ',
+        'footer.saturday': 'Szombat: ',
+        'footer.sunday': 'Vasárnap: ',
+        'footer.closed': 'Zárva',
+        'footer.quick-links': 'Gyors linkek',
+        'footer.services': 'Szolgáltatások',
+        'footer.about': 'Professzionális rozsdaeltávolítás és fémfelület kezelés szolgáltatások.',
+        'footer.rights': 'Minden jog fenntartva.'
+      },
+      ro: {
+        'nav.home': 'Acasă',
+        'nav.about': 'Despre noi',
+        'nav.services': 'Servicii',
+        'nav.process': 'Proces',
+        'nav.gallery': 'Galerie',
+        'nav.contact': 'Contact',
+        'hero.title': 'ÎNDEPĂRTARE PROFESIONALĂ A RUGINII',
+        'hero.subtitle': 'Cu peste 20 de ani de experiență în curățarea suprafețelor metalice în Odorheiu Secuiesc',
+        'hero.services': 'Serviciile noastre',
+        'hero.contact': 'Contact',
+        'about.title': 'Despre noi',
+        'about.subtitle': 'Peste 20 de ani în fruntea industriei',
+        'about.description1': 'Korozio Stop Kft. deservește clienții săi de peste două decenii în Odorheiu Secuiesc și împrejurimi. Obiectivul nostru este să oferim servicii fiabile, ecologice și rentabile atât pentru clienții rezidențiali, cât și pentru cei industriali.',
+        'about.description2': 'Executăm toate lucrările cu cea mai modernă tehnologie și expertiză pentru a asigura cele mai bune rezultate pentru toți clienții noștri.',
+        'about.feature1': '20 de ani de experiență profesională',
+        'about.feature2': 'Muncă ecologică',
+        'about.feature3': 'Tehnologie modernă, prețuri de piață',
+        'about.feature4': 'Posibilitatea de lucru pe teren',
+        'services.title': 'Serviciile noastre',
+        'services.rust.title': 'Îndepărtarea ruginii',
+        'services.rust.description': 'Îndepărtarea eficientă a ruginii de pe suprafețele metalice cu nisip de cuarț. Tehnologia noastră profesională protejează materialul de bază și asigură o suprafață perfectă pentru tratamentele ulterioare.',
+        'services.painting.title': 'Vopsire electrostatică cu pulbere',
+        'services.painting.description': 'Oferim un strat de vopsea durabil, uniform și de calitate, care rezistă la intemperii și oferă protecție pe termen lung.',
+        'services.matting.title': 'Matifierea suprafețelor',
+        'services.matting.description': 'Matifierea profesională a sticlei, lemnului și altor suprafețe. Ideal pentru scopuri decorative sau pentru pregătirea tratamentelor ulterioare ale suprafeței.',
+        'services.tire.title': 'Montarea anvelopelor',
+        'services.tire.description': 'Oferim servicii complete de montare a anvelopelor pentru a vă economisi timpul. Realizăm demontarea și montarea anvelopelor atât înainte, cât și după sablarea cu nisip.',
+        'process.title': 'Procesul de lucru',
+        'process.step1.title': 'Consultanță',
+        'process.step1.description': 'Evaluăm nevoile dumneavoastră și pregătim o ofertă detaliată pentru lucrările de efectuat.',
+        'process.step2.title': 'Pregătire',
+        'process.step2.description': 'Pregătim suprafața pentru sablare, îndepărtând toate elementele care nu pot fi tratate.',
+        'process.step3.title': 'Sablare',
+        'process.step3.description': 'Curățare profesională cu nisip de cuarț pentru rezultate perfecte.',
+        'process.step4.title': 'Finisare',
+        'process.step4.description': 'La cerere, vopsire cu pulbere sau alte proceduri de tratare a suprafeței pentru protecție durabilă.',
+        'gallery.title': 'Galerie',
+        'beforeafter.title': 'Lucrările noastre înainte-după',
+        'canvas.instruction': 'Trageți mouse-ul peste imagine pentru a vedea rezultatul curățării!',
+        'cta.title': 'Solicitați o ofertă gratuită acum!',
+        'cta.description': 'Indiferent dacă este vorba despre un proiect mic sau mare, contactați-ne astăzi!',
+        'cta.button': 'Contact',
+        'contact.title': 'Contact',
+        'contact.form-title': 'Scrieți-ne',
+        'contact.location': 'Adresă',
+        'contact.phone': 'Telefon',
+        'contact.email': 'Email',
+        'contact.hours': 'Program',
+        'contact.send': 'Trimiteți',
+        'footer.contact': 'Date de contact',
+        'footer.address': 'Odorheiu Secuiesc, Str. Fenyő 58.',
+        'footer.weekday': 'Luni - Vineri: ',
+        'footer.saturday': 'Sâmbătă: ',
+        'footer.sunday': 'Duminică: ',
+        'footer.closed': 'Închis',
+        'footer.quick-links': 'Legături rapide',
+        'footer.services': 'Servicii',
+        'footer.about': 'Servicii profesionale de îndepărtare a ruginii și tratare a suprafețelor metalice.',
+        'footer.rights': 'Toate drepturile rezervate.'
+      },
+      en: {
+        'nav.home': 'Home',
+        'nav.about': 'About',
+        'nav.services': 'Services',
+        'nav.process': 'Process',
+        'nav.gallery': 'Gallery',
+        'nav.contact': 'Contact',
+        'hero.title': 'PROFESSIONAL RUST REMOVAL',
+        'hero.subtitle': 'Over 20 years of experience in metal surface cleaning in Odorheiu Secuiesc',
+        'hero.services': 'Our Services',
+        'hero.contact': 'Contact',
+        'about.title': 'About Us',
+        'about.subtitle': 'Over 20 years at the forefront of the industry',
+        'about.description1': 'Korozio Stop Kft. has been serving its clients for over two decades in Odorheiu Secuiesc and surrounding areas. Our goal is to provide reliable, environment-friendly and cost-effective services for both residential and industrial clients.',
+        'about.description2': 'We perform all our work with the most modern technology and expertise to ensure the best results for all our clients.',
+        'about.feature1': '20 years of professional experience',
+        'about.feature2': 'Environmentally friendly work',
+        'about.feature3': 'Modern technology, market prices',
+        'about.feature4': 'On-site work available',
+        'services.title': 'Our Services',
+        'services.rust.title': 'Rust Removal',
+        'services.rust.description': 'Efficient rust removal from metal surfaces using quartz sand. Our professional technology protects the base material and provides a perfect surface for further treatments.',
+        'services.painting.title': 'Electrostatic Powder Coating',
+        'services.painting.description': 'We provide a durable, uniform and high-quality paint layer that resists weather conditions and provides long-term protection.',
+        'services.matting.title': 'Surface Matting',
+        'services.matting.description': 'Professional matting of glass, wood and other surfaces. Ideal for decorative purposes or preparation for further surface treatments.',
+        'services.tire.title': 'Tire Installation',
+        'services.tire.description': 'We offer complete tire installation services to save you time. We handle tire removal and installation both before and after sandblasting.',
+        'process.title': 'Work Process',
+        'process.step1.title': 'Consultation',
+        'process.step1.description': 'We assess your needs and prepare a detailed quote for the work to be performed.',
+        'process.step2.title': 'Preparation',
+        'process.step2.description': 'We prepare the surface for sandblasting, removing all elements that cannot be treated.',
+        'process.step3.title': 'Sandblasting',
+        'process.step3.description': 'Professional cleaning with quartz sand for perfect results.',
+        'process.step4.title': 'Post-Treatment',
+        'process.step4.description': 'Upon request, powder coating or other surface treatment procedures for lasting protection.',
+        'gallery.title': 'Gallery',
+        'beforeafter.title': 'Before and After Our Work',
+        'canvas.instruction': 'Drag your mouse over the image to see the cleaning results!',
+        'cta.title': 'Request a Free Quote Now!',
+        'cta.description': 'Whether it\'s a small or large project, contact us today!',
+        'cta.button': 'Contact',
+        'contact.title': 'Contact',
+        'contact.form-title': 'Write to us',
+        'contact.location': 'Address',
+        'contact.phone': 'Phone',
+        'contact.email': 'Email',
+        'contact.hours': 'Hours',
+        'contact.send': 'Send',
+        'footer.contact': 'Contact Information',
+        'footer.address': 'Odorheiu Secuiesc, Fenyő Street 58.',
+        'footer.weekday': 'Monday - Friday: ',
+        'footer.saturday': 'Saturday: ',
+        'footer.sunday': 'Sunday: ',
+        'footer.closed': 'Closed',
+        'footer.quick-links': 'Quick Links',
+        'footer.services': 'Services',
+        'footer.about': 'Professional rust removal and metal surface treatment services.',
+        'footer.rights': 'All rights reserved.'
+      }
+    };
+
+    function switchLanguage(lang) {
+      currentLanguage = lang;
+      
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
+      });
+      const activeBtn = document.querySelector(`[data-lang="${lang}"]`);
+      activeBtn.classList.add('active');
+      activeBtn.setAttribute('aria-pressed', 'true');
+      
+      // Update all translatable elements
+      document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
+      
+      // Update page metadata
+      const titles = {
+        hu: 'Korozio Stop Kft. - Homokfújás Székelyudvarhely | Rozsdaeltávolítás',
+        ro: 'Korozio Stop Kft. - Sablare Odorheiu Secuiesc | Îndepărtarea ruginii',
+        en: 'Korozio Stop Kft. - Sandblasting Odorheiu Secuiesc | Rust Removal'
+      };
+      
+      const descriptions = {
+        hu: 'A Korozio Stop Kft. Székelyudvarhelyen több, mint 20 éve kínál rozsdaeltávolítás, homokfújás és porfestés szolgáltatásokat.',
+        ro: 'Korozio Stop Kft. din Odorheiu Secuiesc oferă de peste 20 de ani servicii de îndepărtare a ruginii, sablare și vopsire cu pulbere.',
+        en: 'Korozio Stop Kft. in Odorheiu Secuiesc has been offering rust removal, sandblasting and powder coating services for over 20 years.'
+      };
+      
+      document.title = titles[lang];
+      document.querySelector('meta[name="description"]').content = descriptions[lang];
     }
 
-    // Keyboard navigation
+    // Initialize language switcher
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const lang = this.getAttribute('data-lang');
+          switchLanguage(lang);
+        });
+      });
+    });
+
+    // ============================================
+    // GALLERY & LIGHTBOX FUNCTIONALITY
+    // ============================================
+    let currentImageIndex = 0;
+    const galleryImages = [
+      { src: 'images/1.jpg', alt: 'Projekt 1' },
+      { src: 'images/2.jpg', alt: 'Projekt 2' },
+      { src: 'images/3.png', alt: 'Projekt 3' },
+      { src: 'images/4.png', alt: 'Projekt 4' },
+      { src: 'images/5.jpg', alt: 'Projekt 5' },
+      { src: 'images/6.png', alt: 'Projekt 6' },
+      { src: 'images/7.jpg', alt: 'Projekt 7' },
+      { src: 'images/8.jpg', alt: 'Projekt 8' }
+    ];
+
+    function openLightbox(index) {
+      currentImageIndex = index;
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      
+      lightboxImg.src = galleryImages[index].src;
+      lightboxImg.alt = galleryImages[index].alt;
+      lightboxCaption.textContent = galleryImages[index].alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      lightbox.focus();
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function changeImage(direction) {
+      currentImageIndex += direction;
+      
+      if (currentImageIndex >= galleryImages.length) {
+        currentImageIndex = 0;
+      } else if (currentImageIndex < 0) {
+        currentImageIndex = galleryImages.length - 1;
+      }
+      
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      
+      lightboxImg.src = galleryImages[currentImageIndex].src;
+      lightboxImg.alt = galleryImages[currentImageIndex].alt;
+      lightboxCaption.textContent = galleryImages[currentImageIndex].alt;
+    }
+
+    // Keyboard navigation for gallery
+    function handleGalleryKeypress(event, index) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openLightbox(index);
+      }
+    }
+
+    // Lightbox keyboard controls
     document.addEventListener('keydown', function(e) {
       const lightbox = document.getElementById('lightbox');
       if (lightbox && lightbox.classList.contains('active')) {
@@ -1729,13 +2729,158 @@
         }
       }
     });
-  });
 
-  // Make lightbox functions globally available
-  window.openLightbox = openLightbox;
-  window.closeLightbox = closeLightbox;
-  window.changeImage = changeImage;
+    // Close lightbox when clicking outside image
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeLightbox();
+      }
+    });
 
-</script>
+    // ============================================
+    // CONTACT FORM HANDLING
+    // ============================================
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      // Add your form submission logic here
+      console.log('Form submitted');
+      // Example: send to backend or email service
+      alert('Köszönjük az üzenetet! Hamarosan felvesszük Önnel a kapcsolatot.');
+      form.reset();
+    }
+
+    // ============================================
+    // INTERACTIVE CANVAS BEFORE-AFTER
+    // ============================================
+    function createCanvasHandler(canvasId, rustyImageSrc, cleanImageSrc) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      
+      const ctx = canvas.getContext('2d');
+      const rusty = new Image();
+      const clean = new Image();
+      
+      rusty.src = rustyImageSrc;
+      clean.src = cleanImageSrc;
+      
+      let imageWidth = 0;
+      let imageHeight = 0;
+      const maskCanvas = document.createElement('canvas');
+      const maskCtx = maskCanvas.getContext('2d');
+      const brushSize = 80;
+      let isDrawing = false;
+
+      function updateCanvas() {
+        // Draw rusty surface
+        ctx.drawImage(rusty, 0, 0, imageWidth, imageHeight);
+        
+        // Apply mask - remove areas where we've drawn
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.drawImage(maskCanvas, 0, 0);
+        ctx.restore();
+        
+        // Draw clean surface only on masked areas
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.drawImage(clean, 0, 0, imageWidth, imageHeight);
+        ctx.restore();
+      }
+
+      function startDrawing(e) {
+        isDrawing = true;
+      }
+
+      function stopDrawing(e) {
+        isDrawing = false;
+      }
+
+      function draw(e) {
+        if (!isDrawing) return;
+        
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const x = (e.clientX - rect.left) * scaleX;
+        const y = (e.clientY - rect.top) * scaleY;
+        
+        maskCtx.beginPath();
+        maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
+        maskCtx.fillStyle = 'black';
+        maskCtx.fill();
+        updateCanvas();
+      }
+
+      function init() {
+        imageWidth = rusty.width;
+        imageHeight = rusty.height;
+        canvas.width = imageWidth;
+        canvas.height = imageHeight;
+        maskCanvas.width = imageWidth;
+        maskCanvas.height = imageHeight;
+        updateCanvas();
+      }
+
+      rusty.onload = () => {
+        if (clean.complete) init();
+      };
+
+      clean.onload = () => {
+        if (rusty.complete) init();
+      };
+
+      // Mouse events
+      canvas.addEventListener('mousedown', startDrawing);
+      canvas.addEventListener('mouseup', stopDrawing);
+      canvas.addEventListener('mouseleave', stopDrawing);
+      canvas.addEventListener('mousemove', draw);
+
+      // Touch events for mobile support
+      canvas.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        isDrawing = true;
+      });
+
+      canvas.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        isDrawing = false;
+      });
+
+      canvas.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        if (!isDrawing) return;
+        
+        const touch = e.touches[0];
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const x = (touch.clientX - rect.left) * scaleX;
+        const y = (touch.clientY - rect.top) * scaleY;
+        
+        maskCtx.beginPath();
+        maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
+        maskCtx.fillStyle = 'black';
+        maskCtx.fill();
+        updateCanvas();
+      });
+    }
+
+    // Initialize both canvases when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      createCanvasHandler('canvas1', 'images/rusty.jpg', 'images/clean.jpg');
+      createCanvasHandler('canvas2', 'images/előtte 1.jpg', 'images/utánna 1.jpg');
+    });
+
+    // ============================================
+    // MAKE FUNCTIONS GLOBALLY AVAILABLE
+    // ============================================
+    window.openLightbox = openLightbox;
+    window.closeLightbox = closeLightbox;
+    window.changeImage = changeImage;
+    window.handleGalleryKeypress = handleGalleryKeypress;
+    window.handleFormSubmit = handleFormSubmit;
+    window.switchLanguage = switchLanguage;
+  </script>
 </body>
 </html>
