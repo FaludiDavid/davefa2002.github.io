@@ -131,6 +131,9 @@
       list-style: none;
       gap: 2rem;
       align-items: center;
+      flex: 1;
+      justify-content: center;
+      margin: 0 1rem;
     }
 
     .nav-item {
@@ -171,69 +174,99 @@
     }
 
     /* ============================================
-       LANGUAGE SWITCHER
+       LANGUAGE SWITCHER - IMPROVED DESIGN
        ============================================ */
     .language-switcher-nav {
       display: flex;
       align-items: center;
-      gap: 1rem;
       flex-shrink: 0;
+      margin-left: auto;
     }
 
     .language-switcher {
       display: flex;
-      gap: 3px;
-      background-color: var(--white);
-      border-radius: 25px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      padding: 3px;
-      border: 1px solid var(--light-gray);
+      gap: 0;
+      background-color: transparent;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+      border: none;
     }
 
     .lang-btn {
-      padding: clamp(6px, 2vw, 8px) clamp(10px, 3vw, 14px);
-      border: none;
-      background-color: transparent;
+      padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px);
+      border: 2px solid var(--light-gray);
+      background-color: var(--white);
       color: var(--dark);
-      border-radius: 20px;
+      border-radius: 0;
       cursor: pointer;
-      font-weight: 500;
-      font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+      font-weight: 600;
+      font-size: clamp(0.75rem, 1.5vw, 0.9rem);
       font-family: 'Montserrat', sans-serif;
       transition: all 0.3s ease;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
       justify-content: center;
-      min-height: 36px;
+      min-height: 40px;
       touch-action: manipulation;
       -webkit-user-select: none;
       user-select: none;
+      position: relative;
     }
 
+    /* First button - rounded left */
+    .lang-btn-hu {
+      border-radius: 6px 0 0 6px;
+      border-right: 1px solid var(--light-gray);
+    }
+
+    /* Middle button */
+    .lang-btn-ro {
+      border-radius: 0;
+      border-right: 1px solid var(--light-gray);
+    }
+
+    /* Last button - rounded right */
+    .lang-btn-en {
+      border-radius: 0 6px 6px 0;
+      border-right: 2px solid var(--light-gray);
+    }
+
+    /* Hover state */
     .lang-btn:hover {
       background-color: var(--light);
-      transform: translateY(-1px);
+      color: var(--primary);
+      border-color: var(--secondary);
     }
 
+    /* Active state */
     .lang-btn.active {
       background-color: var(--secondary);
       color: var(--white);
-      box-shadow: 0 2px 4px rgba(0, 115, 230, 0.3);
+      border-color: var(--secondary);
+      font-weight: 700;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .lang-btn.active:hover {
+      background-color: #0062c4;
+      border-color: #0062c4;
     }
 
     .lang-btn:active {
-      transform: translateY(0);
+      transform: scale(0.95);
     }
 
-    /* Flags */
-    .flag-icon {
-      width: clamp(14px, 3vw, 18px);
-      height: clamp(10px, 2.5vw, 13px);
+    /* Flag icon styles */
+    .lang-flag {
+      width: clamp(16px, 3vw, 20px);
+      height: clamp(12px, 2.5vw, 14px);
       border-radius: 2px;
       display: inline-block;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
       flex-shrink: 0;
+      border: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .flag-hu {
@@ -247,6 +280,12 @@
     .flag-en {
       background: linear-gradient(to right, #012169 25%, #FFFFFF 25%, #FFFFFF 50%, #012169 50%),
                   repeating-linear-gradient(45deg, #FFF 0px, #FFF 10px, #C8102E 10px, #C8102E 20px);
+    }
+
+    /* Language label */
+    .lang-label {
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
 
     /* ============================================
@@ -1108,6 +1147,9 @@
         padding: 1rem 0;
         gap: 0;
         z-index: 999;
+        flex: none;
+        margin: 0;
+        justify-content: flex-start;
       }
 
       .nav-menu.active {
@@ -1124,6 +1166,14 @@
         display: block;
         padding: 1rem;
         border-bottom: 1px solid var(--light-gray);
+      }
+
+      .language-switcher-nav {
+        margin-left: 0.5rem;
+      }
+
+      .lang-btn {
+        padding: clamp(6px, 2vw, 10px) clamp(8px, 2vw, 12px);
       }
 
       .hero {
@@ -1229,649 +1279,20 @@
         display: none;
       }
 
-      .lang-btn span:not(.flag-icon) {
+      .lang-btn .lang-label {
         display: none;
       }
 
       .lang-btn {
-        min-width: 38px;
-        padding: 6px 8px;
+        min-width: 40px;
+        padding: 8px 6px;
       }
 
-      .contact-item {
-        flex-wrap: wrap;
+      .lang-flag {
+        width: 18px;
+        height: 13px;
       }
 
-      .contact-icon {
-        width: 100%;
-        margin-bottom: 0.5rem;
-      }
-
-      .footer-social {
-        gap: 0.75rem;
-      }
-
-      .social-icon {
-        width: 36px;
-        height: 36px;
-        min-width: 36px;
-        min-height: 36px;
-      }
-
-      .cta {
-        padding: 2rem 1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- ============================================
-       NAVIGATION / NAVBAR
-       ============================================ -->
-  <nav class="navbar">
-    <div class="container navbar-container">
-      <!-- Logo -->
-      <a href="#" class="logo" aria-label="Korozio Stop Kft.">
-        <i class="fas fa-shield-alt" aria-hidden="true"></i>
-        <span>KOROZIO STOP</span>
-      </a>
-
-      <!-- Mobile Menu Toggle -->
-      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <i class="fas fa-bars" aria-hidden="true"></i>
-      </button>
-
-      <!-- Navigation Menu -->
-      <ul class="nav-menu" id="nav-menu" role="navigation">
-        <li class="nav-item"><a href="#home" class="nav-link" data-key="nav.home">Főoldal</a></li>
-        <li class="nav-item"><a href="#about" class="nav-link" data-key="nav.about">Rólunk</a></li>
-        <li class="nav-item"><a href="#services" class="nav-link" data-key="nav.services">Szolgáltatások</a></li>
-        <li class="nav-item"><a href="#process" class="nav-link" data-key="nav.process">Folyamat</a></li>
-        <li class="nav-item"><a href="#gallery" class="nav-link" data-key="nav.gallery">Galéria</a></li>
-        <li class="nav-item"><a href="#contact" class="nav-link" data-key="nav.contact">Kapcsolat</a></li>
-      </ul>
-
-      <!-- Language Switcher -->
-      <div class="language-switcher-nav">
-        <div class="language-switcher" role="group" aria-label="Select language">
-          <button class="lang-btn active" data-lang="hu" title="Magyar" aria-pressed="true">
-            <span class="flag-icon flag-hu" aria-hidden="true"></span>
-            <span>HU</span>
-          </button>
-          <button class="lang-btn" data-lang="ro" title="Română" aria-pressed="false">
-            <span class="flag-icon flag-ro" aria-hidden="true"></span>
-            <span>RO</span>
-          </button>
-          <button class="lang-btn" data-lang="en" title="English" aria-pressed="false">
-            <span class="flag-icon flag-en" aria-hidden="true"></span>
-            <span>EN</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ============================================
-       HERO SECTION
-       ============================================ -->
-  <section id="home" class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="fade-in" data-key="hero.title">PROFESSZIONÁLIS ROZSDAELTÁVOLÍTÁS</h1>
-        <p class="fade-in delay-1" data-key="hero.subtitle">Több mint 20 éves tapasztalattal a fémfelület tisztítás területén Székelyudvarhelyen</p>
-        <div class="fade-in delay-2">
-          <a href="#services" class="btn btn-primary" data-key="hero.services">Szolgáltatásaink</a>
-          <a href="#contact" class="btn btn-outline" data-key="hero.contact">Kapcsolat</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       ABOUT SECTION
-       ============================================ -->
-  <section id="about" class="section">
-    <div class="container">
-      <div class="section-title">
-        <h2 data-key="about.title">Rólunk</h2>
-      </div>
-      <div class="about-content">
-        <!-- About Text -->
-        <div class="about-text">
-          <h3 data-key="about.subtitle">Több mint 20 éve az iparág élvonalában</h3>
-          <p data-key="about.description1">A Korózió Stop Kft. már több mint két évtizede áll ügyfelei szolgálatában Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása birtokos és ipari ügyfelek számára egyaránt.</p>
-          <p data-key="about.description2">Minden munkánkat a legmodernebb technológiával és szakértelemmel végezzük, hogy biztosítsuk a legjobb eredményt minden ügyfelünk sz��mára.</p>
-
-          <!-- Features List -->
-          <ul class="features-list">
-            <li>
-              <i class="fas fa-check-circle" aria-hidden="true"></i>
-              <span data-key="about.feature1">20 év szakmai tapasztalat</span>
-            </li>
-            <li>
-              <i class="fas fa-check-circle" aria-hidden="true"></i>
-              <span data-key="about.feature2">Környezetbarát munkavégzés</span>
-            </li>
-            <li>
-              <i class="fas fa-check-circle" aria-hidden="true"></i>
-              <span data-key="about.feature3">Modern technológia, piaci árak</span>
-            </li>
-            <li>
-              <i class="fas fa-check-circle" aria-hidden="true"></i>
-              <span data-key="about.feature4">Terepmunka lehetősége</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- About Image -->
-        <div class="about-image">
-          <img src="images/kép.jpg" alt="Korózió Stop műhely és berendezések" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       SERVICES SECTION
-       ============================================ -->
-  <section id="services" class="section services">
-    <div class="container">
-      <div class="section-title">
-        <h2 data-key="services.title">Szolgáltatásaink</h2>
-      </div>
-      <div class="services-grid">
-        <!-- Service 1: Rust Removal -->
-        <div class="service-card">
-          <div class="service-icon">
-            <img src="images/rozsda.png" alt="Rozsdaeltávolítás ikon" loading="lazy">
-          </div>
-          <h3 class="service-title" data-key="services.rust.title">Rozsdaeltávolítás</h3>
-          <p data-key="services.rust.description">Kvarchomokkal történő hatékony rozsdaeltávolítás fémfelületekről. Professzionális technológiánk megóvja az alapanyagot és tökéletes felületet biztosít a további kezelésekhez.</p>
-        </div>
-
-        <!-- Service 2: Powder Coating -->
-        <div class="service-card">
-          <div class="service-icon">
-            <img src="images/festés.png" alt="Elektrosztatikus porfestés ikon" loading="lazy">
-          </div>
-          <h3 class="service-title" data-key="services.painting.title">Elektrosztatikus porfestés</h3>
-          <p data-key="services.painting.description">Tartós, egyenletes és minőségi festékréteget biztosítunk, amely ellenáll az időjárási viszontagságoknak és hosszú távú védelmet nyújt.</p>
-        </div>
-
-        <!-- Service 3: Surface Matting -->
-        <div class="service-card">
-          <div class="service-icon">
-            <img src="images/matt.png" alt="Felület mattosítás ikon" loading="lazy">
-          </div>
-          <h3 class="service-title" data-key="services.matting.title">Felület mattosítás</h3>
-          <p data-key="services.matting.description">Üveg, fa és más felületek professzionális mattosítása. Ideális dekorációs célokra vagy további felületkezelések előkészítésére.</p>
-        </div>
-
-        <!-- Service 4: Tire Installation -->
-        <div class="service-card">
-          <div class="service-icon">
-            <img src="images/gumi.png" alt="Gumiszerelés ikon" loading="lazy">
-          </div>
-          <h3 class="service-title" data-key="services.tire.title">Gumiszerelés</h3>
-          <p data-key="services.tire.description">Komplett gumiszerelési szolgáltatásokat kínálunk, hogy időt takarítson meg. A homokfúvás előtt és után is vállaljuk a gumiabroncsok le- és felszerelését.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       PROCESS SECTION
-       ============================================ -->
-  <section id="process" class="section">
-    <div class="container">
-      <div class="section-title">
-        <h2 data-key="process.title">Munkafolyamat</h2>
-      </div>
-      <div class="process-steps">
-        <!-- Step 1 -->
-        <div class="process-step">
-          <div class="step-number" aria-label="Step 1">1</div>
-          <h3 data-key="process.step1.title">Konzultáció</h3>
-          <p data-key="process.step1.description">Felmérjük igényeit és részletes ajánlatot készítünk az elvégzendő munkákról.</p>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="process-step">
-          <div class="step-number" aria-label="Step 2">2</div>
-          <h3 data-key="process.step2.title">Előkészítés</h3>
-          <p data-key="process.step2.description">A felületet előkészítjük a homokfúvásra, eltávolítva minden nem kezelhető elemet.</p>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="process-step">
-          <div class="step-number" aria-label="Step 3">3</div>
-          <h3 data-key="process.step3.title">Homokfúvás</h3>
-          <p data-key="process.step3.description">Kvarchomokkal történő professzionális tisztítás a tökéletes eredmény érdekében.</p>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="process-step">
-          <div class="step-number" aria-label="Step 4">4</div>
-          <h3 data-key="process.step4.title">Utókezelés</h3>
-          <p data-key="process.step4.description">Igény szerint porfestés vagy egyéb felületkezelési eljárás a tartós védelem érdekében.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       BEFORE-AFTER SECTION
-       ============================================ -->
-  <section class="section">
-    <div class="container">
-      <div class="section-title">
-        <h2 data-key="beforeafter.title">Munkáink előtte-utána</h2>
-      </div>
-      <div class="before-after">
-        <div class="canvas-instructions">
-          <p>
-            <i class="fas fa-mouse-pointer" aria-hidden="true"></i>
-            <span data-key="canvas.instruction">Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!</span>
-          </p>
-        </div>
-        <div class="dual-canvas-container">
-          <div class="canvas-wrapper">
-            <canvas id="canvas1" width="800" height="600" aria-label="Before-after canvas 1"></canvas>
-          </div>
-          <div class="canvas-wrapper">
-            <canvas id="canvas2" width="800" height="600" aria-label="Before-after canvas 2"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       GALLERY SECTION
-       ============================================ -->
-  <section id="gallery" class="section">
-    <div class="container">
-      <div class="section-title">
-        <h2 data-key="gallery.title">Galéria</h2>
-      </div>
-      <div class="gallery-grid">
-        <!-- Gallery Item 1 -->
-        <div class="gallery-item" role="button" tabindex="0" data-index="0" onclick="openLightbox(0)" onkeypress="handleGalleryKeypress(event, 0)">
-          <img src="images/1.jpg" alt="Projekt 1 - Rozsdaeltávolítás" loading="lazy">
-          <div class="gallery-overlay" aria-hidden="true">
-            <i class="fas fa-search-plus" aria-hidden="true"></i>
-          </div>
-        </div>
-
-        <!-- Gallery Item 2 -->
-        <div class="gallery-item" role="button" tabindex="0" data-index="1" onclick="openLightbox(1)" onkeypress="handleGalleryKeypress(event, 1)">
-          <img src="images/2.jpg" alt="Projekt 2 - Porfestés" loading="lazy">
-          <div class="gallery-overlay" aria-hidden="true">
-            <i class="fas fa-search-plus" aria-hidden="true"></i>
-          </div>
-        </div>
-
-        <!-- Gallery Item 3 -->
-        <div class="gallery-item" role="button" tabindex="0" data-index="2" onclick="openLightbox(2)" onkeypress="handleGalleryKeypress(event, 2)">
-          <img src="images/3.png" alt="Projekt 3 - Felületkezelés" loading="lazy">
-          <div class="gallery-overlay" aria-hidden="true">
-            <i class="fas fa-search-plus" aria-hidden="true"></i>
-          </div>
-        </div>
-
-        <!-- Gallery Item 4 -->
-        <div class="gallery-item" role="button" tabindex="0" data-index="3" onclick="openLightbox(3)" onkeypress="handleGalleryKeypress(event, 3)">
-          <img src="images/4.png" alt="Projekt 4 - Munka eredménye" loading="lazy">
-          <div class="gallery-overlay" aria-hidden="true">
-            <i class="fas fa-search-plus" aria-hidden="true"></i>
-          </div>
-        </div>
-
-        <!-- Gallery Item 5 -->
-        <div class="gallery-item" role="button" tabindex="0" data-index="4" onclick="openLightbox(4)" onkeypress="handleGalleryKeypress(event, 4)">
-          <img src="images/5.jpg" alt="Projekt 5 - Professzionális munka" loading="lazy">
-          <div class="gallery-overlay" aria-hidden="true">
-            <i class="fas fa-search-plus" aria-hidden="true"></i>
-          </div>
-        </div>
-
-        <!-- Gallery Item 6 -->
-        <div class="gallery-item" role="button" tabindex="0" data-index="5" onclick="openLightbox(5)" onkeypress="handleGalleryKeypress(event, 5)">
-          <img src="images/6.png" alt="Projekt 6 - Homokfúvás" loading="lazy">
-          <div class="gallery-overlay" aria-hidden="true">
-            <i class="fas fa-search-plus" aria-hidden="true"></i>
-          </div>
-        </div>
-
-        <!-- Gallery Item 7 -->
-        <div class="gallery-item" role="button" tabindex="0" data-index="6" onclick="openLightbox(6)" onkeypress="handleGalleryKeypress(event, 6)">
-          <img src="images/7.jpg" alt="Projekt 7 - Fémfelület tisztítás" loading="lazy">
-          <div class="gallery-overlay" aria-hidden="true">
-            <i class="fas fa-search-plus" aria-hidden="true"></i>
-          </div>
-        </div>
-
-        <!-- Gallery Item 8 -->
-        <div class="gallery-item" role="button" tabindex="0" data-index="7" onclick="openLightbox(7)" onkeypress="handleGalleryKeypress(event, 7)">
-          <img src="images/8.jpg" alt="Projekt 8 - Végső eredmény" loading="lazy">
-          <div class="gallery-overlay" aria-hidden="true">
-            <i class="fas fa-search-plus" aria-hidden="true"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       LIGHTBOX MODAL
-       ============================================ -->
-  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
-    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox" title="Close (Esc)">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)" aria-label="Previous image" title="Previous (←)">
-      <span aria-hidden="true">&#10094;</span>
-    </button>
-    <button class="lightbox-nav lightbox-next" onclick="changeImage(1)" aria-label="Next image" title="Next (→)">
-      <span aria-hidden="true">&#10095;</span>
-    </button>
-    <img class="lightbox-content" id="lightbox-img" src="" alt="Fullscreen gallery image">
-    <div class="lightbox-caption" id="lightbox-caption"></div>
-  </div>
-
-  <!-- ============================================
-       CTA SECTION
-       ============================================ -->
-  <section id="contact-cta" class="section cta">
-    <div class="container">
-      <h2 data-key="cta.title">Kérjen ingyenes árajánlatot most!</h2>
-      <p data-key="cta.description">Akár kisebb, akár nagyobb projektről legyen szó, vegye fel velünk a kapcsolatot még ma!</p>
-      <a href="#contact" class="btn btn-outline" data-key="cta.button">Kapcsolat</a>
-    </div>
-  </section>
-
-  <!-- ============================================
-       CONTACT & FOOTER SECTION
-       ============================================ -->
-  <section id="contact" class="section contact">
-    <div class="container">
-      <div class="section-title">
-        <h2 data-key="contact.title">Kapcsolat</h2>
-      </div>
-      <div class="contact-container">
-        <!-- Contact Information -->
-        <div class="contact-info">
-          <h3 data-key="footer.contact">Elérhetőségek</h3>
-          
-          <!-- Address -->
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-            </div>
-            <div class="contact-details">
-              <h4 data-key="contact.location">Cím</h4>
-              <p data-key="footer.address">Székelyudvarhely, Fenyő utca 58.</p>
-            </div>
-          </div>
-
-          <!-- Phone -->
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-phone" aria-hidden="true"></i>
-            </div>
-            <div class="contact-details">
-              <h4 data-key="contact.phone">Telefon</h4>
-              <p><a href="tel:+40745967960">+40 745 967 960</a></p>
-            </div>
-          </div>
-
-          <!-- Email -->
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope" aria-hidden="true"></i>
-            </div>
-            <div class="contact-details">
-              <h4 data-key="contact.email">Email</h4>
-              <p><a href="mailto:koroziostop@gmail.com">koroziostop@gmail.com</a></p>
-            </div>
-          </div>
-
-          <!-- Hours -->
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-clock" aria-hidden="true"></i>
-            </div>
-            <div class="contact-details">
-              <h4 data-key="contact.hours">Nyitvatartás</h4>
-              <p>
-                <span data-key="footer.weekday">Hétfő - Péntek: </span>8:00 - 17:00<br>
-                <span data-key="footer.saturday">Szombat: </span>9:00 - 13:00<br>
-                <span data-key="footer.sunday">Vasárnap: </span><span data-key="footer.closed">Zárva</span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="contact-form">
-          <h3 data-key="contact.form-title">Írjon nekünk</h3>
-          <form id="contact-form" onsubmit="handleFormSubmit(event)">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Név" required aria-label="Név">
-            </div>
-            <div class="form-group">
-              <input type="email" class="form-control" placeholder="Email" required aria-label="Email">
-            </div>
-            <div class="form-group">
-              <input type="tel" class="form-control" placeholder="Telefon" aria-label="Telefon">
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" placeholder="Üzenet" required aria-label="Üzenet"></textarea>
-            </div>
-            <button type="submit" class="btn-submit" data-key="contact.send">Küldés</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-    /* ============================================
-       FOOTER
-       ============================================ */
-    .footer {
-      background-color: var(--dark);
-      color: var(--light);
-      padding: clamp(2rem, 6vw, 4rem) 1rem 0;
-    }
-
-    .footer-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: clamp(1.5rem, 4vw, 2rem);
-      margin-bottom: 2rem;
-      justify-content: center;
-    }
-
-    .footer-col {
-      flex: 1;
-      min-width: 260px;
-      max-width: 300px;
-      text-align: center;
-    }
-
-    .footer-col h3 {
-      margin-bottom: 1.5rem;
-      color: var(--white);
-      position: relative;
-      font-size: clamp(1.1rem, 3vw, 1.3rem);
-    }
-
-    .footer-col h3::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50px;
-      height: 2px;
-      background-color: var(--secondary);
-    }
-
-    .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.75rem;
-      font-size: clamp(0.9rem, 2vw, 1rem);
-    }
-
-    .footer-links a {
-      color: var(--light);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .footer-links a:hover {
-      color: var(--secondary);
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      justify-content: center;
-    }
-
-    .social-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.1);
-      color: var(--white);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      min-height: 44px;
-      min-width: 44px;
-      touch-action: manipulation;
-      border: none;
-    }
-
-    .social-icon:hover {
-      background-color: var(--secondary);
-      transform: translateY(-3px);
-    }
-
-    .social-icon:active {
-      transform: translateY(0);
-    }
-
-    .copyright {
-      text-align: center;
-      padding: clamp(1rem, 3vw, 1.5rem) 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: clamp(0.8rem, 2vw, 0.875rem);
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    /* ============================================
-       BEFORE-AFTER SECTION
-       ============================================ */
-    .before-after {
-      margin: 2rem 0;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .canvas-instructions {
-      background-color: var(--light);
-      padding: 1rem;
-      text-align: center;
-      font-size: clamp(0.9rem, 2vw, 1rem);
-      color: var(--primary);
-    }
-
-    .dual-canvas-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(1rem, 3vw, 2rem);
-      margin-top: 1rem;
-      padding: 0 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .canvas-wrapper {
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .canvas-wrapper canvas {
-      width: 100%;
-      height: auto;
-      display: block;
-      cursor: crosshair;
-      touch-action: none;
-    }
-
-    /* ============================================
-       ANIMATIONS
-       ============================================ */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      animation: fadeIn 1s ease forwards;
-    }
-
-    .delay-1 {
-      animation-delay: 0.2s;
-    }
-
-    .delay-2 {
-      animation-delay: 0.4s;
-    }
-
-    .delay-3 {
-      animation-delay: 0.6s;
-    }
-
-    /* ============================================
-       RESPONSIVE DESIGN ADJUSTMENTS
-       ============================================ */
-    @media (max-width: 768px) {
-      .contact-container {
-        flex-direction: column;
-      }
-
-      .contact-info,
-      .contact-form {
-        min-width: 100%;
-      }
-
-      .dual-canvas-container {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-col {
-        width: 100%;
-        max-width: none;
-      }
-    }
-
-    @media (max-width: 576px) {
       .contact-item {
         flex-wrap: wrap;
       }
@@ -1925,20 +1346,25 @@
         <li class="nav-item"><a href="#contact" class="nav-link" data-key="nav.contact">Kapcsolat</a></li>
       </ul>
 
-      <!-- Language Switcher -->
+      <!-- Language Switcher - IMPROVED DESIGN -->
       <div class="language-switcher-nav">
         <div class="language-switcher" role="group" aria-label="Select language">
-          <button class="lang-btn active" data-lang="hu" title="Magyar" aria-pressed="true">
-            <span class="flag-icon flag-hu" aria-hidden="true"></span>
-            <span>HU</span>
+          <!-- Hungarian -->
+          <button class="lang-btn lang-btn-hu active" data-lang="hu" title="Magyar (Hungarian)" aria-pressed="true" aria-label="Switch to Hungarian">
+            <span class="lang-flag flag-hu" aria-hidden="true"></span>
+            <span class="lang-label">HU</span>
           </button>
-          <button class="lang-btn" data-lang="ro" title="Română" aria-pressed="false">
-            <span class="flag-icon flag-ro" aria-hidden="true"></span>
-            <span>RO</span>
+          
+          <!-- Romanian -->
+          <button class="lang-btn lang-btn-ro" data-lang="ro" title="Română (Romanian)" aria-pressed="false" aria-label="Switch to Romanian">
+            <span class="lang-flag flag-ro" aria-hidden="true"></span>
+            <span class="lang-label">RO</span>
           </button>
-          <button class="lang-btn" data-lang="en" title="English" aria-pressed="false">
-            <span class="flag-icon flag-en" aria-hidden="true"></span>
-            <span>EN</span>
+          
+          <!-- English -->
+          <button class="lang-btn lang-btn-en" data-lang="en" title="English" aria-pressed="false" aria-label="Switch to English">
+            <span class="lang-flag flag-en" aria-hidden="true"></span>
+            <span class="lang-label">EN</span>
           </button>
         </div>
       </div>
@@ -1973,7 +1399,7 @@
         <!-- About Text -->
         <div class="about-text">
           <h3 data-key="about.subtitle">Több mint 20 éve az iparág élvonalában</h3>
-          <p data-key="about.description1">A Korózió Stop Kft. már több mint két évtizede áll ügyfelei szolgálatában Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása lakossági és ipari ügyfelek számára egyaránt.</p>
+          <p data-key="about.description1">A Korózió Stop Kft. már több mint két évtizede áll ügyfelei szolgálatában Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása lakosztási és ipari ügyfelek számára egyaránt.</p>
           <p data-key="about.description2">Minden munkánkat a legmodernebb technológiával és szakértelemmel végezzük, hogy biztosítsuk a legjobb eredményt minden ügyfelünk számára.</p>
 
           <!-- Features List -->
@@ -2120,7 +1546,7 @@
     </div>
   </section>
 
-    <!-- ============================================
+  <!-- ============================================
        GALLERY SECTION
        ============================================ -->
   <section id="gallery" class="section">
