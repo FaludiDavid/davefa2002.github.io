@@ -1401,15 +1401,45 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer-col" style="padding-left: 100px;">
-      <h3 data-key="footer.contact">Elérhetőségek</h3>
-      <ul class="footer-links">
-        <li><i class="fas fa-map-marker-alt"></i> <span data-key="footer.address">Székelyudvarhely, Fenyő utca 58.</span></li>
-        <li><i class="fas fa-phone"></i> +40 745 967 960</li>
-        <li><i class="fas fa-envelope"></i> koroziostop@gmail.com</li>
-      </ul>
+    <div class="footer-container" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 0 10% 2rem;">
+      
+      <div class="footer-col" style="flex: 1; min-width: 280px;">
+        <h3 data-key="footer.contact">Elérhetőségek</h3>
+        <ul class="footer-links" style="list-style: none; padding: 0;">
+          <li style="margin-bottom: 15px;">
+            <i class="fas fa-map-marker-alt"></i> 
+            <a href="https://www.google.com/maps/search/?api=1&query=46.3149504,25.3113957" target="_blank" style="color: inherit; text-decoration: none;">
+              <span data-key="footer.address">Székelyudvarhely, Fenyő utca 58.</span>
+            </a>
+          </li>
+          <li style="margin-bottom: 15px;">
+            <i class="fas fa-phone"></i> 
+            <a href="tel:+40745967960" style="color: inherit; text-decoration: none;">+40 745 967 960</a>
+          </li>
+          <li style="margin-bottom: 15px;">
+            <i class="fas fa-envelope"></i> 
+            <a href="mailto:koroziostop@gmail.com" style="color: inherit; text-decoration: none;">koroziostop@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-map" style="flex: 1; min-width: 300px; display: flex; justify-content: flex-end;">
+        <div style="width: 100%; max-width: 450px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2738.312384661073!2d25.308807076840733!3d46.31495037113337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474b23793010b98d%3A0xe54955c4d0590885!2zU3rDqWtlbHl1ZHZhcmhlbHksIEZlbnmFkIHUuIDU4LCBTesOpa2VseXVkdmFyaGVseSA1MzU2MDA!5e0!3m2!1shu!2sro!4v1708097000000!5m2!1shu!2sro" 
+            width="100%" 
+            height="250" 
+            style="border:0; filter: grayscale(30%) contrast(1.1); transition: 0.4s;" 
+            allowfullscreen="" 
+            loading="lazy"
+            onmouseover="this.style.filter='grayscale(0%)'"
+            onmouseout="this.style.filter='grayscale(30%)'">
+          </iframe>
+        </div>
+      </div>
     </div>
-    <div class="copyright">
+
+    <div class="copyright" style="text-align: center; padding: 1.5rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1);">
       <p>&copy; 2026 Korozio Stop Kft.</p>
     </div>
   </footer>
