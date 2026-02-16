@@ -1000,8 +1000,8 @@
     max-width: 280px;
   }
 }
-    
-    /* Before-After Rész - Updated */
+
+/* Before-After Rész - Updated */
 .before-after {
   margin: 2rem 0;
   border-radius: 8px;
@@ -1018,7 +1018,7 @@
 }
 
 .canvas-wrapper {
-  position: relative;
+  position: relative; /* Fontos a gomb pozicionálásához */
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -1031,13 +1031,49 @@
   cursor: crosshair;
 }
 
-/* Removed canvas labels */
+/* Visszaállítás gomb stílusa */
+.reset-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 5;
+  backdrop-filter: blur(4px); /* Modern, üvegszerű hatás */
+}
+
+.reset-btn:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.reset-btn i {
+  color: #007bff; /* Az ikon kék színt kap, hogy feltűnőbb legyen */
+}
 
 /* Responsive design */
 @media (max-width: 768px) {
   .dual-canvas-container {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 1.5rem;
+  }
+  
+  .reset-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
   }
 }
     
@@ -1239,9 +1275,15 @@
       <div class="dual-canvas-container">
         <div class="canvas-wrapper">
           <canvas id="canvas1"></canvas>
+          <button class="reset-btn" data-canvas="canvas1">
+            <i class="fas fa-undo"></i> <span data-key="canvas.reset">Visszaállítás</span>
+          </button>
         </div>
         <div class="canvas-wrapper">
           <canvas id="canvas2"></canvas>
+          <button class="reset-btn" data-canvas="canvas2">
+            <i class="fas fa-undo"></i> <span data-key="canvas.reset">Visszaállítás</span>
+          </button>
         </div>
       </div>
     </div>
@@ -1433,6 +1475,7 @@
       'gallery.title': 'Galéria',
       'beforeafter.title': 'Munkáink előtte-utána',
       'canvas.instruction': 'Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!',
+      'canvas.reset': 'Visszaállítás',
       'cta.title': 'Kérjen ingyenes árajánlatot most!',
       'cta.description': 'Akár kisebb, akár nagyobb projektről legyen szó, vegye fel velünk a kapcsolatot még ma!',
       'cta.button': 'Kapcsolat',
@@ -1545,9 +1588,12 @@
     });
   });
 
-  // Interactive Canvas Before-After Implementation - Updated for dual canvas
+ // Interactive Canvas Before-After Implementation - Updated for dual canvas with Reset
   function createCanvasHandler(canvasId, rustyImageSrc, cleanImageSrc) {
     const canvas = document.getElementById(canvasId);
+    // Megkeressük a hozzá tartozó visszaállítás gombot
+    const resetBtn = document.querySelector(`.reset-btn[data-canvas="${canvasId}"]`);
+    
     const ctx = canvas.getContext('2d');
     const rusty = new Image();
     const clean = new Image();
@@ -1557,23 +1603,32 @@
     let imageHeight = 0;
     const maskCanvas = document.createElement('canvas');
     const maskCtx = maskCanvas.getContext('2d');
-    const brushSize = 80; // Increased brush size to match left image
+    const brushSize = 80; 
     let isDrawing = false;
 
     function updateCanvas() {
       // 1. Rajzoljuk a rozsdás felületet teljesen
       ctx.drawImage(rusty, 0, 0, imageWidth, imageHeight);
-      // 2. Állítsuk be a maszkolást: csak azokat a részeket mutassuk a "clean" képből,
-      // ahol a maszk feketére van rajzolva
+      // 2. Állítsuk be a maszkolást
       ctx.save();
       ctx.globalCompositeOperation = 'destination-out';
       ctx.drawImage(maskCanvas, 0, 0);
       ctx.restore();
-      // 3. Tiszta felület rajzolása csak a maszkolt részekre
+      // 3. Tiszta felület rajzolása a maszkolt részekre
       ctx.save();
       ctx.globalCompositeOperation = 'destination-over';
       ctx.drawImage(clean, 0, 0, imageWidth, imageHeight);
       ctx.restore();
+    }
+
+    // --- Visszaállítás funkció ---
+    function resetImage() {
+      maskCtx.clearRect(0, 0, maskCanvas.width, maskCanvas.height);
+      updateCanvas();
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', resetImage);
     }
 
     function startDrawing() {
@@ -1600,19 +1655,16 @@
     }
 
     function init() {
-      // Use original image dimensions to prevent compression
       imageWidth = rusty.width;
       imageHeight = rusty.height;
       canvas.width = imageWidth;
       canvas.height = imageHeight;
       maskCanvas.width = imageWidth;
       maskCanvas.height = imageHeight;
-      // Kezdeti renderelés
       updateCanvas();
     }
 
     rusty.onload = () => {
-      // csak akkor induljunk el, ha mindkét kép be van töltve
       if (clean.complete) init();
     };
 
@@ -1647,10 +1699,9 @@
     });
   }
 
-  // Initialize both canvases
+  // Mindkét ablak indítása
   createCanvasHandler('canvas1', 'images/rusty.jpg', 'images/clean.jpg');
   createCanvasHandler('canvas2', 'images/előtte 1.jpg', 'images/utánna 1.jpg');
-
   // ============================================================================
   // LIGHTBOX GALLERY FUNCTIONALITY - CORRECTED
   // ============================================================================
