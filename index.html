@@ -1001,7 +1001,7 @@
   }
 }
 
-/* Before-After Rész - Updated */
+/* Before-After Rész - Teljesen frissítve */
 .before-after {
   margin: 2rem 0;
   border-radius: 8px;
@@ -1009,7 +1009,35 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* New styles for dual canvas layout */
+/* Az instrukciók új, esztétikus stílusa */
+.canvas-instructions {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 12px 25px;
+  background-color: #f8f9fa;
+  border-radius: 50px;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  border: 1px solid #e0e0e0;
+}
+
+.canvas-instructions p {
+  margin: 0;
+  color: #555;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.canvas-instructions i {
+  color: #007bff;
+}
+
+/* Dual canvas elrendezés */
 .dual-canvas-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1018,7 +1046,7 @@
 }
 
 .canvas-wrapper {
-  position: relative; /* Fontos a gomb pozicionálásához */
+  position: relative;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -1051,7 +1079,7 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
   z-index: 5;
-  backdrop-filter: blur(4px); /* Modern, üvegszerű hatás */
+  backdrop-filter: blur(4px);
 }
 
 .reset-btn:hover {
@@ -1061,7 +1089,7 @@
 }
 
 .reset-btn i {
-  color: #007bff; /* Az ikon kék színt kap, hogy feltűnőbb legyen */
+  color: #007bff;
 }
 
 /* Responsive design */
@@ -1075,36 +1103,36 @@
     padding: 6px 12px;
     font-size: 0.8rem;
   }
+
+  .canvas-instructions {
+    width: 90%;
+    left: 5%;
+    transform: none;
+    font-size: 0.85rem;
+  }
 }
     
-    /* Animation */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+/* Animációk */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    .fade-in {
-      animation: fadeIn 1s ease forwards;
-    }
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
 
-    .delay-1 {
-      animation-delay: 0.2s;
-    }
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
 
-    .delay-2 {
-      animation-delay: 0.4s;
-    }
-
-    .delay-3 {
-      animation-delay: 0.6s;
-    }
-  </style>
+</style>
 </head>
 <body>
   <!-- Navigation -->
@@ -1270,8 +1298,11 @@
     </div>
     <div class="before-after">
       <div class="canvas-instructions">
-        <p><i class="fas fa-mouse-pointer"></i><span data-key="canvas.instruction">Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!</span></p>
-      </div>
+  <p>
+    <i class="fas fa-hand-pointer"></i> 
+    <span data-key="canvas.instruction">Húzza végig az egeret a képen, hogy lássa a tisztítás eredményét!</span>
+  </p>
+</div>
       <div class="dual-canvas-container">
         <div class="canvas-wrapper">
           <canvas id="canvas1"></canvas>
