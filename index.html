@@ -1012,7 +1012,7 @@
 /* Az instrukciók - Közelebb hozva a képekhez */
 .canvas-instructions {
   text-align: center;
-  margin-bottom: 0.5rem; /* Jelentősen csökkentve */
+  margin-bottom: 0.5rem;
   padding: 10px 20px;
   background-color: #f8f9fa;
   border-radius: 50px;
@@ -1037,12 +1037,12 @@
   color: #007bff;
 }
 
-/* Dual canvas elrendezés - Felső rés eltüntetve */
+/* Dual canvas elrendezés */
 .dual-canvas-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  margin-top: 0.5rem; /* Minimális távolság a buborék és a kép között */
+  margin-top: 0.5rem;
 }
 
 .canvas-wrapper {
@@ -1056,8 +1056,9 @@
   width: 100%;
   height: auto;
   display: block;
-  cursor: crosshair;
+  /* Az egérmutatót a JS fogja elrejteni a kép felett */
 }
+
 /* Visszaállítás gomb stílusa */
 .reset-btn {
   position: absolute;
@@ -1087,8 +1088,18 @@
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
-.reset-btn i {
-  color: #007bff;
+/* Egyedi kör kurzor stílusa (ÚJ) */
+.canvas-cursor {
+  width: 80px; /* Megfelel a brushSize-nak */
+  height: 80px;
+  border: 2px dashed rgba(0, 123, 255, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  display: none;
+  background: rgba(0, 123, 255, 0.1);
 }
 
 /* Responsive design */
@@ -1110,23 +1121,14 @@
     font-size: 0.85rem;
   }
 }
-    
+
 /* Animációk */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.fade-in {
-  animation: fadeIn 1s ease forwards;
-}
-
+.fade-in { animation: fadeIn 1s ease forwards; }
 .delay-1 { animation-delay: 0.2s; }
 .delay-2 { animation-delay: 0.4s; }
 .delay-3 { animation-delay: 0.6s; }
@@ -1134,6 +1136,9 @@
 </style>
 </head>
 <body>
+   <!-- Ez a sor a before-after rész kurzorját módosítja -->
+  <div id="custom-cursor" class="canvas-cursor"></div>
+  
   <!-- Navigation -->
   <nav class="navbar">
     <div class="language-switcher-nav">
@@ -1619,119 +1624,82 @@
   });
 
  // Interactive Canvas Before-After Implementation - Updated for dual canvas with Reset
-  function createCanvasHandler(canvasId, rustyImageSrc, cleanImageSrc) {
+  function createCanvasHandler(canvasId, originalSrc, cleanedSrc) {
     const canvas = document.getElementById(canvasId);
-    // Megkeressük a hozzá tartozó visszaállítás gombot
-    const resetBtn = document.querySelector(`.reset-btn[data-canvas="${canvasId}"]`);
-    
+    if (!canvas) return;
+
     const ctx = canvas.getContext('2d');
-    const rusty = new Image();
-    const clean = new Image();
-    rusty.src = rustyImageSrc;
-    clean.src = cleanImageSrc;
-    let imageWidth = 0;
-    let imageHeight = 0;
-    const maskCanvas = document.createElement('canvas');
-    const maskCtx = maskCanvas.getContext('2d');
-    const brushSize = 80; 
-    let isDrawing = false;
+    const container = canvas.parentElement;
+    const resetBtn = container.querySelector('.reset-btn');
+    const customCursor = document.getElementById('custom-cursor');
+    
+    let originalImg = new Image();
+    let cleanedImg = new Image();
+    let isImagesLoaded = 0;
+    const brushSize = 40; // A kör sugara
 
-    function updateCanvas() {
-      // 1. Rajzoljuk a rozsdás felületet teljesen
-      ctx.drawImage(rusty, 0, 0, imageWidth, imageHeight);
-      // 2. Állítsuk be a maszkolást
-      ctx.save();
-      ctx.globalCompositeOperation = 'destination-out';
-      ctx.drawImage(maskCanvas, 0, 0);
-      ctx.restore();
-      // 3. Tiszta felület rajzolása a maszkolt részekre
-      ctx.save();
-      ctx.globalCompositeOperation = 'destination-over';
-      ctx.drawImage(clean, 0, 0, imageWidth, imageHeight);
-      ctx.restore();
+    function checkLoaded() {
+        isImagesLoaded++;
+        if (isImagesLoaded === 2) {
+            render();
+        }
     }
 
-    // --- Visszaállítás funkció ---
-    function resetImage() {
-      maskCtx.clearRect(0, 0, maskCanvas.width, maskCanvas.height);
-      updateCanvas();
+    originalImg.onload = checkLoaded;
+    cleanedImg.onload = checkLoaded;
+    originalImg.src = originalSrc;
+    cleanedImg.src = cleanedSrc;
+
+    function render() {
+        canvas.width = originalImg.width;
+        canvas.height = originalImg.height;
+        ctx.drawImage(originalImg, 0, 0);
+        ctx.globalCompositeOperation = 'destination-out';
     }
 
-    if (resetBtn) {
-      resetBtn.addEventListener('click', resetImage);
+    function scratch(e) {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        
+        const x = ((e.clientX || (e.touches && e.touches[0].clientX)) - rect.left) * scaleX;
+        const y = ((e.clientY || (e.touches && e.touches[0].clientY)) - rect.top) * scaleY;
+
+        ctx.beginPath();
+        ctx.arc(x, y, brushSize, 0, Math.PI * 2);
+        ctx.fill();
     }
 
-    function startDrawing() {
-      isDrawing = true;
-    }
-
-    function stopDrawing() {
-      isDrawing = false;
-    }
-
-    function draw(e) {
-      if (!isDrawing) return;
-      const rect = canvas.getBoundingClientRect();
-      const scaleX = canvas.width / rect.width;
-      const scaleY = canvas.height / rect.height;
-      const x = (e.clientX - rect.left) * scaleX;
-      const y = (e.clientY - rect.top) * scaleY;
-      
-      maskCtx.beginPath();
-      maskCtx.arc(x, y, brushSize, 0, 2 * Math.PI);
-      maskCtx.fillStyle = 'black';
-      maskCtx.fill();
-      updateCanvas();
-    }
-
-    function init() {
-      imageWidth = rusty.width;
-      imageHeight = rusty.height;
-      canvas.width = imageWidth;
-      canvas.height = imageHeight;
-      maskCanvas.width = imageWidth;
-      maskCanvas.height = imageHeight;
-      updateCanvas();
-    }
-
-    rusty.onload = () => {
-      if (clean.complete) init();
-    };
-
-    clean.onload = () => {
-      if (rusty.complete) init();
-    };
-
-    canvas.addEventListener('mousedown', startDrawing);
-    canvas.addEventListener('mouseup', stopDrawing);
-    canvas.addEventListener('mouseleave', stopDrawing);
-    canvas.addEventListener('mousemove', draw);
-
-    // Touch events for mobile support
-    canvas.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      startDrawing();
+    canvas.addEventListener('mousemove', (e) => {
+        scratch(e);
+        if (customCursor) {
+            customCursor.style.display = 'block';
+            customCursor.style.left = e.clientX + 'px';
+            customCursor.style.top = e.clientY + 'px';
+        }
     });
 
-    canvas.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      stopDrawing();
+    canvas.addEventListener('mouseleave', () => {
+        if (customCursor) customCursor.style.display = 'none';
     });
 
     canvas.addEventListener('touchmove', (e) => {
-      e.preventDefault();
-      const touch = e.touches[0];
-      const mouseEvent = new MouseEvent('mousemove', {
-        clientX: touch.clientX,
-        clientY: touch.clientY
-      });
-      draw(mouseEvent);
-    });
-  }
+        e.preventDefault();
+        scratch(e);
+    }, { passive: false });
 
-  // Mindkét ablak indítása
-  createCanvasHandler('canvas1', 'images/rusty.jpg', 'images/clean.jpg');
-  createCanvasHandler('canvas2', 'images/előtte 1.jpg', 'images/utánna 1.jpg');
+    resetBtn.addEventListener('click', () => {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(originalImg, 0, 0);
+        ctx.globalCompositeOperation = 'destination-out';
+    });
+}
+
+window.addEventListener('load', () => {
+    // Itt a te fájlneveidre frissítettem:
+    createCanvasHandler('canvas1', 'images/rusty.jpg', 'images/clean.jpg');
+    createCanvasHandler('canvas2', 'images/előtte 1.jpg', 'images/utánna 1.jpg');
+});
   // ============================================================================
   // LIGHTBOX GALLERY FUNCTIONALITY - CORRECTED
   // ============================================================================
