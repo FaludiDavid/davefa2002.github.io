@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Böngésző fülön megjelenő cím -->
-  <title>Korozio Stop Srl. - Homokfújás Székelyudvarhely | Rozsdaeltávolítás</title>
+  <title>Korozio Stop Srl. - Homokfúvás Székelyudvarhely | Rozsdaeltávolítás</title>
 
   <!-- SEO szempontból fontos leírás és kulcsszavak -->
-  <meta name="description" content="A Korozio Stop srl. Székelyudvarhelyen több, mint 25 éve kínál rozsdaeltávolítás, homokfújás és porfestés szolgáltatásokat.">
-  <meta name="keywords" content="koroziostop, sablare, Korozio Stop, homokfújás, homokfúvás, rozsdaeltávolítás, rozsdaeltávolítás Székelyudvarhely, porfestés Székelyudvarhely, Székelyudvarhely, kvarchomok, gumiszerelés, fémfelület tisztítás, fémfelület tisztítás Székelyudvarhely, sablare Odorheiusecuiesc">
+  <meta name="description" content="A Korozio Stop Srl. Székelyudvarhelyen több, mint 25 éve kínál felületkezelési (rozsdaeltávolítás, homokfúvás és porfestés) szolgáltatásokat.">
+  <meta name="keywords" content="koroziostop, sablare, Korozio Stop, sablare odorhei, homokfújás, homokfúvás, rozsdaeltávolítás, rozsdaeltávolítás Székelyudvarhely, porfestés Székelyudvarhely, Székelyudvarhely, kvarchomok, gumiszerelés, fémfelület tisztítás, fémfelület tisztítás Székelyudvarhely, sablare Odorheiusecuiesc">
 
   <!-- Ikon készlet (Font Awesome) – ikonok használatához -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -444,47 +444,9 @@
     }
 
     /* MUNKAFOLYAMAT SZEKCIÓ */
-    .process-steps {
-      display: flex;                                              /* Vízszintes elrendezés */
-      flex-wrap: wrap;                                           /* Kis képernyőn törik */
-      justify-content: space-between;                            /* Lépcsők szétosztása */
-      margin-top: 3rem;                                          /* Felső margó */
-    }
 
-    .process-step {
-      flex: 1;                                                    /* Egyenlő arányú oszlopok */
-      min-width: 250px;                                          /* Minimum szélesség */
-      text-align: center;                                        /* Középre igazítás */
-      padding: 0 1rem;                                           /* Vízszintes margó */
-      margin-bottom: 2rem;                                       /* Alsó térköz */
-      position: relative;                                        /* A nyílhoz */
-    }
 
-    .process-step:not(:last-child)::after {
-      content: "";                                               /* Következő lépés nyíl */
-      position: absolute;
-      top: 50px;
-      right: -15%;
-      width: 30%;
-      height: 2px;
-      background-color: var(--secondary);                         /* Nyíl színe */
-    }
 
-    .step-number {
-      display: flex;                                              /* Körben lévő szám igazítása */
-      justify-content: center;
-      align-items: center;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;                                         /* Kör alak */
-      background-color: var(--secondary);                         /* Háttér szín */
-      color: var(--white);                                        /* Szám színe */
-      font-size: 1.5rem;
-      font-weight: 700;                                           /* Vastag szám */
-      margin: 0 auto 1.5rem;                                      /* Középre igazítás + alsó térköz */
-      position: relative;
-      z-index: 1;
-    }
 
         /* GALÉRIA SZEKCIÓ */
 .gallery-grid {
@@ -888,9 +850,6 @@
   .hero h1 {
     font-size: 2.8rem;
   }
-  .process-step:not(:last-child)::after {
-    display: none;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1201,14 +1160,9 @@ img { max-width: 100%; }
 .service-icon { height: 64px; }
 .service-icon img { width: 64px; height: 64px; }
 
-.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-.process-step { min-width: 0; margin: 0; padding: 0 .5rem; }
-.process-step:not(:last-child)::after { top: 35px; left: calc(50% + 43px); right: auto; width: calc(100% - 86px + 1.5rem); }
 @media (max-width: 992px) {
-  .process-steps { grid-template-columns: repeat(2, 1fr); }
-  .process-step:not(:last-child)::after { display: none; }
 }
-@media (max-width: 576px) { .process-steps { grid-template-columns: 1fr; } }
+
 
 /* Előtte-utána */
 .before-after { box-shadow: none; border-radius: 0; overflow: visible; }
@@ -1302,12 +1256,192 @@ img { max-width: 100%; }
 @media (max-width: 960px) {
   .fab-call { display: flex; position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 900; width: 56px; height: 56px; align-items: center; justify-content: center; border-radius: 50%; background: var(--accent); color: #fff; font-size: 1.3rem; text-decoration: none; box-shadow: 0 4px 14px rgba(0,0,0,.3); }
 }
-</style>
+
+/* ===== Finomítás: nagyobb hero kép, középre igazított CTA gombok ===== */
+.cta .btn-row { justify-content: center; }
+@media (min-width: 961px) {
+  .hero-logo { width: 112%; max-width: none; margin: 0 -6%; max-height: 80vh; }
+}
+/* ===== Hero: halvány csiszolt fém háttér ===== */
+.hero {
+  background-color: #dfe5ec;
+  background-image:
+    /* fényes csillanás a logó mögött */
+    radial-gradient(ellipse at 75% 40%, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 55%),
+    /* finom vízszintes csiszolási csíkok */
+    repeating-linear-gradient(0deg, rgba(255,255,255,.18) 0 1px, rgba(0,0,0,.025) 1px 2px, rgba(255,255,255,.1) 2px 4px),
+    /* acélszürke alapszín átmenet */
+    linear-gradient(135deg, #eef2f6 0%, #cfd7e0 45%, #e9eef3 70%, #c5cfda 100%);
+  box-shadow: inset 0 -14px 20px -14px rgba(10, 37, 64, .18);
+}
+
+/* ===== Nagyobb fejléc logó (felirattal) ===== */
+.brand-logo { width: 58px; height: 58px; padding: 4px; border-radius: 14px; }
+@media (max-width: 1200px) { .brand-logo { width: 50px; height: 50px; } }
+@media (max-width: 600px)  { .brand-logo { width: 44px; height: 44px; } }
+@media (max-width: 400px)  { .brand-logo { width: 40px; height: 40px; padding: 3px; } }
+    
+
+/* ===== Mini galéria a szolgáltatás kártyákon ===== */
+.service-card { position: relative; }
+.service-card .mini-gallery {
+  position: absolute; top: 12px; right: 12px; left: auto; margin: 0;
+  width: 78px; height: 60px; padding: 0;
+  border: 2px solid #fff; border-radius: 10px; overflow: hidden;
+  background: #dfe5ec; cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0,0,0,.25);
+}
+.mini-gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+.mini-gallery:hover img { transform: scale(1.12); }
+.mini-gallery-count {
+  position: absolute; right: 4px; bottom: 4px;
+  background: rgba(10,37,64,.85); color: #fff;
+  font-size: .7rem; font-weight: 600; line-height: 1;
+  padding: 3px 6px; border-radius: 10px;
+}
+@media (max-width: 400px) { .service-card .mini-gallery { width: 64px; height: 50px; top: 10px; right: 10px; } }
+
+/* ===== Instagram banner a galéria alatt ===== */
+.insta-banner {
+  display: flex; align-items: center; justify-content: space-between; gap: 1.25rem;
+  margin-top: 2.5rem; padding: 1.1rem 1.5rem; border-radius: 12px;
+  background: linear-gradient(180deg, #031c38 0%, #04264a 100%);
+}
+.insta-line {
+  flex: 1; max-width: 340px; height: 4px; border-radius: 2px;
+  background: linear-gradient(90deg, #ffa31a, #f0307a 55%, #a32de6);
+}
+.insta-pill {
+  display: inline-flex; align-items: center; gap: 1rem; max-width: 100%;
+  padding: 0 0 0 1.3rem; border: 3px solid transparent; border-radius: 999px;
+  background: linear-gradient(#031f3d, #031f3d) padding-box, linear-gradient(90deg, #ffa31a, #f0307a 50%, #a32de6) border-box;
+  color: #fff; text-decoration: none;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.insta-pill:hover { transform: translateY(-2px); box-shadow: 0 0 0 5px rgba(240, 48, 122, .2); }
+.insta-pill:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.insta-dash { flex: none; width: 26px; height: 5px; border-radius: 3px; background: linear-gradient(90deg, #ffa31a, #a32de6); }
+.insta-label { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.35rem; line-height: 1.25; }
+.insta-arrow { flex: none; font-size: 1.2rem; }
+.insta-sep { flex: none; align-self: stretch; width: 2px; background: rgba(140, 120, 255, .45); }
+.insta-ico {
+  flex: none; width: 40px; height: 40px; margin: .3rem .35rem .3rem 0; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.3rem;
+  background: linear-gradient(135deg, #ff9a1f 0%, #f0307a 55%, #b52bd9 100%);
+}
+.social-ico {
+  flex: none; width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; text-decoration: none; font-size: 1.9rem;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.social-ico:hover { transform: translateY(-2px) scale(1.06); }
+.social-ico:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.social-fb {
+  background: #1877f2; box-shadow: 0 0 0 3px #04264a, 0 0 0 5px #2f6fd6;
+  margin: 0 5px;
+}
+.social-fb:hover { box-shadow: 0 0 0 3px #04264a, 0 0 0 5px #2f6fd6, 0 0 0 10px rgba(24, 119, 242, .25); }
+.social-tt {
+  font-size: 1.5rem; border: 3px solid transparent;
+  background: linear-gradient(#050505, #050505) padding-box, linear-gradient(135deg, #f0307a, #a32de6) border-box;
+}
+.social-tt:hover { box-shadow: 0 0 0 5px rgba(240, 48, 122, .2); }
+@media (max-width: 700px) {
+  .insta-pill { min-width: 0; }
+  .social-ico { width: 48px; height: 48px; font-size: 1.6rem; }
+  .social-tt { font-size: 1.25rem; }
+}
+@media (max-width: 480px) {
+  .insta-banner { padding: .8rem .6rem; gap: .5rem; }
+  .social-ico { width: 40px; height: 40px; font-size: 1.35rem; }
+  .social-tt { font-size: 1.05rem; }
+  .social-fb { margin: 0 3px; }
+}
+@media (max-width: 700px) {
+  .insta-banner { padding: 1rem; gap: .75rem; }
+  .insta-line { display: none; }
+  .insta-label { font-size: 1.1rem; }
+  .insta-pill { gap: .75rem; }
+}
+@media (max-width: 480px) {
+  .insta-dash, .insta-arrow { display: none; }
+  .insta-label { font-size: .95rem; }
+  .insta-pill { gap: .6rem; padding-left: 1rem; }
+  .insta-ico { width: 36px; height: 36px; font-size: 1.2rem; }
+}
+
+
+    /* ÁRLISTA */
+    .price-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;
+    }
+    .price-card {
+      background: var(--white); border-radius: 8px; padding: 2rem 1.75rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;
+    }
+    .price-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18); }
+    .price-head { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 1.5rem; }
+    .price-head img { width: 56px; height: 56px; object-fit: contain; margin-bottom: .75rem; }
+    .price-head .service-title { font-size: 1.35rem; margin-bottom: 0; }
+    .price-head::after { content: ''; width: 40px; height: 3px; background: var(--secondary); margin-top: .9rem; border-radius: 2px; }
+    .price-list { list-style: none; margin: 0; padding: 0; }
+    .price-row { display: flex; align-items: baseline; gap: .5rem; padding: .6rem 0; }
+    .price-name { font-size: .975rem; color: var(--dark); }
+    .price-dots { flex: 1 1 1rem; min-width: 1rem; border-bottom: 2px dotted #c9d0d6; transform: translateY(-4px); }
+    .price-val { white-space: nowrap; font-weight: 700; color: var(--secondary); font-size: 1rem; }
+    .price-unit { font-weight: 400; font-size: .8rem; color: var(--gray); margin-left: .15rem; }
+    .price-quote { font-weight: 500; font-size: .85rem; color: var(--gray); }
+    .price-card-cta {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+      background: linear-gradient(160deg, var(--primary) 0%, #0b3a66 100%); color: var(--white);
+    }
+    .price-card-cta h3 { color: var(--white); font-size: 1.35rem; margin-bottom: .75rem; }
+    .price-card-cta p { margin-bottom: 1rem; opacity: .9; }
+    .price-cta-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
+    .price-note { text-align: center; color: var(--gray); font-size: .9rem; margin: 2rem auto 0; max-width: 760px; }
+    .price-note i { color: var(--secondary); margin-right: .25rem; }
+    @media (max-width: 400px) {
+      .price-grid { grid-template-columns: 1fr; }
+      .price-card { padding: 1.5rem 1.25rem; }
+    }
+
+    /* ADATVÉDELMI TÁJÉKOZTATÓ (ablak + lábléc link) */
+    .privacy-link {
+      background: none; border: 0; padding: 0; margin: 0;
+      font: inherit; color: inherit; cursor: pointer;
+      text-decoration: underline; text-underline-offset: 3px;
+    }
+    .privacy-link:hover, .privacy-link:focus-visible { color: var(--white); }
+    .privacy-dialog {
+      border: none; border-radius: 12px; padding: 0;
+      width: calc(100% - 2rem); max-width: 720px; max-height: 85vh;
+      background: var(--white); color: var(--dark);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+    .privacy-dialog::backdrop { background: rgba(10, 37, 64, 0.75); }
+    .privacy-inner { position: relative; padding: 2rem; max-height: 85vh; overflow-y: auto; }
+    .privacy-inner h2 {
+      font-size: 1.5rem; color: var(--primary);
+      margin: 0 2.5rem 1.25rem 0; line-height: 1.3;
+    }
+    .privacy-inner p { margin-bottom: 1rem; font-size: 0.975rem; line-height: 1.65; }
+    .privacy-inner a { color: var(--secondary); overflow-wrap: anywhere; }
+    .privacy-close {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      width: 2.5rem; height: 2.5rem; border: 0; border-radius: 50%;
+      background: var(--light-gray); color: var(--dark);
+      font-size: 1.1rem; cursor: pointer;
+    }
+    .privacy-close:hover, .privacy-close:focus-visible { background: var(--secondary); color: var(--white); }
+    @media (max-width: 600px) { .privacy-inner { padding: 1.5rem 1.25rem; } }
+  </style>
   <meta name="theme-color" content="#0a2540">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="hu_HU">
   <meta property="og:url" content="https://faludidavid.github.io/">
-  <meta property="og:title" content="Korozio Stop Kft. - Homokfújás és rozsdaeltávolítás Székelyudvarhelyen">
+  <meta property="og:title" content="Korozio Stop Srl. - Homokfújás és rozsdaeltávolítás Székelyudvarhelyen">
   <meta property="og:description" content="Több mint 25 éve kínálunk rozsdaeltávolítást, homokfújást és porfestést Székelyudvarhelyen.">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Korozio Stop SRL","description":"Rozsdaeltávolítás, homokfújás és porfestés Székelyudvarhelyen.","telephone":"+40745967960","email":"koroziostop@gmail.com","url":"https://faludidavid.github.io/","address":{"@type":"PostalAddress","streetAddress":"Strada Bradului","addressLocality":"Odorheiu Secuiesc","addressCountry":"RO"}}</script>
 </head>
@@ -1316,10 +1450,10 @@ img { max-width: 100%; }
   <!-- Navigation -->
   <nav class="navbar" aria-label="Főmenü">
     <div class="container navbar-container">
-      <a href="#home" class="brand" aria-label="Korrózió Stop SRL – Főoldal">
-        <img class="brand-logo" src="images/logo.png" alt="">
+      <a href="#home" class="brand" aria-label="Korozio Stop SRL – Főoldal">
+        <img class="brand-logo" src="images/logo.svg" alt="">
         <span class="brand-text">
-          <span class="brand-name">KORRÓZIÓ <b>STOP</b> <span class="brand-badge">SRL</span></span>
+          <span class="brand-name">KOROZIO <b>STOP</b> <span class="brand-badge">SRL</span></span>
           <span class="brand-sub" data-key="brand.sub">Professzionális fémfelület-tisztítás</span>
         </span>
       </a>
@@ -1327,7 +1461,7 @@ img { max-width: 100%; }
         <li class="nav-item"><a href="#home" class="nav-link" data-key="nav.home">Főoldal</a></li>
         <li class="nav-item"><a href="#about" class="nav-link" data-key="nav.about">Rólunk</a></li>
         <li class="nav-item"><a href="#services" class="nav-link" data-key="nav.services">Szolgáltatások</a></li>
-        <li class="nav-item"><a href="#process" class="nav-link" data-key="nav.process">Folyamat</a></li>
+        <li class="nav-item"><a href="#pricing" class="nav-link" data-key="nav.pricing">Árlista</a></li>
         <li class="nav-item"><a href="#gallery" class="nav-link" data-key="nav.gallery">Galéria</a></li>
         <li class="nav-item"><a href="#contact" class="nav-link" data-key="nav.contact">Kapcsolat</a></li>
       </ul>
@@ -1343,14 +1477,14 @@ img { max-width: 100%; }
   <section id="home" class="hero">
     <div class="container hero-inner">
       <div class="hero-content">
-        <h1 class="fade-in" data-key="hero.title">PROFESSZIONÁLIS ROZSDAELTÁVOLÍTÁS</h1>
+        <h1 class="fade-in" data-key="hero.title">HOMOKFÚVÁS-ROZSDAELTÁVOLÍTÁS</h1>
         <p class="fade-in delay-1" data-key="hero.subtitle">Több mint 25 éves tapasztalattal a fémfelület tisztítás területén Székelyudvarhelyen</p>
         <div class="fade-in delay-2 btn-row">
           <a href="#services" class="btn btn-primary" data-key="hero.services">Szolgáltatásaink</a>
           <a href="#contact" class="btn btn-outline" data-key="hero.contact">Kapcsolat</a>
         </div>
       </div>
-      <img class="hero-logo fade-in delay-1" src="images/K_S_Logo_2026_Fin_.png" alt="Korozio Stop SRL – homokfúvás, rozsdaeltávolítás, vizes homokfúvás, porfestés" fetchpriority="high">
+      <img class="hero-logo fade-in delay-1" src="images/h%C3%A1tter.png" alt="Korozio Stop SRL – homokfúvás, rozsdaeltávolítás, vizes homokfúvás, porfestés" fetchpriority="high">
     </div>
   </section>
   
@@ -1363,7 +1497,7 @@ img { max-width: 100%; }
       <div class="about-content">
         <div class="about-text">
           <h3 data-key="about.subtitle">Több mint 25 éve az iparág élvonalában</h3>
-          <p data-key="about.description1">A Korózió Stop Srl. már több, mint két évtizede nyújt felületkezelési(homokfúvási) szolgáltatásokat Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása lakossági és ipari ügyfelek számára egyaránt.</p>
+          <p data-key="about.description1">A Korózió Stop Srl. már több, mint két évtizede nyújt felületkezelési szolgáltatásokat (homokfúvás) Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása lakossági és ipari ügyfelek számára egyaránt.</p>
           <p data-key="about.description2">Minden munkánkat a legmodernebb technológiával és szakértelemmel végezzük, hogy biztosítsuk a legjobb eredményt minden ügyfelünk számára.</p>
           <ul style="list-style: none; margin-top: 1.5rem;">
             <li style="margin-bottom: 0.5rem;">
@@ -1391,6 +1525,7 @@ img { max-width: 100%; }
     </div>
   </section>
 
+  <!-- 20 sorral lennebb van a szogáltatásokhoz tartozó mini galéria -->
   <!-- Services Section -->
   <section id="services" class="section services">
     <div class="container">
@@ -1399,6 +1534,10 @@ img { max-width: 100%; }
       </div>
       <div class="services-grid">
         <div class="service-card">
+          <button class="mini-gallery" type="button" aria-label="Képek megtekintése" data-images="images/rozsda-1.jpg,images/rozsda-2.jpg,images/rozsda-3.jpg,images/rozsda-4.jpg">
+            <img src="images/rozsda-1.jpg" alt="" loading="lazy" decoding="async" onerror="this.closest('.mini-gallery').remove()">
+            <span class="mini-gallery-count"><i class="fas fa-images" aria-hidden="true"></i> 4</span>
+          </button>
           <div class="service-icon">
             <img src="images/rozsda.png" alt="Rozsdaeltávolítás ikon">
           </div>
@@ -1406,6 +1545,10 @@ img { max-width: 100%; }
           <p data-key="services.rust.description">Kvarchomokkal/ acél söréttel/aluminium oxiddal történő hatékony rozsdaeltávolítás fémfelületekről. Az eljárás gyors és tökéletes felületet biztosít a további kezelésekhez.</p>
         </div>
         <div class="service-card">
+          <button class="mini-gallery" type="button" aria-label="Képek megtekintése" data-images="images/por-1.jpg">
+            <img src="images/por-1.jpg" alt="" loading="lazy" decoding="async" onerror="this.closest('.mini-gallery').remove()">
+            <span class="mini-gallery-count"><i class="fas fa-images" aria-hidden="true"></i> 1</span>
+          </button>
           <div class="service-icon">
             <img src="images/festés.png" alt="Elektrosztatikus porfestés ikon">
           </div>
@@ -1413,6 +1556,10 @@ img { max-width: 100%; }
           <p data-key="services.painting.description">Tartós, egyenletes és minőségi festékréteget biztosítunk, amely ellenáll az időjárási viszontagságoknak és hosszú távú védelmet nyújt.</p>
         </div>
         <div class="service-card">
+          <button class="mini-gallery" type="button" aria-label="Képek megtekintése" data-images="images/matt-1.jpg">
+            <img src="images/matt-1.jpg" alt="" loading="lazy" decoding="async" onerror="this.closest('.mini-gallery').remove()">
+            <span class="mini-gallery-count"><i class="fas fa-images" aria-hidden="true"></i> 1</span>
+          </button>
           <div class="service-icon">
             <img src="images/matt.png" alt="Felület mattosítás ikon">
           </div>
@@ -1420,6 +1567,10 @@ img { max-width: 100%; }
           <p data-key="services.matting.description">Üveg, fa és más felületek professzionális mattosítása. Ideális dekorációs célokra vagy további felületkezelések előkészítésére.</p>
         </div>
         <div class="service-card">
+          <button class="mini-gallery" type="button" aria-label="Képek megtekintése" data-images="images/gumi-1.jpg,images/gumi-2.jpg,images/gumi-3.jpg,images/gumi-4.jpg">
+            <img src="images/gumi-1.jpg" alt="" loading="lazy" decoding="async" onerror="this.closest('.mini-gallery').remove()">
+            <span class="mini-gallery-count"><i class="fas fa-images" aria-hidden="true"></i> 4</span>
+          </button>
           <div class="service-icon">
             <img src="images/gumi.png" alt="Gumiszerelés ikon">
           </div>
@@ -1427,6 +1578,10 @@ img { max-width: 100%; }
           <p data-key="services.tire.description">Komplett gumiszerelési szolgáltatásokat kínálunk, hogy időt takarítson meg. A homokfúvás előtt és után is vállaljuk a gumiabroncsok le- és felszerelését.</p>
         </div>
         <div class="service-card">
+          <button class="mini-gallery" type="button" aria-label="Képek megtekintése" data-images="images/viz-1.jpg,images/viz-2.jpg,images/viz-3.jpg,images/viz-4.jpg">
+            <img src="images/viz-1.jpg" alt="" loading="lazy" decoding="async" onerror="this.closest('.mini-gallery').remove()">
+            <span class="mini-gallery-count"><i class="fas fa-images" aria-hidden="true"></i> 4</span>
+          </button>
           <div class="service-icon">
             <img src="images/extrák.png" alt="Extra szolgáltatások ikon">
           </div>
@@ -1437,34 +1592,132 @@ img { max-width: 100%; }
     </div>
   </section>
 
-  <!-- Process Section -->
-  <section id="process" class="section">
+  <!-- Árlista -->
+  <!-- FIGYELEM: az "XX" helyére írd be a valós árakat (keresd: class="price-num"). -->
+  <section id="pricing" class="section">
     <div class="container">
       <div class="section-title">
-        <h2 data-key="process.title">Munkafolyamat</h2>
+        <h2 data-key="pricing.title">Árlista</h2>
       </div>
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="step-number">1</div>
-          <h3 data-key="process.step1.title">Konzultáció</h3>
-          <p data-key="process.step1.description">Felmérjük igényeit és részletes ajánlatot készítünk az elvégzendő munkákról.</p>
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="price-head">
+            <img src="images/rozsda.png" alt="" loading="lazy">
+            <h3 class="service-title" data-key="services.rust.title">Rozsdaeltávolítás</h3>
+          </div>
+          <ul class="price-list">
+            <li class="price-row">
+              <span class="price-name" data-key="pricing.item.metal">Fémfelület (acél, vas)</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-val"><b class="price-num">XX</b> RON <span class="price-unit">/ m²</span></span>
+            </li>
+            <li class="price-row">
+              <span class="price-name" data-key="pricing.item.carRim">Autófelni</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-val"><b class="price-num">XX</b> RON <span class="price-unit" data-key="pricing.unit.pcs">/ db</span></span>
+            </li>
+            <li class="price-row">
+              <span class="price-name" data-key="pricing.item.truckRim">Teher- és kamionfelni</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-val"><b class="price-num">XX</b> RON <span class="price-unit" data-key="pricing.unit.pcs">/ db</span></span>
+            </li>
+          </ul>
         </div>
-        <div class="process-step">
-          <div class="step-number">2</div>
-          <h3 data-key="process.step2.title">Előkészítés</h3>
-          <p data-key="process.step2.description">A felületet előkészítjük a homokfúvásra, eltávolítva minden nem kezelhető elemet.</p>
+        <div class="price-card">
+          <div class="price-head">
+            <img src="images/festés.png" alt="" loading="lazy">
+            <h3 class="service-title" data-key="services.painting.title">Elektrosztatikus porfestés</h3>
+          </div>
+          <ul class="price-list">
+            <li class="price-row">
+              <span class="price-name" data-key="pricing.item.carRim">Autófelni</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-val"><b class="price-num">XX</b> RON <span class="price-unit" data-key="pricing.unit.pcs">/ db</span></span>
+            </li>
+            <li class="price-row">
+              <span class="price-name" data-key="pricing.item.truckRim">Teher- és kamionfelni</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-val"><b class="price-num">XX</b> RON <span class="price-unit" data-key="pricing.unit.pcs">/ db</span></span>
+            </li>
+            <li class="price-row">
+              <span class="price-name" data-key="pricing.item.parts">Egyedi alkatrészek, szerkezetek</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-val price-quote" data-key="pricing.quote">Árajánlat alapján</span>
+            </li>
+          </ul>
         </div>
-        <div class="process-step">
-          <div class="step-number">3</div>
-          <h3 data-key="process.step3.title">Homokfúvás</h3>
-          <p data-key="process.step3.description">Kvarchomokkal történő professzionális tisztítás a tökéletes eredmény érdekében.</p>
+        <div class="price-card">
+          <div class="price-head">
+            <img src="images/matt.png" alt="" loading="lazy">
+            <h3 class="service-title" data-key="services.matting.title">Felület mattosítás</h3>
+          </div>
+          <ul class="price-list">
+            <li class="price-row">
+              <span class="price-name" data-key="pricing.item.glass">Üvegfelület</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-val"><b class="price-num">XX</b> RON <span class="price-unit">/ m²</span></span>
+            </li>
+            <li class="price-row">
+              <span class="price-name" data-key="pricing.item.wood">Fafelület</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-val"><b class="price-num">XX</b> RON <span class="price-unit">/ m²</span></span>
+            </li>
+            <li class="price-row">
+              <span class="price-name" data-key="pricing.item.decor">Dekorációs minta, egyedi kivitel</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-val price-quote" data-key="pricing.quote">Árajánlat alapján</span>
+            </li>
+          </ul>
         </div>
-        <div class="process-step">
-          <div class="step-number">4</div>
-          <h3 data-key="process.step4.title">Utókezelés</h3>
-          <p data-key="process.step4.description">Igény szerint porfestés vagy egyéb felületkezelési eljárás a tartós védelem érdekében.</p>
+        <div class="price-card">
+          <div class="price-head">
+            <img src="images/gumi.png" alt="" loading="lazy">
+            <h3 class="service-title" data-key="services.tire.title">Gumiszerelés</h3>
+          </div>
+          <ul class="price-list">
+            <li class="price-row">
+              <span class="price-name" data-key="pricing.item.tireCar">Személyautó-gumi le- és felszerelése</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-val"><b class="price-num">XX</b> RON <span class="price-unit" data-key="pricing.unit.pcs">/ db</span></span>
+            </li>
+            <li class="price-row">
+              <span class="price-name" data-key="pricing.item.tireTruck">Teherautó-gumi le- és felszerelése</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-val"><b class="price-num">XX</b> RON <span class="price-unit" data-key="pricing.unit.pcs">/ db</span></span>
+            </li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-head">
+            <img src="images/extrák.png" alt="" loading="lazy">
+            <h3 class="service-title" data-key="services.extra.title">Vizes homokszórás</h3>
+          </div>
+          <ul class="price-list">
+            <li class="price-row">
+              <span class="price-name" data-key="pricing.item.facade">Faház, faburkolat</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-val"><b class="price-num">XX</b> RON <span class="price-unit">/ m²</span></span>
+            </li>
+            <li class="price-row">
+              <span class="price-name" data-key="pricing.item.stone">Kő- és betonfelület</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-val"><b class="price-num">XX</b> RON <span class="price-unit">/ m²</span></span>
+            </li>
+            <li class="price-row">
+              <span class="price-name" data-key="pricing.item.travel">Kiszállás</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-val price-quote" data-key="pricing.quote">Árajánlat alapján</span>
+            </li>
+          </ul>
+        </div>
+        <div class="price-card price-card-cta">
+          <i class="fas fa-file-invoice-dollar price-cta-icon" aria-hidden="true"></i>
+          <h3 data-key="pricing.cta.title">Nem találja a keresett tételt?</h3>
+          <p data-key="pricing.cta.text">Egyedi munkára is szívesen adunk ajánlatot.</p>
+          <a href="#contact" class="btn btn-primary" data-key="pricing.cta.button">Ajánlatkérés</a>
         </div>
       </div>
+      <p class="price-note"><i class="fas fa-info-circle" aria-hidden="true"></i> <span data-key="pricing.note">Az árak tájékoztató jellegűek, a végleges ár a felület méretétől, állapotától és a munka jellegétől függ.</span></p>
     </div>
   </section>
   
@@ -1511,7 +1764,7 @@ img { max-width: 100%; }
           <span class="gallery-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></span>
         </button>
         <button class="gallery-item" type="button">
-          <img src="images/2.jpg" alt="Elvégzett munka 2" loading="lazy" decoding="async">
+          <img src="images/2.png" alt="Elvégzett munka 2" loading="lazy" decoding="async">
           <span class="gallery-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></span>
         </button>
         <button class="gallery-item" type="button">
@@ -1547,13 +1800,26 @@ img { max-width: 100%; }
           <span class="gallery-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></span>
         </button>
         <button class="gallery-item" type="button">
-          <img src="images/11.jpeg" alt="Elvégzett munka 11" loading="lazy" decoding="async">
+          <img src="images/11.jpg" alt="Elvégzett munka 11" loading="lazy" decoding="async">
           <span class="gallery-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></span>
         </button>
         <button class="gallery-item" type="button">
-          <img src="images/12.jpeg" alt="Elvégzett munka 12" loading="lazy" decoding="async">
+          <img src="images/12.jpg" alt="Elvégzett munka 12" loading="lazy" decoding="async">
           <span class="gallery-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></span>
         </button>
+      </div>
+      <div class="insta-banner">
+        <a class="social-ico social-fb" href="https://www.facebook.com/Sablare.Homokfuvas" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <span class="insta-line" aria-hidden="true"></span>
+        <a class="insta-pill" href="https://www.instagram.com/koroziostop/" target="_blank" rel="noopener" aria-label="Instagram: @koroziostop">
+          <span class="insta-dash" aria-hidden="true"></span>
+          <span class="insta-label" data-key="gallery.instagram.text">További exkluzív tartalmak</span>
+          <i class="fas fa-arrow-right insta-arrow" aria-hidden="true"></i>
+          <span class="insta-sep" aria-hidden="true"></span>
+          <span class="insta-ico"><i class="fab fa-instagram" aria-hidden="true"></i></span>
+        </a>
+        <span class="insta-line" aria-hidden="true"></span>
+        <a class="social-ico social-tt" href="https://www.tiktok.com/@korozio.stop" target="_blank" rel="noopener" aria-label="TikTok: @korozio.stop"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
       </div>
     </div>
   </section>
@@ -1565,6 +1831,15 @@ img { max-width: 100%; }
     <button class="lightbox-nav lightbox-next" type="button" aria-label="Következő kép" data-aria-key="lightbox.next">&#10095;</button>
     <img class="lightbox-content" id="lightbox-img" alt="">
     <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <!-- Mini galéria nagyító ablak -->
+  <div id="mini-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Galéria">
+    <button class="lightbox-close" type="button" aria-label="Bezárás" data-aria-key="lightbox.close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" type="button" aria-label="Előző kép" data-aria-key="lightbox.prev">&#10094;</button>
+    <button class="lightbox-nav lightbox-next" type="button" aria-label="Következő kép" data-aria-key="lightbox.next">&#10095;</button>
+    <img class="lightbox-content" alt="">
+    <div class="lightbox-caption"></div>
   </div>
 
   <!-- CTA Section -->
@@ -1579,7 +1854,7 @@ img { max-width: 100%; }
     </div>
   </section>
 
-  <!-- Footer -->
+<!-- Footer -->
   <footer class="footer">
     <div class="container footer-grid">
       <div>
@@ -1596,9 +1871,19 @@ img { max-width: 100%; }
       </div>
     </div>
     <div class="copyright">
-      <p>© <span id="year">2026</span> Korozio Stop Kft.</p>
+      <p>© <span id="year">2026</span> Korozio Stop Srl. · <button type="button" class="privacy-link" id="privacy-open" data-key="footer.privacy" aria-haspopup="dialog">Adatvédelmi tájékoztató</button></p>
     </div>
   </footer>
+
+  <!-- Adatvédelmi tájékoztató / Informare privind protecția datelor -->
+  <dialog class="privacy-dialog" id="privacy-dialog" aria-labelledby="privacy-title">
+    <div class="privacy-inner">
+      <button type="button" class="privacy-close" id="privacy-close" aria-label="Bezárás" data-aria-key="privacy.close"><i class="fas fa-times" aria-hidden="true"></i></button>
+      <h2 id="privacy-title" data-key="privacy.title">Adatvédelmi tájékoztató</h2>
+      <p><strong data-key="privacy.controller.label">Adatkezelő:</strong> <span data-key="privacy.controller.text">Korozio Stop Srl., Odorheiu Secuiesc, Strada Bradului.</span> E-mail: <a href="mailto:koroziostop@gmail.com">koroziostop@gmail.com</a>, tel.: <a href="tel:+40745967960">+40 745 967 960</a>.</p>
+      <p><strong data-key="privacy.analytics.label">Webanalitika.</strong> <span data-key="privacy.analytics.text">Weboldalunk a Cloudflare Web Analytics szolgáltatását használja a látogatottság általános mérésére (pl. oldalmegtekintések száma, országok, böngészőtípus, eszköztípus). A szolgáltatás sütiket nem használ, és a látogatókat nem követi nyomon az oldalak között. Egyéni azonosításra nem alkalmas, összesített statisztikákat készítünk belőle. Jogalap: jogos érdek (GDPR 6. cikk (1) f)), a weboldal működésének és használatának javítása.</span> <span data-key="privacy.details">Részletek:</span> <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">https://www.cloudflare.com/privacypolicy/</a></p>
+    </div>
+  </dialog>
 
   <a class="fab-call" href="tel:+40745967960" aria-label="Hívás"><i class="fas fa-phone" aria-hidden="true"></i></a>
 
@@ -1637,12 +1922,12 @@ img { max-width: 100%; }
       'nav.home': 'Főoldal',
       'nav.about': 'Rólunk',
       'nav.services': 'Szolgáltatások',
-      'nav.process': 'Folyamat',
+      'nav.pricing': 'Árlista',
       'nav.gallery': 'Galéria',
       'nav.contact': 'Kapcsolat',
       
       // Hero section
-      'hero.title': 'PROFESSZIONÁLIS ROZSDAELTÁVOLÍTÁS',
+      'hero.title': 'HOMOKFÚVÁS/ ROZSDAELTÁVOLÍTÁS',
       'hero.subtitle': 'Több mint 25 éves tapasztalattal a fémfelület tisztítás területén Székelyudvarhelyen',
       'hero.services': 'Szolgáltatásaink',
       'hero.contact': 'Kapcsolat',
@@ -1650,7 +1935,7 @@ img { max-width: 100%; }
       // About section
       'about.title': 'Rólunk',
       'about.subtitle': 'Több mint 25 éve az iparág élvonalában',
-      'about.description1': '>A Korózió Stop Srl. már több, mint két évtizede nyújt felületkezelési(homokfúvási) szolgáltatásokat Székelyudvarhelyen és környékén.. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása lakossági és ipari ügyfelek számára egyaránt.',
+      'about.description1': 'A Korózió Stop Srl. már több mint két évtizede nyújt felületkezelési szolgáltatásokat (homokfúvás) Székelyudvarhelyen és környékén. Célunk a megbízható, környezetbarát és költséghatékony szolgáltatás biztosítása lakossági és ipari ügyfelek számára egyaránt.',
       'about.description2': 'Minden munkánkat a legmodernebb technológiával és szakértelemmel végezzük, hogy biztosítsuk a legjobb eredményt minden ügyfelünk számára.',
       'about.feature1': '25 év szakmai tapasztalat',
       'about.feature2': 'Környezetbarát munkavégzés',
@@ -1663,21 +1948,31 @@ img { max-width: 100%; }
       'services.rust.description': 'Kvarchomokkal/acél söréttel/aluminium oxiddal történő hatékony rozsdaeltávolítás fémfelületekről. Az eljárás gyors és tökéletes felületet biztosít a további kezelésekhez.',
       'services.painting.title': 'Elektrosztatikus porfestés',
       'services.painting.description': 'Tartós, egyenletes és minőségi festékréteget biztosítunk, amely ellenáll az időjárási viszontagságoknak és hosszú távú védelmet nyújt.',
-      'services.matting.title': 'Felület mattosítás',
-      'services.matting.description': 'Üveg, fa és más felületek professzionális mattosítása. Ideális dekorációs célokra vagy további felületkezelések előkészítésére.',
+      'services.matting.title': 'Felület kezelés',
+      'services.matting.description': 'Üveg, fa és más felületek professzionális kezelése. Ideális dekorációs célokra vagy további felületkezelések előkészítésére.',
       'services.tire.title': 'Gumiszerelés',
       'services.tire.description': 'Komplett gumiszerelési szolgáltatásokat kínálunk, hogy időt takarítson meg. A homokfúvás előtt és után is vállaljuk a gumiabroncsok le- és felszerelését.',
       
-      // Process section
-      'process.title': 'Munkafolyamat',
-      'process.step1.title': 'Konzultáció',
-      'process.step1.description': 'Felmérjük igényeit és részletes ajánlatot készítünk az elvégzendő munkákról.',
-      'process.step2.title': 'Előkészítés',
-      'process.step2.description': 'A felületet előkészítjük a homokfúvásra, eltávolítva minden nem kezelhető elemet.',
-      'process.step3.title': 'Homokfúvás',
-      'process.step3.description': 'Kvarchomokkal történő professzionális tisztítás a tökéletes eredmény érdekében.',
-      'process.step4.title': 'Utókezelés',
-      'process.step4.description': 'Igény szerint porfestés vagy egyéb felületkezelési eljárás a tartós védelem érdekében.',
+      // Árlista
+      'pricing.title': 'Árlista',
+      'pricing.item.metal': 'Fémfelület (acél, vas)',
+      'pricing.item.carRim': 'Autófelni',
+      'pricing.item.truckRim': 'Teher- és kamionfelni',
+      'pricing.item.parts': 'Egyedi alkatrészek, szerkezetek',
+      'pricing.item.glass': 'Üvegfelület',
+      'pricing.item.wood': 'Fafelület',
+      'pricing.item.decor': 'Dekorációs minta, egyedi kivitel',
+      'pricing.item.tireCar': 'Személyautó-gumi le- és felszerelése',
+      'pricing.item.tireTruck': 'Teherautó-gumi le- és felszerelése',
+      'pricing.item.facade': 'Faház, faburkolat',
+      'pricing.item.stone': 'Kő- és betonfelület',
+      'pricing.item.travel': 'Kiszállás',
+      'pricing.unit.pcs': '/ db',
+      'pricing.quote': 'Árajánlat alapján',
+      'pricing.cta.title': 'Nem találja a keresett tételt?',
+      'pricing.cta.text': 'Egyedi munkára is szívesen adunk ajánlatot.',
+      'pricing.cta.button': 'Ajánlatkérés',
+      'pricing.note': 'Az árak tájékoztató jellegűek, a végleges ár a felület méretétől, állapotától és a munka jellegétől függ.',
       
       // Gallery and CTA
       'gallery.title': 'Galéria',
@@ -1690,9 +1985,18 @@ img { max-width: 100%; }
       
       // Footer
       'brand.sub': 'Professzionális fémfelület-tisztítás',
+      'gallery.instagram.text': 'További exkluzív tartalmak',
       'footer.contact': 'Elérhetőségek',
       'footer.address': 'Székelyudvarhely, Strada Bradului',
       'footer.map': 'Megnyitás a Google Térképen',
+      'footer.privacy': 'Adatvédelmi tájékoztató',
+      'privacy.close': 'Bezárás',
+      'privacy.title': 'Adatvédelmi tájékoztató',
+      'privacy.controller.label': 'Adatkezelő:',
+      'privacy.controller.text': 'Korozio Stop Srl., Odorheiu Secuiesc, Strada Bradului.',
+      'privacy.analytics.label': 'Webanalitika.',
+      'privacy.analytics.text': 'Weboldalunk a Cloudflare Web Analytics szolgáltatását használja a látogatottság általános mérésére (pl. oldalmegtekintések száma, országok, böngészőtípus, eszköztípus). A szolgáltatás sütiket nem használ, és a látogatókat nem követi nyomon az oldalak között. Egyéni azonosításra nem alkalmas, összesített statisztikákat készítünk belőle. Jogalap: jogos érdek (GDPR 6. cikk (1) f)), a weboldal működésének és használatának javítása.',
+      'privacy.details': 'Részletek:',
       'services.extra.title': 'Vizes homokszórás',
       'services.extra.description': 'Terepmunka esetén jelentősen csökkenthetjük a munkavégzés során keletkező felszálló por mennyiségét a vizes homokszóró berendezésünkkel.',
       'canvas.instruction.touch': 'Húzza végig az ujját a képen, hogy lássa a tisztítás eredményét!',
@@ -1709,12 +2013,12 @@ img { max-width: 100%; }
       'nav.home': 'Acasă',
       'nav.about': 'Despre noi',
       'nav.services': 'Servicii',
-      'nav.process': 'Proces',
+      'nav.pricing': 'Prețuri',
       'nav.gallery': 'Galerie',
       'nav.contact': 'Contact',
       
       // Hero section
-      'hero.title': 'ÎNDEPĂRTARE PROFESIONALĂ A RUGINII',
+      'hero.title': 'SABLARE',
       'hero.subtitle': 'Cu peste 25 de ani de experiență în curățarea suprafețelor metalice în Odorheiu Secuiesc',
       'hero.services': 'Serviciile noastre',
       'hero.contact': 'Contact',
@@ -1735,23 +2039,33 @@ img { max-width: 100%; }
       'services.rust.description': 'Îndepărtarea eficientă a ruginii de pe suprafețe metalice prin utilizarea nisipului cuarțos / alicei de oțel / oxidului de aluminiu. Procedeul este rapid și asigură o suprafață perfectă pentru tratamentele ulterioare.',
       'services.painting.title': 'Vopsire electrostatică cu pulbere',
       'services.painting.description': 'Oferim un strat de vopsea durabil, uniform și de calitate, care rezistă la intemperii și oferă protecție pe termen lung.',
-      'services.matting.title': 'Matifierea suprafețelor',
-      'services.matting.description': 'Matifierea profesională a sticlei, lemnului și altor suprafețe. Ideal pentru scopuri decorative sau pentru pregătirea tratamentelor ulterioare ale suprafeței.',
+      'services.matting.title': 'tratarea suprafețelor',
+      'services.matting.description': 'Tratarea profesională a sticlei, lemnului și altor suprafețe. Ideal pentru scopuri decorative sau pentru pregătirea tratamentelor ulterioare ale suprafeței.',
       'services.tire.title': 'Montarea anvelopelor',
       'services.tire.description': 'Oferim servicii complete de montare a anvelopelor pentru a vă economisi timpul. Realizăm demontarea și montarea anvelopelor atât înainte, cât și după sablarea cu nisip.',
       'services.extra.title': 'Sablare umedă',
       'services.extra.description': 'În cazul lucrărilor pe teren, putem reduce semnificativ cantitatea de praf generată în timpul intervenției cu ajutorul echipamentului nostru de sablare umedă.',
       
-      // Process section
-      'process.title': 'Procesul de lucru',
-      'process.step1.title': 'Consultanță',
-      'process.step1.description': 'Evaluăm nevoile dumneavoastră și pregătim o ofertă detaliată pentru lucrările de efectuat.',
-      'process.step2.title': 'Pregătire',
-      'process.step2.description': 'Pregătim suprafața pentru sablare, îndepărtând toate elementele care nu pot fi tratate.',
-      'process.step3.title': 'Sablare',
-      'process.step3.description': 'Curățare profesională cu nisip de cuarț pentru rezultate perfecte.',
-      'process.step4.title': 'Finisare',
-      'process.step4.description': 'La cerere, vopsire cu pulbere sau alte proceduri de tratare a suprafeței pentru protecție durabilă.',
+      // Listă de prețuri
+      'pricing.title': 'Listă de prețuri',
+      'pricing.item.metal': 'Suprafață metalică (oțel, fier)',
+      'pricing.item.carRim': 'Jantă auto',
+      'pricing.item.truckRim': 'Jantă de camion',
+      'pricing.item.parts': 'Piese și structuri la comandă',
+      'pricing.item.glass': 'Suprafață din sticlă',
+      'pricing.item.wood': 'Suprafață din lemn',
+      'pricing.item.decor': 'Model decorativ, execuție la comandă',
+      'pricing.item.tireCar': 'Demontarea și montarea anvelopei de autoturism',
+      'pricing.item.tireTruck': 'Demontarea și montarea anvelopei de camion',
+      'pricing.item.facade': 'Casă din lemn, placaj din lemn',
+      'pricing.item.stone': 'Suprafață din piatră și beton',
+      'pricing.item.travel': 'Deplasare',
+      'pricing.unit.pcs': '/ buc.',
+      'pricing.quote': 'Conform ofertei',
+      'pricing.cta.title': 'Nu găsiți ce căutați?',
+      'pricing.cta.text': 'Vă oferim cu plăcere o ofertă și pentru lucrări la comandă.',
+      'pricing.cta.button': 'Cere ofertă',
+      'pricing.note': 'Prețurile sunt orientative; prețul final depinde de dimensiunea și starea suprafeței și de natura lucrării.',
       
       // Gallery and CTA
       'gallery.title': 'Galerie',
@@ -1763,9 +2077,18 @@ img { max-width: 100%; }
       
       // Footer
       'brand.sub': 'Curățare profesională a suprafețelor metalice',
+      'gallery.instagram.text': 'Mai multe conținuturi exclusive',
       'footer.contact': 'Date de contact',
       'footer.address': 'Odorheiu Secuiesc, Strada Bradului',
       'footer.map': 'Deschide în Google Maps',
+      'footer.privacy': 'Informare privind protecția datelor',
+      'privacy.close': 'Închide',
+      'privacy.title': 'Informare privind protecția datelor',
+      'privacy.controller.label': 'Operator de date:',
+      'privacy.controller.text': 'Korozio Stop Srl., Odorheiu Secuiesc, Strada Bradului.',
+      'privacy.analytics.label': 'Analiză web.',
+      'privacy.analytics.text': 'Site-ul nostru utilizează serviciul Cloudflare Web Analytics pentru măsurarea generală a numărului de vizitatori (de ex. numărul de vizualizări de pagină, țările, tipul de browser, tipul de dispozitiv). Serviciul nu utilizează cookie-uri și nu urmărește vizitatorii de la un site la altul. Nu permite identificarea individuală; din datele colectate realizăm doar statistici agregate. Temei juridic: interes legitim (art. 6 alin. (1) lit. f) din GDPR), îmbunătățirea funcționării și utilizării site-ului.',
+      'privacy.details': 'Detalii:',
       'canvas.reset': 'Resetare',
       'canvas.instruction.touch': 'Treceți degetul peste imagine pentru a vedea rezultatul curățării!',
       'canvas.label': 'Imagine înainte-după',
@@ -1801,11 +2124,11 @@ img { max-width: 100%; }
     
     // Update page title and meta description
     if (lang === 'ro') {
-      document.title = 'Korozio Stop Kft. - Sablare Odorheiu Secuiesc | Îndepărtarea ruginii';
-      document.querySelector('meta[name="description"]').content = 'Korozio Stop Kft. din Odorheiu Secuiesc oferă de peste 25 de ani servicii de îndepărtare a ruginii, sablare și vopsire cu pulbere.';
+      document.title = 'Korozio Stop Srl. - Sablare Odorheiu Secuiesc | Îndepărtarea ruginii';
+      document.querySelector('meta[name="description"]').content = 'Korozio Stop Srl. din Odorheiu Secuiesc oferă de peste 25 de ani servicii de îndepărtare a ruginii, sablare și vopsire cu pulbere.';
     } else {
-      document.title = 'Korozio Stop Kft. - Homokfújás Székelyudvarhely | Rozsdaeltávolítás';
-      document.querySelector('meta[name="description"]').content = 'A Korozio Stop Kft. Székelyudvarhelyen több, mint 25 éve kínál rozsdaeltávolítás, homokfújás és porfestés szolgáltatásokat.';
+      document.title = 'Korozio Stop Srl. - Homokfújás Székelyudvarhely | Rozsdaeltávolítás';
+      document.querySelector('meta[name="description"]').content = 'A Korozio Stop Srl. Székelyudvarhelyen több, mint 25 éve kínál rozsdaeltávolítás, homokfújás és porfestés szolgáltatásokat.';
     }
     
     document.querySelectorAll('[data-aria-key]').forEach(el => {
@@ -1926,11 +2249,84 @@ img { max-width: 100%; }
     touchX = null;
   });
 
+  // Adatvédelmi tájékoztató ablak
+  (function () {
+    const dlg = document.getElementById('privacy-dialog');
+    const openBtn = document.getElementById('privacy-open');
+    const closeBtn = document.getElementById('privacy-close');
+    if (!dlg || !openBtn) return;
+    openBtn.addEventListener('click', () => {
+      if (typeof dlg.showModal === 'function') { dlg.showModal(); document.body.style.overflow = 'hidden'; }
+      else dlg.setAttribute('open', '');
+    });
+    const close = () => { dlg.close(); };
+    closeBtn.addEventListener('click', close);
+    dlg.addEventListener('click', e => { if (e.target === dlg) close(); }); // háttérre kattintás
+    dlg.addEventListener('close', () => { document.body.style.overflow = ''; openBtn.focus(); });
+  })();
+
   // Elmentett nyelv visszaállítása (alapértelmezett: magyar)
   let savedLang = null;
   try { savedLang = localStorage.getItem('lang'); } catch (e) {}
   switchLanguage(savedLang === 'ro' ? 'ro' : 'hu');
 
+  // ===== Mini galéria a szolgáltatás kártyákon =====
+  (function () {
+    const box = document.getElementById('mini-lightbox');
+    if (!box) return;
+    const img = box.querySelector('.lightbox-content');
+    const cap = box.querySelector('.lightbox-caption');
+    let list = [], idx = 0, title = '', opener = null;
+
+    function show(i) {
+      idx = (i + list.length) % list.length;
+      img.src = list[idx];
+      img.alt = title + ' – ' + (idx + 1);
+      cap.textContent = title + '  ·  ' + (idx + 1) + ' / ' + list.length;
+    }
+    function open(btn) {
+      list = btn.dataset.images.split(',').map(s => s.trim()).filter(Boolean);
+      if (!list.length) return;
+      title = btn.closest('.service-card').querySelector('.service-title').textContent;
+      opener = btn;
+      show(0);
+      box.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      box.querySelector('.lightbox-close').focus();
+    }
+    function close() {
+      box.classList.remove('active');
+      document.body.style.overflow = '';
+      img.removeAttribute('src');
+      if (opener) opener.focus();
+    }
+
+    document.querySelectorAll('.mini-gallery').forEach(b => b.addEventListener('click', () => open(b)));
+    box.querySelector('.lightbox-close').addEventListener('click', close);
+    box.querySelector('.lightbox-prev').addEventListener('click', () => show(idx - 1));
+    box.querySelector('.lightbox-next').addEventListener('click', () => show(idx + 1));
+    box.addEventListener('click', e => { if (e.target === box) close(); });
+    document.addEventListener('keydown', e => {
+      if (!box.classList.contains('active')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(idx - 1);
+      else if (e.key === 'ArrowRight') show(idx + 1);
+    });
+
+    // Ujjal húzva lapozás
+    let startX = null;
+    box.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', e => {
+      if (startX === null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 50) show(dx < 0 ? idx + 1 : idx - 1);
+      startX = null;
+    });
+  })();
+
 </script>
+  <!-- Cloudflare Web Analytics -->
+  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "39790943d25e498d9a166c38a63ddb29"}'></script>
+  <!-- End Cloudflare Web Analytics -->
 </body>
 </html>
